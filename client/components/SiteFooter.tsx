@@ -10,7 +10,7 @@ export function SiteFooter() {
               DECATHLON
             </span>
             <p className="max-w-md text-sm text-white/80">
-              © Decathlon France 2026 – Formation Capitaine
+              © Decathlon France 2026 – Formation collaborateurs
             </p>
           </div>
           <div className="flex flex-col items-center gap-2 text-sm text-white/80 md:items-end">
