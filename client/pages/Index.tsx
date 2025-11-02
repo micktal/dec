@@ -891,9 +891,14 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
 type ScenariosSectionProps = {
   id?: string;
   scenarioResponses: (number | null)[];
-  scenarioFeedback: (string | null)[];
+  scenarioFeedback: (ScenarioFeedback | null)[];
   onSelect: (scenarioIndex: number, optionIndex: number) => void;
   scenarioScore: number;
+  activeScenarioIndex: number;
+  onActivateScenario: (index: number) => void;
+  onContinueScenario: () => void;
+  onResetSimulation: () => void;
+  onMarkCompleted: () => void;
 };
 
 function ScenariosSection({
@@ -902,6 +907,11 @@ function ScenariosSection({
   scenarioFeedback,
   onSelect,
   scenarioScore,
+  activeScenarioIndex,
+  onActivateScenario,
+  onContinueScenario,
+  onResetSimulation,
+  onMarkCompleted,
 }: ScenariosSectionProps) {
   const scenarioStatuses = scenarioResponses.map<ScenarioStatus>((response, index) => {
     if (response === null) {
