@@ -192,7 +192,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
   {
     title: "Le client professionnel ou administratif",
     situation:
-      "Il représente une structure (mairie, association) habituée au ch��que administratif et craint d'être bloqué.",
+      "Il représente une structure (mairie, association) habituée au chèque administratif et craint d'être bloqué.",
     concerns: [
       "Peur de ne plus pouvoir commander pour son organisation",
       "Méconnaissance des solutions Decathlon Pro",
@@ -331,7 +331,7 @@ const SCENARIOS: ClientScenario[] = [
       "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la réponse tarde.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F13e6eae7e96f42a6b2443162c334241e?format=webp&width=800",
-    imageAlt: "Client pressé contrarié réagissant à un changement",
+    imageAlt: "Client press�� contrarié réagissant à un changement",
     dialogue: "Vous perdez du temps avec vos nouvelles r��gles ! J’ai pas que ça à faire.",
     responses: [
       {
@@ -1017,6 +1017,28 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
             Empathie, clarté et alternatives : trois réflexes pour rester performants et proches de nos clients.
           </p>
         </Reveal>
+        <div className="grid gap-6 md:grid-cols-3">
+          {REFLEXES_FOUNDATION.map((foundation) => (
+            <Reveal key={foundation.title}>
+              <div className="flex h-full flex-col gap-3 rounded-3xl border border-primary/20 bg-white/70 p-6 text-left shadow-sm shadow-primary/10">
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
+                    À retenir
+                  </span>
+                  <h3 className="mt-2 text-lg font-semibold text-primary">{foundation.title}</h3>
+                </div>
+                <p className="text-sm text-foreground/70">{foundation.description}</p>
+                <ul className="space-y-2 text-sm text-primary">
+                  {foundation.highlights.map((point) => (
+                    <li key={point} className="rounded-2xl border border-primary/20 bg-primary/5 px-3 py-2">
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
+        </div>
         <div className="grid gap-6 md:grid-cols-3">
           {REFLEXES.map((reflex, index) => {
             const isActive = activeReflex === index;
