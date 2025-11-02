@@ -29,9 +29,9 @@ export default function SiteHeader() {
       <div className="relative h-1 overflow-hidden bg-primary/60">
         <span
           className={cn(
-            "block h-full origin-left bg-[#00B050] transition-[transform] duration-[2000ms] ease-out",
-            progress === 100 ? "scale-x-100" : "scale-x-0",
+            "block h-full bg-[#00B050] transition-all duration-300 ease-out",
           )}
+          style={{ width: `${progress}%` }}
         />
       </div>
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-6 py-4 md:px-10">
