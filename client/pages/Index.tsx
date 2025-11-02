@@ -665,7 +665,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
           <button
             onClick={onStart}
             type="button"
-            className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-7 py-3 text-base font-semibold text-[#0082C3] shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00B050] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-7 py-3 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             Je commence la formation
             <ArrowRight className="h-4 w-4" />
