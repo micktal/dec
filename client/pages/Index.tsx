@@ -227,7 +227,7 @@ const SCENARIOS: ClientScenario[] = [
   {
     id: 2,
     name: "Nicolas",
-    archetype: "Client press��",
+    archetype: "Client pressé",
     description:
       "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la réponse tarde.",
     image:
@@ -240,7 +240,7 @@ const SCENARIOS: ClientScenario[] = [
           "Je comprends, mais la carte bleue reste la plus rapide. Tu peux aussi payer en 3 ou 4 fois sans frais.",
         tone: "positive",
         feedback:
-          "Parfait ! Tu restes calme, positif et tu recentres sur le bénéfice client en proposant une solution imm��diate.",
+          "Parfait ! Tu restes calme, positif et tu recentres sur le bénéfice client en proposant une solution immédiate.",
         isCorrect: true,
       },
       {
@@ -419,7 +419,7 @@ export default function Index() {
     setReasonFeedback({
       message: option.isCorrect
         ? "Exact : trois jours sont généralement nécessaires pour qu'un chèque soit encaissé."
-        : "Ce n'est pas la bonne dur��e. Pense à l'impact logistique des chèques sur nos équipes.",
+        : "Ce n'est pas la bonne durée. Pense à l'impact logistique des chèques sur nos équipes.",
       correct: option.isCorrect,
     });
     setReasonScored(option.isCorrect);
@@ -1004,7 +1004,7 @@ function ScenariosSection({
             Simulation client : réagir avec calme et empathie
           </h2>
           <p className="text-lg text-foreground/70">
-            Tu es à la caisse. Trois clients réagissent différemment à l’annonce de la fin du paiement par chèque. Sélectionne-les et choisis la réponse la plus adaptée.
+            Tu es �� la caisse. Trois clients réagissent différemment à l’annonce de la fin du paiement par chèque. Sélectionne-les et choisis la réponse la plus adaptée.
           </p>
         </Reveal>
         <Reveal className="rounded-3xl border border-primary/30 bg-primary/5 p-6 text-primary">
