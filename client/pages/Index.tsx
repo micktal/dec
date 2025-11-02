@@ -1398,6 +1398,7 @@ function ConclusionSection({
     <section id={id} className="bg-[#1C4ED8] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 text-center md:px-10">
         <Reveal className="space-y-4">
+          <DecathlonLogo className="mx-auto h-12 w-auto drop-shadow" aria-label="Decathlon" />
           <h2 className="text-3xl font-bold md:text-4xl">Conclusion et ressources</h2>
           <p className="text-lg text-white/85">
             Merci pour ton engagement. Grâce à toi, la transition 2026 se fera en douceur et dans un esprit de service.
