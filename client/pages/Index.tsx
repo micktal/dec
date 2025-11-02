@@ -1318,7 +1318,7 @@ function FinalQuizSection({
                         className={cn(
                           "flex cursor-pointer items-center gap-3 rounded-[12px] border px-4 py-3 text-sm transition-all duration-300",
                           isCorrect
-                            ? "border-[#00B050] bg-[#00B050]/10 text-[#00B050]"
+                            ? "border-primary bg-primary/10 text-primary"
                             : isIncorrect
                             ? "border-red-500 bg-red-500/10 text-red-600"
                             : "border-primary/20 bg-primary/5 text-foreground/80 hover:-translate-y-0.5 hover:border-primary",
@@ -1344,7 +1344,7 @@ function FinalQuizSection({
             <button
               type="submit"
               disabled={!allAnswered || submitted}
-              className="inline-flex items-center justify-center rounded-[12px] bg-primary px-7 py-3 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00B050] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex items-center justify-center rounded-[12px] bg-primary px-7 py-3 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#163FAF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-60"
             >
               Valider mes réponses
             </button>
