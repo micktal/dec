@@ -504,20 +504,23 @@ export default function Index() {
       <SiteHeader />
       <main className="flex flex-col">
         <IntroductionSection onStart={handleScrollToReasons} />
+        <OverviewSection onNavigate={handleScrollTo} />
         <ReasonsSection
-          id="section-raisons"
+          id={SECTION_IDS.REASONS}
           reasonAnswer={reasonAnswer}
           reasonFeedback={reasonFeedback}
           onSelect={handleReasonAnswer}
         />
-        <ReflexesSection />
+        <ReflexesSection id={SECTION_IDS.REFLEXES} />
         <ScenariosSection
+          id={SECTION_IDS.SCENARIOS}
           scenarioResponses={scenarioResponses}
           scenarioFeedback={scenarioFeedback}
           onSelect={handleScenarioSelect}
           scenarioScore={scenarioScore}
         />
         <FinalQuizSection
+          id={SECTION_IDS.FINAL_QUIZ}
           answers={finalAnswers}
           submitted={finalSubmitted}
           onAnswer={handleFinalAnswer}
@@ -526,6 +529,7 @@ export default function Index() {
           score={finalScore}
         />
         <ConclusionSection
+          id={SECTION_IDS.CONCLUSION}
           totalScore={totalScore}
           moduleCompleted={moduleCompleted}
           onComplete={handleModuleComplete}
