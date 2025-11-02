@@ -999,6 +999,30 @@ function FinalQuizSection({
             Réponds à quatre questions et mesure ta maîtrise des bons réflexes.
           </p>
         </Reveal>
+        <Reveal className="rounded-3xl border border-primary/30 bg-primary/5 p-6 shadow-inner">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="text-left md:max-w-md">
+              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">
+                Progression du quiz
+              </span>
+              <p className="mt-2 text-2xl font-semibold text-primary">
+                {answeredCount} / {FINAL_QUIZ.length} questions répondues
+              </p>
+              <p className="mt-1 text-sm text-primary/70">{progressMessage}</p>
+            </div>
+            <div className="w-full md:w-64">
+              <div className="h-2 w-full overflow-hidden rounded-full bg-white/60">
+                <div
+                  className="h-full rounded-full bg-primary transition-all duration-500"
+                  style={{ width: `${progressPercent}%` }}
+                />
+              </div>
+              <p className="mt-2 text-right text-xs font-semibold text-primary/80">
+                {progressPercent}%
+              </p>
+            </div>
+          </div>
+        </Reveal>
         <form onSubmit={handleSubmit} className="space-y-6">
           {FINAL_QUIZ.map((question, questionIndex) => (
             <Reveal key={question.id}>
