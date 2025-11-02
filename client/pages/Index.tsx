@@ -39,6 +39,8 @@ type Scenario = {
   options: { label: string; isCorrect: boolean; feedback: string }[];
 };
 
+type ScenarioStatus = "pending" | "correct" | "incorrect";
+
 type QuizQuestion = {
   id: number;
   question: string;
@@ -106,7 +108,7 @@ const LEARNING_STEPS = [
   {
     order: "03",
     title: "S'exercer en situation",
-    description: "Choisis la bonne r��ponse dans les scénarios inspirés du terrain.",
+    description: "Choisis la bonne réponse dans les scénarios inspirés du terrain.",
     sectionId: SECTION_IDS.SCENARIOS,
   },
   {
