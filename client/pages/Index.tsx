@@ -227,7 +227,7 @@ const SCENARIOS: ClientScenario[] = [
   {
     id: 2,
     name: "Nicolas",
-    archetype: "Client pressé",
+    archetype: "Client press��",
     description:
       "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la réponse tarde.",
     image:
@@ -687,7 +687,8 @@ function OverviewSection({ onNavigate }: OverviewSectionProps) {
   return (
     <section className="bg-[#EEF2FF] py-20">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
-        <Reveal className="space-y-3 text-center">
+        <Reveal className="space-y-4 text-center">
+          <DecathlonLogo className="mx-auto h-10 w-auto drop-shadow-sm" aria-label="Decathlon" />
           <h2 className="text-3xl font-bold text-primary md:text-4xl">Ta feuille de route</h2>
           <p className="text-lg text-primary/80">
             Visualise les étapes clés et accède rapidement au contenu dont tu as besoin.
