@@ -759,7 +759,7 @@ function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsS
     <section id={id} className="bg-white py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
-          <h2 className="text-3xl font-bold text-primary md:text-4xl">Pourquoi le chèque dispara��t ?</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Pourquoi le chèque disparaît ?</h2>
           <p className="text-lg text-foreground/70">
             Comprendre les raisons du changement, c'est mieux accompagner les clients et faciliter ton quotidien en caisse.
           </p>
@@ -924,11 +924,12 @@ function ScenariosSection({
     negative: "error",
   };
 
-  const scenarioStatuses = scenarioResponses.map<ScenarioStatus>((response, index) => {
-    if (response === null) {
+  const scenarioStatuses = SCENARIOS.map<ScenarioStatus>((scenario, index) => {
+    const selectedOption = scenarioResponses[index];
+    if (selectedOption === null || selectedOption === undefined) {
       return "pending";
     }
-    return toneToStatus[SCENARIOS[index].responses[response].tone];
+    return toneToStatus[scenario.responses[selectedOption].tone];
   });
 
   const statusLabels: Record<ScenarioStatus, string> = {
@@ -951,16 +952,20 @@ function ScenariosSection({
     negative: "border-red-500/40 bg-red-500/10 text-red-600",
   };
 
-  const toneIcons: Record<ScenarioTone, ComponentType<{ className?: string }>> = {
+  const toneIcons: Record<ScenarioTone, LucideIcon> = {
     positive: CheckCircle2,
     neutral: HelpCircle,
     negative: AlertCircle,
   };
 
   const allCompleted = scenarioResponses.every((response) => response !== null);
-  const currentScenario = SCENARIOS[activeScenarioIndex];
-  const currentResponseIndex = scenarioResponses[activeScenarioIndex];
-  const currentFeedback = scenarioFeedback[activeScenarioIndex];
+  const safeScenarioIndex = Math.min(
+    Math.max(activeScenarioIndex, 0),
+    SCENARIOS.length - 1,
+  );
+  const currentScenario = SCENARIOS[safeScenarioIndex];
+  const currentResponseIndex = scenarioResponses[safeScenarioIndex];
+  const currentFeedback = scenarioFeedback[safeScenarioIndex];
   const currentTone =
     currentResponseIndex !== null
       ? currentScenario.responses[currentResponseIndex].tone
@@ -1021,7 +1026,7 @@ function ScenariosSection({
         <Reveal className="grid gap-4 md:grid-cols-3">
           {SCENARIOS.map((scenario, index) => {
             const status = scenarioStatuses[index];
-            const isActive = index === activeScenarioIndex;
+            const isActive = index === safeScenarioIndex;
             return (
               <button
                 key={scenario.id}
@@ -1068,7 +1073,7 @@ function ScenariosSection({
             <div className="space-y-4 p-6">
               <div>
                 <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
-                  Client {activeScenarioIndex + 1}
+                  Client {safeScenarioIndex + 1}
                 </span>
                 <h3 className="mt-2 text-xl font-semibold text-primary">{currentScenario.name}</h3>
                 <p className="mt-2 text-sm text-foreground/70">{currentScenario.archetype}</p>
@@ -1102,7 +1107,7 @@ function ScenariosSection({
                   <button
                     key={response.label}
                     type="button"
-                    onClick={() => onSelect(activeScenarioIndex, optionIndex)}
+                    onClick={() => onSelect(safeScenarioIndex, optionIndex)}
                     className={cn(
                       "w-full rounded-[12px] border px-5 py-3 text-left text-sm font-medium transition-all duration-300",
                       selectionClasses,
@@ -1136,7 +1141,7 @@ function ScenariosSection({
                 })()}
               </div>
             )}
-            {activeScenarioIndex < SCENARIOS.length - 1 && (
+            {safeScenarioIndex < SCENARIOS.length - 1 && (
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <span className="text-sm text-foreground/60">
                   Une fois ta réponse choisie, passe au client suivant.
