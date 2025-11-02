@@ -1007,7 +1007,7 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
                     </div>
                     <ChevronDown
                       className={cn(
-                        "h-6 w-6 shrink-0 text-primary transition-transform duration-300",
+                        "h-6 w-6 shrink-0 text-primary transition-transform durée-300",
                         isActive && "rotate-180",
                       )}
                       aria-hidden="true"
@@ -1029,6 +1029,81 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
         <Reveal className="rounded-3xl border border-primary/30 bg-white p-6 text-center shadow-inner">
           <p className="text-base text-foreground/70">
             Alternatives à proposer : carte bancaire, espèces, carte cadeau, paiement en trois ou quatre fois sans frais.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function ClientUnderstandingSection({ id }: { id?: string }) {
+  return (
+    <section id={id} className="bg-white py-24">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
+        <Reveal className="space-y-4 text-center">
+          <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">
+            Comprendre les réactions de nos clients
+          </h2>
+          <p className="text-lg text-foreground/70">
+            Chaque client vit la fin du paiement par chèque à sa manière. En identifiant leurs besoins, tu peux rester dans l'écoute, la clarté et la solution.
+          </p>
+        </Reveal>
+        <Reveal className="rounded-3xl border border-primary/30 bg-primary/5 p-8 text-left text-sm leading-relaxed text-primary shadow-inner">
+          <p>
+            Ton rôle : écouter sans jugement, comprendre la situation de chacun puis accompagner avec patience. Les profils ci-dessous t'aident à anticiper leurs réactions et à adopter la bonne posture.
+          </p>
+        </Reveal>
+        <div className="grid gap-6 lg:grid-cols-3">
+          {CLIENT_REACTIONS_GUIDE.map((entry) => (
+            <Reveal key={entry.title}>
+              <div className="flex h-full flex-col gap-4 rounded-3xl border border-primary/20 bg-white p-6 shadow-lg shadow-primary/10">
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
+                    Profil client
+                  </span>
+                  <h3 className="mt-2 text-xl font-semibold text-primary">{entry.title}</h3>
+                </div>
+                <div className="space-y-2 text-sm text-foreground/70">
+                  <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
+                    Ce qui peut se passer
+                  </h4>
+                  <p>{entry.situation}</p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
+                    Réticences possibles
+                  </h4>
+                  <ul className="space-y-1 text-sm text-foreground/70">
+                    {entry.concerns.map((item) => (
+                      <li key={item} className="rounded-2xl bg-primary/5 px-3 py-2">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
+                    Ta posture
+                  </h4>
+                  <ul className="space-y-1 text-sm text-foreground/70">
+                    {entry.posture.map((item) => (
+                      <li key={item} className="rounded-2xl bg-primary/5 px-3 py-2">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4 text-sm font-semibold text-primary">
+                  {entry.objective}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal className="rounded-3xl border border-primary/30 bg-[#EEF2FF] p-6 text-center shadow-inner">
+          <p className="text-base text-primary">
+            Chaque échange compte : garde ton calme, ton sourire et ton sens du service pour transformer une réticence en confiance. C'est ça, l'esprit Decathlon.
           </p>
         </Reveal>
       </div>
