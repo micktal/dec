@@ -811,6 +811,7 @@ function ScenariosSection({
 }
 
 type FinalQuizSectionProps = {
+  id?: string;
   answers: (number | null)[];
   submitted: boolean;
   onAnswer: (questionIndex: number, optionIndex: number) => void;
@@ -820,6 +821,7 @@ type FinalQuizSectionProps = {
 };
 
 function FinalQuizSection({
+  id,
   answers,
   submitted,
   onAnswer,
