@@ -36,9 +36,12 @@ export default function SiteHeader() {
       </div>
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-6 py-4 md:px-10">
         <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
-          <Link to="/" className="inline-flex items-center gap-3 text-white">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-3 rounded-[14px] bg-white px-4 py-2 text-primary shadow-lg shadow-black/10 transition-colors hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
             <DecathlonLogo className="h-9 w-auto drop-shadow" aria-label="Decathlon" />
-            <span className="text-xs font-semibold uppercase tracking-[0.35em] text-white/80 md:text-sm">
+            <span className="text-xs font-semibold uppercase tracking-[0.35em] text-primary/80 md:text-sm">
               Formation
             </span>
           </Link>
