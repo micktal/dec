@@ -371,6 +371,7 @@ export default function Index() {
   const [scenarioScored, setScenarioScored] = useState<boolean[]>(
     Array(SCENARIOS.length).fill(false),
   );
+  const [activeScenarioIndex, setActiveScenarioIndex] = useState(0);
   const [finalAnswers, setFinalAnswers] = useState<(number | null)[]>(
     Array(FINAL_QUIZ.length).fill(null),
   );
