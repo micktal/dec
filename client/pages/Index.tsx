@@ -661,7 +661,11 @@ function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsS
   );
 }
 
-function ReflexesSection() {
+type ReflexesSectionProps = {
+  id?: string;
+};
+
+function ReflexesSection({ id }: ReflexesSectionProps) {
   const [activeReflex, setActiveReflex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
@@ -669,7 +673,7 @@ function ReflexesSection() {
   };
 
   return (
-    <section className="bg-[#F7F7F7] py-24">
+    <section id={id} className="bg-[#F7F7F7] py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
           <h2 className="text-3xl font-bold text-primary md:text-4xl">
