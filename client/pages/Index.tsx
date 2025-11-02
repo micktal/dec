@@ -141,6 +141,12 @@ const LEARNING_STEPS = [
   },
   {
     order: "05",
+    title: "Activer tes forces",
+    description: "Synthétise les apprentissages et prépare ton passage à l'action.",
+    sectionId: SECTION_IDS.SYNTHESIS,
+  },
+  {
+    order: "06",
     title: "Valider tes acquis",
     description: "Réponds au quiz final et finalise la formation.",
     sectionId: SECTION_IDS.FINAL_QUIZ,
