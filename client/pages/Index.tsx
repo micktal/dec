@@ -7,6 +7,7 @@ import {
 } from "react";
 import { Link } from "react-router-dom";
 import {
+  AlertCircle,
   ArrowRight,
   BookOpen,
   CheckCircle2,
@@ -16,11 +17,9 @@ import {
   Flag,
   HelpCircle,
   Lightbulb,
-  ListChecks,
   RotateCcw,
   ShieldCheck,
   Target,
-  TrendingUp,
   Users,
 } from "lucide-react";
 
