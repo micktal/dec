@@ -167,21 +167,19 @@ function ModuleSection({
           </p>
         </div>
         <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 rounded-3xl border border-border bg-white p-6 shadow-xl shadow-primary/10">
-          <div className="aspect-video w-full overflow-hidden rounded-2xl border border-dashed border-primary/30 bg-gradient-to-br from-primary/5 via-white to-secondary/10">
-            <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-black/10 text-center text-foreground/70">
-              <img
-                src={MODULE_PLACEHOLDER_POSTER}
-                alt="Illustration caisse Decathlon"
-                className="h-full w-full object-cover opacity-30"
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-primary/10 backdrop-blur-sm">
-                <span className="text-lg font-semibold text-primary">
-                  Le module Articulate SCORM s’affichera ici.
-                </span>
-                <span className="text-sm text-foreground/70">
-                  Merci de patienter pendant le chargement…
-                </span>
-              </div>
+          <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-dashed border-primary/30 bg-gradient-to-br from-primary/5 via-white to-secondary/10">
+            <img
+              src={MODULE_PLACEHOLDER_POSTER}
+              alt="Illustration caisse Decathlon"
+              className="h-full w-full object-cover opacity-30"
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-primary/10 backdrop-blur-sm text-center">
+              <span className="text-lg font-semibold text-primary">
+                Le module Articulate SCORM s’affichera ici.
+              </span>
+              <span className="text-sm text-foreground/70">
+                Merci de patienter pendant le chargement…
+              </span>
             </div>
           </div>
           <p className="text-center text-sm text-foreground/60">
