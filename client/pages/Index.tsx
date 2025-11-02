@@ -183,7 +183,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
     ],
     posture: [
       "Rester calme et courtois même si le ton monte",
-      "Reformuler avec empathie pour montrer que tu comprends son besoin de rapidité",
+      "Reformuler avec empathie pour montrer que tu comprends son besoin de rapidit��",
       "Valoriser la carte bancaire et le paiement fractionné sans frais pour gagner du temps",
     ],
     objective:
@@ -1007,7 +1007,7 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
                     </div>
                     <ChevronDown
                       className={cn(
-                        "h-6 w-6 shrink-0 text-primary transition-transform durée-300",
+                        "h-6 w-6 shrink-0 text-primary transition-transform duration-300",
                         isActive && "rotate-180",
                       )}
                       aria-hidden="true"
