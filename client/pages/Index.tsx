@@ -989,6 +989,8 @@ function FinalQuizSection({
     : answeredCount === FINAL_QUIZ.length
       ? "Tu peux valider tes réponses."
       : "Réponds à toutes les questions pour débloquer la validation.";
+  const resultAccent = success ? "text-[#00B050]" : "text-amber-600";
+  const ResultIcon = success ? CheckCircle2 : HelpCircle;
 
   return (
     <section id={id} className="bg-[#E8F4FB] py-24">
