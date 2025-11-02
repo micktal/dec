@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import SiteFooter from "@/components/SiteFooter";
 
