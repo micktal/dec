@@ -106,7 +106,7 @@ const LEARNING_STEPS = [
   {
     order: "03",
     title: "S'exercer en situation",
-    description: "Choisis la bonne réponse dans les scénarios inspirés du terrain.",
+    description: "Choisis la bonne r��ponse dans les scénarios inspirés du terrain.",
     sectionId: SECTION_IDS.SCENARIOS,
   },
   {
@@ -584,6 +584,78 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
           <p className="text-sm font-medium text-white/70">
             Durée estimée : douze à quinze minutes – accessible à tous les collaborateurs.
           </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+type OverviewSectionProps = {
+  onNavigate: (sectionId: string) => void;
+};
+
+function OverviewSection({ onNavigate }: OverviewSectionProps) {
+  return (
+    <section className="bg-[#F0F6FB] py-20">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
+        <Reveal className="space-y-3 text-center">
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Ta feuille de route</h2>
+          <p className="text-lg text-primary/80">
+            Visualise les étapes clés et accède rapidement au contenu dont tu as besoin.
+          </p>
+        </Reveal>
+        <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
+          <Reveal className="space-y-6 text-left">
+            <h3 className="text-xl font-semibold text-primary">Objectifs du module</h3>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {MODULE_OBJECTIVES.map((objective) => (
+                <div
+                  key={objective.title}
+                  className="rounded-3xl border border-primary/20 bg-white p-5 shadow-sm shadow-primary/10 transition-transform duration-300 hover:-translate-y-1"
+                >
+                  <objective.icon className="h-8 w-8 text-primary" aria-hidden="true" />
+                  <h4 className="mt-4 text-lg font-semibold text-primary">{objective.title}</h4>
+                  <p className="mt-2 text-sm text-foreground/70">{objective.description}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal className="space-y-6 text-left">
+            <h3 className="text-xl font-semibold text-primary">Repères clés</h3>
+            <div className="grid gap-4">
+              {MODULE_HIGHLIGHTS.map((highlight) => (
+                <div
+                  key={highlight.value}
+                  className="flex flex-col items-center justify-center rounded-3xl border border-primary/10 bg-white p-6 text-center shadow-md shadow-primary/10"
+                >
+                  <span className="text-4xl font-bold text-primary">{highlight.value}</span>
+                  <p className="mt-2 text-sm text-foreground/70">{highlight.label}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+        <Reveal className="grid gap-4 md:grid-cols-4">
+          {LEARNING_STEPS.map((step) => (
+            <button
+              key={step.order}
+              type="button"
+              onClick={() => onNavigate(step.sectionId)}
+              className="group relative overflow-hidden rounded-3xl border border-primary/30 bg-white px-6 py-6 text-left shadow-lg shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:bg-primary hover:text-white"
+            >
+              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary group-hover:text-white">
+                Étape {step.order}
+              </span>
+              <h4 className="mt-3 text-lg font-semibold">{step.title}</h4>
+              <p className="mt-2 text-sm text-foreground/70 group-hover:text-white/80">
+                {step.description}
+              </p>
+              <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-primary group-hover:text-white">
+                Accéder à la section
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </span>
+            </button>
+          ))}
         </Reveal>
       </div>
     </section>
