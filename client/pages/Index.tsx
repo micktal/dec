@@ -892,7 +892,7 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
         </div>
         <Reveal className="rounded-3xl border border-primary/30 bg-white p-6 text-center shadow-inner">
           <p className="text-base text-foreground/70">
-            Alternatives à proposer : carte bancaire, esp��ces, carte cadeau, paiement en trois ou quatre fois sans frais.
+            Alternatives à proposer : carte bancaire, espèces, carte cadeau, paiement en trois ou quatre fois sans frais.
           </p>
         </Reveal>
       </div>
