@@ -731,6 +731,7 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
 }
 
 type ScenariosSectionProps = {
+  id?: string;
   scenarioResponses: (number | null)[];
   scenarioFeedback: (string | null)[];
   onSelect: (scenarioIndex: number, optionIndex: number) => void;
@@ -738,13 +739,14 @@ type ScenariosSectionProps = {
 };
 
 function ScenariosSection({
+  id,
   scenarioResponses,
   scenarioFeedback,
   onSelect,
   scenarioScore,
 }: ScenariosSectionProps) {
   return (
-    <section className="bg-white py-24">
+    <section id={id} className="bg-white py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
           <h2 className="text-3xl font-bold text-primary md:text-4xl">Et toi, que ferais-tu ?</h2>
