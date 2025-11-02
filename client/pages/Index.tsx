@@ -193,7 +193,7 @@ const SCENARIOS: ClientScenario[] = [
     name: "Madeleine",
     archetype: "Client fidèle et âgé",
     description:
-      "Cliente historique attachée à ses habitudes, elle cherche avant tout à être rassurée sur la sécurit�� des nouveaux moyens de paiement.",
+      "Cliente historique attachée à ses habitudes, elle cherche avant tout à être rassurée sur la sécurité des nouveaux moyens de paiement.",
     image:
       "https://images.unsplash.com/photo-1581579186988-c08ddd662fa0?auto=format&fit=crop&w=600&q=80",
     imageAlt: "Cliente senior souriante portant un manteau bleu",
@@ -996,6 +996,7 @@ function ScenariosSection({
     <section id={id} className="bg-white py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
+          <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
           <span className="text-xs font-semibold uppercase tracking-[0.35em] text-primary/60">
             Simulation client
           </span>
