@@ -810,7 +810,7 @@ function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsS
             <p
               className={cn(
                 "mt-4 text-sm",
-                reasonFeedback.correct ? "text-[#00B050]" : "text-red-600",
+                reasonFeedback.correct ? "text-primary" : "text-red-600",
               )}
             >
               {reasonFeedback.message}
