@@ -145,8 +145,9 @@ function ModuleCard() {
             <button
               onClick={handleOpenModule}
               type="button"
-              className="inline-flex items-center justify-center rounded-[12px] border border-primary bg-white px-6 py-3 text-sm font-semibold text-primary shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#00B050] hover:bg-[#00B050] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="inline-flex items-center justify-center gap-2 rounded-[12px] border border-primary bg-white px-6 py-3 text-sm font-semibold text-primary shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#00B050] hover:bg-[#00B050] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
               Ouvrir dans une nouvelle fenêtre
             </button>
             {!isFullscreen && (
