@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SiteFooter from "@/components/SiteFooter";
 
 export default function Formation() {
