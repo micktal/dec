@@ -848,11 +848,29 @@ function ScenariosSection({
   return (
     <section id={id} className="bg-white py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
-        <Reveal className="space-y-4 text-center">
-          <h2 className="text-3xl font-bold text-primary md:text-4xl">Et toi, que ferais-tu ?</h2>
-          <p className="text-lg text-foreground/70">
-            Analyse trois situations vécues en magasin et choisis la réponse la plus adaptée. Le score s'affiche au fur et à mesure.
-          </p>
+        <Reveal className="space-y-6 text-center">
+          <div className="space-y-4">
+            <h2 className="text-3xl font-bold text-primary md:text-4xl">Et toi, que ferais-tu ?</h2>
+            <p className="text-lg text-foreground/70">
+              Analyse trois situations vécues en magasin et choisis la réponse la plus adaptée. Le score s'affiche au fur et à mesure.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {scenarioStatuses.map((status, index) => (
+              <span
+                key={`scenario-status-${SCENARIOS[index].id}`}
+                className={cn(
+                  "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wide",
+                  statusClasses[status],
+                )}
+              >
+                <span>Situation {index + 1}</span>
+                <span className="text-[0.7rem] font-medium uppercase tracking-normal">
+                  {statusLabels[status]}
+                </span>
+              </span>
+            ))}
+          </div>
         </Reveal>
         <div className="grid gap-6">
           {SCENARIOS.map((scenario, scenarioIndex) => (
