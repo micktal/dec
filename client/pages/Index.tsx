@@ -192,7 +192,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
   {
     title: "Le client professionnel ou administratif",
     situation:
-      "Il représente une structure (mairie, association) habituée au chèque administratif et craint d'être bloqué.",
+      "Il représente une structure (mairie, association) habituée au ch��que administratif et craint d'être bloqué.",
     concerns: [
       "Peur de ne plus pouvoir commander pour son organisation",
       "Méconnaissance des solutions Decathlon Pro",
@@ -233,6 +233,36 @@ const REASON_QUESTION: ReasonOption[] = [
   { label: "Un jour", isCorrect: false },
   { label: "Trois jours", isCorrect: true },
   { label: "Dix jours", isCorrect: false },
+];
+
+const REFLEXES_FOUNDATION = [
+  {
+    title: "Pourquoi ces réflexes ?",
+    description:
+      "Ils permettent d'absorber les réactions à chaud et d'orienter rapidement le client vers une solution qui lui donne confiance.",
+    highlights: [
+      "Créer un climat de dialogue dès les premières secondes",
+      "Reformuler pour montrer que tu as bien entendu le besoin",
+    ],
+  },
+  {
+    title: "L'importance de la clarté",
+    description:
+      "Un message simple et assumé évite les malentendus et rassure sur notre professionnalisme.",
+    highlights: [
+      "Expliquer que la décision est nationale et pensée pour sécuriser",
+      "Montrer les bénéfices concrets : encaissement plus rapide et sécurisé",
+    ],
+  },
+  {
+    title: "Proposer des alternatives",
+    description:
+      "En présentant immédiatement des options, tu transformes une frustration en opportunité de service.",
+    highlights: [
+      "Cartes bancaires, cartes cadeaux, paiement en plusieurs fois",
+      "Orientation vers Decathlon Pro pour les professionnels",
+    ],
+  },
 ];
 
 const REFLEXES = [
@@ -1197,7 +1227,7 @@ function ScenariosSection({
     scenarioScore === SCENARIOS.length
       ? "Bravo ! Tu maîtrises les trois profils clients."
       : scenarioScore === SCENARIOS.length - 1
-        ? "Tr��s bien, identifie le dernier profil à renforcer."
+        ? "Très bien, identifie le dernier profil à renforcer."
         : "Rejoue la simulation pour t'entraîner sur chaque profil.";
 
   const encouragementMessage =
