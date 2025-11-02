@@ -300,7 +300,7 @@ const SCENARIOS: ClientScenario[] = [
 const FINAL_QUIZ: QuizQuestion[] = [
   {
     id: 1,
-    question: "Quel est l'objectif principal de la fin du paiement par chèque chez Decathlon ?",
+    question: "Quel est l'objectif principal de la fin du paiement par ch��que chez Decathlon ?",
     options: [
       "Réduire le nombre de clients à la caisse",
       "Simplifier et sécuriser les encaissements",
@@ -338,7 +338,7 @@ const FINAL_QUIZ: QuizQuestion[] = [
       "En minimisant son ressenti",
       "En restant factuel et distant",
       "En informant avec empathie et clarté",
-      "En appliquant la règle sans explication",
+      "En appliquant la r��gle sans explication",
     ],
     correctIndex: 2,
   },
@@ -834,7 +834,7 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
   };
 
   return (
-    <section id={id} className="bg-[#F7F7F7] py-24">
+    <section id={id} className="bg-[#F3F6FF] py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
           <h2 className="text-3xl font-bold text-primary md:text-4xl">
