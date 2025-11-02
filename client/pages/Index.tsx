@@ -50,17 +50,20 @@ const REASONS = [
   {
     icon: Lightbulb,
     title: "Moins utilisé",
-    description: "Seuls trois pour cent des paiements en France sont encore effectués par chèque.",
+    description:
+      "Seuls trois pour cent des paiements en France sont encore effectués par chèque.",
   },
   {
     icon: Cog,
     title: "Traitement plus simple",
-    description: "Les paiements électroniques réduisent le temps de gestion pour les ��quipes en magasin.",
+    description:
+      "Les paiements électroniques réduisent le temps de gestion pour les équipes en magasin.",
   },
   {
     icon: ShieldCheck,
     title: "Sécurité renforcée",
-    description: "Les transactions dématérialisées limitent les fraudes et sécurisent les encaissements.",
+    description:
+      "Les transactions dématérialisées limitent les fraudes et sécurisent les encaissements.",
   },
 ] as const;
 
@@ -101,17 +104,20 @@ const SCENARIOS: Scenario[] = [
       {
         label: "Tu l'invites à revenir avec un autre moyen de paiement sans proposer d'aide.",
         isCorrect: false,
-        feedback: "Cette réponse peut générer de la frustration. Propose une solution alternative immédiatement.",
+        feedback:
+          "Cette réponse peut générer de la frustration. Propose une solution alternative immédiatement.",
       },
       {
         label: "Tu expliques calmement la nouvelle règle et proposes une solution rapide.",
         isCorrect: true,
-        feedback: "Bonne approche : tu rassures le client tout en l'orientant vers une solution concrète.",
+        feedback:
+          "Bonne approche : tu rassures le client tout en l'orientant vers une solution concrète.",
       },
       {
         label: "Tu suggères de contacter un responsable plus tard pour trouver une solution.",
         isCorrect: false,
-        feedback: "Reste acteur du changement et accompagne le client dès maintenant.",
+        feedback:
+          "Reste acteur du changement et accompagne le client dès maintenant.",
       },
     ],
   },
@@ -124,17 +130,20 @@ const SCENARIOS: Scenario[] = [
       {
         label: "Tu lui rappelles que les chèques sont dépassés et qu'il n'a pas le choix.",
         isCorrect: false,
-        feedback: "Garde un ton positif et inclusif pour maintenir une bonne relation client.",
+        feedback:
+          "Garde un ton positif et inclusif pour maintenir une bonne relation client.",
       },
       {
         label: "Tu reconnais que c'est une nouveauté pour tous et expliques les avantages.",
         isCorrect: true,
-        feedback: "Tu fais preuve d'empathie tout en valorisant le changement : excellente réponse.",
+        feedback:
+          "Tu fais preuve d'empathie tout en valorisant le changement : excellente réponse.",
       },
       {
         label: "Tu demandes au client de se renseigner sur internet par lui-même.",
         isCorrect: false,
-        feedback: "Propose ton aide sur place pour garder la maîtrise de la situation.",
+        feedback:
+          "Propose ton aide sur place pour garder la maîtrise de la situation.",
       },
     ],
   },
@@ -147,17 +156,20 @@ const SCENARIOS: Scenario[] = [
       {
         label: "Tu lui expliques que le chèque était réservé aux professionnels et que c'est terminé.",
         isCorrect: false,
-        feedback: "Propose une alternative concrète plutôt que de fermer la discussion.",
+        feedback:
+          "Propose une alternative concrète plutôt que de fermer la discussion.",
       },
       {
         label: "Tu l'orientes vers Decathlon Pro et les solutions de paiement adaptées.",
         isCorrect: true,
-        feedback: "Exact : tu restes dans l'accompagnement en proposant un parcours dédié.",
+        feedback:
+          "Exact : tu restes dans l'accompagnement en proposant un parcours dédié.",
       },
       {
         label: "Tu lui conseilles de diviser l'achat en plusieurs transactions plus petites.",
         isCorrect: false,
-        feedback: "Recherche une solution officielle pour éviter les complications.",
+        feedback:
+          "Recherche une solution officielle pour éviter les complications.",
       },
     ],
   },
@@ -210,56 +222,69 @@ const FINAL_QUIZ: QuizQuestion[] = [
   },
 ];
 
+const TOTAL_QUESTIONS = 8;
+
+type WindowWithScorm = Window & {
+  API?: {
+    LMSInitialize?: (arg: string) => void;
+    LMSSetValue?: (key: string, value: string) => void;
+    LMSCommit?: (arg: string) => void;
+  };
+  scormInit?: () => void;
+  updateScore?: (isCorrect: boolean) => void;
+  markCompleted?: () => void;
+};
+
 export default function Index() {
-  const introRef = useRef<HTMLElement | null>(null);
   const [reasonAnswer, setReasonAnswer] = useState<string | null>(null);
-  const [reasonFeedback, setReasonFeedback] = useState<null | {
-    message: string;
-    correct: boolean;
-  }>(null);
-  const [activeReflex, setActiveReflex] = useState<number | null>(null);
+  const [reasonFeedback, setReasonFeedback] = useState<
+    { message: string; correct: boolean } | null
+  >(null);
+  const [reasonScored, setReasonScored] = useState(false);
   const [scenarioResponses, setScenarioResponses] = useState<(number | null)[]>(
     Array(SCENARIOS.length).fill(null),
   );
   const [scenarioFeedback, setScenarioFeedback] = useState<(string | null)[]>(
     Array(SCENARIOS.length).fill(null),
   );
+  const [scenarioScored, setScenarioScored] = useState<boolean[]>(
+    Array(SCENARIOS.length).fill(false),
+  );
   const [finalAnswers, setFinalAnswers] = useState<(number | null)[]>(
     Array(FINAL_QUIZ.length).fill(null),
   );
   const [finalSubmitted, setFinalSubmitted] = useState(false);
+  const [finalScored, setFinalScored] = useState<boolean[]>(
+    Array(FINAL_QUIZ.length).fill(false),
+  );
 
-  const handleStart = useCallback(() => {
+  const scoreRef = useRef(0);
+
+  const scenarioScore = useMemo(
+    () => scenarioScored.filter(Boolean).length,
+    [scenarioScored],
+  );
+
+  const finalScore = useMemo(
+    () => finalScored.filter(Boolean).length,
+    [finalScored],
+  );
+
+  const reasonScore = reasonScored ? 1 : 0;
+  const totalScore = reasonScore + scenarioScore + finalScore;
+  const moduleCompleted = totalScore >= 4;
+
+  const handleScrollToReasons = useCallback(() => {
     const target = document.getElementById("section-raisons");
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
-  useEffect(() => {
-    if (!introRef.current) {
-      introRef.current = document.getElementById("section-intro");
+  const triggerUpdateScore = useCallback((isCorrect: boolean) => {
+    const win = window as WindowWithScorm;
+    if (typeof win.updateScore === "function") {
+      win.updateScore(isCorrect);
     }
   }, []);
-
-  const scenarioScore = useMemo(
-    () =>
-      scenarioResponses.reduce((count, value, index) => {
-        if (value === null) return count;
-        return count + (SCENARIOS[index].options[value].isCorrect ? 1 : 0);
-      }, 0),
-    [scenarioResponses],
-  );
-
-  const finalScore = useMemo(() => {
-    if (!finalSubmitted) return 0;
-    return finalAnswers.reduce((count, answer, index) => {
-      if (answer === null) return count;
-      return count + (FINAL_QUIZ[index].correctIndex === answer ? 1 : 0);
-    }, 0);
-  }, [finalAnswers, finalSubmitted]);
-
-  const reasonScore = reasonFeedback?.correct ? 1 : 0;
-  const totalScore = reasonScore + scenarioScore + finalScore;
-  const moduleCompleted = totalScore >= 4;
 
   const handleReasonAnswer = (option: ReasonOption) => {
     setReasonAnswer(option.label);
@@ -269,6 +294,8 @@ export default function Index() {
         : "Ce n'est pas la bonne durée. Pense à l'impact logistique des chèques sur nos équipes.",
       correct: option.isCorrect,
     });
+    setReasonScored(option.isCorrect);
+    triggerUpdateScore(option.isCorrect);
   };
 
   const handleScenarioSelect = (scenarioIndex: number, optionIndex: number) => {
@@ -277,11 +304,20 @@ export default function Index() {
       next[scenarioIndex] = optionIndex;
       return next;
     });
+
     setScenarioFeedback((prev) => {
       const next = [...prev];
       next[scenarioIndex] = SCENARIOS[scenarioIndex].options[optionIndex].feedback;
       return next;
     });
+
+    setScenarioScored((prev) => {
+      const next = [...prev];
+      next[scenarioIndex] = SCENARIOS[scenarioIndex].options[optionIndex].isCorrect;
+      return next;
+    });
+
+    triggerUpdateScore(SCENARIOS[scenarioIndex].options[optionIndex].isCorrect);
   };
 
   const handleFinalAnswer = (questionIndex: number, optionIndex: number) => {
@@ -294,25 +330,116 @@ export default function Index() {
 
   const handleFinalSubmit = () => {
     setFinalSubmitted(true);
+    const outcomes = FINAL_QUIZ.map((question, index) => {
+      const answer = finalAnswers[index];
+      return answer !== null && question.correctIndex === answer;
+    });
+    setFinalScored(outcomes);
+    outcomes.forEach((isCorrect) => triggerUpdateScore(isCorrect));
   };
 
   const handleFinalReset = () => {
     setFinalAnswers(Array(FINAL_QUIZ.length).fill(null));
     setFinalSubmitted(false);
+    setFinalScored(Array(FINAL_QUIZ.length).fill(false));
+    triggerUpdateScore(false);
   };
+
+  const handleModuleComplete = useCallback(() => {
+    const win = window as WindowWithScorm;
+    if (typeof win.markCompleted === "function") {
+      win.markCompleted();
+    }
+  }, []);
+
+  const computedScore = useMemo(
+    () => reasonScore + scenarioScore + finalScore,
+    [reasonScore, scenarioScore, finalScore],
+  );
+
+  useEffect(() => {
+    const win = window as WindowWithScorm;
+    const totalQuestions = TOTAL_QUESTIONS;
+    let completedFlag = false;
+
+    const scormInit = () => {
+      if (win.API && typeof win.API.LMSInitialize === "function") {
+        win.API.LMSInitialize("");
+        console.log("SCORM initialisé");
+      }
+    };
+
+    const updateScore = (isCorrect: boolean) => {
+      if (!isCorrect) {
+        return;
+      }
+      if (win.API && typeof win.API.LMSSetValue === "function") {
+        const percentage = Math.round((scoreRef.current / totalQuestions) * 100);
+        win.API.LMSSetValue("cmi.score.raw", String(percentage));
+        win.API.LMSCommit?.("");
+      }
+    };
+
+    const markCompleted = () => {
+      if (completedFlag) {
+        return;
+      }
+      if (win.API && typeof win.API.LMSSetValue === "function") {
+        const success = scoreRef.current / totalQuestions >= 0.7;
+        win.API.LMSSetValue("cmi.completion_status", "completed");
+        win.API.LMSSetValue("cmi.success_status", success ? "passed" : "failed");
+        win.API.LMSCommit?.("");
+        console.log(`Module marqué comme terminé. Score : ${scoreRef.current}`);
+      }
+      completedFlag = true;
+    };
+
+    win.scormInit = scormInit;
+    win.updateScore = updateScore;
+    win.markCompleted = markCompleted;
+
+    window.addEventListener("load", scormInit);
+
+    return () => {
+      window.removeEventListener("load", scormInit);
+      delete win.scormInit;
+      delete win.updateScore;
+      delete win.markCompleted;
+    };
+  }, []);
+
+  useEffect(() => {
+    scoreRef.current = computedScore;
+    const display = document.getElementById("scoreDisplay");
+    if (display) {
+      display.textContent = `Score actuel : ${computedScore}/${TOTAL_QUESTIONS}`;
+    }
+
+    const win = window as WindowWithScorm;
+    if (win.API && typeof win.API.LMSSetValue === "function") {
+      const percentage = Math.round((computedScore / TOTAL_QUESTIONS) * 100);
+      win.API.LMSSetValue("cmi.score.raw", String(percentage));
+      win.API.LMSCommit?.("");
+    }
+  }, [computedScore]);
 
   return (
     <div className="bg-background text-foreground">
       <SiteHeader />
       <main className="flex flex-col">
-        <IntroductionSection onStart={handleStart} />
+        <IntroductionSection onStart={handleScrollToReasons} />
         <ReasonsSection
           id="section-raisons"
           reasonAnswer={reasonAnswer}
           reasonFeedback={reasonFeedback}
           onSelect={handleReasonAnswer}
         />
-        <ReflexesSection activeReflex={activeReflex} onToggle={setActiveReflex} />
+        <ReflexesSection
+          activeReflex={REFLEXES.findIndex((_, index) => scenarioScored[index])}
+          onToggle={() => undefined}
+          reasonScored={reasonScored}
+          scenarioScored={scenarioScored}
+        />
         <ScenariosSection
           scenarioResponses={scenarioResponses}
           scenarioFeedback={scenarioFeedback}
@@ -327,7 +454,11 @@ export default function Index() {
           onReset={handleFinalReset}
           score={finalScore}
         />
-        <ConclusionSection totalScore={totalScore} moduleCompleted={moduleCompleted} />
+        <ConclusionSection
+          totalScore={totalScore}
+          moduleCompleted={moduleCompleted}
+          onComplete={handleModuleComplete}
+        />
       </main>
       <SiteFooter />
     </div>
@@ -456,12 +587,17 @@ function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsS
 }
 
 type ReflexesSectionProps = {
-  activeReflex: number | null;
+  activeReflex: number;
   onToggle: (index: number | null) => void;
+  reasonScored: boolean;
+  scenarioScored: boolean[];
 };
 
-function ReflexesSection({ activeReflex, onToggle }: ReflexesSectionProps) {
+function ReflexesSection({ onToggle }: ReflexesSectionProps) {
+  const [activeReflex, setActiveReflex] = useState<number | null>(null);
+
   const handleToggle = (index: number) => {
+    setActiveReflex((prev) => (prev === index ? null : index));
     onToggle(activeReflex === index ? null : index);
   };
 
@@ -714,9 +850,10 @@ function FinalQuizSection({
 type ConclusionSectionProps = {
   totalScore: number;
   moduleCompleted: boolean;
+  onComplete: () => void;
 };
 
-function ConclusionSection({ totalScore, moduleCompleted }: ConclusionSectionProps) {
+function ConclusionSection({ totalScore, moduleCompleted, onComplete }: ConclusionSectionProps) {
   return (
     <section className="bg-[#0082C3] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 text-center md:px-10">
@@ -725,6 +862,9 @@ function ConclusionSection({ totalScore, moduleCompleted }: ConclusionSectionPro
           <p className="text-lg text-white/85">
             Merci pour ton engagement. Grâce à toi, la transition 2026 se fera en douceur et dans un esprit de service.
           </p>
+        </Reveal>
+        <Reveal className="text-sm font-semibold text-white">
+          <p id="scoreDisplay">Score actuel : 0/{TOTAL_QUESTIONS}</p>
         </Reveal>
         <Reveal className="flex flex-col items-center gap-4 text-sm text-white/80">
           <div className="flex items-center gap-3 text-base font-semibold">
@@ -745,13 +885,14 @@ function ConclusionSection({ totalScore, moduleCompleted }: ConclusionSectionPro
             <FileText className="h-5 w-5" aria-hidden="true" />
             Télécharger la fiche mémo PDF
           </a>
-          <Link
-            to="/"
+          <button
+            onClick={onComplete}
+            type="button"
             className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white/10 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00B050]"
           >
             <HelpCircle className="h-5 w-5" aria-hidden="true" />
-            Retour à la page d'accueil
-          </Link>
+            Je termine ma formation
+          </button>
         </Reveal>
         <Reveal className="text-xs text-white/70">
           Document interne – usage exclusif Decathlon France – ne pas diffuser.
