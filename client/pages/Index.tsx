@@ -819,6 +819,32 @@ function ScenariosSection({
   onSelect,
   scenarioScore,
 }: ScenariosSectionProps) {
+  const scenarioStatuses = scenarioResponses.map<ScenarioStatus>((response, index) => {
+    if (response === null) {
+      return "pending";
+    }
+    return SCENARIOS[index].options[response].isCorrect ? "correct" : "incorrect";
+  });
+
+  const statusLabels: Record<ScenarioStatus, string> = {
+    pending: "À faire",
+    correct: "Réussi",
+    incorrect: "À revoir",
+  };
+
+  const statusClasses: Record<ScenarioStatus, string> = {
+    pending: "border-primary/20 bg-white text-primary",
+    correct: "border-[#00B050] bg-[#00B050]/10 text-[#00B050]",
+    incorrect: "border-red-500 bg-red-500/10 text-red-600",
+  };
+
+  const scenarioScoreMessage =
+    scenarioScore === SCENARIOS.length
+      ? "Bravo ! Tu as adopté les bons réflexes dans chaque situation."
+      : scenarioScore >= 2
+        ? "Très bien, continue à t'entraîner pour maîtriser toutes les situations."
+        : "Relis les réflexes clés puis réessaie les scénarios proposés.";
+
   return (
     <section id={id} className="bg-white py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
