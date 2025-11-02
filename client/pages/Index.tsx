@@ -331,7 +331,7 @@ const SCENARIOS: ClientScenario[] = [
       "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la réponse tarde.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F13e6eae7e96f42a6b2443162c334241e?format=webp&width=800",
-    imageAlt: "Client press�� contrarié réagissant à un changement",
+    imageAlt: "Client pressé contrarié réagissant à un changement",
     dialogue: "Vous perdez du temps avec vos nouvelles r��gles ! J’ai pas que ça à faire.",
     responses: [
       {
@@ -1039,7 +1039,7 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
             </Reveal>
           ))}
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3 md:gap-8 mt-8">
           {REFLEXES.map((reflex, index) => {
             const isActive = activeReflex === index;
             return (
