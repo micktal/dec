@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Maximize2, Minimize2, ExternalLink } from "lucide-react";
 
 import Reveal from "@/components/Reveal";
 import SiteFooter from "@/components/SiteFooter";
