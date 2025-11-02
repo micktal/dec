@@ -941,15 +941,15 @@ function ScenariosSection({
 
   const statusClasses: Record<ScenarioStatus, string> = {
     pending: "border-primary/20 bg-white text-primary",
-    success: "border-[#00B050] bg-[#00B050]/10 text-[#00B050]",
+    success: "border-primary bg-primary/10 text-primary",
     partial: "border-amber-500 bg-amber-500/10 text-amber-600",
     error: "border-red-500 bg-red-500/10 text-red-600",
   };
 
   const toneAccentClasses: Record<ScenarioTone, string> = {
-    positive: "border-[#00B050]/50 bg-[#00B050]/10 text-[#00B050]",
-    neutral: "border-amber-500/40 bg-amber-500/10 text-amber-700",
-    negative: "border-red-500/40 bg-red-500/10 text-red-600",
+    positive: "border-primary bg-primary/10 text-primary",
+    neutral: "border-amber-500/50 bg-amber-500/10 text-amber-700",
+    negative: "border-red-500/50 bg-red-500/10 text-red-600",
   };
 
   const toneIcons: Record<ScenarioTone, LucideIcon> = {
