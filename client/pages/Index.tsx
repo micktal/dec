@@ -634,7 +634,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
   return (
     <section
       id="section-intro"
-      className="relative isolate overflow-hidden bg-[#0082C3] text-white"
+      className="relative isolate overflow-hidden bg-[#1C4ED8] text-white"
     >
       <div className="absolute inset-0 opacity-20">
         <img
@@ -642,7 +642,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
           alt="Equipe Decathlon dans un magasin moderne"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0082C3] via-[#0082C3]/80 to-[#3643BA]/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1C4ED8] via-[#1C4ED8]/85 to-[#142F8A]/75" />
       </div>
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-24 text-center md:px-10 md:text-left">
         <Reveal className="flex flex-col gap-6 md:max-w-2xl">
