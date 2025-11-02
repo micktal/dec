@@ -1004,7 +1004,7 @@ function ScenariosSection({
             Simulation client : réagir avec calme et empathie
           </h2>
           <p className="text-lg text-foreground/70">
-            Tu es �� la caisse. Trois clients réagissent différemment à l’annonce de la fin du paiement par chèque. Sélectionne-les et choisis la réponse la plus adaptée.
+            Tu es à la caisse. Trois clients réagissent différemment à l’annonce de la fin du paiement par chèque. Sélectionne-les et choisis la réponse la plus adaptée.
           </p>
         </Reveal>
         <Reveal className="rounded-3xl border border-primary/30 bg-primary/5 p-6 text-primary">
@@ -1429,7 +1429,7 @@ function ConclusionSection({
             className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white"
           >
             <FileText className="h-5 w-5" aria-hidden="true" />
-            Télécharger la fiche mémo PDF
+            Télécharger la fiche m��mo PDF
           </a>
           <button
             onClick={onComplete}
