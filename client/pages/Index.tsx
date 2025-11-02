@@ -76,6 +76,7 @@ const SECTION_IDS = {
   REFLEXES: "section-reflexes",
   CLIENT_GUIDE: "section-clients",
   SCENARIOS: "section-scenarios",
+  SYNTHESIS: "section-synthese",
   FINAL_QUIZ: "section-final-quiz",
   CONCLUSION: "section-conclusion",
 } as const;
