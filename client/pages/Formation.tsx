@@ -98,7 +98,12 @@ function ModuleCard() {
         aria-label={isFullscreen ? "Quitter le mode plein écran" : "Activer le mode plein écran"}
         className="absolute right-6 top-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary shadow-sm transition-colors hover:border-[#00B050] hover:text-[#00B050]"
       >
-        🔳 {isFullscreen ? "Quitter" : "Plein écran"}
+        {isFullscreen ? (
+          <Minimize2 className="h-4 w-4" aria-hidden="true" />
+        ) : (
+          <Maximize2 className="h-4 w-4" aria-hidden="true" />
+        )}
+        {isFullscreen ? "Quitter" : "Plein écran"}
       </button>
       <div className="space-y-6">
         <div className="space-y-3">
