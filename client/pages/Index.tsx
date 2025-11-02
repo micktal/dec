@@ -146,6 +146,68 @@ const LEARNING_STEPS = [
   },
 ] as const;
 
+type ClientGuideEntry = {
+  title: string;
+  situation: string;
+  concerns: string[];
+  posture: string[];
+  objective: string;
+};
+
+const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
+  {
+    title: "Le client fidèle et âgé",
+    situation:
+      "Il découvre le changement à la caisse et se sent perdu ou inquiet face à la disparition du chèque.",
+    concerns: [
+      "Peur de la carte bancaire et des risques de piratage",
+      "Méfiance envers les outils numériques",
+      "Sentiment de perdre une habitude rassurante",
+    ],
+    posture: [
+      "Accueillir la réaction avec bienveillance et respect",
+      "Expliquer que l'évolution simplifie et sécurise les encaissements",
+      "Proposer immédiatement des alternatives : CB, carte cadeau ou paiement fractionné",
+    ],
+    objective:
+      "Qu'il reparte rassuré, accompagné et confiant dans les nouvelles solutions.",
+  },
+  {
+    title: "Le client pressé ou agacé",
+    situation:
+      "Dans la file d'attente, il veut aller vite et voit la fin du chèque comme une contrainte inutile.",
+    concerns: [
+      "Frustration liée au temps d'attente",
+      "Impression que le changement complique son passage",
+      "Volonté d'en finir rapidement pour poursuivre sa journée",
+    ],
+    posture: [
+      "Rester calme et courtois même si le ton monte",
+      "Reformuler avec empathie pour montrer que tu comprends son besoin de rapidité",
+      "Valoriser la carte bancaire et le paiement fractionné sans frais pour gagner du temps",
+    ],
+    objective:
+      "Transformer la tension en échange positif en démontrant que la nouvelle solution est plus fluide.",
+  },
+  {
+    title: "Le client professionnel ou administratif",
+    situation:
+      "Il représente une structure (mairie, association) habituée au chèque administratif et craint d'être bloqué.",
+    concerns: [
+      "Peur de ne plus pouvoir commander pour son organisation",
+      "Méconnaissance des solutions Decathlon Pro",
+      "Sentiment de ne pas être pris en compte dans la décision",
+    ],
+    posture: [
+      "Montrer que tu comprends son besoin professionnel",
+      "Expliquer que Decathlon Pro propose des procédures adaptées à son contexte",
+      "Orienter vers le bon contact ou le site Decathlon Pro pour finaliser l'achat",
+    ],
+    objective:
+      "Apporter une solution claire et professionnelle pour transformer le changement en opportunité.",
+  },
+];
+
 const REASONS = [
   {
     icon: Lightbulb,
