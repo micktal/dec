@@ -81,7 +81,7 @@ function HeroSection() {
           </div>
           <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
             <Link
-              to="/#formation"
+              to="/formation"
               className="inline-flex w-full items-center justify-center rounded-[12px] bg-white px-8 py-4 text-base font-semibold text-primary shadow-lg shadow-black/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00B050] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto"
             >
               Je commence la formation
@@ -207,7 +207,7 @@ function FinalCTASection() {
           client avec assurance.
         </p>
         <Link
-          to="/#formation"
+          to="/formation"
           className="inline-flex items-center justify-center rounded-[12px] bg-white px-10 py-4 text-base font-semibold text-secondary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00B050] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           Démarrer la formation maintenant
