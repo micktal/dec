@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SiteFooter from "@/components/SiteFooter";
 
 const whyItems = [
@@ -108,7 +109,7 @@ function WhySection() {
           </h2>
           <p className="text-lg text-foreground/80">
             Le chèque, c'est fini. Et tu es la clé du changement. Ce module t'aide à
-            expliquer la nouvelle règle sereinement, tout en maintenant une
+            expliquer la nouvelle r��gle sereinement, tout en maintenant une
             expérience client fluide et positive.
           </p>
         </div>
