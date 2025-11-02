@@ -3,7 +3,6 @@ import {
   useMemo,
   useRef,
   useState,
-  type ComponentType,
 } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -21,6 +20,7 @@ import {
   ShieldCheck,
   Target,
   Users,
+  type LucideIcon,
 } from "lucide-react";
 
 import Reveal from "@/components/Reveal";
@@ -759,7 +759,7 @@ function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsS
     <section id={id} className="bg-white py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
-          <h2 className="text-3xl font-bold text-primary md:text-4xl">Pourquoi le chèque disparaît ?</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Pourquoi le chèque dispara��t ?</h2>
           <p className="text-lg text-foreground/70">
             Comprendre les raisons du changement, c'est mieux accompagner les clients et faciliter ton quotidien en caisse.
           </p>
