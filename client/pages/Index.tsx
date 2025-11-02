@@ -653,12 +653,13 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
             </span>
           </div>
           <h1 className="text-4xl font-bold leading-tight md:text-5xl">
-            Fin du paiement par chèque – Ensemble vers 2026
+            Ensemble vers 2026
           </h1>
-          <p className="text-lg text-white/80">
-            Chez Decathlon, chaque jour est un pas vers plus de simplicité. En 2026, la
-            page du chèque se tourne. Ce module t'accompagne pour informer, rassurer et
-            guider nos clients avec confiance.
+          <p className="text-lg text-white/85">
+            Depuis toujours, Decathlon évolue pour rendre le sport accessible à tous —
+            facilement, rapidement et en toute confiance. En 2026, nous franchissons une
+            nouvelle étape avec l’arrêt progressif du paiement par chèque dans nos magasins,
+            pour offrir des parcours plus sûrs et plus fluides.
           </p>
         </Reveal>
         <Reveal className="flex flex-col items-center gap-4 md:flex-row md:items-center">
