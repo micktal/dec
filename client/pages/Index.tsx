@@ -74,6 +74,7 @@ const INTRO_HERO_IMAGE =
 const SECTION_IDS = {
   REASONS: "section-raisons",
   REFLEXES: "section-reflexes",
+  CLIENT_GUIDE: "section-clients",
   SCENARIOS: "section-scenarios",
   FINAL_QUIZ: "section-final-quiz",
   CONCLUSION: "section-conclusion",
@@ -718,7 +719,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
               </li>
             </ol>
             <div className="rounded-2xl border border-white/20 bg-white/5 p-4 text-sm leading-relaxed text-white/85">
-              Tu trouveras des explications simples, des r��ponses types et des mises en
+              Tu trouveras des explications simples, des réponses types et des mises en
               situation interactives pour t’entraîner avant la rencontre client.
             </div>
           </div>
