@@ -427,7 +427,7 @@ const SCENARIOS: ClientScenario[] = [
           "Bonne nouvelle : Decathlon Pro existe justement pour les paiements professionnels. Je peux vous orienter vers ce service.",
         tone: "positive",
         feedback:
-          "Bonne réponse ! Tu proposes une solution adaptée et tu valorises l’accompagnement Decathlon Pro.",
+          "Bonne r��ponse ! Tu proposes une solution adaptée et tu valorises l’accompagnement Decathlon Pro.",
         isCorrect: true,
       },
       {
@@ -451,47 +451,49 @@ const SCENARIOS: ClientScenario[] = [
 const FINAL_QUIZ: QuizQuestion[] = [
   {
     id: 1,
-    question: "Quel est l'objectif principal de la fin du paiement par chèque chez Decathlon ?",
+    question:
+      "Quel trio de réflexes te permet de sécuriser la fin du paiement par chèque ?",
     options: [
-      "Réduire le nombre de clients à la caisse",
-      "Simplifier et sécuriser les encaissements",
-      "Augmenter les délais de traitement",
-      "Imposer un mode de paiement unique",
+      "Empathie, clarté et alternatives proposées immédiatement",
+      "Rigidité, rappel strict de la règle et distance",
+      "Délégation systématique vers un collègue",
+      "Humour, changement de sujet et passage rapide",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
   },
   {
     id: 2,
-    question: "Quelle attitude adopter face à un client surpris ?",
+    question: "Face à un client pressé ou agacé, quelle posture illustre l'empathie active ?",
     options: [
-      "Lui rappeler que la règle est nationale sans autre explication",
-      "Lui conseiller d'aller dans un autre magasin",
-      "L'écouter, expliquer la règle et proposer une alternative",
-      "Lui proposer de revenir quand la règle aura changé",
+      "Rester calme, reformuler et valoriser la rapidité de la CB ou du paiement fractionné",
+      "Répondre sur le même ton pour s'imposer",
+      "Ignorer son ressenti et encaisser sans explication",
+      "Lui demander de revenir quand il sera plus disponible",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
   },
   {
     id: 3,
-    question: "Quelle alternative peut-on proposer à un client qui n'a pas de carte bancaire ?",
+    question: "Comment accompagner un client professionnel inquiet ?",
     options: [
-      "Aucune solution",
-      "Payer en espèces, carte cadeau ou paiement en plusieurs fois",
-      "Insister pour qu'il fasse un retrait immédiatement",
-      "Contourner la règle et accepter le chèque",
+      "Accepter exceptionnellement son chèque administratif",
+      "L'orienter vers Decathlon Pro et ses procédures adaptées",
+      "Lui proposer uniquement de payer en espèces",
+      "Refuser la vente s'il n'a pas de carte bancaire",
     ],
     correctIndex: 1,
   },
   {
     id: 4,
-    question: "Comment maintenir une relation client positive ?",
+    question:
+      "Selon la synthèse, quelle action mène-tu après le passage en caisse ?",
     options: [
-      "En minimisant son ressenti",
-      "En restant factuel et distant",
-      "En informant avec empathie et clarté",
-      "En appliquant la règle sans explication",
+      "Tourner immédiatement la page pour gagner du temps",
+      "Partager les questions fréquentes pour renforcer l'accompagnement équipe",
+      "Changer de caisse pour ne plus recroiser le client",
+      "Ne rien dire pour éviter de créer de nouvelles discussions",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
   },
 ];
 
