@@ -193,7 +193,7 @@ const SCENARIOS: ClientScenario[] = [
     name: "Madeleine",
     archetype: "Client fidèle et âgé",
     description:
-      "Cliente historique attachée à ses habitudes, elle cherche avant tout à être rassurée sur la sécurité des nouveaux moyens de paiement.",
+      "Cliente historique attachée à ses habitudes, elle cherche avant tout à être rassurée sur la sécurit�� des nouveaux moyens de paiement.",
     image:
       "https://images.unsplash.com/photo-1581579186988-c08ddd662fa0?auto=format&fit=crop&w=600&q=80",
     imageAlt: "Cliente senior souriante portant un manteau bleu",
@@ -839,6 +839,7 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
     <section id={id} className="bg-[#F3F6FF] py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
+          <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
           <h2 className="text-3xl font-bold text-primary md:text-4xl">
             Les 3 réflexes clés à adopter
           </h2>
@@ -877,7 +878,7 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
                     />
                   </div>
                   <span className="text-sm font-semibold text-primary/70">
-                    {isActive ? "Cliquer pour masquer" : "Cliquer pour découvrir le d��tail"}
+                    {isActive ? "Cliquer pour masquer" : "Cliquer pour découvrir le détail"}
                   </span>
                   {isActive && (
                     <p className="rounded-2xl border border-primary/20 bg-primary/5 p-4 text-sm leading-relaxed text-primary">
