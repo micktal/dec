@@ -685,7 +685,7 @@ type OverviewSectionProps = {
 
 function OverviewSection({ onNavigate }: OverviewSectionProps) {
   return (
-    <section className="bg-[#F0F6FB] py-20">
+    <section className="bg-[#EEF2FF] py-20">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-3 text-center">
           <h2 className="text-3xl font-bold text-primary md:text-4xl">Ta feuille de route</h2>
