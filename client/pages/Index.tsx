@@ -484,12 +484,12 @@ function ReflexesSection({ activeReflex, onToggle }: ReflexesSectionProps) {
                 <button
                   type="button"
                   onClick={() => handleToggle(index)}
-                  className="group perspective"
+                  className="group [perspective:2000px]"
                 >
                   <div
                     className={cn(
                       "relative h-full min-h-[260px] w-full rounded-3xl border border-border bg-white text-left transition-transform duration-500 [transform-style:preserve-3d]",
-                      isActive ? "rotate-y-180" : "hover:-translate-y-1",
+                      isActive ? "[transform:rotateY(180deg)]" : "hover:-translate-y-1",
                     )}
                   >
                     <div className="absolute inset-0 flex h-full flex-col gap-4 p-6 [backface-visibility:hidden]">
