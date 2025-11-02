@@ -59,8 +59,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["'Lato'", "sans-serif"],
-        heading: ["'Lato'", "sans-serif"],
+        sans: ["'Lato'", "'Open Sans'", "sans-serif"],
+        heading: ["'Lato'", "'Open Sans'", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
