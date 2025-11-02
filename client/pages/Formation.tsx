@@ -73,13 +73,13 @@ function ModuleCard() {
     };
   }, [isFullscreen]);
 
-  const handleOpenModule = useCallback(() => {
+  const handleOpenModule = () => {
     window.open(MODULE_URL, "_blank", "noopener,noreferrer");
-  }, []);
+  };
 
-  const toggleFullscreen = useCallback(() => {
+  const toggleFullscreen = () => {
     setIsFullscreen((prev) => !prev);
-  }, []);
+  };
 
   const cardClasses = cn(
     "relative mx-auto w-full max-w-5xl rounded-3xl border border-primary/30 bg-white p-8 shadow-2xl shadow-primary/15 transition-all duration-300",
