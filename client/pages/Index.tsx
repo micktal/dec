@@ -913,136 +913,302 @@ function ScenariosSection({
   onResetSimulation,
   onMarkCompleted,
 }: ScenariosSectionProps) {
+  const toneToStatus: Record<ScenarioTone, ScenarioStatus> = {
+    positive: "success",
+    neutral: "partial",
+    negative: "error",
+  };
+
   const scenarioStatuses = scenarioResponses.map<ScenarioStatus>((response, index) => {
     if (response === null) {
       return "pending";
     }
-    return SCENARIOS[index].options[response].isCorrect ? "correct" : "incorrect";
+    return toneToStatus[SCENARIOS[index].responses[response].tone];
   });
 
   const statusLabels: Record<ScenarioStatus, string> = {
-    pending: "À faire",
-    correct: "Réussi",
-    incorrect: "À revoir",
+    pending: "À traiter",
+    success: "Acquis",
+    partial: "À approfondir",
+    error: "À retravailler",
   };
 
   const statusClasses: Record<ScenarioStatus, string> = {
     pending: "border-primary/20 bg-white text-primary",
-    correct: "border-[#00B050] bg-[#00B050]/10 text-[#00B050]",
-    incorrect: "border-red-500 bg-red-500/10 text-red-600",
+    success: "border-[#00B050] bg-[#00B050]/10 text-[#00B050]",
+    partial: "border-amber-500 bg-amber-500/10 text-amber-600",
+    error: "border-red-500 bg-red-500/10 text-red-600",
   };
+
+  const toneAccentClasses: Record<ScenarioTone, string> = {
+    positive: "border-[#00B050]/50 bg-[#00B050]/10 text-[#00B050]",
+    neutral: "border-amber-500/40 bg-amber-500/10 text-amber-700",
+    negative: "border-red-500/40 bg-red-500/10 text-red-600",
+  };
+
+  const toneIcons: Record<ScenarioTone, ComponentType<{ className?: string }>> = {
+    positive: CheckCircle2,
+    neutral: HelpCircle,
+    negative: AlertCircle,
+  };
+
+  const allCompleted = scenarioResponses.every((response) => response !== null);
+  const currentScenario = SCENARIOS[activeScenarioIndex];
+  const currentResponseIndex = scenarioResponses[activeScenarioIndex];
+  const currentFeedback = scenarioFeedback[activeScenarioIndex];
+  const currentTone =
+    currentResponseIndex !== null
+      ? currentScenario.responses[currentResponseIndex].tone
+      : null;
 
   const scenarioScoreMessage =
     scenarioScore === SCENARIOS.length
-      ? "Bravo ! Tu as adopté les bons réflexes dans chaque situation."
-      : scenarioScore >= 2
-        ? "Très bien, continue à t'entraîner pour maîtriser toutes les situations."
-        : "Relis les réflexes clés puis réessaie les scénarios proposés.";
+      ? "Bravo ! Tu maîtrises les trois profils clients."
+      : scenarioScore === SCENARIOS.length - 1
+        ? "Très bien, identifie le dernier profil à renforcer."
+        : "Rejoue la simulation pour t'entraîner sur chaque profil.";
+
+  const encouragementMessage =
+    scenarioScore === SCENARIOS.length
+      ? "Tu es prêt à accompagner chaque client avec calme et empathie."
+      : "Garde cette posture : écouter, rassurer, proposer puis conclure positivement.";
+
+  const scorePercent = Math.round((scenarioScore / SCENARIOS.length) * 100);
 
   return (
     <section id={id} className="bg-white py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
-        <Reveal className="space-y-6 text-center">
-          <div className="space-y-4">
-            <h2 className="text-3xl font-bold text-primary md:text-4xl">Et toi, que ferais-tu ?</h2>
-            <p className="text-lg text-foreground/70">
-              Analyse trois situations vécues en magasin et choisis la réponse la plus adaptée. Le score s'affiche au fur et à mesure.
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {scenarioStatuses.map((status, index) => (
-              <span
-                key={`scenario-status-${SCENARIOS[index].id}`}
-                className={cn(
-                  "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wide",
-                  statusClasses[status],
-                )}
-              >
-                <span>Situation {index + 1}</span>
-                <span className="text-[0.7rem] font-medium uppercase tracking-normal">
-                  {statusLabels[status]}
-                </span>
-              </span>
-            ))}
-          </div>
+        <Reveal className="space-y-4 text-center">
+          <span className="text-xs font-semibold uppercase tracking-[0.35em] text-primary/60">
+            Simulation client
+          </span>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">
+            Simulation client : réagir avec calme et empathie
+          </h2>
+          <p className="text-lg text-foreground/70">
+            Tu es à la caisse. Trois clients réagissent différemment à l’annonce de la fin du paiement par chèque. Sélectionne-les et choisis la réponse la plus adaptée.
+          </p>
         </Reveal>
-        <div className="grid gap-6">
-          {SCENARIOS.map((scenario, scenarioIndex) => {
-            const currentStatus = scenarioStatuses[scenarioIndex];
-            const feedbackContent = scenarioFeedback[scenarioIndex];
-            const FeedbackIcon = currentStatus === "correct" ? CheckCircle2 : HelpCircle;
-            const feedbackClasses = currentStatus === "correct"
-              ? "border-[#00B050]/40 bg-[#00B050]/10 text-[#00B050]"
-              : "border-red-500/40 bg-red-500/10 text-red-600";
-
-            return (
-              <Reveal key={scenario.id}>
-                <div className="rounded-3xl border border-border bg-white p-6 shadow-lg shadow-primary/10">
-                  <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                    <div className="space-y-2 md:max-w-2xl">
-                      <h3 className="text-xl font-semibold text-primary">{scenario.title}</h3>
-                      <p className="text-base text-foreground/70">{scenario.description}</p>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm font-semibold text-primary/80">
-                      <ListChecks className="h-5 w-5" aria-hidden="true" />
-                      <span>Question {scenarioIndex + 1}</span>
-                    </div>
-                  </div>
-                  <div className="mt-6 grid gap-3">
-                    {scenario.options.map((option, optionIndex) => {
-                      const isSelected = scenarioResponses[scenarioIndex] === optionIndex;
-                      const isCorrectSelection = isSelected && option.isCorrect;
-                      const isIncorrectSelection = isSelected && !option.isCorrect;
-                      return (
-                        <button
-                          key={option.label}
-                          type="button"
-                          onClick={() => onSelect(scenarioIndex, optionIndex)}
-                          className={cn(
-                            "rounded-[12px] border px-5 py-3 text-left text-sm font-medium transition-all duration-300",
-                            isCorrectSelection
-                              ? "border-[#00B050] bg-[#00B050]/10 text-[#00B050]"
-                              : isIncorrectSelection
-                              ? "border-red-500 bg-red-500/10 text-red-600"
-                              : "border-primary/20 bg-primary/5 text-foreground/80 hover:-translate-y-0.5 hover:border-primary",
-                          )}
-                        >
-                          {option.label}
-                        </button>
-                      );
-                    })}
-                  </div>
-                  {feedbackContent && (
-                    <div
-                      className={cn(
-                        "mt-4 flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm transition-colors",
-                        feedbackClasses,
-                      )}
-                    >
-                      <FeedbackIcon className="mt-0.5 h-4 w-4" aria-hidden="true" />
-                      <div className="text-left">
-                        <p className="font-semibold uppercase tracking-wide">
-                          {statusLabels[currentStatus]}
-                        </p>
-                        <p className="mt-1 text-sm leading-relaxed">{feedbackContent}</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
-        <Reveal className="flex flex-col gap-4 rounded-3xl border border-primary/30 bg-primary/5 p-6 text-primary md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-3">
-            <TrendingUp className="h-6 w-6 text-primary" aria-hidden="true" />
+        <Reveal className="rounded-3xl border border-primary/30 bg-primary/5 p-6 text-primary">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <span className="text-sm font-semibold uppercase tracking-[0.3em]">Score scénarios</span>
-              <p className="text-3xl font-bold">{scenarioScore} / {SCENARIOS.length}</p>
+              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
+                Score simulation
+              </span>
+              <p className="mt-2 text-3xl font-bold">
+                {scenarioScore} / {SCENARIOS.length}
+              </p>
+              <p className="mt-1 text-sm text-primary/70">{scenarioScoreMessage}</p>
+            </div>
+            <div className="w-full md:w-64">
+              <div className="h-2 w-full overflow-hidden rounded-full bg-white/60">
+                <div
+                  className="h-full rounded-full bg-primary transition-all duration-500"
+                  style={{ width: `${scorePercent}%` }}
+                />
+              </div>
+              <p className="mt-2 text-right text-xs font-semibold text-primary/70">
+                {scorePercent}%
+              </p>
             </div>
           </div>
-          <p className="text-sm text-primary/80 md:text-right">{scenarioScoreMessage}</p>
         </Reveal>
+        <Reveal className="grid gap-4 md:grid-cols-3">
+          {SCENARIOS.map((scenario, index) => {
+            const status = scenarioStatuses[index];
+            const isActive = index === activeScenarioIndex;
+            return (
+              <button
+                key={scenario.id}
+                type="button"
+                onClick={() => onActivateScenario(index)}
+                className={cn(
+                  "flex h-full flex-col gap-3 rounded-3xl border bg-white p-5 text-left transition-all duration-300",
+                  isActive
+                    ? "border-primary shadow-lg shadow-primary/10"
+                    : "border-primary/20 hover:-translate-y-1 hover:border-primary/40",
+                )}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
+                    {index + 1}
+                  </span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
+                      {scenario.archetype}
+                    </p>
+                    <h3 className="mt-1 text-lg font-semibold text-primary">{scenario.name}</h3>
+                  </div>
+                </div>
+                <p className="text-sm text-foreground/70">{scenario.description}</p>
+                <span
+                  className={cn(
+                    "mt-auto inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide",
+                    statusClasses[status],
+                  )}
+                >
+                  {statusLabels[status]}
+                </span>
+              </button>
+            );
+          })}
+        </Reveal>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+          <Reveal className="relative overflow-hidden rounded-3xl border border-primary/20 bg-white shadow-lg shadow-primary/10">
+            <img
+              src={currentScenario.image}
+              alt={currentScenario.imageAlt}
+              className="h-56 w-full object-cover"
+            />
+            <div className="space-y-4 p-6">
+              <div>
+                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
+                  Client {activeScenarioIndex + 1}
+                </span>
+                <h3 className="mt-2 text-xl font-semibold text-primary">{currentScenario.name}</h3>
+                <p className="mt-2 text-sm text-foreground/70">{currentScenario.archetype}</p>
+              </div>
+              <div className="rounded-3xl border border-primary/20 bg-primary/5 p-5 text-left">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/60">
+                  Sa réaction
+                </p>
+                <p className="mt-3 text-base leading-relaxed text-primary">
+                  {currentScenario.dialogue}
+                </p>
+              </div>
+            </div>
+          </Reveal>
+          <Reveal className="flex flex-col gap-6 rounded-3xl border border-primary/20 bg-white p-6 shadow-lg shadow-primary/10">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary/70">
+                Ta réponse
+              </p>
+              <p className="mt-2 text-lg text-foreground/80">
+                Choisis la meilleure posture pour accompagner ce client.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              {currentScenario.responses.map((response, optionIndex) => {
+                const isSelected = currentResponseIndex === optionIndex;
+                const selectionClasses = isSelected
+                  ? toneAccentClasses[response.tone]
+                  : "border-primary/20 bg-white hover:-translate-y-0.5 hover:border-primary";
+                return (
+                  <button
+                    key={response.label}
+                    type="button"
+                    onClick={() => onSelect(activeScenarioIndex, optionIndex)}
+                    className={cn(
+                      "w-full rounded-[12px] border px-5 py-3 text-left text-sm font-medium transition-all duration-300",
+                      selectionClasses,
+                    )}
+                  >
+                    {response.label}
+                  </button>
+                );
+              })}
+            </div>
+            {currentFeedback && currentTone && (
+              <div
+                className={cn(
+                  "rounded-2xl border px-4 py-4 text-sm leading-relaxed transition-colors",
+                  toneAccentClasses[currentTone],
+                )}
+              >
+                {(() => {
+                  const FeedbackIcon = toneIcons[currentTone];
+                  return (
+                    <div className="flex items-start gap-3">
+                      <FeedbackIcon className="mt-1 h-5 w-5" aria-hidden="true" />
+                      <div>
+                        <p className="font-semibold uppercase tracking-wide">
+                          {statusLabels[toneToStatus[currentTone]]}
+                        </p>
+                        <p className="mt-1 text-sm leading-relaxed">{currentFeedback.message}</p>
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+            )}
+            {activeScenarioIndex < SCENARIOS.length - 1 && (
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <span className="text-sm text-foreground/60">
+                  Une fois ta réponse choisie, passe au client suivant.
+                </span>
+                <button
+                  type="button"
+                  onClick={onContinueScenario}
+                  disabled={currentResponseIndex === null}
+                  className={cn(
+                    "inline-flex items-center justify-center gap-2 rounded-[12px] px-5 py-3 text-sm font-semibold transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+                    currentResponseIndex === null
+                      ? "cursor-not-allowed border border-primary/20 bg-primary/10 text-primary/50"
+                      : "border border-primary bg-primary text-white hover:-translate-y-0.5 hover:bg-[#0066A1]",
+                  )}
+                >
+                  Continuer
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </button>
+              </div>
+            )}
+          </Reveal>
+        </div>
+        {allCompleted && (
+          <Reveal className="space-y-6 rounded-3xl border border-primary/30 bg-[#F0F6FB] p-8 shadow-lg shadow-primary/10">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <h3 className="text-2xl font-semibold text-primary">Débrief pédagogique</h3>
+                <p className="mt-2 text-sm text-primary/70">{encouragementMessage}</p>
+              </div>
+              <div className="rounded-2xl border border-primary/30 bg-white px-6 py-4 text-center text-primary">
+                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
+                  Score simulation
+                </span>
+                <p className="mt-2 text-3xl font-bold">
+                  {scenarioScore} / {SCENARIOS.length}
+                </p>
+              </div>
+            </div>
+            <div className="grid gap-6 lg:grid-cols-2">
+              <ul className="space-y-3 text-sm text-primary">
+                <li className="rounded-2xl border border-primary/20 bg-white px-4 py-3">
+                  Empathie avant explication
+                </li>
+                <li className="rounded-2xl border border-primary/20 bg-white px-4 py-3">
+                  Reformulation pour montrer l’écoute
+                </li>
+                <li className="rounded-2xl border border-primary/20 bg-white px-4 py-3">
+                  Proposition de solution adaptée
+                </li>
+                <li className="rounded-2xl border border-primary/20 bg-white px-4 py-3">
+                  Clôture positive pour rassurer
+                </li>
+              </ul>
+              <div className="space-y-4 text-sm text-primary/80">
+                <p>
+                  Rappelle-toi : écouter, rassurer, proposer puis conclure positivement permettent de transformer chaque échange en expérience réussie.
+                </p>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                  <button
+                    type="button"
+                    onClick={onMarkCompleted}
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-[12px] border border-primary bg-primary px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0066A1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  >
+                    Terminer ma formation
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onResetSimulation}
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-[12px] border border-primary/30 bg-white px-5 py-3 text-sm font-semibold text-primary transition-all duration-300 hover:-translate-y-0.5 hover:border-primary"
+                  >
+                    Rejouer la simulation
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        )}
       </div>
     </section>
   );
