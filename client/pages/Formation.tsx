@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ExternalLink, Maximize2, Minimize2 } from "lucide-react";
 
+import DecathlonLogo from "@/components/DecathlonLogo";
 import Reveal from "@/components/Reveal";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
@@ -11,11 +12,12 @@ const MODULE_URL = "https://formation.decathlon.com";
 
 export default function Formation() {
   return (
-    <div className="min-h-screen bg-[#F7F7F7] text-foreground">
+    <div className="min-h-screen bg-[#F3F6FF] text-foreground">
       <SiteHeader />
       <main className="mx-auto flex w-full flex-col gap-16 px-6 py-20 md:px-12">
-        <Reveal className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary">
+        <Reveal className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
+          <DecathlonLogo className="h-14 w-auto drop-shadow" aria-label="Decathlon" />
+          <span className="inline-flex items-center rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary shadow-sm">
             Module e-learning interne
           </span>
           <h1 className="mt-6 text-3xl font-bold text-primary sm:text-4xl">
@@ -34,7 +36,7 @@ export default function Formation() {
           </p>
           <Link
             to="/"
-            className="text-primary underline-offset-4 transition-colors hover:text-[#00B050] hover:underline"
+            className="text-primary underline-offset-4 transition-colors hover:text-primary/80 hover:underline"
           >
             Retourner à l’accueil
           </Link>
@@ -95,7 +97,7 @@ function ModuleCard() {
         onClick={toggleFullscreen}
         type="button"
         aria-label={isFullscreen ? "Quitter le mode plein écran" : "Activer le mode plein écran"}
-        className="absolute right-6 top-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary shadow-sm transition-colors hover:border-[#00B050] hover:text-[#00B050]"
+        className="absolute right-6 top-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary shadow-sm transition-colors hover:border-primary hover:text-primary"
       >
         {isFullscreen ? (
           <Minimize2 className="h-4 w-4" aria-hidden="true" />
@@ -112,7 +114,7 @@ function ModuleCard() {
           </div>
           <div className="h-2 w-full overflow-hidden rounded-full bg-primary/10">
             <div
-              className="h-full rounded-full bg-[#00B050] transition-all duration-[1200ms] ease-out"
+              className="h-full rounded-full bg-primary transition-all duration-[1200ms] ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -144,7 +146,7 @@ function ModuleCard() {
             <button
               onClick={handleOpenModule}
               type="button"
-              className="inline-flex items-center justify-center gap-2 rounded-[12px] border border-primary bg-white px-6 py-3 text-sm font-semibold text-primary shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#00B050] hover:bg-[#00B050] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="inline-flex items-center justify-center gap-2 rounded-[12px] border border-primary bg-white px-6 py-3 text-sm font-semibold text-primary shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               <ExternalLink className="h-4 w-4" aria-hidden="true" />
               Ouvrir dans une nouvelle fenêtre
