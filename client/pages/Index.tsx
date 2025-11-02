@@ -766,30 +766,36 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
                 <button
                   type="button"
                   onClick={() => handleToggle(index)}
-                  className="group [perspective:2000px]"
+                  aria-expanded={isActive}
+                  className={cn(
+                    "flex w-full flex-col gap-4 rounded-3xl border border-border bg-white p-6 text-left transition-all duration-300",
+                    isActive ? "border-primary shadow-xl shadow-primary/10" : "hover:-translate-y-1 hover:border-primary/40",
+                  )}
                 >
-                  <div
-                    className={cn(
-                      "relative h-full min-h-[260px] w-full rounded-3xl border border-border bg-white text-left transition-transform duration-500 [transform-style:preserve-3d]",
-                      isActive ? "[transform:rotateY(180deg)]" : "hover:-translate-y-1",
-                    )}
-                  >
-                    <div className="absolute inset-0 flex h-full flex-col gap-4 p-6 [backface-visibility:hidden]">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col gap-3">
                       <Users className="h-10 w-10 text-primary" aria-hidden="true" />
-                      <h3 className="text-xl font-semibold text-primary">{reflex.title}</h3>
-                      <p className="text-base text-foreground/70">{reflex.summary}</p>
-                      <span className="mt-auto text-sm font-semibold text-primary/70">
-                        Cliquer pour découvrir le détail
-                      </span>
+                      <div>
+                        <h3 className="text-xl font-semibold text-primary">{reflex.title}</h3>
+                        <p className="text-base text-foreground/70">{reflex.summary}</p>
+                      </div>
                     </div>
-                    <div className="absolute inset-0 flex h-full flex-col justify-center gap-4 rounded-3xl bg-primary/95 p-6 text-white [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                      <h3 className="text-xl font-semibold">{reflex.title}</h3>
-                      <p className="text-base text-white/85">{reflex.detail}</p>
-                      <span className="text-sm font-semibold text-white/70">
-                        Cliquer pour revenir
-                      </span>
-                    </div>
+                    <ChevronDown
+                      className={cn(
+                        "h-6 w-6 shrink-0 text-primary transition-transform duration-300",
+                        isActive && "rotate-180",
+                      )}
+                      aria-hidden="true"
+                    />
                   </div>
+                  <span className="text-sm font-semibold text-primary/70">
+                    {isActive ? "Cliquer pour masquer" : "Cliquer pour découvrir le détail"}
+                  </span>
+                  {isActive && (
+                    <p className="rounded-2xl border border-primary/20 bg-primary/5 p-4 text-sm leading-relaxed text-primary">
+                      {reflex.detail}
+                    </p>
+                  )}
                 </button>
               </Reveal>
             );
