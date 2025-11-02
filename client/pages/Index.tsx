@@ -598,6 +598,11 @@ export default function Index() {
           scenarioFeedback={scenarioFeedback}
           onSelect={handleScenarioSelect}
           scenarioScore={scenarioScore}
+          activeScenarioIndex={activeScenarioIndex}
+          onActivateScenario={handleScenarioActivate}
+          onContinueScenario={handleScenarioContinue}
+          onResetSimulation={handleScenarioReset}
+          onMarkCompleted={handleModuleComplete}
         />
         <FinalQuizSection
           id={SECTION_IDS.FINAL_QUIZ}
