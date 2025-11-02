@@ -33,14 +33,32 @@ type ReasonOption = {
   isCorrect: boolean;
 };
 
-type Scenario = {
-  id: number;
-  title: string;
-  description: string;
-  options: { label: string; isCorrect: boolean; feedback: string }[];
+type ScenarioTone = "positive" | "neutral" | "negative";
+
+type ClientScenarioResponse = {
+  label: string;
+  tone: ScenarioTone;
+  feedback: string;
+  isCorrect: boolean;
 };
 
-type ScenarioStatus = "pending" | "correct" | "incorrect";
+type ClientScenario = {
+  id: number;
+  name: string;
+  archetype: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  dialogue: string;
+  responses: ClientScenarioResponse[];
+};
+
+type ScenarioFeedback = {
+  message: string;
+  tone: ScenarioTone;
+};
+
+type ScenarioStatus = "pending" | "success" | "partial" | "error";
 
 type QuizQuestion = {
   id: number;
