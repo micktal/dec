@@ -764,6 +764,7 @@ function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsS
     <section id={id} className="bg-white py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
+          <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
           <h2 className="text-3xl font-bold text-primary md:text-4xl">Pourquoi le chèque disparaît ?</h2>
           <p className="text-lg text-foreground/70">
             Comprendre les raisons du changement, c'est mieux accompagner les clients et faciliter ton quotidien en caisse.
@@ -876,7 +877,7 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
                     />
                   </div>
                   <span className="text-sm font-semibold text-primary/70">
-                    {isActive ? "Cliquer pour masquer" : "Cliquer pour découvrir le détail"}
+                    {isActive ? "Cliquer pour masquer" : "Cliquer pour découvrir le d��tail"}
                   </span>
                   {isActive && (
                     <p className="rounded-2xl border border-primary/20 bg-primary/5 p-4 text-sm leading-relaxed text-primary">
