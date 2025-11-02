@@ -7,14 +7,18 @@ import {
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
+  BookOpen,
   CheckCircle2,
   Cog,
   FileText,
+  Flag,
   HelpCircle,
   Lightbulb,
   ListChecks,
   RotateCcw,
   ShieldCheck,
+  Target,
+  TrendingUp,
   Users,
 } from "lucide-react";
 
