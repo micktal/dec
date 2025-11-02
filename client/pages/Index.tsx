@@ -150,7 +150,7 @@ const REASONS = [
     icon: Cog,
     title: "Traitement plus simple",
     description:
-      "Les paiements électroniques réduisent le temps de gestion pour les équipes en magasin.",
+      "Les paiements ��lectroniques réduisent le temps de gestion pour les équipes en magasin.",
   },
   {
     icon: ShieldCheck,
@@ -796,7 +796,7 @@ function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsS
                     "rounded-[12px] border px-5 py-3 text-sm font-semibold transition-all duration-300",
                     isSelected
                       ? option.isCorrect
-                        ? "border-[#00B050] bg-[#00B050]/10 text-[#00B050]"
+                        ? "border-primary bg-primary/10 text-primary"
                         : "border-red-500 bg-red-500/10 text-red-600"
                       : "border-primary/30 bg-white text-primary hover:-translate-y-0.5 hover:border-primary",
                   )}
