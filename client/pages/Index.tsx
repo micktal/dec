@@ -1075,11 +1075,17 @@ function FinalQuizSection({
               Valider mes réponses
             </button>
             {submitted && (
-              <div className="space-y-2 text-sm">
-                <p className="text-primary">
-                  Ton score : {score} / {FINAL_QUIZ.length}
-                </p>
-                <p className={success ? "text-[#00B050]" : "text-amber-600"}>
+              <div className="w-full rounded-2xl border border-primary/20 bg-white p-5 text-left shadow-sm">
+                <div className="flex items-center gap-3 text-primary">
+                  <ResultIcon
+                    className={cn("h-5 w-5", resultAccent)}
+                    aria-hidden="true"
+                  />
+                  <p className="text-sm font-semibold">
+                    Ton score : {score} / {FINAL_QUIZ.length}
+                  </p>
+                </div>
+                <p className={cn("mt-3 text-sm leading-relaxed", resultAccent)}>
                   {success
                     ? "Bravo, tu maîtrises les bons réflexes."
                     : "Revois les réflexes clés et réessaie."}
@@ -1087,7 +1093,7 @@ function FinalQuizSection({
                 <button
                   type="button"
                   onClick={onReset}
-                  className="inline-flex items-center justify-center gap-2 rounded-[12px] border border-primary/40 bg-white px-4 py-2 text-xs font-semibold text-primary transition-all duration-300 hover:-translate-y-0.5 hover:border-primary"
+                  className="mt-4 inline-flex items-center justify-center gap-2 rounded-[12px] border border-primary/40 bg-primary/5 px-4 py-2 text-xs font-semibold text-primary transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary/10"
                 >
                   <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
                   Recommencer le quiz
