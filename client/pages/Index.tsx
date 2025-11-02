@@ -325,7 +325,7 @@ const FINAL_QUIZ: QuizQuestion[] = [
     options: [
       "Aucune solution",
       "Payer en espèces, carte cadeau ou paiement en plusieurs fois",
-      "Insister pour qu'il fasse un retrait imm��diatement",
+      "Insister pour qu'il fasse un retrait immédiatement",
       "Contourner la règle et accepter le chèque",
     ],
     correctIndex: 1,
@@ -365,9 +365,9 @@ export default function Index() {
   const [scenarioResponses, setScenarioResponses] = useState<(number | null)[]>(
     Array(SCENARIOS.length).fill(null),
   );
-  const [scenarioFeedback, setScenarioFeedback] = useState<(string | null)[]>(
-    Array(SCENARIOS.length).fill(null),
-  );
+  const [scenarioFeedback, setScenarioFeedback] = useState<
+    (ScenarioFeedback | null)[]
+  >(Array(SCENARIOS.length).fill(null));
   const [scenarioScored, setScenarioScored] = useState<boolean[]>(
     Array(SCENARIOS.length).fill(false),
   );
