@@ -8,12 +8,19 @@ export default function SiteHeader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const timeout = window.setTimeout(() => {
-      setProgress(100);
-    }, 100);
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight || 1;
+      const next = Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
+      setProgress(next);
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
 
     return () => {
-      window.clearTimeout(timeout);
+      window.removeEventListener("scroll", updateProgress);
     };
   }, []);
 
