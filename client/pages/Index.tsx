@@ -980,6 +980,15 @@ function FinalQuizSection({
 
   const allAnswered = answers.every((answer) => answer !== null);
   const success = submitted && score >= 3;
+  const answeredCount = answers.filter((answer) => answer !== null).length;
+  const progressPercent = Math.round((answeredCount / FINAL_QUIZ.length) * 100);
+  const progressMessage = submitted
+    ? success
+      ? "Excellent, tu valides la formation."
+      : "Relis les scénarios ou les réflexes puis réessaie."
+    : answeredCount === FINAL_QUIZ.length
+      ? "Tu peux valider tes réponses."
+      : "Réponds à toutes les questions pour débloquer la validation.";
 
   return (
     <section id={id} className="bg-[#E8F4FB] py-24">
