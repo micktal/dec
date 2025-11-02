@@ -215,6 +215,51 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
   },
 ];
 
+const SYNTHESIS_PILLARS = [
+  {
+    title: "Empathie active",
+    description:
+      "Tu mets le client en confiance dès les premiers mots. Reformule, regarde-le, fais preuve de patience : tu poses la base d'un échange respectueux.",
+    checkpoints: [
+      "Accueillir l'émotion avant d'apporter la solution",
+      "Montrer que tu comprends son vécu et ses habitudes",
+    ],
+  },
+  {
+    title: "Clarté assumée",
+    description:
+      "Tu expliques la décision nationale avec simplicité. Quand le message est clair, le client perçoit notre professionnalisme et notre cohérence.",
+    checkpoints: [
+      "Présenter les bénéfices : sécurité, rapidité, modernisation",
+      "Rester positif et aligné avec le projet 2026",
+    ],
+  },
+  {
+    title: "Solutions immédiates",
+    description:
+      "Tu transformes la contrainte en opportunité en proposant immédiatement une alternative adaptée à son profil.",
+    checkpoints: [
+      "Carte bancaire, paiement fractionné, carte cadeau, Decathlon Pro",
+      "Toujours laisser le choix pour renforcer la confiance",
+    ],
+  },
+] as const;
+
+const SYNTHESIS_ACTIONS = [
+  {
+    label: "Avant la caisse",
+    detail: "Prépare-toi en équipe : partage les propositions d’alternatives et synchronise vos discours.",
+  },
+  {
+    label: "Pendant l'échange",
+    detail: "Respire, écoute, rassure. Puis propose la solution la plus simple pour le client.",
+  },
+  {
+    label: "Après le passage",
+    detail: "Note les questions fréquentes et remonte-les pour améliorer encore notre accompagnement.",
+  },
+] as const;
+
 const REASONS = [
   {
     icon: Lightbulb,
@@ -232,7 +277,7 @@ const REASONS = [
     icon: ShieldCheck,
     title: "Sécurité renforcée",
     description:
-      "Les transactions dématérialisées limitent les fraudes et sécurisent les encaissements.",
+      "Les transactions d��matérialisées limitent les fraudes et sécurisent les encaissements.",
   },
 ] as const;
 
