@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 
-import { Link } from "react-router-dom";
-
 import DecathlonLogo from "@/components/DecathlonLogo";
 
 export function SiteFooter() {
