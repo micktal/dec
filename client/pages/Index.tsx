@@ -300,7 +300,7 @@ const SCENARIOS: ClientScenario[] = [
 const FINAL_QUIZ: QuizQuestion[] = [
   {
     id: 1,
-    question: "Quel est l'objectif principal de la fin du paiement par ch��que chez Decathlon ?",
+    question: "Quel est l'objectif principal de la fin du paiement par chèque chez Decathlon ?",
     options: [
       "Réduire le nombre de clients à la caisse",
       "Simplifier et sécuriser les encaissements",
@@ -338,7 +338,7 @@ const FINAL_QUIZ: QuizQuestion[] = [
       "En minimisant son ressenti",
       "En restant factuel et distant",
       "En informant avec empathie et clarté",
-      "En appliquant la r��gle sans explication",
+      "En appliquant la règle sans explication",
     ],
     correctIndex: 2,
   },
@@ -1169,7 +1169,7 @@ function ScenariosSection({
           </Reveal>
         </div>
         {allCompleted && (
-          <Reveal className="space-y-6 rounded-3xl border border-primary/30 bg-[#F0F6FB] p-8 shadow-lg shadow-primary/10">
+          <Reveal className="space-y-6 rounded-3xl border border-primary/30 bg-[#EEF2FF] p-8 shadow-lg shadow-primary/10">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <h3 className="text-2xl font-semibold text-primary">Débrief pédagogique</h3>
@@ -1413,7 +1413,7 @@ function ConclusionSection({
           </div>
           {moduleCompleted && (
             <p className="text-white">
-              Module terminé - bravo pour ta montée en compétences.
+              Module terminé - bravo pour ta montée en comp��tences.
             </p>
           )}
         </Reveal>
