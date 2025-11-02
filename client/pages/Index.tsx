@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Reveal from "@/components/Reveal";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import { cn } from "@/lib/utils";
 
 const INTRO_IMAGE_URL =
   "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1600&q=80";
@@ -114,7 +115,7 @@ function IntroSection({ onLaunch }: IntroSectionProps) {
               Lancer le module
             </button>
             <span className="text-sm font-medium text-foreground/60">
-              Formation – Fin du paiement par chèque – Ensemble vers 2026
+              Formation – Fin du paiement par ch��que – Ensemble vers 2026
             </span>
           </div>
         </Reveal>
