@@ -277,7 +277,7 @@ const REASONS = [
     icon: ShieldCheck,
     title: "Sécurité renforcée",
     description:
-      "Les transactions d��matérialisées limitent les fraudes et sécurisent les encaissements.",
+      "Les transactions dématérialisées limitent les fraudes et sécurisent les encaissements.",
   },
 ] as const;
 
@@ -1213,6 +1213,71 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
           <p className="text-base text-primary">
             Chaque échange compte : garde ton calme, ton sourire et ton sens du service pour transformer une réticence en confiance. C'est ça, l'esprit Decathlon.
           </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function SynthesisSection({ id }: { id?: string }) {
+  return (
+    <section id={id} className="bg-[#0F2AA5] py-24 text-white">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
+        <Reveal className="space-y-4 text-center">
+          <DecathlonLogo
+            className="mx-auto h-10 w-auto drop-shadow filter brightness-0 invert"
+            aria-label="Decathlon"
+          />
+          <h2 className="text-3xl font-bold md:text-4xl">Synthèse : à toi de jouer</h2>
+          <p className="text-lg text-white/80">
+            Tu as toutes les clés : empathie, clarté et solutions. Voici comment transformer chaque échange en victoire client.
+          </p>
+        </Reveal>
+        <div className="grid gap-6 md:grid-cols-3">
+          {SYNTHESIS_PILLARS.map((pillar) => (
+            <Reveal key={pillar.title}>
+              <div className="flex h-full flex-col gap-4 rounded-3xl border border-white/15 bg-white/10 p-6 text-left shadow-lg shadow-black/20 backdrop-blur">
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
+                    Pilier
+                  </span>
+                  <h3 className="mt-2 text-lg font-semibold text-white">{pillar.title}</h3>
+                </div>
+                <p className="text-sm text-white/80">{pillar.description}</p>
+                <ul className="space-y-2 text-sm text-white">
+                  {pillar.checkpoints.map((point) => (
+                    <li key={point} className="rounded-2xl border border-white/20 bg-white/10 px-3 py-2">
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20 backdrop-blur">
+          <div className="grid gap-6 md:grid-cols-3">
+            {SYNTHESIS_ACTIONS.map((action) => (
+              <div key={action.label} className="flex flex-col gap-2 text-sm text-white/80">
+                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
+                  {action.label}
+                </span>
+                <p>{action.detail}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+        <Reveal className="flex flex-col items-center gap-4 text-center">
+          <p className="max-w-2xl text-sm text-white/80">
+            Continue de partager tes bonnes pratiques en magasin, observe les réactions positives et capitalise sur ce que tu viens d'apprendre.
+          </p>
+          <a
+            href={`#${SECTION_IDS.FINAL_QUIZ}`}
+            className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-sm font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            Je passe au quiz final
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </a>
         </Reveal>
       </div>
     </section>
