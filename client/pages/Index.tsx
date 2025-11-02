@@ -923,14 +923,20 @@ function FinalQuizSection({
 }
 
 type ConclusionSectionProps = {
+  id?: string;
   totalScore: number;
   moduleCompleted: boolean;
   onComplete: () => void;
 };
 
-function ConclusionSection({ totalScore, moduleCompleted, onComplete }: ConclusionSectionProps) {
+function ConclusionSection({
+  id,
+  totalScore,
+  moduleCompleted,
+  onComplete,
+}: ConclusionSectionProps) {
   return (
-    <section className="bg-[#0082C3] py-24 text-white">
+    <section id={id} className="bg-[#0082C3] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 text-center md:px-10">
         <Reveal className="space-y-4">
           <h2 className="text-3xl font-bold md:text-4xl">Conclusion et ressources</h2>
