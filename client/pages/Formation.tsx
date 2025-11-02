@@ -79,11 +79,6 @@ function ModuleCard() {
     setIsFullscreen((prev) => !prev);
   }, []);
 
-  const overlayClasses = cn(
-    "fixed inset-0 z-50 flex items-center justify-center bg-primary/90 px-4 py-10 transition-opacity duration-300",
-    isFullscreen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
-  );
-
   const cardClasses = cn(
     "relative mx-auto w-full max-w-5xl rounded-3xl border border-primary/30 bg-white p-8 shadow-2xl shadow-primary/15 transition-all duration-300",
     isFullscreen && "max-w-6xl",
@@ -93,7 +88,7 @@ function ModuleCard() {
     "relative w-full overflow-hidden rounded-2xl border-2 border-primary bg-white shadow-inner",
   );
 
-  const cardContent = (
+  const renderCard = () => (
     <div className={cardClasses}>
       <button
         onClick={toggleFullscreen}
@@ -116,30 +111,28 @@ function ModuleCard() {
             />
           </div>
         </div>
-        <Reveal once={false}>
+        <div
+          className={frameWrapperClasses}
+          style={{ aspectRatio: "16 / 9" }}
+        >
+          <iframe
+            src={MODULE_URL}
+            title="Module e-learning Decathlon – Fin du paiement par chèque"
+            className="h-full w-full"
+            allow="fullscreen"
+            loading="lazy"
+            onLoad={() => setIsIframeLoaded(true)}
+          />
           <div
-            className={frameWrapperClasses}
-            style={{ aspectRatio: "16 / 9" }}
+            className={cn(
+              "pointer-events-none absolute inset-0 flex items-center justify-center bg-primary/5 text-sm font-semibold text-primary transition-opacity duration-500",
+              isIframeLoaded ? "opacity-0" : "opacity-100",
+            )}
           >
-            <iframe
-              src={MODULE_URL}
-              title="Module e-learning Decathlon – Fin du paiement par chèque"
-              className="h-full w-full"
-              allow="fullscreen"
-              loading="lazy"
-              onLoad={() => setIsIframeLoaded(true)}
-            />
-            <div
-              className={cn(
-                "pointer-events-none absolute inset-0 flex items-center justify-center bg-primary/5 text-sm font-semibold text-primary transition-opacity duration-500",
-                isIframeLoaded ? "opacity-0" : "opacity-100",
-              )}
-            >
-              Chargement du module en cours...
-            </div>
+            Chargement du module en cours...
           </div>
-        </Reveal>
-        <Reveal once={false} className="space-y-4 text-center text-sm text-foreground/60">
+        </div>
+        <div className="space-y-4 text-center text-sm text-foreground/60">
           <p>Si le module ne se lance pas automatiquement, clique sur le bouton ci-dessous.</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <button
@@ -159,21 +152,19 @@ function ModuleCard() {
               </button>
             )}
           </div>
-        </Reveal>
+        </div>
       </div>
     </div>
   );
 
   return (
     <div>
-      {cardContent}
-      <div className={overlayClasses}>
-        {isFullscreen && (
-          <div className="w-full max-w-6xl">
-            {cardContent}
-          </div>
-        )}
-      </div>
+      {!isFullscreen && renderCard()}
+      {isFullscreen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-primary/90 px-4 py-10">
+          <div className="w-full max-w-6xl">{renderCard()}</div>
+        </div>
+      )}
     </div>
   );
 }
