@@ -367,7 +367,7 @@ export default function Index() {
   );
   const [scenarioFeedback, setScenarioFeedback] = useState<
     (ScenarioFeedback | null)[]
-  >(Array(SCENARIOS.length).fill(null));
+  >(Array.from({ length: SCENARIOS.length }, () => null));
   const [scenarioScored, setScenarioScored] = useState<boolean[]>(
     Array(SCENARIOS.length).fill(false),
   );
@@ -885,7 +885,7 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
         </div>
         <Reveal className="rounded-3xl border border-primary/30 bg-white p-6 text-center shadow-inner">
           <p className="text-base text-foreground/70">
-            Alternatives à proposer : carte bancaire, espèces, carte cadeau, paiement en trois ou quatre fois sans frais.
+            Alternatives à proposer : carte bancaire, esp��ces, carte cadeau, paiement en trois ou quatre fois sans frais.
           </p>
         </Reveal>
       </div>
