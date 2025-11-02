@@ -82,7 +82,7 @@ const SECTION_IDS = {
 const MODULE_OBJECTIVES = [
   {
     icon: Target,
-    title: "Clarifier la décision nationale",
+    title: "Clarifier la d��cision nationale",
     description:
       "Comprendre pourquoi Decathlon met fin au paiement par chèque et ce que cela change dans les magasins.",
   },
@@ -1267,7 +1267,7 @@ function FinalQuizSection({
   const ResultIcon = success ? CheckCircle2 : HelpCircle;
 
   return (
-    <section id={id} className="bg-[#E8F4FB] py-24">
+    <section id={id} className="bg-[#E2E8FF] py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
           <h2 className="text-3xl font-bold text-primary md:text-4xl">Teste-toi</h2>
@@ -1413,7 +1413,7 @@ function ConclusionSection({
           </div>
           {moduleCompleted && (
             <p className="text-white">
-              Module terminé - bravo pour ta montée en comp��tences.
+              Module terminé - bravo pour ta montée en compétences.
             </p>
           )}
         </Reveal>
