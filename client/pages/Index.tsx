@@ -434,12 +434,7 @@ export default function Index() {
           reasonFeedback={reasonFeedback}
           onSelect={handleReasonAnswer}
         />
-        <ReflexesSection
-          activeReflex={REFLEXES.findIndex((_, index) => scenarioScored[index])}
-          onToggle={() => undefined}
-          reasonScored={reasonScored}
-          scenarioScored={scenarioScored}
-        />
+        <ReflexesSection />
         <ScenariosSection
           scenarioResponses={scenarioResponses}
           scenarioFeedback={scenarioFeedback}
@@ -586,19 +581,11 @@ function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsS
   );
 }
 
-type ReflexesSectionProps = {
-  activeReflex: number;
-  onToggle: (index: number | null) => void;
-  reasonScored: boolean;
-  scenarioScored: boolean[];
-};
-
-function ReflexesSection({ onToggle }: ReflexesSectionProps) {
+function ReflexesSection() {
   const [activeReflex, setActiveReflex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
     setActiveReflex((prev) => (prev === index ? null : index));
-    onToggle(activeReflex === index ? null : index);
   };
 
   return (
