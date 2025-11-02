@@ -662,7 +662,7 @@ export default function Index() {
           onSelect={handleReasonAnswer}
         />
         <ReflexesSection id={SECTION_IDS.REFLEXES} />
-       <ClientUnderstandingSection id={SECTION_IDS.CLIENT_GUIDE} />
+        <ClientUnderstandingSection id={SECTION_IDS.CLIENT_GUIDE} />
         <ScenariosSection
           id={SECTION_IDS.SCENARIOS}
           scenarioResponses={scenarioResponses}
@@ -763,7 +763,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
               </h3>
               <ul className="space-y-2 text-sm text-white/85">
                 <li>Anticiper les réactions en caisse et y répondre avec sérénité.</li>
-                <li>Clarifier le changement et en expliquer les bénéfices concrets.</li>
+                <li>Clarifier le changement et en expliquer les b��néfices concrets.</li>
                 <li>Proposer immédiatement des alternatives de paiement adaptées.</li>
               </ul>
             </div>
