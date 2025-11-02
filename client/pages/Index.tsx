@@ -1,5 +1,4 @@
 import {
-  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -274,17 +273,17 @@ export default function Index() {
   const totalScore = reasonScore + scenarioScore + finalScore;
   const moduleCompleted = totalScore >= 4;
 
-  const handleScrollToReasons = useCallback(() => {
+  const handleScrollToReasons = () => {
     const target = document.getElementById("section-raisons");
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, []);
+  };
 
-  const triggerUpdateScore = useCallback((isCorrect: boolean) => {
+  const triggerUpdateScore = (isCorrect: boolean) => {
     const win = window as WindowWithScorm;
     if (typeof win.updateScore === "function") {
       win.updateScore(isCorrect);
     }
-  }, []);
+  };
 
   const handleReasonAnswer = (option: ReasonOption) => {
     setReasonAnswer(option.label);
@@ -345,12 +344,12 @@ export default function Index() {
     triggerUpdateScore(false);
   };
 
-  const handleModuleComplete = useCallback(() => {
+  const handleModuleComplete = () => {
     const win = window as WindowWithScorm;
     if (typeof win.markCompleted === "function") {
       win.markCompleted();
     }
-  }, []);
+  };
 
   const computedScore = useMemo(
     () => reasonScore + scenarioScore + finalScore,
