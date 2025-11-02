@@ -10,12 +10,11 @@ import {
   ArrowRight,
   CheckCircle2,
   Cog,
-  CreditCard,
   FileText,
   HelpCircle,
   Lightbulb,
   ListChecks,
-  MessageCircle,
+  RotateCcw,
   ShieldCheck,
   Users,
 } from "lucide-react";
@@ -56,7 +55,7 @@ const REASONS = [
   {
     icon: Cog,
     title: "Traitement plus simple",
-    description: "Les paiements électroniques réduisent le temps de gestion pour les équipes en magasin.",
+    description: "Les paiements électroniques réduisent le temps de gestion pour les ��quipes en magasin.",
   },
   {
     icon: ShieldCheck,
