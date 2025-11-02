@@ -345,9 +345,14 @@ export default function Index() {
   const totalScore = reasonScore + scenarioScore + finalScore;
   const moduleCompleted = totalScore >= 4;
 
+  const handleScrollTo = (sectionId: string) => {
+    document
+      .getElementById(sectionId)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   const handleScrollToReasons = () => {
-    const target = document.getElementById("section-raisons");
-    target?.scrollIntoView({ behavior: "smooth", block: "start" });
+    handleScrollTo(SECTION_IDS.REASONS);
   };
 
   const triggerUpdateScore = (isCorrect: boolean) => {
