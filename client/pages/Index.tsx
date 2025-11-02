@@ -9,6 +9,7 @@ import {
   ArrowRight,
   BookOpen,
   CheckCircle2,
+  ChevronDown,
   Cog,
   FileText,
   Flag,
