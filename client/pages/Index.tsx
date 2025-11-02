@@ -426,6 +426,13 @@ export default function Index() {
   };
 
   const handleScenarioSelect = (scenarioIndex: number, optionIndex: number) => {
+    const previousResponseIndex = scenarioResponses[scenarioIndex];
+    const previousWasCorrect =
+      previousResponseIndex !== null &&
+      SCENARIOS[scenarioIndex].responses[previousResponseIndex].isCorrect;
+
+    const selectedResponse = SCENARIOS[scenarioIndex].responses[optionIndex];
+
     setScenarioResponses((prev) => {
       const next = [...prev];
       next[scenarioIndex] = optionIndex;
@@ -434,17 +441,24 @@ export default function Index() {
 
     setScenarioFeedback((prev) => {
       const next = [...prev];
-      next[scenarioIndex] = SCENARIOS[scenarioIndex].options[optionIndex].feedback;
+      next[scenarioIndex] = {
+        message: selectedResponse.feedback,
+        tone: selectedResponse.tone,
+      };
       return next;
     });
 
     setScenarioScored((prev) => {
       const next = [...prev];
-      next[scenarioIndex] = SCENARIOS[scenarioIndex].options[optionIndex].isCorrect;
+      next[scenarioIndex] = selectedResponse.isCorrect;
       return next;
     });
 
-    triggerUpdateScore(SCENARIOS[scenarioIndex].options[optionIndex].isCorrect);
+    if (!(previousWasCorrect && selectedResponse.isCorrect)) {
+      triggerUpdateScore(selectedResponse.isCorrect);
+    }
+
+    setActiveScenarioIndex(scenarioIndex);
   };
 
   const handleFinalAnswer = (questionIndex: number, optionIndex: number) => {
