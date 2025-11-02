@@ -195,7 +195,7 @@ const SCENARIOS: ClientScenario[] = [
     description:
       "Cliente historique attachée à ses habitudes, elle cherche avant tout à être rassurée sur la sécurité des nouveaux moyens de paiement.",
     image:
-      "https://images.unsplash.com/photo-1581579186988-c08ddd662fa0?auto=format&fit=crop&w=600&q=80",
+      "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Faafef2d3308e41fa92116556784ef00a?format=webp&width=800",
     imageAlt: "Cliente senior souriante portant un manteau bleu",
     dialogue:
       "Je paye par chèque depuis 20 ans, je n’ai pas confiance dans la carte bleue !",
