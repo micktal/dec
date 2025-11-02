@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { useEffect, useState } from "react";
-
 import { cn } from "@/lib/utils";
 
 export default function SiteHeader() {
