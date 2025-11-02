@@ -183,7 +183,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
     ],
     posture: [
       "Rester calme et courtois même si le ton monte",
-      "Reformuler avec empathie pour montrer que tu comprends son besoin de rapidit��",
+      "Reformuler avec empathie pour montrer que tu comprends son besoin de rapidité",
       "Valoriser la carte bancaire et le paiement fractionné sans frais pour gagner du temps",
     ],
     objective:
@@ -662,6 +662,7 @@ export default function Index() {
           onSelect={handleReasonAnswer}
         />
         <ReflexesSection id={SECTION_IDS.REFLEXES} />
+       <ClientUnderstandingSection id={SECTION_IDS.CLIENT_GUIDE} />
         <ScenariosSection
           id={SECTION_IDS.SCENARIOS}
           scenarioResponses={scenarioResponses}
