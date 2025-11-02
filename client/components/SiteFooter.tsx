@@ -23,7 +23,7 @@ export function SiteFooter() {
             </Link>
           </div>
         </div>
-      }
+      </div>
     </footer>
   );
 }
