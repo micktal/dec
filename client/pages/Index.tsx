@@ -470,9 +470,9 @@ export default function Index() {
   };
 
   const handleScenarioReset = () => {
-    setScenarioResponses(Array(SCENARIOS.length).fill(null));
-    setScenarioFeedback(Array(SCENARIOS.length).fill(null));
-    setScenarioScored(Array(SCENARIOS.length).fill(false));
+    setScenarioResponses(Array.from({ length: SCENARIOS.length }, () => null));
+    setScenarioFeedback(Array.from({ length: SCENARIOS.length }, () => null));
+    setScenarioScored(Array.from({ length: SCENARIOS.length }, () => false));
     setActiveScenarioIndex(0);
   };
 
