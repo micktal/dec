@@ -62,7 +62,7 @@ function HeroSection() {
     <section className="relative isolate flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden bg-primary text-primary-foreground">
       <img
         src={HERO_IMAGE_URL}
-        alt="Capitaine Decathlon en action avec un client"
+        alt="Collaborateur Decathlon en action avec un client"
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-primary/80 mix-blend-multiply" />
@@ -70,11 +70,11 @@ function HeroSection() {
       <div className="relative z-10 w-full max-w-6xl px-6 py-24 md:px-12">
         <div className="flex flex-col items-start gap-10 text-left md:items-start">
           <span className="inline-flex items-center rounded-full bg-primary-foreground/15 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-primary-foreground shadow-sm backdrop-blur">
-            Formation Capitaine · 2026
+            Module e-learning · 2026
           </span>
           <div className="space-y-6 text-white">
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              Capitaine, tu es prêt·e à accompagner le changement ?
+              Collaborateur·rice, tu es prêt·e à accompagner le changement ?
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed sm:text-xl">
               En 2026, les paiements par chèque disparaissent. Découvre comment en
@@ -202,7 +202,7 @@ function FinalCTASection() {
   return (
     <section id="formation" className="bg-secondary py-20 text-secondary-foreground">
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-8 px-6 text-center md:px-12">
-        <h2 className="text-3xl font-bold sm:text-4xl">À toi de jouer, Capitaine !</h2>
+        <h2 className="text-3xl font-bold sm:text-4xl">À toi de jouer, collaborateur·rice !</h2>
         <p className="max-w-2xl text-lg text-white/85">
           Ce module interactif t'attend — durée : 12 à 15 minutes. Tu y trouveras des
           scripts, des conseils et des mises en situation pour accompagner chaque
