@@ -233,7 +233,7 @@ const SCENARIOS: ClientScenario[] = [
     image:
       "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
     imageAlt: "Client pressé regardant sa montre dans un magasin",
-    dialogue: "Vous perdez du temps avec vos nouvelles règles ! J’ai pas que ça à faire.",
+    dialogue: "Vous perdez du temps avec vos nouvelles r��gles ! J’ai pas que ça à faire.",
     responses: [
       {
         label:
@@ -692,7 +692,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
                 Pourquoi cette formation ?
               </h3>
               <ul className="space-y-2 text-sm text-white/85">
-                <li>Anticiper les réactions en caisse et y répondre avec sérénit��.</li>
+                <li>Anticiper les réactions en caisse et y répondre avec sérénité.</li>
                 <li>Clarifier le changement et en expliquer les bénéfices concrets.</li>
                 <li>Proposer immédiatement des alternatives de paiement adaptées.</li>
               </ul>
@@ -720,6 +720,24 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
             <div className="rounded-2xl border border-white/20 bg-white/5 p-4 text-sm leading-relaxed text-white/85">
               Tu trouveras des explications simples, des réponses types et des mises en
               situation interactives pour t’entraîner avant la rencontre client.
+            </div>
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="rounded-3xl border border-white/15 bg-white/5 p-2 shadow-lg shadow-black/20">
+            <div className="relative aspect-video w-full overflow-hidden rounded-[20px]">
+              <video
+                className="h-full w-full object-cover"
+                controls
+                preload="metadata"
+                poster="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=800&q=80"
+              >
+                <source
+                  src="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fbbf05fbc0f544bc98d68a0ce24f1a732?alt=media&token=915c0a78-893b-481e-b797-fcf40d3d52da&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
+                  type="video/mp4"
+                />
+                Votre navigateur ne prend pas en charge la lecture vidéo.
+              </video>
             </div>
           </div>
         </Reveal>
