@@ -231,8 +231,8 @@ const SCENARIOS: ClientScenario[] = [
     description:
       "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la réponse tarde.",
     image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
-    imageAlt: "Client pressé regardant sa montre dans un magasin",
+      "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F13e6eae7e96f42a6b2443162c334241e?format=webp&width=800",
+    imageAlt: "Client pressé contrarié réagissant à un changement",
     dialogue: "Vous perdez du temps avec vos nouvelles r��gles ! J’ai pas que ça à faire.",
     responses: [
       {
@@ -718,7 +718,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
               </li>
             </ol>
             <div className="rounded-2xl border border-white/20 bg-white/5 p-4 text-sm leading-relaxed text-white/85">
-              Tu trouveras des explications simples, des réponses types et des mises en
+              Tu trouveras des explications simples, des r��ponses types et des mises en
               situation interactives pour t’entraîner avant la rencontre client.
             </div>
           </div>
