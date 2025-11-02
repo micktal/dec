@@ -11,10 +11,10 @@ export function SiteFooter() {
           © Decathlon France 2026 – Ensemble, on avance.
         </p>
         <Link
-          to="/formation"
+          to="/"
           className="text-sm text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
         >
-          Supports et fiches mémo disponibles sur l’espace formation interne
+          Retour à la page d’accueil
         </Link>
       </div>
     </footer>
