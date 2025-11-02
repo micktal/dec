@@ -1274,6 +1274,7 @@ function FinalQuizSection({
     <section id={id} className="bg-[#E2E8FF] py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
+          <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
           <h2 className="text-3xl font-bold text-primary md:text-4xl">Teste-toi</h2>
           <p className="text-lg text-primary/80">
             Réponds à quatre questions et mesure ta maîtrise des bons réflexes.
