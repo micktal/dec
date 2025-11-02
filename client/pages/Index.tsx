@@ -717,7 +717,10 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-24 text-center md:px-10 md:text-left">
         <Reveal className="flex flex-col gap-6 md:max-w-2xl">
           <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 backdrop-blur">
-            <DecathlonLogo className="h-8 w-auto drop-shadow" aria-label="Decathlon" />
+            <DecathlonLogo
+              className="h-8 w-auto drop-shadow filter brightness-0 invert"
+              aria-label="Decathlon"
+            />
             <span className="text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
               Formation
             </span>
@@ -763,7 +766,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
               </h3>
               <ul className="space-y-2 text-sm text-white/85">
                 <li>Anticiper les réactions en caisse et y répondre avec sérénité.</li>
-                <li>Clarifier le changement et en expliquer les b��néfices concrets.</li>
+                <li>Clarifier le changement et en expliquer les bénéfices concrets.</li>
                 <li>Proposer immédiatement des alternatives de paiement adaptées.</li>
               </ul>
             </div>
@@ -1194,7 +1197,7 @@ function ScenariosSection({
     scenarioScore === SCENARIOS.length
       ? "Bravo ! Tu maîtrises les trois profils clients."
       : scenarioScore === SCENARIOS.length - 1
-        ? "Très bien, identifie le dernier profil à renforcer."
+        ? "Tr��s bien, identifie le dernier profil à renforcer."
         : "Rejoue la simulation pour t'entraîner sur chaque profil.";
 
   const encouragementMessage =
