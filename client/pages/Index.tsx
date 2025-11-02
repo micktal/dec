@@ -461,6 +461,21 @@ export default function Index() {
     setActiveScenarioIndex(scenarioIndex);
   };
 
+  const handleScenarioActivate = (index: number) => {
+    setActiveScenarioIndex(index);
+  };
+
+  const handleScenarioContinue = () => {
+    setActiveScenarioIndex((prev) => Math.min(prev + 1, SCENARIOS.length - 1));
+  };
+
+  const handleScenarioReset = () => {
+    setScenarioResponses(Array(SCENARIOS.length).fill(null));
+    setScenarioFeedback(Array(SCENARIOS.length).fill(null));
+    setScenarioScored(Array(SCENARIOS.length).fill(false));
+    setActiveScenarioIndex(0);
+  };
+
   const handleFinalAnswer = (questionIndex: number, optionIndex: number) => {
     setFinalAnswers((prev) => {
       const next = [...prev];
