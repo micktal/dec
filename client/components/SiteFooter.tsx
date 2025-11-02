@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
+
 export function SiteFooter() {
   return (
     <footer className="bg-primary text-primary-foreground">
