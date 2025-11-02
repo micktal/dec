@@ -646,9 +646,12 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
       </div>
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-24 text-center md:px-10 md:text-left">
         <Reveal className="flex flex-col gap-6 md:max-w-2xl">
-          <span className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em]">
-            Decathlon Formation
-          </span>
+          <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 backdrop-blur">
+            <DecathlonLogo className="h-8 w-auto drop-shadow" aria-label="Decathlon" />
+            <span className="text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
+              Formation
+            </span>
+          </div>
           <h1 className="text-4xl font-bold leading-tight md:text-5xl">
             Fin du paiement par chèque – Ensemble vers 2026
           </h1>
