@@ -873,55 +873,81 @@ function ScenariosSection({
           </div>
         </Reveal>
         <div className="grid gap-6">
-          {SCENARIOS.map((scenario, scenarioIndex) => (
-            <Reveal key={scenario.id}>
-              <div className="rounded-3xl border border-border bg-white p-6 shadow-lg shadow-primary/10">
-                <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                  <div className="space-y-2 md:max-w-2xl">
-                    <h3 className="text-xl font-semibold text-primary">{scenario.title}</h3>
-                    <p className="text-base text-foreground/70">{scenario.description}</p>
+          {SCENARIOS.map((scenario, scenarioIndex) => {
+            const currentStatus = scenarioStatuses[scenarioIndex];
+            const feedbackContent = scenarioFeedback[scenarioIndex];
+            const FeedbackIcon = currentStatus === "correct" ? CheckCircle2 : HelpCircle;
+            const feedbackClasses = currentStatus === "correct"
+              ? "border-[#00B050]/40 bg-[#00B050]/10 text-[#00B050]"
+              : "border-red-500/40 bg-red-500/10 text-red-600";
+
+            return (
+              <Reveal key={scenario.id}>
+                <div className="rounded-3xl border border-border bg-white p-6 shadow-lg shadow-primary/10">
+                  <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                    <div className="space-y-2 md:max-w-2xl">
+                      <h3 className="text-xl font-semibold text-primary">{scenario.title}</h3>
+                      <p className="text-base text-foreground/70">{scenario.description}</p>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm font-semibold text-primary/80">
+                      <ListChecks className="h-5 w-5" aria-hidden="true" />
+                      <span>Question {scenarioIndex + 1}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-sm font-semibold text-primary/80">
-                    <ListChecks className="h-5 w-5" aria-hidden="true" />
-                    <span>Question {scenarioIndex + 1}</span>
+                  <div className="mt-6 grid gap-3">
+                    {scenario.options.map((option, optionIndex) => {
+                      const isSelected = scenarioResponses[scenarioIndex] === optionIndex;
+                      const isCorrectSelection = isSelected && option.isCorrect;
+                      const isIncorrectSelection = isSelected && !option.isCorrect;
+                      return (
+                        <button
+                          key={option.label}
+                          type="button"
+                          onClick={() => onSelect(scenarioIndex, optionIndex)}
+                          className={cn(
+                            "rounded-[12px] border px-5 py-3 text-left text-sm font-medium transition-all duration-300",
+                            isCorrectSelection
+                              ? "border-[#00B050] bg-[#00B050]/10 text-[#00B050]"
+                              : isIncorrectSelection
+                              ? "border-red-500 bg-red-500/10 text-red-600"
+                              : "border-primary/20 bg-primary/5 text-foreground/80 hover:-translate-y-0.5 hover:border-primary",
+                          )}
+                        >
+                          {option.label}
+                        </button>
+                      );
+                    })}
                   </div>
+                  {feedbackContent && (
+                    <div
+                      className={cn(
+                        "mt-4 flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm transition-colors",
+                        feedbackClasses,
+                      )}
+                    >
+                      <FeedbackIcon className="mt-0.5 h-4 w-4" aria-hidden="true" />
+                      <div className="text-left">
+                        <p className="font-semibold uppercase tracking-wide">
+                          {statusLabels[currentStatus]}
+                        </p>
+                        <p className="mt-1 text-sm leading-relaxed">{feedbackContent}</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <div className="mt-6 grid gap-3">
-                  {scenario.options.map((option, optionIndex) => {
-                    const isSelected = scenarioResponses[scenarioIndex] === optionIndex;
-                    const isCorrectSelection = isSelected && option.isCorrect;
-                    const isIncorrectSelection = isSelected && !option.isCorrect;
-                    return (
-                      <button
-                        key={option.label}
-                        type="button"
-                        onClick={() => onSelect(scenarioIndex, optionIndex)}
-                        className={cn(
-                          "rounded-[12px] border px-5 py-3 text-left text-sm font-medium transition-all duration-300",
-                          isCorrectSelection
-                            ? "border-[#00B050] bg-[#00B050]/10 text-[#00B050]"
-                            : isIncorrectSelection
-                            ? "border-red-500 bg-red-500/10 text-red-600"
-                            : "border-primary/20 bg-primary/5 text-foreground/80 hover:-translate-y-0.5 hover:border-primary",
-                        )}
-                      >
-                        {option.label}
-                      </button>
-                    );
-                  })}
-                </div>
-                {scenarioFeedback[scenarioIndex] && (
-                  <p className="mt-4 text-sm text-primary">
-                    {scenarioFeedback[scenarioIndex]}
-                  </p>
-                )}
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
-        <Reveal className="flex flex-col items-center gap-3 rounded-3xl border border-primary/30 bg-primary/5 p-6 text-center text-primary">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em]">Score scénarios</span>
-          <span className="text-3xl font-bold">{scenarioScore} / {SCENARIOS.length}</span>
+        <Reveal className="flex flex-col gap-4 rounded-3xl border border-primary/30 bg-primary/5 p-6 text-primary md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-3">
+            <TrendingUp className="h-6 w-6 text-primary" aria-hidden="true" />
+            <div>
+              <span className="text-sm font-semibold uppercase tracking-[0.3em]">Score scénarios</span>
+              <p className="text-3xl font-bold">{scenarioScore} / {SCENARIOS.length}</p>
+            </div>
+          </div>
+          <p className="text-sm text-primary/80 md:text-right">{scenarioScoreMessage}</p>
         </Reveal>
       </div>
     </section>
