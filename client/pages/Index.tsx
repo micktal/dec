@@ -3,6 +3,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type ComponentType,
 } from "react";
 import { Link } from "react-router-dom";
 import {
