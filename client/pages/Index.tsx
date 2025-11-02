@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight,
   CheckCircle2,
+  Cog,
   CreditCard,
   FileText,
   HelpCircle,
