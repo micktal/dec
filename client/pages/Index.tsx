@@ -49,6 +49,74 @@ type QuizQuestion = {
 const INTRO_HERO_IMAGE =
   "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1600&q=80";
 
+const SECTION_IDS = {
+  REASONS: "section-raisons",
+  REFLEXES: "section-reflexes",
+  SCENARIOS: "section-scenarios",
+  FINAL_QUIZ: "section-final-quiz",
+  CONCLUSION: "section-conclusion",
+} as const;
+
+const MODULE_OBJECTIVES = [
+  {
+    icon: Target,
+    title: "Clarifier la décision nationale",
+    description:
+      "Comprendre pourquoi Decathlon met fin au paiement par chèque et ce que cela change dans les magasins.",
+  },
+  {
+    icon: Users,
+    title: "Accompagner les clients",
+    description:
+      "Adopter la bonne posture pour rassurer, expliquer et proposer des solutions adaptées à chaque profil.",
+  },
+  {
+    icon: BookOpen,
+    title: "S'approprier les bons réflexes",
+    description:
+      "Retenir les trois réflexes clés et les appliquer sur le terrain pour garantir une expérience fluide.",
+  },
+  {
+    icon: Flag,
+    title: "Valider ta maîtrise",
+    description:
+      "Mesurer ta progression avec les scénarios et le quiz final pour clôturer la formation sereinement.",
+  },
+] as const;
+
+const MODULE_HIGHLIGHTS = [
+  { value: "2026", label: "Fin officielle du paiement par chèque" },
+  { value: "3", label: "Réflexes indispensables à adopter" },
+  { value: "4", label: "Questions finales pour valider tes acquis" },
+] as const;
+
+const LEARNING_STEPS = [
+  {
+    order: "01",
+    title: "Comprendre le changement",
+    description: "Découvre les raisons de la transition et gagne en clarté.",
+    sectionId: SECTION_IDS.REASONS,
+  },
+  {
+    order: "02",
+    title: "Adopter les réflexes",
+    description: "Mémorise les attitudes à avoir face aux clients.",
+    sectionId: SECTION_IDS.REFLEXES,
+  },
+  {
+    order: "03",
+    title: "S'exercer en situation",
+    description: "Choisis la bonne réponse dans les scénarios inspirés du terrain.",
+    sectionId: SECTION_IDS.SCENARIOS,
+  },
+  {
+    order: "04",
+    title: "Valider tes acquis",
+    description: "Réponds au quiz final et finalise la formation.",
+    sectionId: SECTION_IDS.FINAL_QUIZ,
+  },
+] as const;
+
 const REASONS = [
   {
     icon: Lightbulb,
