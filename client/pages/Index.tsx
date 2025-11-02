@@ -23,6 +23,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+import DecathlonLogo from "@/components/DecathlonLogo";
 import Reveal from "@/components/Reveal";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
