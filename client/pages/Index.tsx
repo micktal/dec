@@ -675,6 +675,54 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
             Durée estimée : douze à quinze minutes – accessible à tous les collaborateurs.
           </p>
         </Reveal>
+        <Reveal className="grid gap-8 rounded-3xl bg-white/10 p-8 text-left text-white backdrop-blur md:grid-cols-[0.9fr_1.1fr]">
+          <div className="space-y-4 text-base leading-relaxed">
+            <p>
+              Ce changement est une évolution naturelle : les chèques sont désormais rares
+              et longs à traiter, alors que nos solutions digitales sont plus sûres,
+              rapides et déjà largement adoptées.
+            </p>
+            <p>
+              Cette formation t’accompagne pour vivre la transition dans un esprit positif,
+              clair et bienveillant. Ton rôle est déterminant pour rassurer, expliquer et
+              guider chaque client vers la solution qui lui convient.
+            </p>
+            <div className="space-y-2 rounded-2xl bg-white/10 p-4">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">
+                Pourquoi cette formation ?
+              </h3>
+              <ul className="space-y-2 text-sm text-white/85">
+                <li>Anticiper les réactions en caisse et y répondre avec sérénit��.</li>
+                <li>Clarifier le changement et en expliquer les bénéfices concrets.</li>
+                <li>Proposer immédiatement des alternatives de paiement adaptées.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="space-y-6 rounded-2xl bg-white/5 p-6 text-white">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">
+              Ce que tu vas apprendre
+            </h3>
+            <ol className="space-y-3 text-sm leading-relaxed">
+              <li className="rounded-2xl border border-white/20 bg-white/5 p-4">
+                Expliquer calmement la fin du paiement par chèque et ses bénéfices.
+              </li>
+              <li className="rounded-2xl border border-white/20 bg-white/5 p-4">
+                Identifier les attentes de chaque profil client pour adapter ton discours.
+              </li>
+              <li className="rounded-2xl border border-white/20 bg-white/5 p-4">
+                Répondre avec empathie, reformuler et maintenir une relation positive.
+              </li>
+              <li className="rounded-2xl border border-white/20 bg-white/5 p-4">
+                Proposer des solutions alternatives : CB, paiement fractionné, cartes cadeaux
+                ou accompagnement Decathlon Pro.
+              </li>
+            </ol>
+            <div className="rounded-2xl border border-white/20 bg-white/5 p-4 text-sm leading-relaxed text-white/85">
+              Tu trouveras des explications simples, des réponses types et des mises en
+              situation interactives pour t’entraîner avant la rencontre client.
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
