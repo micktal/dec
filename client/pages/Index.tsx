@@ -186,82 +186,111 @@ const REFLEXES = [
   },
 ] as const;
 
-const SCENARIOS: Scenario[] = [
+const SCENARIOS: ClientScenario[] = [
   {
     id: 1,
-    title: "Client surpris à la caisse",
+    name: "Madeleine",
+    archetype: "Client fidèle et âgé",
     description:
-      "Un client découvre la fin du paiement par chèque au moment de régler.",
-    options: [
+      "Cliente historique attachée à ses habitudes, elle cherche avant tout à être rassurée sur la sécurité des nouveaux moyens de paiement.",
+    image:
+      "https://images.unsplash.com/photo-1581579186988-c08ddd662fa0?auto=format&fit=crop&w=600&q=80",
+    imageAlt: "Cliente senior souriante portant un manteau bleu",
+    dialogue:
+      "Je paye par chèque depuis 20 ans, je n’ai pas confiance dans la carte bleue !",
+    responses: [
       {
-        label: "Tu l'invites à revenir avec un autre moyen de paiement sans proposer d'aide.",
-        isCorrect: false,
+        label:
+          "Je comprends, c’est un changement important, mais nous avons des solutions simples et sûres : carte ou paiement en plusieurs fois sans frais.",
+        tone: "positive",
         feedback:
-          "Cette réponse peut générer de la frustration. Propose une solution alternative immédiatement.",
-      },
-      {
-        label: "Tu expliques calmement la nouvelle règle et proposes une solution rapide.",
+          "Excellent réflexe ! Tu écoutes, rassures et proposes une alternative concrète et rassurante.",
         isCorrect: true,
-        feedback:
-          "Bonne approche : tu rassures le client tout en l'orientant vers une solution concrète.",
       },
       {
-        label: "Tu suggères de contacter un responsable plus tard pour trouver une solution.",
-        isCorrect: false,
+        label: "C’est la nouvelle règle, je ne peux rien faire.",
+        tone: "negative",
         feedback:
-          "Reste acteur du changement et accompagne le client dès maintenant.",
+          "Ta réponse manque d’écoute et peut créer de la frustration. Accueille le ressenti et accompagne le changement.",
+        isCorrect: false,
+      },
+      {
+        label: "Vous verrez, tout le monde s’y fera.",
+        tone: "neutral",
+        feedback:
+          "Tu restes poli, mais tu ne réponds pas à l’inquiétude. Propose une solution qui rassure immédiatement.",
+        isCorrect: false,
       },
     ],
   },
   {
     id: 2,
-    title: "Client mécontent",
+    name: "Nicolas",
+    archetype: "Client pressé",
     description:
-      "Un client exprime son agacement et dit qu'il préférait le chèque.",
-    options: [
+      "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la réponse tarde.",
+    image:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
+    imageAlt: "Client pressé regardant sa montre dans un magasin",
+    dialogue: "Vous perdez du temps avec vos nouvelles règles ! J’ai pas que ça à faire.",
+    responses: [
       {
-        label: "Tu lui rappelles que les chèques sont dépassés et qu'il n'a pas le choix.",
-        isCorrect: false,
+        label:
+          "Je comprends, mais la carte bleue reste la plus rapide. Tu peux aussi payer en 3 ou 4 fois sans frais.",
+        tone: "positive",
         feedback:
-          "Garde un ton positif et inclusif pour maintenir une bonne relation client.",
-      },
-      {
-        label: "Tu reconnais que c'est une nouveauté pour tous et expliques les avantages.",
+          "Parfait ! Tu restes calme, positif et tu recentres sur le bénéfice client en proposant une solution immédiate.",
         isCorrect: true,
-        feedback:
-          "Tu fais preuve d'empathie tout en valorisant le changement : excellente réponse.",
       },
       {
-        label: "Tu demandes au client de se renseigner sur internet par lui-même.",
-        isCorrect: false,
+        label: "C’est pas moi qui décide.",
+        tone: "negative",
         feedback:
-          "Propose ton aide sur place pour garder la maîtrise de la situation.",
+          "Tu alimentes la colère du client au lieu de la désamorcer. Reste acteur et propose une solution rapide.",
+        isCorrect: false,
+      },
+      {
+        label: "Oui, c’est agaçant, mais c’est la direction.",
+        tone: "neutral",
+        feedback:
+          "Tu reconnais l’inconfort mais tu n’apportes pas de solution. Recentre sur l’expérience client et propose un plan B.",
+        isCorrect: false,
       },
     ],
   },
   {
     id: 3,
-    title: "Client administratif",
+    name: "Sonia",
+    archetype: "Client professionnelle",
     description:
-      "Un client associatif cherche une solution pour régler un achat important.",
-    options: [
+      "Elle représente une mairie ou une association, habituée au chèque administratif et cherche une alternative fiable.",
+    image:
+      "https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?auto=format&fit=crop&w=600&q=80",
+    imageAlt: "Cliente professionnelle discutant avec un vendeur",
+    dialogue:
+      "Je suis une mairie, on ne peut pas payer autrement que par chèque administratif.",
+    responses: [
       {
-        label: "Tu lui expliques que le chèque était réservé aux professionnels et que c'est terminé.",
-        isCorrect: false,
+        label:
+          "Bonne nouvelle : Decathlon Pro existe justement pour les paiements professionnels. Je peux vous orienter vers ce service.",
+        tone: "positive",
         feedback:
-          "Propose une alternative concrète plutôt que de fermer la discussion.",
-      },
-      {
-        label: "Tu l'orientes vers Decathlon Pro et les solutions de paiement adaptées.",
+          "Bonne réponse ! Tu proposes une solution adaptée et tu valorises l’accompagnement Decathlon Pro.",
         isCorrect: true,
-        feedback:
-          "Exact : tu restes dans l'accompagnement en proposant un parcours dédié.",
       },
       {
-        label: "Tu lui conseilles de diviser l'achat en plusieurs transactions plus petites.",
-        isCorrect: false,
+        label: "Je ne sais pas, ce n’est pas géré ici.",
+        tone: "negative",
         feedback:
-          "Recherche une solution officielle pour éviter les complications.",
+          "Tu fermes la discussion et risques de frustrer le client. Oriente-le vers une solution concrète.",
+        isCorrect: false,
+      },
+      {
+        label: "Les chèques sont interdits pour tout le monde maintenant.",
+        tone: "neutral",
+        feedback:
+          "Ta réponse est correcte mais incomplète. Propose une redirection vers Decathlon Pro pour sécuriser la relation.",
+        isCorrect: false,
       },
     ],
   },
@@ -296,7 +325,7 @@ const FINAL_QUIZ: QuizQuestion[] = [
     options: [
       "Aucune solution",
       "Payer en espèces, carte cadeau ou paiement en plusieurs fois",
-      "Insister pour qu'il fasse un retrait immédiatement",
+      "Insister pour qu'il fasse un retrait imm��diatement",
       "Contourner la règle et accepter le chèque",
     ],
     correctIndex: 1,
