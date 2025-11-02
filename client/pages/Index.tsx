@@ -1,234 +1,163 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import SiteFooter from "@/components/SiteFooter";
 
-const INTRO_IMAGE_URL =
-  "https://images.unsplash.com/photo-1523419409543-0c1df022bdd1?auto=format&fit=crop&w=2000&q=80";
-const MODULE_PLACEHOLDER_POSTER =
-  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=80";
+const HERO_IMAGE_URL =
+  "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=2000&q=80";
 
-const resources = [
+const WHY_ITEMS = [
   {
-    icon: "📄",
-    title: "Fiche mémo imprimable",
-    description: "Les scripts et alternatives à garder en tête",
+    icon: "💡",
+    title: "Moderniser",
+    description: "Simplifier nos encaissements",
   },
   {
-    icon: "❓",
-    title: "FAQ",
-    description: "Les réponses aux questions fréquentes en caisse",
+    icon: "💬",
+    title: "Rassurer",
+    description: "Accompagner nos clients avec empathie",
   },
   {
-    icon: "🎥",
-    title: "Capsule vidéo",
-    description: "Les bons réflexes en situation réelle",
+    icon: "⚙️",
+    title: "Faciliter",
+    description: "Rendre chaque passage en caisse plus fluide",
+  },
+] as const;
+
+const MISSION_IMAGES = [
+  {
+    src: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80",
+    alt: "Équipe à la caisse Decathlon",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80",
+    alt: "Technicien atelier Decathlon",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1521337706265-3c7abb882bc2?auto=format&fit=crop&w=900&q=80",
+    alt: "Conseiller rayon accompagnant un client",
+  },
+] as const;
+
+const TESTIMONIALS = [
+  {
+    name: "Sarah",
+    role: "Hôtesse de caisse",
+    quote:
+      "J’avais peur des réactions, mais les scripts m’ont aidée à garder le sourire.",
+  },
+  {
+    name: "Maxime",
+    role: "Technicien atelier",
+    quote:
+      "Les clients comprennent très bien quand on reste calme et clair.",
+  },
+  {
+    name: "Julie",
+    role: "Responsable accueil",
+    quote:
+      "Le module m’a donné les bons mots pour rassurer nos clients seniors.",
+  },
+] as const;
+
+const REFLEXES = [
+  {
+    icon: "🫶",
+    title: "Empathie",
+    description: "Accueille chaque réaction avec calme et écoute.",
+  },
+  {
+    icon: "🗣️",
+    title: "Clarté",
+    description: "Annonce la règle simplement, sans t’excuser ni te justifier.",
+  },
+  {
+    icon: "💳",
+    title: "Alternative",
+    description: "Propose immédiatement une solution : carte, espèces ou carte cadeau.",
   },
 ] as const;
 
 export default function Index() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const moduleRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const updateProgress = () => {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setScrollProgress(progress);
-    };
-
-    updateProgress();
-    window.addEventListener("scroll", updateProgress);
-    window.addEventListener("resize", updateProgress);
-
-    return () => {
-      window.removeEventListener("scroll", updateProgress);
-      window.removeEventListener("resize", updateProgress);
-    };
-  }, []);
-
-  const handleStartModule = () => {
-    moduleRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
-    <div className="scroll-smooth bg-background text-foreground">
-      <PageHeader progress={scrollProgress} onStart={handleStartModule} />
-      <main className="flex flex-col gap-24 pt-[120px] md:gap-28 lg:pt-[128px]">
-        <IntroductionSection onStart={handleStartModule} />
-        <ModuleSection moduleRef={moduleRef} />
-        <ResourcesSection />
-        <ClosureSection />
+    <div className="bg-background text-foreground">
+      <main className="flex flex-col">
+        <HeroSection />
+        <WhySection />
+        <MissionSection />
+        <TestimonialsSection />
+        <ReflexesSection />
+        <AccessibilitySection />
+        <FinalCTASection />
       </main>
       <SiteFooter />
     </div>
   );
 }
 
-function PageHeader({
-  progress,
-  onStart,
-}: {
-  progress: number;
-  onStart: () => void;
-}) {
+function HeroSection() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-primary text-primary-foreground shadow-lg shadow-primary/30">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-8">
-        <div className="inline-flex items-center gap-3">
-          <span className="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-black uppercase tracking-[0.35em] text-primary">
-            Decathlon
-          </span>
-          <div className="hidden flex-col leading-tight sm:flex">
-            <span className="text-xs font-semibold uppercase text-primary-foreground/80">
-              Module e-learning officiel
-            </span>
-            <span className="text-base font-semibold">Espace Formation Capitaine</span>
-          </div>
-        </div>
-        <button
-          type="button"
-          onClick={onStart}
-          className="inline-flex items-center justify-center rounded-[12px] border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-        >
-          Continuer la formation
-        </button>
-      </div>
-      <div className="h-1 w-full bg-primary/40">
-        <div
-          className="h-full origin-left bg-[#00B050] transition-[width] duration-300 ease-out"
-          style={{ width: `${Math.min(progress, 100)}%` }}
-          aria-hidden="true"
-        />
-      </div>
-    </header>
-  );
-}
-
-function IntroductionSection({ onStart }: { onStart: () => void }) {
-  return (
-    <section className="bg-card">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-16 md:flex-row md:items-center md:justify-between md:px-8 lg:py-20">
-        <div className="flex w-full max-w-2xl flex-col gap-6 text-center md:text-left">
-          <div className="space-y-3">
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary">
-              Bienvenue Capitaine
-            </span>
-            <h1 className="text-4xl font-bold leading-tight text-primary sm:text-5xl">
-              Bienvenue dans ta formation, Capitaine 👋
-            </h1>
-            <p className="text-lg leading-relaxed text-foreground/70 sm:text-xl">
-              Tu vas découvrir comment annoncer sereinement la fin du paiement par
-              chèque à tes clients. Prêt·e ? Installe-toi, nous nous occupons du reste.
-            </p>
-          </div>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <button
-              type="button"
-              onClick={onStart}
-              className="inline-flex w-full items-center justify-center rounded-[12px] bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-auto"
-            >
-              Commencer le module
-            </button>
-            <p className="text-sm font-medium text-foreground/60">
-              Durée estimée : 12 à 15 minutes
-            </p>
-          </div>
-        </div>
-        <div className="relative w-full max-w-xl overflow-hidden rounded-3xl shadow-xl shadow-primary/20">
-          <img
-            src={INTRO_IMAGE_URL}
-            alt="Interaction client en caisse Decathlon"
-            className="h-full w-full object-cover"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ModuleSection({
-  moduleRef,
-}: {
-  moduleRef: React.RefObject<HTMLDivElement>;
-}) {
-  return (
-    <section ref={moduleRef} id="module" className="bg-muted">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-20 md:px-8 lg:py-24">
-        <div className="space-y-4 text-center">
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-            Module interactif – Fin du paiement par chèque
-          </h2>
-          <p className="mx-auto max-w-2xl text-base text-foreground/70 sm:text-lg">
-            Lance ton parcours immersif et suis les scénarios proposés pour adopter le
-            bon discours en caisse. Le module se charge automatiquement ci-dessous.
+    <section className="relative isolate flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden">
+      <img
+        src={HERO_IMAGE_URL}
+        alt="Équipe Decathlon souriante"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-primary/70 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/60 via-primary/30 to-secondary/50" />
+      <div className="relative z-10 w-full max-w-5xl px-6 py-24 text-center text-white md:px-10">
+        <span className="inline-flex items-center justify-center rounded-full bg-white/15 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/80 shadow-lg shadow-black/20">
+          Fin du paiement par chèque – Ensemble vers 2026
+        </span>
+        <div className="mt-8 space-y-6">
+          <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+            Tu fais partie du changement. Ensemble, on avance vers 2026 !
+          </h1>
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/85 sm:text-xl">
+            À partir de 2026, les chèques ne seront plus acceptés. Découvre comment
+            informer, rassurer et accompagner nos clients avec confiance.
           </p>
         </div>
-        <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 rounded-3xl border border-border bg-white p-6 shadow-xl shadow-primary/10">
-          <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-dashed border-primary/30 bg-gradient-to-br from-primary/5 via-white to-secondary/10">
-            <img
-              src={MODULE_PLACEHOLDER_POSTER}
-              alt="Illustration caisse Decathlon"
-              className="h-full w-full object-cover opacity-30"
-            />
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-primary/10 backdrop-blur-sm text-center">
-              <span className="text-lg font-semibold text-primary">
-                Le module Articulate SCORM s’affichera ici.
-              </span>
-              <span className="text-sm text-foreground/70">
-                Merci de patienter pendant le chargement…
-              </span>
-            </div>
-          </div>
-          <p className="text-center text-sm text-foreground/60">
-            Si le module ne s’ouvre pas, clique sur le bouton ci-dessous.
-          </p>
+        <div className="mt-10 flex flex-col items-center gap-4">
           <Link
             to="/formation"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-[12px] border border-primary/20 bg-white px-6 py-3 text-sm font-semibold text-primary shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="inline-flex items-center justify-center rounded-[12px] bg-white px-8 py-4 text-base font-semibold text-primary shadow-xl shadow-black/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00B050] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
-            Ouvrir le module dans une nouvelle fenêtre
+            Je commence la formation
           </Link>
+          <p className="text-sm font-medium text-white/80">
+            Durée : 12 à 15 minutes – Formation accessible à tous, à tout moment.
+          </p>
         </div>
       </div>
     </section>
   );
 }
 
-function ResourcesSection() {
+function WhySection() {
   return (
-    <section className="bg-card">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-20 md:px-8 lg:py-24">
-        <div className="space-y-4 text-center">
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-            Ressources utiles
-          </h2>
-          <p className="mx-auto max-w-2xl text-base text-foreground/70 sm:text-lg">
-            Télécharge, consulte ou regarde les contenus complémentaires pour
-            maîtriser la transition vers le paiement sans chèque.
+    <section className="bg-card py-20">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 md:px-10">
+        <div className="space-y-4 text-center md:text-left">
+          <h2 className="text-3xl font-bold sm:text-4xl">Pourquoi cette formation ?</h2>
+          <p className="mx-auto max-w-3xl text-lg text-foreground/70 md:mx-0">
+            Le chèque, c’est fini, mais la confiance reste. Cette formation t’aide à
+            expliquer le changement simplement, avec les bons mots et les bonnes
+            attitudes.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
-          {resources.map((resource) => (
-            <button
-              key={resource.title}
-              type="button"
-              className="group flex w-full flex-col gap-4 rounded-3xl border border-transparent bg-muted/60 p-8 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary hover:text-white hover:shadow-xl"
+          {WHY_ITEMS.map((item) => (
+            <div
+              key={item.title}
+              className="group flex flex-col gap-4 rounded-3xl border border-border bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
             >
-              <span className="text-4xl" aria-hidden="true">
-                {resource.icon}
+              <span className="text-5xl" aria-hidden="true">
+                {item.icon}
               </span>
               <div className="space-y-2">
-                <span className="text-xl font-semibold">{resource.title}</span>
-                <p className="text-sm text-foreground/70 transition-colors duration-300 group-hover:text-white/80">
-                  {resource.description}
-                </p>
+                <h3 className="text-xl font-semibold text-primary">{item.title}</h3>
+                <p className="text-base text-foreground/70">{item.description}</p>
               </div>
-            </button>
+            </div>
           ))}
         </div>
       </div>
@@ -236,22 +165,153 @@ function ResourcesSection() {
   );
 }
 
-function ClosureSection() {
+function MissionSection() {
+  return (
+    <section className="bg-[#E8F4FB] py-20">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 md:px-10">
+        <div className="space-y-4 text-center">
+          <h2 className="text-3xl font-bold text-primary sm:text-4xl">
+            Une mission d’équipe
+          </h2>
+          <p className="mx-auto max-w-3xl text-lg text-primary/80">
+            Chaque collaborateur compte. En caisse, en rayon ou à l’accueil, ta façon
+            d’expliquer ce changement fait toute la différence.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {MISSION_IMAGES.map((image) => (
+            <div
+              key={image.src}
+              className="overflow-hidden rounded-3xl bg-white shadow-lg shadow-primary/20 transition-transform duration-500 hover:-translate-y-1"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="h-64 w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TestimonialsSection() {
+  return (
+    <section className="bg-muted py-20">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 md:px-10">
+        <div className="space-y-4 text-center">
+          <h2 className="text-3xl font-bold sm:text-4xl">Ils l’ont déjà testé</h2>
+          <p className="mx-auto max-w-3xl text-lg text-foreground/70">
+            Des collègues de toute la France ont déjà adopté les bons réflexes pour
+            faire passer le message avec sérénité.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {TESTIMONIALS.map((testimonial) => (
+            <div
+              key={testimonial.name}
+              className="flex h-full flex-col gap-4 rounded-3xl border border-transparent bg-white p-8 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-2xl"
+            >
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-lg font-semibold text-primary">
+                  {testimonial.name.charAt(0)}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-base font-semibold text-primary">
+                    {testimonial.name}
+                  </span>
+                  <span className="text-sm text-foreground/60">
+                    {testimonial.role}
+                  </span>
+                </div>
+              </div>
+              <p className="text-base leading-relaxed text-foreground/75">
+                “{testimonial.quote}”
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ReflexesSection() {
+  return (
+    <section className="bg-card py-20">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 md:px-10">
+        <div className="space-y-4 text-center">
+          <h2 className="text-3xl font-bold sm:text-4xl">Tes 3 réflexes clés</h2>
+          <p className="mx-auto max-w-3xl text-lg text-foreground/70">
+            Applique ces réflexes à chaque échange pour garantir une transition fluide
+            et positive pour nos clients.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {REFLEXES.map((item) => (
+            <div
+              key={item.title}
+              className="group relative flex h-full flex-col gap-5 rounded-3xl border border-border bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl"
+            >
+              <span className="text-5xl" aria-hidden="true">
+                {item.icon}
+              </span>
+              <div className="space-y-2">
+                <h3 className="text-xl font-semibold text-secondary">{item.title}</h3>
+                <p className="text-base text-foreground/70">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AccessibilitySection() {
+  return (
+    <section className="bg-card py-20">
+      <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-8 px-6 text-center md:px-10">
+        <div className="space-y-4">
+          <h2 className="text-3xl font-bold sm:text-4xl">Une formation pour tous</h2>
+          <p className="mx-auto max-w-2xl text-lg text-foreground/70">
+            Accessible sur mobile, tablette et ordinateur. Pensée pour tous les métiers,
+            tous les rythmes et tous les niveaux.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-6 text-3xl">
+          <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-sm">
+            📱
+          </span>
+          <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-sm">
+            💻
+          </span>
+          <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-sm">
+            🧏‍♀️
+          </span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FinalCTASection() {
   return (
     <section className="bg-secondary text-secondary-foreground">
-      <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-6 px-6 py-20 text-center md:px-8 lg:py-24">
-        <h2 className="text-3xl font-bold sm:text-4xl">Tu as terminé ? Bravo ! 🎉</h2>
+      <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-6 px-6 py-20 text-center md:px-10">
+        <h2 className="text-3xl font-bold sm:text-4xl">À toi de jouer !</h2>
         <p className="max-w-2xl text-lg text-white/85">
-          Grâce à toi, la transition vers le paiement sans chèque se fera en douceur.
-          Pense à partager tes astuces avec ton équipe pour inspirer les autres
-          Capitaines.
+          Découvre le module interactif et fais partie du mouvement. Ensemble, nous
+          préparons l’expérience client de demain.
         </p>
-        <button
-          type="button"
-          className="inline-flex items-center justify-center rounded-[12px] bg-[#00B050] px-8 py-3 text-base font-semibold text-white shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00b050]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        <Link
+          to="/formation"
+          className="inline-flex items-center justify-center rounded-[12px] bg-white px-8 py-3 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00B050] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
-          Je valide ma formation
-        </button>
+          Démarrer la formation maintenant
+        </Link>
       </div>
     </section>
   );
