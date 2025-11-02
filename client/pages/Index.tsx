@@ -82,7 +82,7 @@ const SECTION_IDS = {
 const MODULE_OBJECTIVES = [
   {
     icon: Target,
-    title: "Clarifier la d��cision nationale",
+    title: "Clarifier la décision nationale",
     description:
       "Comprendre pourquoi Decathlon met fin au paiement par chèque et ce que cela change dans les magasins.",
   },
@@ -1395,7 +1395,7 @@ function ConclusionSection({
   onComplete,
 }: ConclusionSectionProps) {
   return (
-    <section id={id} className="bg-[#0082C3] py-24 text-white">
+    <section id={id} className="bg-[#1C4ED8] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 text-center md:px-10">
         <Reveal className="space-y-4">
           <h2 className="text-3xl font-bold md:text-4xl">Conclusion et ressources</h2>
@@ -1420,7 +1420,7 @@ function ConclusionSection({
         <Reveal className="flex flex-col gap-3 md:flex-row md:justify-center">
           <a
             href="#"
-            className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-base font-semibold text-[#0082C3] shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00B050] hover:text-white"
+            className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white"
           >
             <FileText className="h-5 w-5" aria-hidden="true" />
             Télécharger la fiche mémo PDF
@@ -1428,7 +1428,7 @@ function ConclusionSection({
           <button
             onClick={onComplete}
             type="button"
-            className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white/10 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00B050]"
+            className="inline-flex items-center justify-center gap-2 rounded-[12px] border border-white/40 bg-white/10 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20"
           >
             <HelpCircle className="h-5 w-5" aria-hidden="true" />
             Je termine ma formation
