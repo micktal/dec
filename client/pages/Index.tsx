@@ -240,7 +240,7 @@ const SCENARIOS: ClientScenario[] = [
           "Je comprends, mais la carte bleue reste la plus rapide. Tu peux aussi payer en 3 ou 4 fois sans frais.",
         tone: "positive",
         feedback:
-          "Parfait ! Tu restes calme, positif et tu recentres sur le bénéfice client en proposant une solution immédiate.",
+          "Parfait ! Tu restes calme, positif et tu recentres sur le bénéfice client en proposant une solution imm��diate.",
         isCorrect: true,
       },
       {
@@ -1158,7 +1158,7 @@ function ScenariosSection({
                     "inline-flex items-center justify-center gap-2 rounded-[12px] px-5 py-3 text-sm font-semibold transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
                     currentResponseIndex === null
                       ? "cursor-not-allowed border border-primary/20 bg-primary/10 text-primary/50"
-                      : "border border-primary bg-primary text-white hover:-translate-y-0.5 hover:bg-[#0066A1]",
+                      : "border border-primary bg-primary text-white hover:-translate-y-0.5 hover:bg-[#163FAF]",
                   )}
                 >
                   Continuer
@@ -1207,7 +1207,7 @@ function ScenariosSection({
                   <button
                     type="button"
                     onClick={onMarkCompleted}
-                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-[12px] border border-primary bg-primary px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0066A1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-[12px] border border-primary bg-primary px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#163FAF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   >
                     Terminer ma formation
                   </button>
