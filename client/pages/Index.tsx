@@ -128,12 +128,18 @@ const LEARNING_STEPS = [
   },
   {
     order: "03",
+    title: "Comprendre les réactions",
+    description: "Explore les profils clients et prépare tes réponses clés.",
+    sectionId: SECTION_IDS.CLIENT_GUIDE,
+  },
+  {
+    order: "04",
     title: "S'exercer en situation",
     description: "Choisis la bonne réponse dans les scénarios inspirés du terrain.",
     sectionId: SECTION_IDS.SCENARIOS,
   },
   {
-    order: "04",
+    order: "05",
     title: "Valider tes acquis",
     description: "Réponds au quiz final et finalise la formation.",
     sectionId: SECTION_IDS.FINAL_QUIZ,
