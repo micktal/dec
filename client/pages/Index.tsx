@@ -150,7 +150,7 @@ const REASONS = [
     icon: Cog,
     title: "Traitement plus simple",
     description:
-      "Les paiements ��lectroniques réduisent le temps de gestion pour les équipes en magasin.",
+      "Les paiements électroniques réduisent le temps de gestion pour les équipes en magasin.",
   },
   {
     icon: ShieldCheck,
@@ -419,7 +419,7 @@ export default function Index() {
     setReasonFeedback({
       message: option.isCorrect
         ? "Exact : trois jours sont généralement nécessaires pour qu'un chèque soit encaissé."
-        : "Ce n'est pas la bonne durée. Pense à l'impact logistique des chèques sur nos équipes.",
+        : "Ce n'est pas la bonne dur��e. Pense à l'impact logistique des chèques sur nos équipes.",
       correct: option.isCorrect,
     });
     setReasonScored(option.isCorrect);
@@ -1263,7 +1263,7 @@ function FinalQuizSection({
     : answeredCount === FINAL_QUIZ.length
       ? "Tu peux valider tes réponses."
       : "Réponds à toutes les questions pour débloquer la validation.";
-  const resultAccent = success ? "text-[#00B050]" : "text-amber-600";
+  const resultAccent = success ? "text-primary" : "text-amber-600";
   const ResultIcon = success ? CheckCircle2 : HelpCircle;
 
   return (
