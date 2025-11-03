@@ -290,7 +290,7 @@ const POSTURE_SEQUENCE = [
   {
     title: "2. Poser le cadre simplement",
     description:
-      "Annonce la fin du chèque avec des mots positifs et relie la décision à la sécurité et à la rapidité du service.",
+      "Annonce la fin du chèque avec des mots positifs et relie la décision à la sécurit�� et à la rapidité du service.",
   },
   {
     title: "3. Proposer une solution adaptée",
@@ -461,7 +461,7 @@ const SYNTHESIS_PILLARS = [
   {
     title: "Clarté assumée",
     description:
-      "Tu expliques la d��cision nationale avec simplicité. Quand le message est clair, le client perçoit notre professionnalisme et notre cohérence.",
+      "Tu expliques la décision nationale avec simplicité. Quand le message est clair, le client perçoit notre professionnalisme et notre cohérence.",
     checkpoints: [
       "Présenter les bénéfices : sécurité, rapidité, modernisation",
       "Rester positif et aligné avec le projet 2026",
@@ -844,7 +844,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     trigger: "“Et si je le pose là, mon chèque, vous le prenez quand même ?”",
     objective: "Rester léger tout en affirmant le cadre et les solutions.",
     example:
-      "Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
+      "Si seulement je pouvais ! Mais aujourd���hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
     takeaways: [
       "Garder une touche d’humour pour désamorcer.",
       "Montrer assurance sans rigidité.",
