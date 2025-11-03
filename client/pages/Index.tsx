@@ -1285,7 +1285,8 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
         <Reveal className="flex flex-col gap-6 md:max-w-2xl">
           <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 backdrop-blur">
             <DecathlonLogo
-              className="h-8 w-auto drop-shadow filter brightness-0 invert"
+              variant="white"
+              className="h-8 w-auto drop-shadow"
               aria-label="Decathlon"
             />
             <span className="text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
