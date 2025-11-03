@@ -709,7 +709,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     trigger: "“C’est inadmissible ! Vous prenez mon argent, alors vous prenez mon chèque !”",
     objective: "Désamorcer la tension sans entrer dans le conflit et recentrer vers la solution.",
     example:
-      "Je comprends votre agacement, c’est un vrai changement pour tout le monde. L’objectif est de vous faire gagner du temps et d’éviter les erreurs de paiement. Regardons ensemble ce qui vous conviendrait le mieux.",
+      "Je comprends votre agacement, c’est un vrai changement pour tout le monde. L���objectif est de vous faire gagner du temps et d’éviter les erreurs de paiement. Regardons ensemble ce qui vous conviendrait le mieux.",
     takeaways: [
       "Reformuler l’émotion avant d’expliquer.",
       "Éviter la justification défensive.",
@@ -1614,7 +1614,7 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
           </div>
         </Reveal>
 
-        <Reveal className="rounded-3dl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
+        <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
           <div className="space-y-6 text-left">
             <h3 className="text-2xl font-semibold text-white">Déroulé conseillé en caisse</h3>
             <p className="text-sm text-white/80">
@@ -1721,7 +1721,7 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
                       type="button"
                       onClick={() => handlePlayTone(index)}
                       className={cn(
-                        "inline-flex w-fit items-center gap-2 rounded-[12px] border px-3 py-2 text-xs font-semibold transition-all durée-300",
+                        "inline-flex w-fit items-center gap-2 rounded-[12px] border px-3 py-2 text-xs font-semibold transition-all duration-300",
                         isActive
                           ? "border-current bg-white/10"
                           : "border-white/40 bg-white/5 text-white hover:-translate-y-0.5",
@@ -1750,7 +1750,7 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
             <button
               type="button"
               onClick={onGoToConclusion}
-              className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-sm font-semibold text-primary shadow-lg shadow-black/20 transition-all durée-300 hover:-translate-y-0.5 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-sm font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <Smile className="h-4 w-4" aria-hidden="true" />
               Je poursuis la formation
@@ -2035,7 +2035,7 @@ function SynthesisSection({ id }: { id?: string }) {
           />
           <h2 className="text-3xl font-bold md:text-4xl">Synthèse : à toi de jouer</h2>
           <p className="text-lg text-white/80">
-            Tu as toutes les clés : empathie, clarté et solutions. Voici comment transformer chaque échange en victoire client.
+            Tu as toutes les clés : empathie, clart�� et solutions. Voici comment transformer chaque échange en victoire client.
           </p>
         </Reveal>
         <div className="grid gap-6 md:grid-cols-3">
