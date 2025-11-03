@@ -665,6 +665,226 @@ const SCENARIOS: ClientScenario[] = [
   },
 ];
 
+const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
+  {
+    id: "insistant-agressif",
+    title: "Client insistant ou agressif",
+    trigger: "“C’est inadmissible ! Vous prenez mon argent, alors vous prenez mon chèque !”",
+    objective: "Désamorcer la tension sans entrer dans le conflit et recentrer vers la solution.",
+    example:
+      "Je comprends votre agacement, c’est un vrai changement pour tout le monde. L’objectif est de vous faire gagner du temps et d’éviter les erreurs de paiement. Regardons ensemble ce qui vous conviendrait le mieux.",
+    takeaways: [
+      "Reformuler l’émotion avant d’expliquer.",
+      "Éviter la justification défensive.",
+      "Ramener la discussion vers la recherche de solution commune.",
+    ],
+    interaction: {
+      kind: "choice",
+      prompt: "Choisis la formulation qui apaise tout en gardant la maîtrise.",
+      options: [
+        {
+          label: "C’est la règle, on ne les prend plus.",
+          feedback: "Formulation trop administrative : tu imposes sans accompagner.",
+          status: "error",
+        },
+        {
+          label: "Pas d’inquiétude, on a plusieurs solutions simples à te proposer.",
+          feedback: "Parfait : rassurant, positif et orienté solution.",
+          status: "success",
+        },
+        {
+          label: "C’est fini depuis 2026, c’est comme ça maintenant.",
+          feedback: "Formulation trop abrupte : la bienveillance disparaît.",
+          status: "warning",
+        },
+      ],
+    },
+  },
+  {
+    id: "age-numerique",
+    title: "Client âgé en difficulté numérique",
+    trigger: "“Je n’ai pas de carte bancaire, je ne sais pas faire vos trucs modernes.”",
+    objective: "Rassurer sans infantiliser et proposer une solution concrète accompagnée.",
+    example:
+      "Pas de souci, beaucoup de nos clients sont dans la même situation. Vous pouvez utiliser une carte cadeau, ou venir avec quelqu’un de votre entourage — on s’adapte.",
+    takeaways: [
+      "Valoriser la personne, pas le manque.",
+      "Donner le sentiment d’être compris, pas dépassé.",
+      "Proposer une solution accompagnée et rassurante.",
+    ],
+    interaction: {
+      kind: "choice",
+      prompt: "Quel message reformule sans juger et ouvre des solutions ?",
+      options: [
+        {
+          label: "On ne peut rien faire sans carte, il faudra revenir avec quelqu’un.",
+          feedback: "Message culpabilisant : tu accentues le sentiment d’être dépassé.",
+          status: "error",
+        },
+        {
+          label: "Pas de souci, beaucoup de clients préfèrent qu’on les accompagne pour la carte cadeau ou le paiement en caisse.",
+          feedback:
+            "Bonne reformulation : tu normalises la situation et tu proposes un accompagnement concret.",
+          status: "success",
+        },
+        {
+          label: "Demandez à vos proches de vous montrer, ils sont souvent plus à l’aise.",
+          feedback: "Suggestion maladroite : tu déplaces le problème sans proposer d’appui en magasin.",
+          status: "warning",
+        },
+      ],
+    },
+  },
+  {
+    id: "institutionnel",
+    title: "Client institutionnel bloqué administrativement",
+    trigger: "“Je travaille pour la mairie, on ne peut payer que par chèque !”",
+    objective: "Expliquer calmement Decathlon Pro et montrer que la solution existe déjà.",
+    example:
+      "Bonne nouvelle : pour les mairies et associations, il y a Decathlon Pro. Vous gardez votre mode de validation interne, mais sans chèque — par virement ou mandat.",
+    takeaways: [
+      "Parler de simplification, pas de restriction.",
+      "Valoriser Decathlon Pro comme solution clé.",
+      "Rester dans l’accompagnement personnalisé.",
+    ],
+    interaction: {
+      kind: "choice",
+      prompt: "Comment orientes-tu ce client sans bloquer sa procédure interne ?",
+      options: [
+        {
+          label:
+            "Bonne nouvelle : Decathlon Pro permet justement de payer par virement ou mandat tout en gardant votre circuit interne. Je vous accompagne pour la prise en main.",
+          feedback:
+            "C’est la bonne approche : tu valorises la solution dédiée et tu restes dans l’accompagnement.",
+          status: "success",
+          followUp: {
+            label: "Découvrir Decathlon Pro",
+            href: "https://www.decathlonpro.fr/",
+            description:
+              "Vidéo et tutoriels pour créer un compte, valider les commandes et régler par mandat ou virement.",
+          },
+        },
+        {
+          label: "On ne prend plus les chèques, il faudra revenir avec un autre moyen de paiement.",
+          feedback: "Réponse incomplète : tu annonces la règle sans proposer de solution professionnelle.",
+          status: "warning",
+        },
+        {
+          label: "Voyez directement avec votre trésorerie, ce n’est pas géré ici.",
+          feedback: "Tu renvoies la responsabilité au client et tu perds la relation de confiance.",
+          status: "error",
+        },
+      ],
+    },
+  },
+  {
+    id: "stresse-conflit",
+    title: "Client stressé ou à la limite du conflit",
+    trigger: "“C’est pas normal, tout change ici ! Je ne reviendrai plus.”",
+    objective: "Gérer le rejet émotionnel en dissociant la frustration de la relation.",
+    example:
+      "Je comprends que ce soit déroutant. On évolue pour que ce soit plus simple, mais notre accueil, lui, ne change pas. On reste là pour vous, comme toujours.",
+    takeaways: [
+      "Dissocier la frustration du client de sa personne.",
+      "Utiliser le “nous” collectif pour ramener la confiance.",
+      "Ancrer la stabilité de l’accueil malgré la nouveauté.",
+    ],
+    interaction: {
+      kind: "flip",
+      prompt: "Clique pour révéler la formulation qui maintient la fidélité.",
+      front: {
+        title: "Proposition à analyser",
+        description: "“Je ne peux rien faire, c’est la direction qui décide.”",
+      },
+      back: {
+        title: "Formulation gagnante",
+        description:
+          "On évolue pour que ce soit plus simple, mais notre accueil reste identique. On est là pour vous accompagner comme toujours.",
+        highlights: [
+          "Le “nous” collectif renforce la confiance.",
+          "Tu rassures sur la continuité de la relation.",
+          "Tu reconnais l’émotion sans t’y opposer.",
+        ],
+      },
+    },
+  },
+  {
+    id: "test-limites",
+    title: "Client qui teste les limites",
+    trigger: "“Et si je le pose là, mon chèque, vous le prenez quand même ?”",
+    objective: "Rester léger tout en affirmant le cadre et les solutions.",
+    example:
+      "Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
+    takeaways: [
+      "Garder une touche d’humour pour désamorcer.",
+      "Montrer assurance sans rigidité.",
+      "Revenir immédiatement aux options disponibles.",
+    ],
+    interaction: {
+      kind: "choice",
+      prompt: "Quelle réponse garde le sourire tout en rappelant la règle ?",
+      options: [
+        {
+          label:
+            "(Sourire) Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
+          feedback:
+            "Parfait : tu restes léger, tu confirmes la règle et tu proposes des options concrètes.",
+          status: "success",
+        },
+        {
+          label: "Posez-le et on verra, mais ce sera exceptionnellement.",
+          feedback: "Danger : tu ouvres la porte au passe-droit et tu perds l’autorité du cadre.",
+          status: "error",
+        },
+        {
+          label: "On ne plaisante pas avec les règles, merci de rester sérieux.",
+          feedback:
+            "Trop rigide : l’humour du client se transforme en confrontation. Reste ferme sans braquer.",
+          status: "warning",
+        },
+      ],
+    },
+  },
+  {
+    id: "mal-informe",
+    title: "Client mal informé ou venant d’un autre magasin",
+    trigger: "“Mais à Decathlon Lyon, ils prenaient encore les chèques la semaine dernière !”",
+    objective: "Aligner le discours entre magasins et renforcer la crédibilité.",
+    example:
+      "Oui, c’était encore en phase de transition. Aujourd’hui, la nouvelle politique est la même dans tous nos magasins.",
+    takeaways: [
+      "Parler au présent pour ancrer la règle.",
+      "Montrer la cohérence du groupe Decathlon.",
+      "Rappeler que l’information évolue et s’unifie.",
+    ],
+    interaction: {
+      kind: "choice",
+      prompt: "Quelle réponse corrige l’information sans créer de doute ?",
+      options: [
+        {
+          label:
+            "Oui, c’était encore en phase de transition. Aujourd’hui, la politique est la même dans tous nos magasins.",
+          feedback:
+            "Bonne réponse : tu ajoutes du contexte et tu montres la cohérence nationale.",
+          status: "success",
+        },
+        {
+          label: "Chaque magasin fait comme il veut, ici on a arrêté plus tôt.",
+          feedback:
+            "Mauvais message : tu brouilles le cadrage national et fragilises la confiance.",
+          status: "error",
+        },
+        {
+          label: "Je ne sais pas, on nous dit souvent autre chose.",
+          feedback:
+            "Réponse hésitante : tu laisses planer le doute et tu perds en crédibilité.",
+          status: "warning",
+        },
+      ],
+    },
+  },
+];
+
 const FINAL_QUIZ: QuizQuestion[] = [
   {
     id: 1,
