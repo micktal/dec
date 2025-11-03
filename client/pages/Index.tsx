@@ -1873,7 +1873,7 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
                 Étude des trois cas clients en vidéo
               </h3>
               <p className="text-primary/80">
-                Revois les r��actions typiques et la meilleure posture à adopter pour chaque profil : fidèle et âgé, pressé ou professionnel.
+                Revois les réactions typiques et adopte la posture la plus adaptée pour chaque profil : fidèle et âgé, pressé ou professionnel.
               </p>
             </div>
             <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-black/20">
