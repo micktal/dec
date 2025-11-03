@@ -6,11 +6,21 @@ export const DECATHLON_LOGO_SRC =
 type DecathlonLogoProps = {
   className?: string;
   "aria-label"?: string;
+  /**
+   * Controls the logo color.
+   * Use "white" on dark or blue backgrounds, and "blue" on light backgrounds.
+   */
+  variant?: "blue" | "white";
 };
 
-export function DecathlonLogo({ className, "aria-label": ariaLabel }: DecathlonLogoProps) {
-  const baseClass = "h-10 w-auto filter brightness-0 invert";
-  const mergedClass = className ? `${baseClass} ${className}` : baseClass;
+export function DecathlonLogo({
+  className,
+  variant = "blue",
+  "aria-label": ariaLabel,
+}: DecathlonLogoProps) {
+  const baseClass = "h-10 w-auto";
+  const variantClass = variant === "white" ? "filter brightness-0 invert" : "";
+  const mergedClass = [baseClass, variantClass, className].filter(Boolean).join(" ");
 
   return (
     <img
