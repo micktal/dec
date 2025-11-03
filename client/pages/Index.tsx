@@ -1662,52 +1662,28 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold text-white">Travailler son ton de voix</h3>
             <p className="text-sm text-white/80">
-              Clique pour écouter chaque version et repère les éléments à conserver ou à ajuster.
+              Compare les trois versions et retiens les points forts à amplifier ou les défauts à corriger pour rester engageant.
             </p>
             <div className="grid gap-4 md:grid-cols-3">
-              {POSTURE_TONE_SAMPLES.map((sample, index) => {
-                const isActive = activeTone === index;
-                return (
-                  <div
-                    key={sample.label}
-                    className={cn(
-                      "flex h-full flex-col gap-3 rounded-[18px] border px-5 py-4 text-left text-sm transition-all duration-300",
-                      isActive
-                        ? TONE_QUALITY_STYLES[sample.quality]
-                        : "border-white/20 bg-white/5 text-white",
-                    )}
-                  >
-                    <div className="space-y-1">
-                      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
-                        {sample.label}
-                      </p>
-                      <p className={cn("text-sm", isActive ? "text-inherit" : "text-white/80")}
-                      >
-                        {sample.description}
-                      </p>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => handlePlayTone(index)}
-                      className={cn(
-                        "inline-flex w-fit items-center gap-2 rounded-[12px] border px-3 py-2 text-xs font-semibold transition-all duration-300",
-                        isActive
-                          ? "border-current bg-white/10"
-                          : "border-white/40 bg-white/5 text-white hover:-translate-y-0.5",
-                      )}
-                    >
-                      <PlayCircle className="h-4 w-4" aria-hidden="true" />
-                      Écouter l'exemple
-                    </button>
-                    {isActive && toneMessage && (
-                      <p className="text-xs leading-relaxed">{toneMessage}</p>
-                    )}
-                    {isActive && voiceSupportMessage && (
-                      <p className="text-xs text-white/75">{voiceSupportMessage}</p>
-                    )}
+              {POSTURE_TONE_SAMPLES.map((sample) => (
+                <div
+                  key={sample.label}
+                  className={cn(
+                    "flex h-full flex-col gap-3 rounded-[18px] border px-5 py-4 text-left text-sm transition-all duration-300",
+                    TONE_QUALITY_STYLES[sample.quality],
+                  )}
+                >
+                  <div className="space-y-1">
+                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
+                      {sample.label}
+                    </p>
+                    <p className="text-sm text-white/85">{sample.description}</p>
                   </div>
-                );
-              })}
+                  <p className="rounded-[12px] border border-white/20 bg-white/10 p-3 text-xs leading-relaxed text-white/85">
+                    {sample.focus}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </Reveal>
@@ -2464,7 +2440,7 @@ function ScenariosSection({
             {safeScenarioIndex < SCENARIOS.length - 1 && (
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <span className="text-sm text-foreground/60">
-                  Une fois ta réponse choisie, passe au client suivant.
+                  Une fois ta r��ponse choisie, passe au client suivant.
                 </span>
                 <button
                   type="button"
@@ -2487,7 +2463,7 @@ function ScenariosSection({
         <Reveal className="space-y-4 text-center">
           <h3 className="text-2xl font-semibold text-primary">Scénarios difficiles à maîtriser</h3>
           <p className="text-lg text-foreground/70">
-            Entraîne-toi sur des situations exceptionnelles pour garder la maîtrise même lorsque l’échange se tend.
+            Entraîne-toi sur des situations exceptionnelles pour garder la maîtrise m��me lorsque l’échange se tend.
           </p>
         </Reveal>
         <div className="grid gap-6 lg:grid-cols-2">
