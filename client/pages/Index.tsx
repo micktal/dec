@@ -290,7 +290,7 @@ const POSTURE_SEQUENCE = [
   {
     title: "2. Poser le cadre simplement",
     description:
-      "Annonce la fin du chèque avec des mots positifs et relie la décision à la sécurit�� et à la rapidité du service.",
+      "Annonce la fin du chèque avec des mots positifs et relie la décision à la sécurité et à la rapidité du service.",
   },
   {
     title: "3. Proposer une solution adaptée",
@@ -844,7 +844,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     trigger: "“Et si je le pose là, mon chèque, vous le prenez quand même ?”",
     objective: "Rester léger tout en affirmant le cadre et les solutions.",
     example:
-      "Si seulement je pouvais ! Mais aujourd���hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
+      "Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
     takeaways: [
       "Garder une touche d’humour pour désamorcer.",
       "Montrer assurance sans rigidité.",
@@ -930,7 +930,7 @@ const FINAL_QUIZ: QuizQuestion[] = [
   },
   {
     id: 2,
-    question: "Face à un client pressé ou agacé, quelle posture illustre l'empathie active ?",
+    question: "Face �� un client pressé ou agacé, quelle posture illustre l'empathie active ?",
     options: [
       "Rester calme, reformuler et valoriser la rapidité de la CB ou du paiement fractionné",
       "Répondre sur le même ton pour s'imposer",
@@ -1542,6 +1542,20 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
           <p className="text-sm text-white/80">
             Cette première étape te donne la méthode pour annoncer la fin du chèque sans créer de tension. Tu vas ancrer des réflexes de communication qui rassurent, expliquent et ouvrent la discussion.
           </p>
+        </Reveal>
+        <Reveal className="overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-lg shadow-black/30">
+          <video
+            controls
+            preload="none"
+            className="h-full w-full"
+            poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fdf6efa0b97d74ba09091c331ab06c301?format=webp&width=1200"
+          >
+            <source
+              src="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fed02354c607e4c948da46f9e36552d6b?alt=media&token=45c7913d-2f95-40c0-8036-6ce183629083&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
+              type="video/mp4"
+            />
+            Ton navigateur ne supporte pas la lecture vidéo.
+          </video>
         </Reveal>
 
         <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
