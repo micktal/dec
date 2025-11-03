@@ -1548,7 +1548,7 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
             controls
             preload="none"
             className="h-full w-full"
-            poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fdf6efa0b97d74ba09091c331ab06c301?format=webp&width=1200"
+            poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F3c4a13fa5f384fd794dc351ae2c88966?format=webp&width=800"
           >
             <source
               src="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fed02354c607e4c948da46f9e36552d6b?alt=media&token=45c7913d-2f95-40c0-8036-6ce183629083&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
