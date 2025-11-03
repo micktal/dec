@@ -622,7 +622,7 @@ const SCENARIOS: ClientScenario[] = [
         label: "Oui, c’est agaçant, mais c’est la direction.",
         tone: "neutral",
         feedback:
-          "Tu reconnais l’inconfort mais tu n’apportes pas de solution. Recentre sur l’exp��rience client et propose un plan B.",
+          "Tu reconnais l’inconfort mais tu n’apportes pas de solution. Recentre sur l’expérience client et propose un plan B.",
         isCorrect: false,
       },
     ],
@@ -2605,6 +2605,55 @@ function ScenariosSection({
               </div>
             )}
           </Reveal>
+        </div>
+        <Reveal className="space-y-4 text-center">
+          <h3 className="text-2xl font-semibold text-primary">Scénarios difficiles à maîtriser</h3>
+          <p className="text-lg text-foreground/70">
+            Entraîne-toi sur des situations exceptionnelles pour garder la maîtrise même lorsque l’échange se tend.
+          </p>
+        </Reveal>
+        <div className="grid gap-6 lg:grid-cols-2">
+          {EXCEPTIONAL_SCENARIOS.map((scenario, index) => (
+            <Reveal key={scenario.id}>
+              <div className="flex h-full flex-col gap-5 rounded-3xl border border-primary/20 bg-white p-6 text-left shadow-lg shadow-primary/10">
+                <div className="space-y-2">
+                  <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/60">
+                    Scénario difficile {index + 1}
+                  </span>
+                  <h3 className="text-xl font-semibold text-primary">{scenario.title}</h3>
+                  <p className="text-sm text-foreground/70">{scenario.objective}</p>
+                </div>
+                <div className="rounded-2xl border border-primary/15 bg-primary/5 p-4 text-primary">
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
+                    Ce que dit le client
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed">{scenario.trigger}</p>
+                </div>
+                <div className="rounded-2xl border border-primary/15 bg-white p-4 shadow-sm">
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
+                    Exemple de réponse
+                  </p>
+                  <p className="mt-2 text-sm text-foreground/80">{scenario.example}</p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
+                    À retenir
+                  </p>
+                  <ul className="mt-2 space-y-2 text-sm text-foreground/70">
+                    {scenario.takeaways.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-2xl border border-primary/15 bg-primary/5 px-3 py-2"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {renderExceptionalInteraction(scenario, index)}
+              </div>
+            </Reveal>
+          ))}
         </div>
         {allCompleted && (
           <Reveal className="space-y-6 rounded-3xl border border-primary/30 bg-[#EEF2FF] p-8 shadow-lg shadow-primary/10">
