@@ -1,9 +1,4 @@
-import {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   AlertCircle,
@@ -99,7 +94,9 @@ type ExceptionalInteractionFlip = {
   };
 };
 
-type ExceptionalInteraction = ExceptionalInteractionChoice | ExceptionalInteractionFlip;
+type ExceptionalInteraction =
+  | ExceptionalInteractionChoice
+  | ExceptionalInteractionFlip;
 
 type ExceptionalScenario = {
   id: string;
@@ -132,12 +129,13 @@ const EXCEPTIONAL_STATUS_LABELS: Record<ExceptionalScenarioStatus, string> = {
   error: "À éviter",
 };
 
-const EXCEPTIONAL_STATUS_ICONS: Record<ExceptionalScenarioStatus, LucideIcon> = {
-  success: CheckCircle2,
-  info: HelpCircle,
-  warning: AlertTriangle,
-  error: AlertCircle,
-};
+const EXCEPTIONAL_STATUS_ICONS: Record<ExceptionalScenarioStatus, LucideIcon> =
+  {
+    success: CheckCircle2,
+    info: HelpCircle,
+    warning: AlertTriangle,
+    error: AlertCircle,
+  };
 
 type QuizQuestion = {
   id: number;
@@ -198,7 +196,8 @@ const LEARNING_STEPS = [
   {
     order: "01",
     title: "Adopter la posture verbale & non verbale",
-    description: "Pose les bases : mots, ton et attitude pour désamorcer les tensions.",
+    description:
+      "Pose les bases : mots, ton et attitude pour désamorcer les tensions.",
     sectionId: SECTION_IDS.POSTURE,
   },
   {
@@ -222,19 +221,22 @@ const LEARNING_STEPS = [
   {
     order: "05",
     title: "S'exercer en situation",
-    description: "Choisis la bonne réponse dans les scénarios inspirés du terrain.",
+    description:
+      "Choisis la bonne réponse dans les scénarios inspirés du terrain.",
     sectionId: SECTION_IDS.SCENARIOS,
   },
   {
     order: "06",
     title: "Écouter le terrain",
-    description: "Découvre l'expérience de Muriel, capitaine de magasin Decathlon.",
+    description:
+      "Découvre l'expérience de Muriel, capitaine de magasin Decathlon.",
     sectionId: SECTION_IDS.PODCAST,
   },
   {
     order: "07",
     title: "Activer tes forces",
-    description: "Synthétise les apprentissages et prépare ton passage à l'action.",
+    description:
+      "Synthétise les apprentissages et prépare ton passage à l'action.",
     sectionId: SECTION_IDS.SYNTHESIS,
   },
   {
@@ -308,7 +310,8 @@ const POSTURE_WORDING_GUIDE = [
   {
     avoid: "On ne prend plus les chèques.",
     prefer: "On simplifie les paiements pour vous.",
-    explanation: "On remplace une fermeture par une solution tournée vers le client.",
+    explanation:
+      "On remplace une fermeture par une solution tournée vers le client.",
   },
   {
     avoid: "C’est comme ça maintenant.",
@@ -322,7 +325,8 @@ const POSTURE_WORDING_GUIDE = [
   },
   {
     avoid: "Je ne peux rien faire.",
-    prefer: "Je peux vous proposer une carte cadeau ou un paiement en plusieurs fois.",
+    prefer:
+      "Je peux vous proposer une carte cadeau ou un paiement en plusieurs fois.",
     explanation: "On reste acteur en offrant immédiatement des options.",
   },
 ] as const;
@@ -330,24 +334,30 @@ const POSTURE_WORDING_GUIDE = [
 const POSTURE_FIELD_CASES = [
   {
     title: "Client fidèle et surpris",
-    context: "Il arrive avec son carnet de chèques et craint une erreur de paiement.",
+    context:
+      "Il arrive avec son carnet de chèques et craint une erreur de paiement.",
     approach:
       "Reformule sa crainte, rappelle que l'objectif est d'éviter les retours chèque et propose la carte ou le paiement fractionné.",
-    keyPoint: "Il repart rassuré car tu as reconnu son habitude et proposé un accompagnement.",
+    keyPoint:
+      "Il repart rassuré car tu as reconnu son habitude et proposé un accompagnement.",
   },
   {
     title: "Client pressé dans la file",
-    context: "Il s'impatiente et pense que la nouvelle règle va retarder son passage.",
+    context:
+      "Il s'impatiente et pense que la nouvelle règle va retarder son passage.",
     approach:
       "Montre que la carte est immédiate, propose l'encaissement sans contact et reste calme pour abaisser la tension.",
-    keyPoint: "Il comprend que la nouvelle procédure est la plus rapide pour lui.",
+    keyPoint:
+      "Il comprend que la nouvelle procédure est la plus rapide pour lui.",
   },
   {
     title: "Client professionnel",
-    context: "Une mairie ou association doit respecter un circuit administratif précis.",
+    context:
+      "Une mairie ou association doit respecter un circuit administratif précis.",
     approach:
       "Présente Decathlon Pro, explique le paiement par virement ou mandat et propose de l'aider à créer son compte.",
-    keyPoint: "Tu valorises la solution dédiée et tu restes son point de contact.",
+    keyPoint:
+      "Tu valorises la solution dédiée et tu restes son point de contact.",
   },
 ] as const;
 
@@ -362,19 +372,22 @@ const POSTURE_TONE_SAMPLES: Array<{
   {
     label: "Version chaleureuse",
     description: "Voix souriante, rythme calme, rassurant.",
-    focus: "C'est la référence : tu laisses le temps au client et ton sourire s'entend.",
+    focus:
+      "C'est la référence : tu laisses le temps au client et ton sourire s'entend.",
     quality: "recommended",
   },
   {
     label: "Version neutre",
     description: "Voix correcte mais un peu distante.",
-    focus: "À ajuster : ajoute plus de chaleur et ralentis légèrement le rythme.",
+    focus:
+      "À ajuster : ajoute plus de chaleur et ralentis légèrement le rythme.",
     quality: "toAdjust",
   },
   {
     label: "Version pressée",
     description: "Voix rapide, un peu stressée.",
-    focus: "À éviter : le client ressent ton urgence et ne se sent pas accompagné.",
+    focus:
+      "À éviter : le client ressent ton urgence et ne se sent pas accompagné.",
     quality: "toAvoid",
   },
 ];
@@ -384,7 +397,6 @@ const TONE_QUALITY_STYLES: Record<ToneQuality, string> = {
   toAdjust: "border-amber-500 bg-amber-500/10 text-amber-700",
   toAvoid: "border-red-500 bg-red-500/10 text-red-600",
 };
-
 
 type ClientGuideEntry = {
   title: string;
@@ -481,15 +493,18 @@ const SYNTHESIS_PILLARS = [
 const SYNTHESIS_ACTIONS = [
   {
     label: "Avant la caisse",
-    detail: "Prépare-toi en équipe : partage les propositions d’alternatives et synchronise vos discours.",
+    detail:
+      "Prépare-toi en équipe : partage les propositions d’alternatives et synchronise vos discours.",
   },
   {
     label: "Pendant l'échange",
-    detail: "Respire, écoute, rassure. Puis propose la solution la plus simple pour le client.",
+    detail:
+      "Respire, écoute, rassure. Puis propose la solution la plus simple pour le client.",
   },
   {
     label: "Après le passage",
-    detail: "Note les questions fréquentes et remonte-les pour améliorer encore notre accompagnement.",
+    detail:
+      "Note les questions fréquentes et remonte-les pour améliorer encore notre accompagnement.",
   },
 ] as const;
 
@@ -630,8 +645,10 @@ const SCENARIOS: ClientScenario[] = [
       "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la réponse tarde.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fbc78fb0da55d47f3af3c89bd0a9e1409?format=webp&width=800",
-    imageAlt: "Homme contrarié aux cheveux bouclés portant une veste en cuir noire",
-    dialogue: "Vous perdez du temps avec vos nouvelles règles ! J’ai pas que ça à faire.",
+    imageAlt:
+      "Homme contrarié aux cheveux bouclés portant une veste en cuir noire",
+    dialogue:
+      "Vous perdez du temps avec vos nouvelles règles ! J’ai pas que ça à faire.",
     responses: [
       {
         label:
@@ -699,8 +716,10 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
   {
     id: "insistant-agressif",
     title: "Client insistant ou agressif",
-    trigger: "“C’est inadmissible ! Vous prenez mon argent, alors vous prenez mon chèque !”",
-    objective: "Désamorcer la tension sans entrer dans le conflit et recentrer vers la solution.",
+    trigger:
+      "“C’est inadmissible ! Vous prenez mon argent, alors vous prenez mon chèque !”",
+    objective:
+      "Désamorcer la tension sans entrer dans le conflit et recentrer vers la solution.",
     example:
       "Je comprends votre agacement, c’est un vrai changement pour tout le monde. L’objectif est de vous faire gagner du temps et d’éviter les erreurs de paiement. Regardons ensemble ce qui vous conviendrait le mieux.",
     takeaways: [
@@ -714,11 +733,13 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
       options: [
         {
           label: "C’est la règle, on ne les prend plus.",
-          feedback: "Formulation trop administrative : tu imposes sans accompagner.",
+          feedback:
+            "Formulation trop administrative : tu imposes sans accompagner.",
           status: "error",
         },
         {
-          label: "Pas d’inquiétude, on a plusieurs solutions simples à te proposer.",
+          label:
+            "Pas d’inquiétude, on a plusieurs solutions simples à te proposer.",
           feedback: "Parfait : rassurant, positif et orienté solution.",
           status: "success",
         },
@@ -733,8 +754,10 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
   {
     id: "age-numerique",
     title: "Client âgé en difficulté numérique",
-    trigger: "“Je n’ai pas de carte bancaire, je ne sais pas faire vos trucs modernes.”",
-    objective: "Rassurer sans infantiliser et proposer une solution concrète accompagnée.",
+    trigger:
+      "“Je n’ai pas de carte bancaire, je ne sais pas faire vos trucs modernes.”",
+    objective:
+      "Rassurer sans infantiliser et proposer une solution concrète accompagnée.",
     example:
       "Pas de souci, beaucoup de nos clients sont dans la même situation. Vous pouvez utiliser une carte cadeau, ou venir avec quelqu’un de votre entourage — on s’adapte.",
     takeaways: [
@@ -747,19 +770,24 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
       prompt: "Quel message reformule sans juger et ouvre des solutions ?",
       options: [
         {
-          label: "On ne peut rien faire sans carte, il faudra revenir avec quelqu’un.",
-          feedback: "Message culpabilisant : tu accentues le sentiment d’être dépassé.",
+          label:
+            "On ne peut rien faire sans carte, il faudra revenir avec quelqu’un.",
+          feedback:
+            "Message culpabilisant : tu accentues le sentiment d’être dépassé.",
           status: "error",
         },
         {
-          label: "Pas de souci, beaucoup de clients préfèrent qu’on les accompagne pour la carte cadeau ou le paiement en caisse.",
+          label:
+            "Pas de souci, beaucoup de clients préfèrent qu’on les accompagne pour la carte cadeau ou le paiement en caisse.",
           feedback:
             "Bonne reformulation : tu normalises la situation et tu proposes un accompagnement concret.",
           status: "success",
         },
         {
-          label: "Demandez à vos proches de vous montrer, ils sont souvent plus à l’aise.",
-          feedback: "Suggestion maladroite : tu déplaces le problème sans proposer d’appui en magasin.",
+          label:
+            "Demandez à vos proches de vous montrer, ils sont souvent plus à l’aise.",
+          feedback:
+            "Suggestion maladroite : tu déplaces le problème sans proposer d’appui en magasin.",
           status: "warning",
         },
       ],
@@ -769,7 +797,8 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     id: "institutionnel",
     title: "Client institutionnel bloqué administrativement",
     trigger: "“Je travaille pour la mairie, on ne peut payer que par chèque !”",
-    objective: "Expliquer calmement Decathlon Pro et montrer que la solution existe déjà.",
+    objective:
+      "Expliquer calmement Decathlon Pro et montrer que la solution existe déjà.",
     example:
       "Bonne nouvelle : pour les mairies et associations, il y a Decathlon Pro. Vous gardez votre mode de validation interne, mais sans chèque — par virement ou mandat.",
     takeaways: [
@@ -779,7 +808,8 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     ],
     interaction: {
       kind: "choice",
-      prompt: "Comment orientes-tu ce client sans bloquer sa procédure interne ?",
+      prompt:
+        "Comment orientes-tu ce client sans bloquer sa procédure interne ?",
       options: [
         {
           label:
@@ -795,13 +825,17 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
           },
         },
         {
-          label: "On ne prend plus les chèques, il faudra revenir avec un autre moyen de paiement.",
-          feedback: "Réponse incomplète : tu annonces la règle sans proposer de solution professionnelle.",
+          label:
+            "On ne prend plus les chèques, il faudra revenir avec un autre moyen de paiement.",
+          feedback:
+            "Réponse incomplète : tu annonces la règle sans proposer de solution professionnelle.",
           status: "warning",
         },
         {
-          label: "Voyez directement avec votre trésorerie, ce n’est pas géré ici.",
-          feedback: "Tu renvoies la responsabilité au client et tu perds la relation de confiance.",
+          label:
+            "Voyez directement avec votre trésorerie, ce n’est pas géré ici.",
+          feedback:
+            "Tu renvoies la responsabilité au client et tu perds la relation de confiance.",
           status: "error",
         },
       ],
@@ -811,7 +845,8 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     id: "stresse-conflit",
     title: "Client stressé ou à la limite du conflit",
     trigger: "“C’est pas normal, tout change ici ! Je ne reviendrai plus.”",
-    objective: "Gérer le rejet émotionnel en dissociant la frustration de la relation.",
+    objective:
+      "Gérer le rejet émotionnel en dissociant la frustration de la relation.",
     example:
       "Je comprends que ce soit déroutant. On évolue pour que ce soit plus simple, mais notre accueil, lui, ne change pas. On reste là pour vous, comme toujours.",
     takeaways: [
@@ -863,11 +898,13 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
         },
         {
           label: "Posez-le et on verra, mais ce sera exceptionnellement.",
-          feedback: "Danger : tu ouvres la porte au passe-droit et tu perds l’autorité du cadre.",
+          feedback:
+            "Danger : tu ouvres la porte au passe-droit et tu perds l’autorité du cadre.",
           status: "error",
         },
         {
-          label: "On ne plaisante pas avec les règles, merci de rester sérieux.",
+          label:
+            "On ne plaisante pas avec les règles, merci de rester sérieux.",
           feedback:
             "Trop rigide : l’humour du client se transforme en confrontation. Reste ferme sans braquer.",
           status: "warning",
@@ -878,8 +915,10 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
   {
     id: "mal-informe",
     title: "Client mal informé ou venant d’un autre magasin",
-    trigger: "“Mais à Decathlon Lyon, ils prenaient encore les chèques la semaine dernière !”",
-    objective: "Aligner le discours entre magasins et renforcer la crédibilité.",
+    trigger:
+      "“Mais à Decathlon Lyon, ils prenaient encore les chèques la semaine dernière !”",
+    objective:
+      "Aligner le discours entre magasins et renforcer la crédibilité.",
     example:
       "Oui, c’était encore en phase de transition. Aujourd’hui, la nouvelle politique est la même dans tous nos magasins.",
     takeaways: [
@@ -930,7 +969,8 @@ const FINAL_QUIZ: QuizQuestion[] = [
   },
   {
     id: 2,
-    question: "Face à un client pressé ou agacé, quelle posture illustre l'empathie active ?",
+    question:
+      "Face à un client pressé ou agacé, quelle posture illustre l'empathie active ?",
     options: [
       "Rester calme, reformuler et valoriser la rapidité de la CB ou du paiement fractionné",
       "Répondre sur le même ton pour s'imposer",
@@ -979,9 +1019,10 @@ type WindowWithScorm = Window & {
 
 export default function Index() {
   const [reasonAnswer, setReasonAnswer] = useState<string | null>(null);
-  const [reasonFeedback, setReasonFeedback] = useState<
-    { message: string; correct: boolean } | null
-  >(null);
+  const [reasonFeedback, setReasonFeedback] = useState<{
+    message: string;
+    correct: boolean;
+  } | null>(null);
   const [reasonScored, setReasonScored] = useState(false);
   const [scenarioResponses, setScenarioResponses] = useState<(number | null)[]>(
     Array(SCENARIOS.length).fill(null),
@@ -1155,7 +1196,9 @@ export default function Index() {
         return;
       }
       if (win.API && typeof win.API.LMSSetValue === "function") {
-        const percentage = Math.round((scoreRef.current / totalQuestions) * 100);
+        const percentage = Math.round(
+          (scoreRef.current / totalQuestions) * 100,
+        );
         win.API.LMSSetValue("cmi.score.raw", String(percentage));
         win.API.LMSCommit?.("");
       }
@@ -1168,7 +1211,10 @@ export default function Index() {
       if (win.API && typeof win.API.LMSSetValue === "function") {
         const success = scoreRef.current / totalQuestions >= 0.7;
         win.API.LMSSetValue("cmi.completion_status", "completed");
-        win.API.LMSSetValue("cmi.success_status", success ? "passed" : "failed");
+        win.API.LMSSetValue(
+          "cmi.success_status",
+          success ? "passed" : "failed",
+        );
         win.API.LMSCommit?.("");
         console.log(`Module marqué comme terminé. Score : ${scoreRef.current}`);
       }
@@ -1291,10 +1337,11 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
             Ensemble vers 2026
           </h1>
           <p className="text-lg text-white/85">
-            Depuis toujours, Decathlon évolue pour rendre le sport accessible à tous —
-            facilement, rapidement et en toute confiance. En 2026, nous franchissons une
-            nouvelle étape avec l’arrêt progressif du paiement par chèque dans nos magasins,
-            pour offrir des parcours plus sûrs et plus fluides.
+            Depuis toujours, Decathlon évolue pour rendre le sport accessible à
+            tous — facilement, rapidement et en toute confiance. En 2026, nous
+            franchissons une nouvelle étape avec l’arrêt progressif du paiement
+            par chèque dans nos magasins, pour offrir des parcours plus sûrs et
+            plus fluides.
           </p>
         </Reveal>
         <Reveal className="flex flex-col items-center gap-4 md:flex-row md:items-center">
@@ -1307,29 +1354,38 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
             <ArrowRight className="h-4 w-4" />
           </button>
           <p className="text-sm font-medium text-white/70">
-            Durée estimée : douze à quinze minutes – accessible à tous les collaborateurs.
+            Durée estimée : douze à quinze minutes – accessible à tous les
+            collaborateurs.
           </p>
         </Reveal>
         <Reveal className="grid gap-8 rounded-3xl bg-white/10 p-8 text-left text-white backdrop-blur md:grid-cols-[0.9fr_1.1fr]">
           <div className="space-y-4 text-base leading-relaxed">
             <p>
-              Ce changement est une évolution naturelle : les chèques sont désormais rares
-              et longs à traiter, alors que nos solutions digitales sont plus sûres,
-              rapides et déjà largement adoptées.
+              Ce changement est une évolution naturelle : les chèques sont
+              désormais rares et longs à traiter, alors que nos solutions
+              digitales sont plus sûres, rapides et déjà largement adoptées.
             </p>
             <p>
-              Cette formation t’accompagne pour vivre la transition dans un esprit positif,
-              clair et bienveillant. Ton rôle est déterminant pour rassurer, expliquer et
-              guider chaque client vers la solution qui lui convient.
+              Cette formation t’accompagne pour vivre la transition dans un
+              esprit positif, clair et bienveillant. Ton rôle est déterminant
+              pour rassurer, expliquer et guider chaque client vers la solution
+              qui lui convient.
             </p>
             <div className="space-y-2 rounded-2xl bg-white/10 p-4">
               <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">
                 Pourquoi cette formation ?
               </h3>
               <ul className="space-y-2 text-sm text-white/85">
-                <li>Anticiper les réactions en caisse et y répondre avec sérénité.</li>
-                <li>Clarifier le changement et en expliquer les bénéfices concrets.</li>
-                <li>Proposer immédiatement des alternatives de paiement adaptées.</li>
+                <li>
+                  Anticiper les réactions en caisse et y répondre avec sérénité.
+                </li>
+                <li>
+                  Clarifier le changement et en expliquer les bénéfices
+                  concrets.
+                </li>
+                <li>
+                  Proposer immédiatement des alternatives de paiement adaptées.
+                </li>
               </ul>
             </div>
           </div>
@@ -1339,22 +1395,26 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
             </h3>
             <ol className="space-y-3 text-sm leading-relaxed">
               <li className="rounded-2xl border border-white/20 bg-white/5 p-4">
-                Expliquer calmement la fin du paiement par chèque et ses bénéfices.
+                Expliquer calmement la fin du paiement par chèque et ses
+                bénéfices.
               </li>
               <li className="rounded-2xl border border-white/20 bg-white/5 p-4">
-                Identifier les attentes de chaque profil client pour adapter ton discours.
+                Identifier les attentes de chaque profil client pour adapter ton
+                discours.
               </li>
               <li className="rounded-2xl border border-white/20 bg-white/5 p-4">
-                Répondre avec empathie, reformuler et maintenir une relation positive.
+                Répondre avec empathie, reformuler et maintenir une relation
+                positive.
               </li>
               <li className="rounded-2xl border border-white/20 bg-white/5 p-4">
-                Proposer des solutions alternatives : CB, paiement fractionné, cartes cadeaux
-                ou accompagnement Decathlon Pro.
+                Proposer des solutions alternatives : CB, paiement fractionné,
+                cartes cadeaux ou accompagnement Decathlon Pro.
               </li>
             </ol>
             <div className="rounded-2xl border border-white/20 bg-white/5 p-4 text-sm leading-relaxed text-white/85">
-              Tu trouveras des explications simples, des réponses types et des mises en
-              situation interactives pour t’entraîner avant la rencontre client.
+              Tu trouveras des explications simples, des réponses types et des
+              mises en situation interactives pour t’entraîner avant la
+              rencontre client.
             </div>
           </div>
         </Reveal>
@@ -1390,24 +1450,39 @@ function OverviewSection({ onNavigate }: OverviewSectionProps) {
     <section className="bg-[#EEF2FF] py-20">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
-          <DecathlonLogo className="mx-auto h-10 w-auto drop-shadow-sm" aria-label="Decathlon" />
-          <h2 className="text-3xl font-bold text-primary md:text-4xl">Ta feuille de route</h2>
+          <DecathlonLogo
+            className="mx-auto h-10 w-auto drop-shadow-sm"
+            aria-label="Decathlon"
+          />
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">
+            Ta feuille de route
+          </h2>
           <p className="text-lg text-primary/80">
-            Visualise les étapes clés et accède rapidement au contenu dont tu as besoin.
+            Visualise les étapes clés et accède rapidement au contenu dont tu as
+            besoin.
           </p>
         </Reveal>
         <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
           <Reveal className="space-y-6 text-left">
-            <h3 className="text-xl font-semibold text-primary">Objectifs du module</h3>
+            <h3 className="text-xl font-semibold text-primary">
+              Objectifs du module
+            </h3>
             <div className="grid gap-4 sm:grid-cols-2">
               {MODULE_OBJECTIVES.map((objective) => (
                 <div
                   key={objective.title}
                   className="rounded-3xl border border-primary/20 bg-white p-5 shadow-sm shadow-primary/10 transition-transform duration-300 hover:-translate-y-1"
                 >
-                  <objective.icon className="h-8 w-8 text-primary" aria-hidden="true" />
-                  <h4 className="mt-4 text-lg font-semibold text-primary">{objective.title}</h4>
-                  <p className="mt-2 text-sm text-foreground/70">{objective.description}</p>
+                  <objective.icon
+                    className="h-8 w-8 text-primary"
+                    aria-hidden="true"
+                  />
+                  <h4 className="mt-4 text-lg font-semibold text-primary">
+                    {objective.title}
+                  </h4>
+                  <p className="mt-2 text-sm text-foreground/70">
+                    {objective.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -1420,8 +1495,12 @@ function OverviewSection({ onNavigate }: OverviewSectionProps) {
                   key={highlight.value}
                   className="flex flex-col items-center justify-center rounded-3xl border border-primary/10 bg-white p-6 text-center shadow-md shadow-primary/10"
                 >
-                  <span className="text-4xl font-bold text-primary">{highlight.value}</span>
-                  <p className="mt-2 text-sm text-foreground/70">{highlight.label}</p>
+                  <span className="text-4xl font-bold text-primary">
+                    {highlight.value}
+                  </span>
+                  <p className="mt-2 text-sm text-foreground/70">
+                    {highlight.label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -1457,24 +1536,43 @@ type ReasonsSectionProps = {
   onSelect: (option: ReasonOption) => void;
 };
 
-function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsSectionProps) {
+function ReasonsSection({
+  id,
+  reasonAnswer,
+  reasonFeedback,
+  onSelect,
+}: ReasonsSectionProps) {
   return (
     <section id={id} className="bg-white py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
-          <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
-          <h2 className="text-3xl font-bold text-primary md:text-4xl">Pourquoi le chèque disparaît ?</h2>
+          <DecathlonLogo
+            className="mx-auto h-9 w-auto drop-shadow-sm"
+            aria-label="Decathlon"
+          />
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">
+            Pourquoi le chèque disparaît ?
+          </h2>
           <p className="text-lg text-foreground/70">
-            Comprendre les raisons du changement te permet d’expliquer sereinement la décision nationale, de rassurer chaque client et de gagner du temps dès la caisse.
+            Comprendre les raisons du changement te permet d’expliquer
+            sereinement la décision nationale, de rassurer chaque client et de
+            gagner du temps dès la caisse.
           </p>
         </Reveal>
         <div className="grid gap-6 md:grid-cols-3">
           {REASONS.map((reason) => (
             <Reveal key={reason.title}>
               <div className="flex h-full flex-col gap-4 rounded-3xl border border-border bg-white p-6 shadow-lg shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl">
-                <reason.icon className="h-10 w-10 text-primary" aria-hidden="true" />
-                <h3 className="text-xl font-semibold text-primary">{reason.title}</h3>
-                <p className="text-base text-foreground/70">{reason.description}</p>
+                <reason.icon
+                  className="h-10 w-10 text-primary"
+                  aria-hidden="true"
+                />
+                <h3 className="text-xl font-semibold text-primary">
+                  {reason.title}
+                </h3>
+                <p className="text-base text-foreground/70">
+                  {reason.description}
+                </p>
                 <p className="text-sm text-foreground/60">{reason.detail}</p>
               </div>
             </Reveal>
@@ -1529,7 +1627,6 @@ type PostureChapterProps = {
 };
 
 function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
-
   return (
     <section id={id} className="bg-[#0E1A5F] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
@@ -1538,9 +1635,13 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
             <Brain className="h-4 w-4" aria-hidden="true" />
             Étape 1
           </span>
-          <h2 className="text-3xl font-bold md:text-4xl">Posture verbale et non verbale</h2>
+          <h2 className="text-3xl font-bold md:text-4xl">
+            Posture verbale et non verbale
+          </h2>
           <p className="text-sm text-white/80">
-            Cette première étape te donne la méthode pour annoncer la fin du chèque sans créer de tension. Tu vas ancrer des réflexes de communication qui rassurent, expliquent et ouvrent la discussion.
+            Cette première étape te donne la méthode pour annoncer la fin du
+            chèque sans créer de tension. Tu vas ancrer des réflexes de
+            communication qui rassurent, expliquent et ouvrent la discussion.
           </p>
         </Reveal>
         <Reveal className="overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-lg shadow-black/30">
@@ -1560,9 +1661,12 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
 
         <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
           <div className="space-y-6 text-left">
-            <h3 className="text-2xl font-semibold text-white">Les fondamentaux à retenir</h3>
+            <h3 className="text-2xl font-semibold text-white">
+              Les fondamentaux à retenir
+            </h3>
             <p className="text-sm text-white/80">
-              Pour sécuriser l'annonce, combine toujours les mots, le ton et le langage corporel. Voici comment les travailler ensemble.
+              Pour sécuriser l'annonce, combine toujours les mots, le ton et le
+              langage corporel. Voici comment les travailler ensemble.
             </p>
             <div className="grid gap-4 md:grid-cols-3">
               {POSTURE_PILLARS.map((pillar) => (
@@ -1570,8 +1674,12 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
                   key={pillar.title}
                   className="rounded-3xl border border-white/20 bg-white/5 p-6 text-white"
                 >
-                  <h4 className="text-lg font-semibold text-white">{pillar.title}</h4>
-                  <p className="mt-2 text-sm text-white/80">{pillar.description}</p>
+                  <h4 className="text-lg font-semibold text-white">
+                    {pillar.title}
+                  </h4>
+                  <p className="mt-2 text-sm text-white/80">
+                    {pillar.description}
+                  </p>
                   <ul className="mt-4 space-y-2 text-sm text-white/70">
                     {pillar.guidelines.map((item) => (
                       <li
@@ -1590,9 +1698,12 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
 
         <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
           <div className="space-y-6 text-left">
-            <h3 className="text-2xl font-semibold text-white">Déroulé conseillé en caisse</h3>
+            <h3 className="text-2xl font-semibold text-white">
+              Déroulé conseillé en caisse
+            </h3>
             <p className="text-sm text-white/80">
-              Suis ces ��tapes dans l'ordre pour guider le client de l'émotion vers la solution.
+              Suis ces ��tapes dans l'ordre pour guider le client de l'émotion
+              vers la solution.
             </p>
             <div className="grid gap-4 md:grid-cols-2">
               {POSTURE_SEQUENCE.map((step) => (
@@ -1600,8 +1711,12 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
                   key={step.title}
                   className="rounded-3xl border border-white/20 bg-white/5 p-6 text-white"
                 >
-                  <h4 className="text-base font-semibold text-white">{step.title}</h4>
-                  <p className="mt-2 text-sm text-white/75">{step.description}</p>
+                  <h4 className="text-base font-semibold text-white">
+                    {step.title}
+                  </h4>
+                  <p className="mt-2 text-sm text-white/75">
+                    {step.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -1610,7 +1725,9 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
 
         <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
           <div className="space-y-6 text-left">
-            <h3 className="text-2xl font-semibold text-white">Exemples terrain guidés</h3>
+            <h3 className="text-2xl font-semibold text-white">
+              Exemples terrain guidés
+            </h3>
             <div className="grid gap-4 md:grid-cols-3">
               {POSTURE_FIELD_CASES.map((item) => (
                 <div
@@ -1618,11 +1735,15 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
                   className="flex h-full flex-col gap-4 rounded-3xl border border-white/20 bg-white/5 p-6 text-sm text-white/80"
                 >
                   <div>
-                    <h4 className="text-lg font-semibold text-white">{item.title}</h4>
+                    <h4 className="text-lg font-semibold text-white">
+                      {item.title}
+                    </h4>
                     <p className="mt-2">{item.context}</p>
                   </div>
                   <div className="rounded-2xl border border-white/15 bg-white/5 p-4 text-white/80">
-                    <p className="font-semibold text-white">Approche conseillée</p>
+                    <p className="font-semibold text-white">
+                      Approche conseillée
+                    </p>
                     <p className="mt-2">{item.approach}</p>
                   </div>
                   <div className="rounded-2xl border border-white/15 bg-white/10 p-4 text-white">
@@ -1636,9 +1757,12 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
 
         <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
           <div className="space-y-6 text-left">
-            <h3 className="text-2xl font-semibold text-white">Phrases à privilégier</h3>
+            <h3 className="text-2xl font-semibold text-white">
+              Phrases à privilégier
+            </h3>
             <p className="text-sm text-white/80">
-              Remplace les formulations qui ferment la discussion par des phrases qui montrent l'accompagnement.
+              Remplace les formulations qui ferment la discussion par des
+              phrases qui montrent l'accompagnement.
             </p>
             <div className="grid gap-4 md:grid-cols-2">
               {POSTURE_WORDING_GUIDE.map((pair) => (
@@ -1648,11 +1772,15 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
                 >
                   <div className="space-y-2 text-sm">
                     <div className="rounded-2xl border border-red-400/40 bg-red-400/10 px-3 py-2 text-red-100">
-                      <p className="text-xs font-semibold uppercase tracking-[0.25em]">À éviter</p>
+                      <p className="text-xs font-semibold uppercase tracking-[0.25em]">
+                        À éviter
+                      </p>
                       <p className="mt-1 text-white">{pair.avoid}</p>
                     </div>
                     <div className="rounded-2xl border border-emerald-400/40 bg-emerald-400/10 px-3 py-2 text-emerald-100">
-                      <p className="text-xs font-semibold uppercase tracking-[0.25em]">À privilégier</p>
+                      <p className="text-xs font-semibold uppercase tracking-[0.25em]">
+                        À privilégier
+                      </p>
                       <p className="mt-1 text-white">{pair.prefer}</p>
                     </div>
                     <p className="text-white/75">{pair.explanation}</p>
@@ -1665,9 +1793,12 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
 
         <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
           <div className="space-y-6">
-            <h3 className="text-2xl font-semibold text-white">Travailler son ton de voix</h3>
+            <h3 className="text-2xl font-semibold text-white">
+              Travailler son ton de voix
+            </h3>
             <p className="text-sm text-white/80">
-              Compare les trois versions et retiens les points forts à amplifier ou les défauts à corriger pour rester engageant.
+              Compare les trois versions et retiens les points forts à amplifier
+              ou les défauts à corriger pour rester engageant.
             </p>
             <div className="grid gap-4 md:grid-cols-3">
               {POSTURE_TONE_SAMPLES.map((sample) => (
@@ -1682,7 +1813,9 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
                     <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
                       {sample.label}
                     </p>
-                    <p className="text-sm text-white/85">{sample.description}</p>
+                    <p className="text-sm text-white/85">
+                      {sample.description}
+                    </p>
                   </div>
                   <p className="rounded-[12px] border border-white/20 bg-white/10 p-3 text-xs leading-relaxed text-white/85">
                     {sample.focus}
@@ -1696,7 +1829,8 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
         <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
           <div className="space-y-4 text-center">
             <p className="text-sm text-white/80">
-              En appliquant ces repères, tu annonces la fin du chèque de manière sereine et tu prépares la suite de la formation.
+              En appliquant ces repères, tu annonces la fin du chèque de manière
+              sereine et tu prépares la suite de la formation.
             </p>
             <button
               type="button"
@@ -1729,12 +1863,16 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
     <section id={id} className="bg-[#F3F6FF] py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
-          <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
+          <DecathlonLogo
+            className="mx-auto h-9 w-auto drop-shadow-sm"
+            aria-label="Decathlon"
+          />
           <h2 className="text-3xl font-bold text-primary md:text-4xl">
             Les 3 réflexes clés à adopter
           </h2>
           <p className="text-lg text-foreground/70">
-            Empathie, clarté et alternatives : trois réflexes pour rester performants et proches de nos clients.
+            Empathie, clarté et alternatives : trois réflexes pour rester
+            performants et proches de nos clients.
           </p>
         </Reveal>
         <div className="grid gap-6 md:grid-cols-3">
@@ -1745,12 +1883,19 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
                   <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
                     À retenir
                   </span>
-                  <h3 className="mt-2 text-lg font-semibold text-primary">{foundation.title}</h3>
+                  <h3 className="mt-2 text-lg font-semibold text-primary">
+                    {foundation.title}
+                  </h3>
                 </div>
-                <p className="text-sm text-foreground/70">{foundation.description}</p>
+                <p className="text-sm text-foreground/70">
+                  {foundation.description}
+                </p>
                 <ul className="space-y-2 text-sm text-primary">
                   {foundation.highlights.map((point) => (
-                    <li key={point} className="rounded-2xl border border-primary/20 bg-primary/5 px-3 py-2">
+                    <li
+                      key={point}
+                      className="rounded-2xl border border-primary/20 bg-primary/5 px-3 py-2"
+                    >
                       {point}
                     </li>
                   ))}
@@ -1770,15 +1915,24 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
                   aria-expanded={isActive}
                   className={combineClasses(
                     "flex w-full flex-col gap-4 rounded-3xl border border-border bg-white p-6 text-left transition-all duration-300",
-                    isActive ? "border-primary shadow-xl shadow-primary/10" : "hover:-translate-y-1 hover:border-primary/40",
+                    isActive
+                      ? "border-primary shadow-xl shadow-primary/10"
+                      : "hover:-translate-y-1 hover:border-primary/40",
                   )}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex flex-col gap-3">
-                      <Users className="h-10 w-10 text-primary" aria-hidden="true" />
+                      <Users
+                        className="h-10 w-10 text-primary"
+                        aria-hidden="true"
+                      />
                       <div>
-                        <h3 className="text-xl font-semibold text-primary">{reflex.title}</h3>
-                        <p className="text-base text-foreground/70">{reflex.summary}</p>
+                        <h3 className="text-xl font-semibold text-primary">
+                          {reflex.title}
+                        </h3>
+                        <p className="text-base text-foreground/70">
+                          {reflex.summary}
+                        </p>
                       </div>
                     </div>
                     <ChevronDown
@@ -1790,7 +1944,9 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
                     />
                   </div>
                   <span className="text-sm font-semibold text-primary/70">
-                    {isActive ? "Cliquer pour masquer" : "Cliquer pour découvrir le détail"}
+                    {isActive
+                      ? "Cliquer pour masquer"
+                      : "Cliquer pour découvrir le détail"}
                   </span>
                   {isActive && (
                     <p className="rounded-2xl border border-primary/20 bg-primary/5 p-4 text-sm leading-relaxed text-primary">
@@ -1804,7 +1960,8 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
         </div>
         <Reveal className="rounded-3xl border border-primary/30 bg-white p-6 text-center shadow-inner">
           <p className="text-base text-foreground/70">
-            Alternatives à proposer : carte bancaire, espèces, carte cadeau, paiement en trois ou quatre fois sans frais.
+            Alternatives à proposer : carte bancaire, espèces, carte cadeau,
+            paiement en trois ou quatre fois sans frais.
           </p>
         </Reveal>
       </div>
@@ -1817,17 +1974,24 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
     <section id={id} className="bg-white py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
-          <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
+          <DecathlonLogo
+            className="mx-auto h-9 w-auto drop-shadow-sm"
+            aria-label="Decathlon"
+          />
           <h2 className="text-3xl font-bold text-primary md:text-4xl">
             Comprendre les réactions de nos clients
           </h2>
           <p className="text-lg text-foreground/70">
-            Chaque client vit la fin du paiement par chèque à sa manière. En identifiant leurs besoins, tu peux rester dans l'écoute, la clarté et la solution.
+            Chaque client vit la fin du paiement par chèque à sa manière. En
+            identifiant leurs besoins, tu peux rester dans l'écoute, la clarté
+            et la solution.
           </p>
         </Reveal>
         <Reveal className="rounded-3xl border border-primary/30 bg-primary/5 p-8 text-left text-sm leading-relaxed text-primary shadow-inner">
           <p>
-            Ton rôle : écouter sans jugement, comprendre la situation de chacun puis accompagner avec patience. Les profils ci-dessous t'aident à anticiper leurs réactions et à adopter la bonne posture.
+            Ton rôle : écouter sans jugement, comprendre la situation de chacun
+            puis accompagner avec patience. Les profils ci-dessous t'aident à
+            anticiper leurs réactions et à adopter la bonne posture.
           </p>
         </Reveal>
         <div className="grid gap-6 lg:grid-cols-3">
@@ -1838,7 +2002,9 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
                   <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
                     Profil client
                   </span>
-                  <h3 className="mt-2 text-xl font-semibold text-primary">{entry.title}</h3>
+                  <h3 className="mt-2 text-xl font-semibold text-primary">
+                    {entry.title}
+                  </h3>
                 </div>
                 <div className="space-y-2 text-sm text-foreground/70">
                   <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
@@ -1852,7 +2018,10 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
                   </h4>
                   <ul className="space-y-1 text-sm text-foreground/70">
                     {entry.concerns.map((item) => (
-                      <li key={item} className="rounded-2xl bg-primary/5 px-3 py-2">
+                      <li
+                        key={item}
+                        className="rounded-2xl bg-primary/5 px-3 py-2"
+                      >
                         {item}
                       </li>
                     ))}
@@ -1864,7 +2033,10 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
                   </h4>
                   <ul className="space-y-1 text-sm text-foreground/70">
                     {entry.posture.map((item) => (
-                      <li key={item} className="rounded-2xl bg-primary/5 px-3 py-2">
+                      <li
+                        key={item}
+                        className="rounded-2xl bg-primary/5 px-3 py-2"
+                      >
                         {item}
                       </li>
                     ))}
@@ -1887,7 +2059,9 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
                 Étude des trois cas clients en vidéo
               </h3>
               <p className="text-primary/80">
-                Revois les réactions typiques et adopte la posture la plus adaptée pour chaque profil : fidèle et âgé, pressé ou professionnel.
+                Revois les réactions typiques et adopte la posture la plus
+                adaptée pour chaque profil : fidèle et âgé, pressé ou
+                professionnel.
               </p>
             </div>
             <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-black/20">
@@ -1908,7 +2082,9 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
         </Reveal>
         <Reveal className="rounded-3xl border border-primary/30 bg-[#EEF2FF] p-6 text-center shadow-inner">
           <p className="text-base text-primary">
-            Chaque échange compte : garde ton calme, ton sourire et ton sens du service pour transformer une réticence en confiance. C'est ça, l'esprit Decathlon.
+            Chaque échange compte : garde ton calme, ton sourire et ton sens du
+            service pour transformer une réticence en confiance. C'est ça,
+            l'esprit Decathlon.
           </p>
         </Reveal>
       </div>
@@ -1930,7 +2106,8 @@ function PodcastSection({ id }: { id?: string }) {
             Podcast terrain : Muriel, capitaine Decathlon
           </h2>
           <p className="text-lg text-white/80">
-            Découvre comment elle accompagne son équipe et rassure les clients sur la fin du paiement par chèque.
+            Découvre comment elle accompagne son équipe et rassure les clients
+            sur la fin du paiement par chèque.
           </p>
         </Reveal>
         <Reveal className="overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-xl shadow-black/30 backdrop-blur">
@@ -1939,7 +2116,9 @@ function PodcastSection({ id }: { id?: string }) {
               <span className="inline-flex w-fit items-center rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
                 Audio exclusif
               </span>
-              <h3 className="text-2xl font-semibold text-white">{PODCAST_RESOURCE.title}</h3>
+              <h3 className="text-2xl font-semibold text-white">
+                {PODCAST_RESOURCE.title}
+              </h3>
               <p>{PODCAST_RESOURCE.description}</p>
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">
                 {PODCAST_RESOURCE.duration}
@@ -1966,7 +2145,8 @@ function PodcastSection({ id }: { id?: string }) {
                 Ton navigateur ne supporte pas la lecture audio.
               </audio>
               <p className="text-sm text-white/70">
-                Tip : partage ce témoignage lors de vos briefs d'équipe pour inspirer le passage à l'action.
+                Tip : partage ce témoignage lors de vos briefs d'équipe pour
+                inspirer le passage à l'action.
               </p>
             </div>
           </div>
@@ -1986,9 +2166,12 @@ function SynthesisSection({ id }: { id?: string }) {
             className="mx-auto h-10 w-auto drop-shadow"
             aria-label="Decathlon"
           />
-          <h2 className="text-3xl font-bold md:text-4xl">Synthèse : à toi de jouer</h2>
+          <h2 className="text-3xl font-bold md:text-4xl">
+            Synthèse : à toi de jouer
+          </h2>
           <p className="text-lg text-white/80">
-            Tu as toutes les clés : empathie, clarté et solutions. Voici comment transformer chaque échange en victoire client.
+            Tu as toutes les clés : empathie, clarté et solutions. Voici comment
+            transformer chaque échange en victoire client.
           </p>
         </Reveal>
         <div className="grid gap-6 md:grid-cols-3">
@@ -1999,12 +2182,17 @@ function SynthesisSection({ id }: { id?: string }) {
                   <span className="text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
                     Pilier
                   </span>
-                  <h3 className="mt-2 text-lg font-semibold text-white">{pillar.title}</h3>
+                  <h3 className="mt-2 text-lg font-semibold text-white">
+                    {pillar.title}
+                  </h3>
                 </div>
                 <p className="text-sm text-white/80">{pillar.description}</p>
                 <ul className="space-y-2 text-sm text-white">
                   {pillar.checkpoints.map((point) => (
-                    <li key={point} className="rounded-2xl border border-white/20 bg-white/10 px-3 py-2">
+                    <li
+                      key={point}
+                      className="rounded-2xl border border-white/20 bg-white/10 px-3 py-2"
+                    >
                       {point}
                     </li>
                   ))}
@@ -2016,7 +2204,10 @@ function SynthesisSection({ id }: { id?: string }) {
         <Reveal className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20 backdrop-blur">
           <div className="grid gap-6 md:grid-cols-3">
             {SYNTHESIS_ACTIONS.map((action) => (
-              <div key={action.label} className="flex flex-col gap-2 text-sm text-white/80">
+              <div
+                key={action.label}
+                className="flex flex-col gap-2 text-sm text-white/80"
+              >
                 <span className="text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
                   {action.label}
                 </span>
@@ -2027,7 +2218,8 @@ function SynthesisSection({ id }: { id?: string }) {
         </Reveal>
         <Reveal className="flex flex-col items-center gap-4 text-center">
           <p className="max-w-2xl text-sm text-white/80">
-            Continue de partager tes bonnes pratiques en magasin, observe les réactions positives et capitalise sur ce que tu viens d'apprendre.
+            Continue de partager tes bonnes pratiques en magasin, observe les
+            réactions positives et capitalise sur ce que tu viens d'apprendre.
           </p>
           <a
             href={`#${SECTION_IDS.FINAL_QUIZ}`}
@@ -2067,14 +2259,17 @@ function ScenariosSection({
   onResetSimulation,
   onMarkCompleted,
 }: ScenariosSectionProps) {
-  const [exceptionalSelections, setExceptionalSelections] = useState<(number | null)[]>(
-    () => EXCEPTIONAL_SCENARIOS.map(() => null),
-  );
+  const [exceptionalSelections, setExceptionalSelections] = useState<
+    (number | null)[]
+  >(() => EXCEPTIONAL_SCENARIOS.map(() => null));
   const [exceptionalFlips, setExceptionalFlips] = useState<boolean[]>(() =>
     EXCEPTIONAL_SCENARIOS.map(() => false),
   );
 
-  const handleExceptionalSelect = (scenarioIndex: number, optionIndex: number) => {
+  const handleExceptionalSelect = (
+    scenarioIndex: number,
+    optionIndex: number,
+  ) => {
     setExceptionalSelections((prev) => {
       const next = [...prev];
       next[scenarioIndex] = optionIndex;
@@ -2113,7 +2308,9 @@ function ScenariosSection({
                 <button
                   key={option.label}
                   type="button"
-                  onClick={() => handleExceptionalSelect(scenarioIndex, optionIndex)}
+                  onClick={() =>
+                    handleExceptionalSelect(scenarioIndex, optionIndex)
+                  }
                   className={combineClasses(
                     "w-full rounded-[12px] border px-4 py-3 text-left text-sm font-semibold transition-all duration-300",
                     isSelected
@@ -2289,7 +2486,10 @@ function ScenariosSection({
     <section id={id} className="bg-white py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
-          <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
+          <DecathlonLogo
+            className="mx-auto h-9 w-auto drop-shadow-sm"
+            aria-label="Decathlon"
+          />
           <span className="text-xs font-semibold uppercase tracking-[0.35em] text-primary/60">
             Simulation client
           </span>
@@ -2297,7 +2497,9 @@ function ScenariosSection({
             Simulation client : réagir avec calme et empathie
           </h2>
           <p className="text-lg text-foreground/70">
-            Tu es à la caisse. Trois clients réagissent différemment à l’annonce de la fin du paiement par chèque. Sélectionne-les et choisis la réponse la plus adaptée.
+            Tu es à la caisse. Trois clients réagissent différemment à l’annonce
+            de la fin du paiement par chèque. Sélectionne-les et choisis la
+            réponse la plus adaptée.
           </p>
         </Reveal>
         <Reveal className="rounded-3xl border border-primary/30 bg-primary/5 p-6 text-primary">
@@ -2309,7 +2511,9 @@ function ScenariosSection({
               <p className="mt-2 text-3xl font-bold">
                 {scenarioScore} / {SCENARIOS.length}
               </p>
-              <p className="mt-1 text-sm text-primary/70">{scenarioScoreMessage}</p>
+              <p className="mt-1 text-sm text-primary/70">
+                {scenarioScoreMessage}
+              </p>
             </div>
             <div className="w-full md:w-64">
               <div className="h-2 w-full overflow-hidden rounded-full bg-white/60">
@@ -2348,10 +2552,14 @@ function ScenariosSection({
                     <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
                       {scenario.archetype}
                     </p>
-                    <h3 className="mt-1 text-lg font-semibold text-primary">{scenario.name}</h3>
+                    <h3 className="mt-1 text-lg font-semibold text-primary">
+                      {scenario.name}
+                    </h3>
                   </div>
                 </div>
-                <p className="text-sm text-foreground/70">{scenario.description}</p>
+                <p className="text-sm text-foreground/70">
+                  {scenario.description}
+                </p>
                 <span
                   className={combineClasses(
                     "mt-auto inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide",
@@ -2376,8 +2584,12 @@ function ScenariosSection({
                 <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
                   Client {safeScenarioIndex + 1}
                 </span>
-                <h3 className="mt-2 text-xl font-semibold text-primary">{currentScenario.name}</h3>
-                <p className="mt-2 text-sm text-foreground/70">{currentScenario.archetype}</p>
+                <h3 className="mt-2 text-xl font-semibold text-primary">
+                  {currentScenario.name}
+                </h3>
+                <p className="mt-2 text-sm text-foreground/70">
+                  {currentScenario.archetype}
+                </p>
               </div>
               <div className="rounded-3xl border border-primary/20 bg-primary/5 p-5 text-left">
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/60">
@@ -2430,12 +2642,17 @@ function ScenariosSection({
                   const FeedbackIcon = toneIcons[currentTone];
                   return (
                     <div className="flex items-start gap-3">
-                      <FeedbackIcon className="mt-1 h-5 w-5" aria-hidden="true" />
+                      <FeedbackIcon
+                        className="mt-1 h-5 w-5"
+                        aria-hidden="true"
+                      />
                       <div>
                         <p className="font-semibold uppercase tracking-wide">
                           {statusLabels[toneToStatus[currentTone]]}
                         </p>
-                        <p className="mt-1 text-sm leading-relaxed">{currentFeedback.message}</p>
+                        <p className="mt-1 text-sm leading-relaxed">
+                          {currentFeedback.message}
+                        </p>
                       </div>
                     </div>
                   );
@@ -2466,9 +2683,12 @@ function ScenariosSection({
           </Reveal>
         </div>
         <Reveal className="space-y-4 text-center">
-          <h3 className="text-2xl font-semibold text-primary">Scénarios difficiles à maîtriser</h3>
+          <h3 className="text-2xl font-semibold text-primary">
+            Scénarios difficiles à maîtriser
+          </h3>
           <p className="text-lg text-foreground/70">
-            Entraîne-toi sur des situations exceptionnelles pour garder la maîtrise même lorsque l’échange se tend.
+            Entraîne-toi sur des situations exceptionnelles pour garder la
+            maîtrise même lorsque l’échange se tend.
           </p>
         </Reveal>
         <div className="grid gap-6 lg:grid-cols-2">
@@ -2479,20 +2699,28 @@ function ScenariosSection({
                   <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/60">
                     Scénario difficile {index + 1}
                   </span>
-                  <h3 className="text-xl font-semibold text-primary">{scenario.title}</h3>
-                  <p className="text-sm text-foreground/70">{scenario.objective}</p>
+                  <h3 className="text-xl font-semibold text-primary">
+                    {scenario.title}
+                  </h3>
+                  <p className="text-sm text-foreground/70">
+                    {scenario.objective}
+                  </p>
                 </div>
                 <div className="rounded-2xl border border-primary/15 bg-primary/5 p-4 text-primary">
                   <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
                     Ce que dit le client
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed">{scenario.trigger}</p>
+                  <p className="mt-2 text-sm leading-relaxed">
+                    {scenario.trigger}
+                  </p>
                 </div>
                 <div className="rounded-2xl border border-primary/15 bg-white p-4 shadow-sm">
                   <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
                     Exemple de réponse
                   </p>
-                  <p className="mt-2 text-sm text-foreground/80">{scenario.example}</p>
+                  <p className="mt-2 text-sm text-foreground/80">
+                    {scenario.example}
+                  </p>
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
@@ -2518,8 +2746,12 @@ function ScenariosSection({
           <Reveal className="space-y-6 rounded-3xl border border-primary/30 bg-[#EEF2FF] p-8 shadow-lg shadow-primary/10">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div>
-                <h3 className="text-2xl font-semibold text-primary">Débrief pédagogique</h3>
-                <p className="mt-2 text-sm text-primary/70">{encouragementMessage}</p>
+                <h3 className="text-2xl font-semibold text-primary">
+                  Débrief pédagogique
+                </h3>
+                <p className="mt-2 text-sm text-primary/70">
+                  {encouragementMessage}
+                </p>
               </div>
               <div className="rounded-2xl border border-primary/30 bg-white px-6 py-4 text-center text-primary">
                 <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
@@ -2547,7 +2779,9 @@ function ScenariosSection({
               </ul>
               <div className="space-y-4 text-sm text-primary/80">
                 <p>
-                  Rappelle-toi : écouter, rassurer, proposer puis conclure positivement permettent de transformer chaque échange en expérience réussie.
+                  Rappelle-toi : écouter, rassurer, proposer puis conclure
+                  positivement permettent de transformer chaque échange en
+                  expérience réussie.
                 </p>
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
                   <button
@@ -2616,8 +2850,13 @@ function FinalQuizSection({
     <section id={id} className="bg-[#E2E8FF] py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
-          <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
-          <h2 className="text-3xl font-bold text-primary md:text-4xl">Teste-toi</h2>
+          <DecathlonLogo
+            className="mx-auto h-9 w-auto drop-shadow-sm"
+            aria-label="Decathlon"
+          />
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">
+            Teste-toi
+          </h2>
           <p className="text-lg text-primary/80">
             Réponds à quatre questions et mesure ta maîtrise des bons réflexes.
           </p>
@@ -2651,13 +2890,18 @@ function FinalQuizSection({
             <Reveal key={question.id}>
               <fieldset className="rounded-3xl border border-primary/30 bg-white p-6 shadow-lg shadow-primary/10">
                 <legend className="sr-only">{question.question}</legend>
-                <p className="text-lg font-semibold text-primary">{question.question}</p>
+                <p className="text-lg font-semibold text-primary">
+                  {question.question}
+                </p>
                 <div className="mt-4 grid gap-3">
                   {question.options.map((option, optionIndex) => {
                     const isSelected = answers[questionIndex] === optionIndex;
-                    const isCorrect = submitted && question.correctIndex === optionIndex;
+                    const isCorrect =
+                      submitted && question.correctIndex === optionIndex;
                     const isIncorrect =
-                      submitted && isSelected && question.correctIndex !== optionIndex;
+                      submitted &&
+                      isSelected &&
+                      question.correctIndex !== optionIndex;
                     return (
                       <label
                         key={option}
@@ -2666,8 +2910,8 @@ function FinalQuizSection({
                           isCorrect
                             ? "border-primary bg-primary/10 text-primary"
                             : isIncorrect
-                            ? "border-red-500 bg-red-500/10 text-red-600"
-                            : "border-primary/20 bg-primary/5 text-foreground/80 hover:-translate-y-0.5 hover:border-primary",
+                              ? "border-red-500 bg-red-500/10 text-red-600"
+                              : "border-primary/20 bg-primary/5 text-foreground/80 hover:-translate-y-0.5 hover:border-primary",
                         )}
                       >
                         <input
@@ -2705,7 +2949,12 @@ function FinalQuizSection({
                     Ton score : {score} / {FINAL_QUIZ.length}
                   </p>
                 </div>
-                <p className={combineClasses("mt-3 text-sm leading-relaxed", resultAccent)}>
+                <p
+                  className={combineClasses(
+                    "mt-3 text-sm leading-relaxed",
+                    resultAccent,
+                  )}
+                >
                   {success
                     ? "Bravo, tu maîtrises les bons réflexes."
                     : "Revois les réflexes clés et réessaie."}
@@ -2724,7 +2973,8 @@ function FinalQuizSection({
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </a>
                     <p className="text-xs text-primary/70">
-                      Retrouve les étapes clés, les profils clients et les alternatives à proposer.
+                      Retrouve les étapes clés, les profils clients et les
+                      alternatives à proposer.
                     </p>
                   </div>
                 )}
@@ -2767,9 +3017,12 @@ function ConclusionSection({
             className="mx-auto h-12 w-auto drop-shadow"
             aria-label="Decathlon"
           />
-          <h2 className="text-3xl font-bold md:text-4xl">Conclusion et ressources</h2>
+          <h2 className="text-3xl font-bold md:text-4xl">
+            Conclusion et ressources
+          </h2>
           <p className="text-lg text-white/85">
-            Merci pour ton engagement. Grâce à toi, la transition 2026 se fera en douceur et dans un esprit de service.
+            Merci pour ton engagement. Grâce à toi, la transition 2026 se fera
+            en douceur et dans un esprit de service.
           </p>
         </Reveal>
         <Reveal className="text-sm font-semibold text-white">
