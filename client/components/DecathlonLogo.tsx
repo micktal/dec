@@ -13,7 +13,7 @@ export function DecathlonLogo({ className, "aria-label": ariaLabel }: DecathlonL
     <img
       src={DECATHLON_LOGO_SRC}
       alt={ariaLabel ?? "Logo Decathlon"}
-      className={cn("h-10 w-auto", className)}
+      className={cn("h-10 w-auto filter brightness-0 invert", className)}
       loading="lazy"
       decoding="async"
     />
