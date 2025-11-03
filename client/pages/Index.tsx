@@ -847,7 +847,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
   {
     id: "test-limites",
     title: "Client qui teste les limites",
-    trigger: "“Et si je le pose là, mon chèque, vous le prenez quand même ?”",
+    trigger: "“Et si je le pose là, mon ch��que, vous le prenez quand même ?”",
     objective: "Rester léger tout en affirmant le cadre et les solutions.",
     example:
       "Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
@@ -1960,7 +1960,7 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
         </Reveal>
         <Reveal className="rounded-3xl border border-primary/30 bg-[#EEF2FF] p-6 text-center shadow-inner">
           <p className="text-base text-primary">
-            Chaque ��change compte : garde ton calme, ton sourire et ton sens du service pour transformer une réticence en confiance. C'est ça, l'esprit Decathlon.
+            Chaque échange compte : garde ton calme, ton sourire et ton sens du service pour transformer une réticence en confiance. C'est ça, l'esprit Decathlon.
           </p>
         </Reveal>
       </div>
