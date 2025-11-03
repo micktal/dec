@@ -1831,6 +1831,24 @@ function FinalQuizSection({
                     ? "Bravo, tu maîtrises les bons réflexes."
                     : "Revois les réflexes clés et réessaie."}
                 </p>
+                {success && (
+                  <div className="mt-4 space-y-3 rounded-2xl border border-primary/30 bg-primary/5 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+                      À télécharger
+                    </p>
+                    <a
+                      href="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F7bc4c7a836c94ebca78cc285c6eb2f45?alt=media&token=recap-aides&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
+                      download
+                      className="inline-flex items-center gap-2 rounded-[12px] bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#163FAF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    >
+                      Fiche récap' à imprimer
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                    <p className="text-xs text-primary/70">
+                      Retrouve les étapes clés, les profils clients et les alternatives à proposer.
+                    </p>
+                  </div>
+                )}
                 <button
                   type="button"
                   onClick={onReset}
