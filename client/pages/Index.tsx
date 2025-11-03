@@ -507,18 +507,24 @@ const REASONS = [
     title: "Moins utilisé",
     description:
       "Seuls trois pour cent des paiements en France sont encore effectués par chèque.",
+    detail:
+      "Avec le recul de son usage, le chèque ne répond plus aux habitudes actuelles des clients qui privilégient des moyens rapides et familiers.",
   },
   {
     icon: Cog,
     title: "Traitement plus simple",
     description:
       "Les paiements électroniques réduisent le temps de gestion pour les équipes en magasin.",
+    detail:
+      "Moins de manipulation papier, moins de retours en caisse : tu gagnes de précieuses minutes sur chaque encaissement.",
   },
   {
     icon: ShieldCheck,
     title: "Sécurité renforcée",
     description:
       "Les transactions dématérialisées limitent les fraudes et sécurisent les encaissements.",
+    detail:
+      "Les solutions digitales valident immédiatement l’opération et protègent à la fois le client et le magasin contre les litiges.",
   },
 ] as const;
 
