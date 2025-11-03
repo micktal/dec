@@ -557,7 +557,7 @@ const REFLEXES_FOUNDATION = [
       "Un message simple et assumé évite les malentendus et rassure sur notre professionnalisme.",
     highlights: [
       "Expliquer que la décision est nationale et pensée pour sécuriser",
-      "Montrer les bénéfices concrets : encaissement plus rapide et sécuris��",
+      "Montrer les bénéfices concrets : encaissement plus rapide et sécurisé",
     ],
   },
   {
@@ -1538,26 +1538,12 @@ type PostureChapterProps = {
 };
 
 function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
-  const [verbalSelection, setVerbalSelection] = useState<number | null>(null);
-  const [roleSelection, setRoleSelection] = useState<number | null>(null);
-  const [toneSelection, setToneSelection] = useState<number | null>(null);
+  const [activeTone, setActiveTone] = useState<number | null>(null);
   const [toneMessage, setToneMessage] = useState<string | null>(null);
-  const [flippedCards, setFlippedCards] = useState<boolean[]>(
-    WORD_CHOICE_PAIRS.map(() => false),
-  );
-  const [summaryAnswer, setSummaryAnswer] = useState<number | null>(null);
 
-  const handleVerbalChoice = (index: number) => {
-    setVerbalSelection(index);
-  };
-
-  const handleRoleChoice = (index: number) => {
-    setRoleSelection(index);
-  };
-
-  const handleToneSelect = (index: number) => {
-    setToneSelection(index);
-    const option = AUDIO_TONE_OPTIONS[index];
+  const handlePlayTone = (index: number) => {
+    setActiveTone(index);
+    const option = POSTURE_TONE_SAMPLES[index];
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(AUDIO_SAMPLE_TEXT);
@@ -1565,38 +1551,13 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
       utterance.rate = option.rate;
       utterance.lang = "fr-FR";
       window.speechSynthesis.speak(utterance);
-      setToneMessage(option.feedback);
+      setToneMessage(option.focus);
     } else {
       setToneMessage(
-        "Ton navigateur ne supporte pas la lecture audio automatique. Lis la description pour identifier le bon ton.",
+        "Ton navigateur ne supporte pas la lecture audio automatique. Lis la description pour identifier le ton recommandé.",
       );
     }
   };
-
-  const toggleFlipCard = (index: number) => {
-    setFlippedCards((prev) => {
-      const next = [...prev];
-      next[index] = !next[index];
-      return next;
-    });
-  };
-
-  const verbalFeedback =
-    verbalSelection !== null ? VERBAL_ACTIVITY_OPTIONS[verbalSelection] : null;
-  const summaryFeedback =
-    summaryAnswer !== null
-      ? summaryAnswer === POSTURE_FINAL_QUIZ.correctIndex
-        ? {
-            message:
-              "Exact ! Les trois éléments sont liés et doivent rester cohérents pour inspirer confiance.",
-            status: "success" as const,
-          }
-        : {
-            message:
-              "Chaque élément compte, mais c’est bien la cohérence mots/ton/gestes qui crée l’impact.",
-            status: "warning" as const,
-          }
-      : null;
 
   return (
     <section id={id} className="bg-[#0E1A5F] py-24 text-white">
@@ -1605,13 +1566,11 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
           <div className="space-y-4 text-left">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
               <Brain className="h-4 w-4" aria-hidden="true" />
-              Chapitre posture
+              Étape 1
             </span>
-            <h2 className="text-3xl font-bold md:text-4xl">
-              Les mots apaisent, le regard rassure, le sourire transforme
-            </h2>
+            <h2 className="text-3xl font-bold md:text-4xl">Posture verbale et non verbale</h2>
             <p className="text-sm text-white/80">
-              Chaque jour, ton attitude fait la différence. Tu vas identifier les bons réflexes verbaux et non verbaux pour rester calme, clair et bienveillant — même quand le client est surpris ou stressé.
+              Cette première étape te donne la méthode pour annoncer la fin du chèque sans créer de tension. Tu vas ancrer des réflexes de communication qui rassurent, expliquent et ouvrent la discussion.
             </p>
           </div>
           <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-lg shadow-black/30">
@@ -1626,268 +1585,178 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
         </Reveal>
 
         <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
-          <div className="space-y-4 text-left">
-            <h3 className="text-2xl font-semibold text-white">
-              💬 Choisis la bonne réponse !
-            </h3>
+          <div className="space-y-6 text-left">
+            <h3 className="text-2xl font-semibold text-white">Les fondamentaux à retenir</h3>
             <p className="text-sm text-white/80">
-              Un client te dit : « Je ne comprends pas pourquoi vous ne prenez plus les chèques. » Quelle est la meilleure réponse ?
-            </p>
-            <div className="mt-4 grid gap-3">
-              {VERBAL_ACTIVITY_OPTIONS.map((option, index) => {
-                const isSelected = verbalSelection === index;
-                const baseClass =
-                  option.status === "success"
-                    ? "border-emerald-400 bg-emerald-400/10"
-                    : option.status === "warning"
-                      ? "border-amber-400 bg-amber-400/10"
-                      : "border-red-500 bg-red-500/10";
-                return (
-                  <button
-                    key={option.statement}
-                    type="button"
-                    onClick={() => handleVerbalChoice(index)}
-                    className={cn(
-                      "flex items-center justify-between gap-4 rounded-[12px] border px-4 py-3 text-left text-sm text-white transition-all duration-300",
-                      isSelected ? baseClass : "border-white/20 bg-white/5 hover:-translate-y-0.5",
-                    )}
-                  >
-                    <span>{option.statement}</span>
-                    {isSelected && (
-                      <CheckCircle2 className="h-5 w-5 text-white" aria-hidden="true" />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-            {verbalFeedback && (
-              <p
-                className={cn(
-                  "mt-3 text-sm",
-                  verbalFeedback.status === "success"
-                    ? "text-emerald-300"
-                    : verbalFeedback.status === "warning"
-                      ? "text-amber-200"
-                      : "text-red-200",
-                )}
-              >
-                {verbalFeedback.feedback}
-              </p>
-            )}
-          </div>
-        </Reveal>
-
-        <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
-          <div className="space-y-4 text-left">
-            <h3 className="text-2xl font-semibold text-white">🎭 L’attitude qui parle</h3>
-            <p className="text-sm text-white/80">
-              Imagine : un client arrive avec un chèque à la main. Quelle scène est la plus “Décathlon” ?
-            </p>
-            <div className="grid gap-3 md:grid-cols-3">
-              {ROLEPLAY_OPTIONS.map((option, index) => {
-                const isSelected = roleSelection === index;
-                const baseClass =
-                  option.status === "success"
-                    ? "border-emerald-400 bg-emerald-400/10"
-                    : option.status === "warning"
-                      ? "border-amber-400 bg-amber-400/10"
-                      : "border-red-500 bg-red-500/10";
-                return (
-                  <button
-                    key={option.title}
-                    type="button"
-                    onClick={() => handleRoleChoice(index)}
-                    className={cn(
-                      "flex h-full flex-col gap-3 rounded-[18px] border px-5 py-4 text-left text-sm text-white transition-all duration-300",
-                      isSelected ? baseClass : "border-white/20 bg-white/5 hover:-translate-y-0.5",
-                    )}
-                  >
-                    <span className="text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
-                      {option.title}
-                    </span>
-                    <p className="text-white/80">{option.description}</p>
-                    {isSelected && (
-                      <p
-                        className={cn(
-                          "text-xs font-semibold",
-                          option.status === "success"
-                            ? "text-emerald-300"
-                            : option.status === "warning"
-                              ? "text-amber-200"
-                              : "text-red-200",
-                        )}
-                      >
-                        {option.feedback}
-                      </p>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-            {roleSelection === null && (
-              <p className="text-xs text-white/70">
-                Sélectionne une posture pour découvrir le feedback.
-              </p>
-            )}
-          </div>
-        </Reveal>
-
-        <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
-          <div className="space-y-4">
-            <h3 className="text-2xl font-semibold text-white">
-              🔊 Écoute et choisis le ton juste
-            </h3>
-            <p className="text-sm text-white/80">
-              Clique pour écouter trois versions d’une même phrase et choisis celle qui incarne le mieux l’esprit Decathlon.
+              Pour sécuriser l'annonce, combine toujours les mots, le ton et le langage corporel. Voici comment les travailler ensemble.
             </p>
             <div className="grid gap-4 md:grid-cols-3">
-              {AUDIO_TONE_OPTIONS.map((option, index) => {
-                const isSelected = toneSelection === index;
-                const baseClass =
-                  option.status === "success"
-                    ? "border-emerald-400 bg-emerald-400/10"
-                    : option.status === "warning"
-                      ? "border-amber-400 bg-amber-400/10"
-                      : "border-red-500 bg-red-500/10";
+              {POSTURE_PILLARS.map((pillar) => (
+                <div
+                  key={pillar.title}
+                  className="rounded-3xl border border-white/20 bg-white/5 p-6 text-white"
+                >
+                  <h4 className="text-lg font-semibold text-white">{pillar.title}</h4>
+                  <p className="mt-2 text-sm text-white/80">{pillar.description}</p>
+                  <ul className="mt-4 space-y-2 text-sm text-white/70">
+                    {pillar.guidelines.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-2xl border border-white/20 bg-white/5 px-3 py-2"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal className="rounded-3dl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
+          <div className="space-y-6 text-left">
+            <h3 className="text-2xl font-semibold text-white">Déroulé conseillé en caisse</h3>
+            <p className="text-sm text-white/80">
+              Suis ces étapes dans l'ordre pour guider le client de l'émotion vers la solution.
+            </p>
+            <div className="grid gap-4 md:grid-cols-2">
+              {POSTURE_SEQUENCE.map((step) => (
+                <div
+                  key={step.title}
+                  className="rounded-3xl border border-white/20 bg-white/5 p-6 text-white"
+                >
+                  <h4 className="text-base font-semibold text-white">{step.title}</h4>
+                  <p className="mt-2 text-sm text-white/75">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
+          <div className="space-y-6 text-left">
+            <h3 className="text-2xl font-semibold text-white">Exemples terrain guidés</h3>
+            <div className="grid gap-4 md:grid-cols-3">
+              {POSTURE_FIELD_CASES.map((item) => (
+                <div
+                  key={item.title}
+                  className="flex h-full flex-col gap-4 rounded-3xl border border-white/20 bg-white/5 p-6 text-sm text-white/80"
+                >
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">{item.title}</h4>
+                    <p className="mt-2">{item.context}</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/15 bg-white/5 p-4 text-white/80">
+                    <p className="font-semibold text-white">Approche conseillée</p>
+                    <p className="mt-2">{item.approach}</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/15 bg-white/10 p-4 text-white">
+                    {item.keyPoint}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
+          <div className="space-y-6 text-left">
+            <h3 className="text-2xl font-semibold text-white">Phrases à privilégier</h3>
+            <p className="text-sm text-white/80">
+              Remplace les formulations qui ferment la discussion par des phrases qui montrent l'accompagnement.
+            </p>
+            <div className="grid gap-4 md:grid-cols-2">
+              {POSTURE_WORDING_GUIDE.map((pair) => (
+                <div
+                  key={pair.avoid}
+                  className="rounded-3xl border border-white/20 bg-white/5 p-6 text-white"
+                >
+                  <div className="space-y-2 text-sm">
+                    <div className="rounded-2xl border border-red-400/40 bg-red-400/10 px-3 py-2 text-red-100">
+                      <p className="text-xs font-semibold uppercase tracking-[0.25em]">À éviter</p>
+                      <p className="mt-1 text-white">{pair.avoid}</p>
+                    </div>
+                    <div className="rounded-2xl border border-emerald-400/40 bg-emerald-400/10 px-3 py-2 text-emerald-100">
+                      <p className="text-xs font-semibold uppercase tracking-[0.25em]">À privilégier</p>
+                      <p className="mt-1 text-white">{pair.prefer}</p>
+                    </div>
+                    <p className="text-white/75">{pair.explanation}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
+          <div className="space-y-6">
+            <h3 className="text-2xl font-semibold text-white">Travailler son ton de voix</h3>
+            <p className="text-sm text-white/80">
+              Clique pour écouter chaque version et repère les éléments à conserver ou à ajuster.
+            </p>
+            <div className="grid gap-4 md:grid-cols-3">
+              {POSTURE_TONE_SAMPLES.map((sample, index) => {
+                const isActive = activeTone === index;
                 return (
                   <div
-                    key={option.label}
+                    key={sample.label}
                     className={cn(
                       "flex h-full flex-col gap-3 rounded-[18px] border px-5 py-4 text-left text-sm transition-all duration-300",
-                      isSelected ? baseClass : "border-white/20 bg-white/5 text-white",
+                      isActive
+                        ? TONE_QUALITY_STYLES[sample.quality]
+                        : "border-white/20 bg-white/5 text-white",
                     )}
                   >
-                    <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
-                      <Volume2 className="h-4 w-4" aria-hidden="true" />
-                      {option.label}
-                    </span>
-                    <p className="text-white/80">{option.description}</p>
+                    <div className="space-y-1">
+                      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
+                        {sample.label}
+                      </p>
+                      <p className={cn("text-sm", isActive ? "text-inherit" : "text-white/80")}
+                      >
+                        {sample.description}
+                      </p>
+                    </div>
                     <button
                       type="button"
-                      onClick={() => handleToneSelect(index)}
-                      className="inline-flex items-center gap-2 rounded-[12px] border border-white/30 px-3 py-2 text-xs font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white"
+                      onClick={() => handlePlayTone(index)}
+                      className={cn(
+                        "inline-flex w-fit items-center gap-2 rounded-[12px] border px-3 py-2 text-xs font-semibold transition-all durée-300",
+                        isActive
+                          ? "border-current bg-white/10"
+                          : "border-white/40 bg-white/5 text-white hover:-translate-y-0.5",
+                      )}
                     >
                       <PlayCircle className="h-4 w-4" aria-hidden="true" />
-                      Écouter & choisir
+                      Écouter l'exemple
                     </button>
-                    {isSelected && (
-                      <p
-                        className={cn(
-                          "text-xs",
-                          option.status === "success"
-                            ? "text-emerald-300"
-                            : option.status === "warning"
-                              ? "text-amber-200"
-                              : "text-red-200",
-                        )}
-                      >
-                        {option.feedback}
+                    {isActive && (
+                      <p className="text-xs leading-relaxed">
+                        {toneMessage ?? sample.focus}
                       </p>
                     )}
                   </div>
                 );
               })}
             </div>
-            {toneMessage && (
-              <p className="text-xs text-white/70">{toneMessage}</p>
-            )}
           </div>
-        </Reveal>
-
-        <Reveal className="grid gap-4 md:grid-cols-3">
-          {WORD_CHOICE_PAIRS.map((pair, index) => (
-            <button
-              key={pair.avoid}
-              type="button"
-              onClick={() => toggleFlipCard(index)}
-              className="group relative overflow-hidden rounded-3xl border border-white/15 bg-white/5 p-6 text-left text-sm text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white/10"
-            >
-              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
-                Tes mots comptent
-              </span>
-              <p className="mt-3 text-white/80 line-clamp-3">
-                {flippedCards[index] ? pair.prefer : pair.avoid}
-              </p>
-              <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-white/70">
-                <Sparkles className="h-4 w-4" aria-hidden="true" />
-                {flippedCards[index] ? "Formulation à privilégier" : "Formulation à éviter"}
-              </span>
-            </button>
-          ))}
         </Reveal>
 
         <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
-          <div className="space-y-6 text-center">
-            <h3 className="text-2xl font-semibold text-white">
-              🧭 Les 3 clés de la bonne posture
-            </h3>
-            <div className="grid gap-4 md:grid-cols-3">
-              {POSTURE_SUMMARY_POINTS.map((point) => (
-                <div
-                  key={point.title}
-                  className="rounded-3xl border border-white/15 bg-white/5 p-6 text-sm text-white/80"
-                >
-                  <h4 className="text-lg font-semibold text-white">{point.title}</h4>
-                  <p className="mt-2">{point.description}</p>
-                </div>
-              ))}
-            </div>
-            <div className="space-y-3">
-              <p className="text-sm text-white/80">
-                Question : Qu’est-ce qui influence le plus la perception du client ?
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                {POSTURE_FINAL_QUIZ.options.map((option, index) => {
-                  const isSelected = summaryAnswer === index;
-                  const isCorrect = index === POSTURE_FINAL_QUIZ.correctIndex;
-                  return (
-                    <button
-                      key={option}
-                      type="button"
-                      onClick={() => setSummaryAnswer(index)}
-                      className={cn(
-                        "rounded-[12px] border px-4 py-2 text-xs font-semibold transition-all duration-300",
-                        isSelected
-                          ? isCorrect
-                            ? "border-emerald-400 bg-emerald-400/10 text-white"
-                            : "border-amber-400 bg-amber-400/10 text-white"
-                          : "border-white/20 bg-white/5 text-white hover:-translate-y-0.5",
-                      )}
-                    >
-                      {option}
-                    </button>
-                  );
-                })}
-              </div>
-              {summaryFeedback && (
-                <p
-                  className={cn(
-                    "text-xs",
-                    summaryFeedback.status === "success"
-                      ? "text-emerald-300"
-                      : "text-amber-200",
-                  )}
-                >
-                  {summaryFeedback.message}
-                </p>
-              )}
-            </div>
+          <div className="space-y-4 text-center">
+            <p className="text-sm text-white/80">
+              En appliquant ces repères, tu annonces la fin du chèque de manière sereine et tu prépares la suite de la formation.
+            </p>
+            <button
+              type="button"
+              onClick={onGoToConclusion}
+              className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-sm font-semibold text-primary shadow-lg shadow-black/20 transition-all durée-300 hover:-translate-y-0.5 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              <Smile className="h-4 w-4" aria-hidden="true" />
+              Je poursuis la formation
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </button>
           </div>
-        </Reveal>
-
-        <Reveal className="flex flex-col items-center gap-4 text-center">
-          <p className="max-w-2xl text-sm text-white/80">
-            Tu viens de valider la posture Decathlon : des mots apaisants, un ton chaleureux et une attitude ouverte. Tu es prêt(e) pour la suite !
-          </p>
-          <button
-            type="button"
-            onClick={onGoToConclusion}
-            className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-sm font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          >
-            <Smile className="h-4 w-4" aria-hidden="true" />
-            Je valide mon chapitre
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </button>
         </Reveal>
       </div>
     </section>
