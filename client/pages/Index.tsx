@@ -1384,7 +1384,7 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
                 );
               })}
             </div>
-            {roleFeedback && roleSelection === null && (
+            {roleSelection === null && (
               <p className="text-xs text-white/70">
                 Sélectionne une posture pour découvrir le feedback.
               </p>
