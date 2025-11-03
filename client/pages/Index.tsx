@@ -847,7 +847,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
   {
     id: "test-limites",
     title: "Client qui teste les limites",
-    trigger: "“Et si je le pose là, mon ch��que, vous le prenez quand même ?”",
+    trigger: "“Et si je le pose là, mon chèque, vous le prenez quand même ?”",
     objective: "Rester léger tout en affirmant le cadre et les solutions.",
     example:
       "Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
