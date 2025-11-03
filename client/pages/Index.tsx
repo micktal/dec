@@ -247,7 +247,7 @@ const LEARNING_STEPS = [
 ] as const;
 
 const POSTURE_SECTION_IMAGE =
-  "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F9816efd05f164ba6a56e9aeacaff5bbb?format=webp&width=1200";
+  "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fdaa219c5357a45b0882f4acfb8c73563?format=webp&width=800";
 
 const POSTURE_PILLARS = [
   {
