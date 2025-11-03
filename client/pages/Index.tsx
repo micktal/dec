@@ -1898,7 +1898,7 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
                 poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F6ee05ab3af6c43caa575223490c40142?format=webp&width=800"
               >
                 <source
-                  src="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fdf222f33b0204daa8a21999f884176f6?alt=media&token=76fb7eb1-7006-43c1-8f39-67e15e63de70&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
+                  src="https://wdtncbpobvvbbncmlbln.supabase.co/storage/v1/object/sign/video/final%20decathlon-720p-251103.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mYWViMGM4Yy0zZDE4LTQ2YjgtOGUxYS05YWFlZjQ4MmFjOTMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ2aWRlby9maW5hbCBkZWNhdGhsb24tNzIwcC0yNTExMDMubXA0IiwiaWF0IjoxNzYyMjA4NzIyLCJleHAiOjE3OTM3NDQ3MjJ9.ADD2xYyzYXtUncoP6f6-3l27lItCgaOfCwLTuS9Pp9E"
                   type="video/mp4"
                 />
                 Ton navigateur ne supporte pas la lecture vidéo.
