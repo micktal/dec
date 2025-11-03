@@ -267,6 +267,14 @@ const SYNTHESIS_ACTIONS = [
   },
 ] as const;
 
+const PODCAST_RESOURCE = {
+  title: "Interview de Muriel, capitaine Decathlon",
+  description:
+    "Muriel partage ses astuces pour accompagner les clients avec empathie, rassurer sur la fin du chèque et mobiliser l'équipe.",
+  duration: "Durée : 6 minutes",
+  url: "https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F886519d4f49444b29c0bc13eb3871646?alt=media&token=00798ddb-4c68-4ce8-a9bf-c2f4725eed1f&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec",
+} as const;
+
 const REASONS = [
   {
     icon: Lightbulb,
@@ -329,7 +337,7 @@ const REFLEXES = [
     title: "Empathie",
     summary: "Prendre le temps d'écouter et de rassurer chaque client.",
     detail:
-      "Accueille chaque réaction en restant disponible et compréhensif. Reformule si besoin pour montrer que tu as entendu la demande.",
+      "Accueille chaque r��action en restant disponible et compréhensif. Reformule si besoin pour montrer que tu as entendu la demande.",
   },
   {
     title: "Clarté",
@@ -390,7 +398,7 @@ const SCENARIOS: ClientScenario[] = [
       "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la réponse tarde.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F13e6eae7e96f42a6b2443162c334241e?format=webp&width=800",
-    imageAlt: "Client pressé contrarié réagissant à un changement",
+    imageAlt: "Client pressé contrarié réagissant �� un changement",
     dialogue: "Vous perdez du temps avec vos nouvelles r��gles ! J’ai pas que ça à faire.",
     responses: [
       {
