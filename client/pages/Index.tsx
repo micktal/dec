@@ -653,13 +653,13 @@ const SCENARIOS: ClientScenario[] = [
   },
   {
     id: 3,
-    name: "Sonia",
-    archetype: "Client professionnelle",
+    name: "Marc",
+    archetype: "Client professionnel",
     description:
-      "Elle représente une mairie ou une association, habituée au chèque administratif et cherche une alternative fiable.",
+      "Il représente une mairie ou une association, habitué au chèque administratif et cherche une alternative fiable.",
     image:
-      "https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?auto=format&fit=crop&w=600&q=80",
-    imageAlt: "Cliente professionnelle discutant avec un vendeur",
+      "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F6fb5b2c534fb434d94e6dd6c25b2d333?format=webp&width=800",
+    imageAlt: "Homme en entrepôt tenant une tablette",
     dialogue:
       "Je suis une mairie, on ne peut pas payer autrement que par chèque administratif.",
     responses: [
