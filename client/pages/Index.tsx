@@ -774,6 +774,7 @@ export default function Index() {
           onResetSimulation={handleScenarioReset}
           onMarkCompleted={handleModuleComplete}
         />
+        <PodcastSection id={SECTION_IDS.PODCAST} />
         <SynthesisSection id={SECTION_IDS.SYNTHESIS} />
         <FinalQuizSection
           id={SECTION_IDS.FINAL_QUIZ}
