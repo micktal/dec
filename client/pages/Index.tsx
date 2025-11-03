@@ -1544,6 +1544,7 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
             onClick={onGoToConclusion}
             className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-sm font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
+            <Smile className="h-4 w-4" aria-hidden="true" />
             Je valide mon chapitre
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </button>
