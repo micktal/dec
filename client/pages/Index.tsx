@@ -1578,7 +1578,7 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
           <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-lg shadow-black/30">
             <img
               src={POSTURE_SECTION_IMAGE}
-              alt="Collaborateur Decathlon souriant à la caisse"
+              alt="Collaborateur en visioconférence prenant des notes"
               className="h-full w-full object-cover"
               loading="lazy"
               decoding="async"
@@ -1960,7 +1960,7 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
         </Reveal>
         <Reveal className="rounded-3xl border border-primary/30 bg-[#EEF2FF] p-6 text-center shadow-inner">
           <p className="text-base text-primary">
-            Chaque échange compte : garde ton calme, ton sourire et ton sens du service pour transformer une réticence en confiance. C'est ça, l'esprit Decathlon.
+            Chaque ��change compte : garde ton calme, ton sourire et ton sens du service pour transformer une réticence en confiance. C'est ça, l'esprit Decathlon.
           </p>
         </Reveal>
       </div>
