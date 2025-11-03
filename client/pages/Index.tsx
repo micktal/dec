@@ -620,7 +620,7 @@ const FINAL_QUIZ: QuizQuestion[] = [
     options: [
       "Accepter exceptionnellement son chèque administratif",
       "L'orienter vers Decathlon Pro et ses procédures adaptées",
-      "Lui proposer uniquement de payer en esp��ces",
+      "Lui proposer uniquement de payer en espèces",
       "Refuser la vente s'il n'a pas de carte bancaire",
     ],
     correctIndex: 1,
@@ -993,7 +993,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
                 Pourquoi cette formation ?
               </h3>
               <ul className="space-y-2 text-sm text-white/85">
-                <li>Anticiper les réactions en caisse et y répondre avec sérénité.</li>
+                <li>Anticiper les réactions en caisse et y répondre avec sérénit��.</li>
                 <li>Clarifier le changement et en expliquer les bénéfices concrets.</li>
                 <li>Proposer immédiatement des alternatives de paiement adaptées.</li>
               </ul>
@@ -1243,8 +1243,6 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
 
   const verbalFeedback =
     verbalSelection !== null ? VERBAL_ACTIVITY_OPTIONS[verbalSelection] : null;
-  const roleFeedback = roleSelection !== null ? ROLEPLAY_OPTIONS[roleSelection] : null;
-  const toneFeedback = toneSelection !== null ? AUDIO_TONE_OPTIONS[toneSelection] : null;
   const summaryFeedback =
     summaryAnswer !== null
       ? summaryAnswer === POSTURE_FINAL_QUIZ.correctIndex
