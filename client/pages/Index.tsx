@@ -1538,28 +1538,6 @@ type PostureChapterProps = {
 };
 
 function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
-  const [activeTone, setActiveTone] = useState<number | null>(null);
-  const [toneMessage, setToneMessage] = useState<string | null>(null);
-  const [voiceSupportMessage, setVoiceSupportMessage] = useState<string | null>(null);
-
-  const handlePlayTone = (index: number) => {
-    setActiveTone(index);
-    const option = POSTURE_TONE_SAMPLES[index];
-    setToneMessage(option.focus);
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(AUDIO_SAMPLE_TEXT);
-      utterance.pitch = option.pitch;
-      utterance.rate = option.rate;
-      utterance.lang = "fr-FR";
-      window.speechSynthesis.speak(utterance);
-      setVoiceSupportMessage(null);
-    } else {
-      setVoiceSupportMessage(
-        "Ton navigateur ne supporte pas la lecture audio automatique. Lis la description pour identifier le ton recommandé.",
-      );
-    }
-  };
 
   return (
     <section id={id} className="bg-[#0E1A5F] py-24 text-white">
