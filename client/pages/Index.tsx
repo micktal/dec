@@ -905,7 +905,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
           status: "success",
         },
         {
-          label: "Chaque magasin fait comme il veut, ici on a arrêt�� plus tôt.",
+          label: "Chaque magasin fait comme il veut, ici on a arrêté plus tôt.",
           feedback:
             "Mauvais message : tu brouilles le cadrage national et fragilises la confiance.",
           status: "error",
@@ -2034,7 +2034,8 @@ function SynthesisSection({ id }: { id?: string }) {
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
           <DecathlonLogo
-            className="mx-auto h-10 w-auto drop-shadow filter brightness-0 invert"
+            variant="white"
+            className="mx-auto h-10 w-auto drop-shadow"
             aria-label="Decathlon"
           />
           <h2 className="text-3xl font-bold md:text-4xl">Synthèse : à toi de jouer</h2>
