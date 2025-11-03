@@ -1212,7 +1212,7 @@ export default function Index() {
         <OverviewSection onNavigate={handleScrollTo} />
         <PostureChapter
           id={SECTION_IDS.POSTURE}
-          onGoToConclusion={handleScrollToConclusion}
+          onGoToConclusion={handleScrollToReasons}
         />
         <ReasonsSection
           id={SECTION_IDS.REASONS}
