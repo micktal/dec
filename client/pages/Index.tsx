@@ -32,7 +32,7 @@ import DecathlonLogo from "@/components/DecathlonLogo";
 import Reveal from "@/components/Reveal";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-import { cn } from "@/lib/utils";
+import { cn as combineClasses } from "@/lib/utils";
 
 type ReasonOption = {
   label: string;
@@ -290,7 +290,7 @@ const POSTURE_SEQUENCE = [
   {
     title: "2. Poser le cadre simplement",
     description:
-      "Annonce la fin du chèque avec des mots positifs et relie la décision à la sécurité et à la rapidité.",
+      "Annonce la fin du chèque avec des mots positifs et relie la décision à la sécurité et �� la rapidité.",
   },
   {
     title: "3. Proposer une solution adaptée",
@@ -1490,7 +1490,7 @@ function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsS
                   key={option.label}
                   type="button"
                   onClick={() => onSelect(option)}
-                  className={cn(
+                  className={combineClasses(
                     "rounded-[12px] border px-5 py-3 text-sm font-semibold transition-all duration-300",
                     isSelected
                       ? option.isCorrect
@@ -1506,7 +1506,7 @@ function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsS
           </div>
           {reasonFeedback && (
             <p
-              className={cn(
+              className={combineClasses(
                 "mt-4 text-sm",
                 reasonFeedback.correct ? "text-primary" : "text-red-600",
               )}
@@ -1667,7 +1667,7 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
               {POSTURE_TONE_SAMPLES.map((sample) => (
                 <div
                   key={sample.label}
-                  className={cn(
+                  className={combineClasses(
                     "flex h-full flex-col gap-3 rounded-[18px] border px-5 py-4 text-left text-sm transition-all duration-300",
                     TONE_QUALITY_STYLES[sample.quality],
                   )}
@@ -1762,7 +1762,7 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
                   type="button"
                   onClick={() => handleToggle(index)}
                   aria-expanded={isActive}
-                  className={cn(
+                  className={combineClasses(
                     "flex w-full flex-col gap-4 rounded-3xl border border-border bg-white p-6 text-left transition-all duration-300",
                     isActive ? "border-primary shadow-xl shadow-primary/10" : "hover:-translate-y-1 hover:border-primary/40",
                   )}
@@ -1776,7 +1776,7 @@ function ReflexesSection({ id }: ReflexesSectionProps) {
                       </div>
                     </div>
                     <ChevronDown
-                      className={cn(
+                      className={combineClasses(
                         "h-6 w-6 shrink-0 text-primary transition-transform duration-300",
                         isActive && "rotate-180",
                       )}
@@ -2108,7 +2108,7 @@ function ScenariosSection({
                   key={option.label}
                   type="button"
                   onClick={() => handleExceptionalSelect(scenarioIndex, optionIndex)}
-                  className={cn(
+                  className={combineClasses(
                     "w-full rounded-[12px] border px-4 py-3 text-left text-sm font-semibold transition-all duration-300",
                     isSelected
                       ? EXCEPTIONAL_STATUS_STYLES[option.status]
@@ -2123,14 +2123,14 @@ function ScenariosSection({
           </div>
           {selectedOption && SelectedIcon && (
             <div
-              className={cn(
+              className={combineClasses(
                 "rounded-2xl border px-4 py-4 text-sm leading-relaxed transition-colors",
                 EXCEPTIONAL_STATUS_STYLES[selectedOption.status],
               )}
             >
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
                 <SelectedIcon
-                  className={cn(
+                  className={combineClasses(
                     "h-5 w-5 shrink-0",
                     EXCEPTIONAL_STATUS_ACCENTS[selectedOption.status],
                   )}
@@ -2138,7 +2138,7 @@ function ScenariosSection({
                 />
                 <div className="space-y-2">
                   <p
-                    className={cn(
+                    className={combineClasses(
                       "text-xs font-semibold uppercase tracking-[0.3em]",
                       EXCEPTIONAL_STATUS_ACCENTS[selectedOption.status],
                     )}
@@ -2181,7 +2181,7 @@ function ScenariosSection({
         <button
           type="button"
           onClick={() => toggleExceptionalFlip(scenarioIndex)}
-          className={cn(
+          className={combineClasses(
             "w-full rounded-2xl border px-5 py-5 text-left transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
             isFlipped
               ? "border-primary bg-primary/10 text-primary"
@@ -2327,7 +2327,7 @@ function ScenariosSection({
                 key={scenario.id}
                 type="button"
                 onClick={() => onActivateScenario(index)}
-                className={cn(
+                className={combineClasses(
                   "flex h-full flex-col gap-3 rounded-3xl border bg-white p-5 text-left transition-all duration-300",
                   isActive
                     ? "border-primary shadow-lg shadow-primary/10"
@@ -2347,7 +2347,7 @@ function ScenariosSection({
                 </div>
                 <p className="text-sm text-foreground/70">{scenario.description}</p>
                 <span
-                  className={cn(
+                  className={combineClasses(
                     "mt-auto inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide",
                     statusClasses[status],
                   )}
@@ -2403,7 +2403,7 @@ function ScenariosSection({
                     key={response.label}
                     type="button"
                     onClick={() => onSelect(safeScenarioIndex, optionIndex)}
-                    className={cn(
+                    className={combineClasses(
                       "w-full rounded-[12px] border px-5 py-3 text-left text-sm font-medium transition-all duration-300",
                       selectionClasses,
                     )}
@@ -2415,7 +2415,7 @@ function ScenariosSection({
             </div>
             {currentFeedback && currentTone && (
               <div
-                className={cn(
+                className={combineClasses(
                   "rounded-2xl border px-4 py-4 text-sm leading-relaxed transition-colors",
                   toneAccentClasses[currentTone],
                 )}
@@ -2445,7 +2445,7 @@ function ScenariosSection({
                   type="button"
                   onClick={onContinueScenario}
                   disabled={currentResponseIndex === null}
-                  className={cn(
+                  className={combineClasses(
                     "inline-flex items-center justify-center gap-2 rounded-[12px] px-5 py-3 text-sm font-semibold transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
                     currentResponseIndex === null
                       ? "cursor-not-allowed border border-primary/20 bg-primary/10 text-primary/50"
@@ -2656,7 +2656,7 @@ function FinalQuizSection({
                     return (
                       <label
                         key={option}
-                        className={cn(
+                        className={combineClasses(
                           "flex cursor-pointer items-center gap-3 rounded-[12px] border px-4 py-3 text-sm transition-all duration-300",
                           isCorrect
                             ? "border-primary bg-primary/10 text-primary"
@@ -2693,14 +2693,14 @@ function FinalQuizSection({
               <div className="w-full rounded-2xl border border-primary/20 bg-white p-5 text-left shadow-sm">
                 <div className="flex items-center gap-3 text-primary">
                   <ResultIcon
-                    className={cn("h-5 w-5", resultAccent)}
+                    className={combineClasses("h-5 w-5", resultAccent)}
                     aria-hidden="true"
                   />
                   <p className="text-sm font-semibold">
                     Ton score : {score} / {FINAL_QUIZ.length}
                   </p>
                 </div>
-                <p className={cn("mt-3 text-sm leading-relaxed", resultAccent)}>
+                <p className={combineClasses("mt-3 text-sm leading-relaxed", resultAccent)}>
                   {success
                     ? "Bravo, tu maîtrises les bons réflexes."
                     : "Revois les réflexes clés et réessaie."}
