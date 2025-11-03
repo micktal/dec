@@ -636,7 +636,7 @@ const SCENARIOS: ClientScenario[] = [
       "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la r��ponse tarde.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F13e6eae7e96f42a6b2443162c334241e?format=webp&width=800",
-    imageAlt: "Client pressé contrarié réagissant �� un changement",
+    imageAlt: "Client pressé contrari�� réagissant �� un changement",
     dialogue: "Vous perdez du temps avec vos nouvelles r��gles ! J’ai pas que ça à faire.",
     responses: [
       {
@@ -729,7 +729,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
           status: "success",
         },
         {
-          label: "C’est fini depuis 2026, c’est comme ça maintenant.",
+          label: "C’est fini depuis 2026, c���est comme ça maintenant.",
           feedback: "Formulation trop abrupte : la bienveillance disparaît.",
           status: "warning",
         },
@@ -2815,7 +2815,11 @@ function ConclusionSection({
     <section id={id} className="bg-[#1C4ED8] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 text-center md:px-10">
         <Reveal className="space-y-4">
-          <DecathlonLogo className="mx-auto h-12 w-auto drop-shadow" aria-label="Decathlon" />
+          <DecathlonLogo
+            variant="white"
+            className="mx-auto h-12 w-auto drop-shadow"
+            aria-label="Decathlon"
+          />
           <h2 className="text-3xl font-bold md:text-4xl">Conclusion et ressources</h2>
           <p className="text-lg text-white/85">
             Merci pour ton engagement. Grâce à toi, la transition 2026 se fera en douceur et dans un esprit de service.
