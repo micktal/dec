@@ -124,42 +124,48 @@ const MODULE_HIGHLIGHTS = [
 const LEARNING_STEPS = [
   {
     order: "01",
+    title: "Adopter la posture verbale & non verbale",
+    description: "Pose les bases : mots, ton et attitude pour désamorcer les tensions.",
+    sectionId: SECTION_IDS.POSTURE,
+  },
+  {
+    order: "02",
     title: "Comprendre le changement",
     description: "Découvre les raisons de la transition et gagne en clarté.",
     sectionId: SECTION_IDS.REASONS,
   },
   {
-    order: "02",
+    order: "03",
     title: "Adopter les réflexes",
     description: "Mémorise les attitudes à avoir face aux clients.",
     sectionId: SECTION_IDS.REFLEXES,
   },
   {
-    order: "03",
+    order: "04",
     title: "Comprendre les réactions",
     description: "Explore les profils clients et prépare tes réponses clés.",
     sectionId: SECTION_IDS.CLIENT_GUIDE,
   },
   {
-    order: "04",
+    order: "05",
     title: "S'exercer en situation",
     description: "Choisis la bonne réponse dans les scénarios inspirés du terrain.",
     sectionId: SECTION_IDS.SCENARIOS,
   },
   {
-    order: "05",
+    order: "06",
     title: "Écouter le terrain",
     description: "Découvre l'expérience de Muriel, capitaine de magasin Decathlon.",
     sectionId: SECTION_IDS.PODCAST,
   },
   {
-    order: "06",
+    order: "07",
     title: "Activer tes forces",
     description: "Synthétise les apprentissages et prépare ton passage à l'action.",
     sectionId: SECTION_IDS.SYNTHESIS,
   },
   {
-    order: "07",
+    order: "08",
     title: "Valider tes acquis",
     description: "Réponds au quiz final et finalise la formation.",
     sectionId: SECTION_IDS.FINAL_QUIZ,
@@ -401,7 +407,7 @@ const SCENARIOS: ClientScenario[] = [
     name: "Nicolas",
     archetype: "Client pressé",
     description:
-      "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la réponse tarde.",
+      "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la r��ponse tarde.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F13e6eae7e96f42a6b2443162c334241e?format=webp&width=800",
     imageAlt: "Client pressé contrarié réagissant �� un changement",
