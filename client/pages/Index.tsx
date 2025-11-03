@@ -7,12 +7,14 @@ import {
 import { Link } from "react-router-dom";
 import {
   AlertCircle,
+  AlertTriangle,
   ArrowRight,
   BookOpen,
   Brain,
   CheckCircle2,
   ChevronDown,
   Cog,
+  ExternalLink,
   FileText,
   Flag,
   HelpCircle,
@@ -1406,7 +1408,7 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
               🔊 Écoute et choisis le ton juste
             </h3>
             <p className="text-sm text-white/80">
-              Clique pour écouter trois versions d’une même phrase et choisis celle qui incarne le mieux l’esprit Decathlon.
+              Clique pour écouter trois versions d’une même phrase et choisis celle qui incarne le mieux l���esprit Decathlon.
             </p>
             <div className="grid gap-4 md:grid-cols-3">
               {AUDIO_TONE_OPTIONS.map((option, index) => {
