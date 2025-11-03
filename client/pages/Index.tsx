@@ -76,6 +76,7 @@ const SECTION_IDS = {
   REFLEXES: "section-reflexes",
   CLIENT_GUIDE: "section-clients",
   SCENARIOS: "section-scenarios",
+  PODCAST: "section-podcast",
   SYNTHESIS: "section-synthese",
   FINAL_QUIZ: "section-final-quiz",
   CONCLUSION: "section-conclusion",
@@ -141,12 +142,18 @@ const LEARNING_STEPS = [
   },
   {
     order: "05",
+    title: "Écouter le terrain",
+    description: "Découvre l'expérience de Muriel, capitaine de magasin Decathlon.",
+    sectionId: SECTION_IDS.PODCAST,
+  },
+  {
+    order: "06",
     title: "Activer tes forces",
     description: "Synthétise les apprentissages et prépare ton passage à l'action.",
     sectionId: SECTION_IDS.SYNTHESIS,
   },
   {
-    order: "06",
+    order: "07",
     title: "Valider tes acquis",
     description: "Réponds au quiz final et finalise la formation.",
     sectionId: SECTION_IDS.FINAL_QUIZ,
@@ -427,7 +434,7 @@ const SCENARIOS: ClientScenario[] = [
           "Bonne nouvelle : Decathlon Pro existe justement pour les paiements professionnels. Je peux vous orienter vers ce service.",
         tone: "positive",
         feedback:
-          "Bonne r��ponse ! Tu proposes une solution adaptée et tu valorises l’accompagnement Decathlon Pro.",
+          "Bonne réponse ! Tu proposes une solution adaptée et tu valorises l’accompagnement Decathlon Pro.",
         isCorrect: true,
       },
       {
