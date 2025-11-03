@@ -77,6 +77,7 @@ const INTRO_HERO_IMAGE =
   "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1600&q=80";
 
 const SECTION_IDS = {
+  POSTURE: "section-posture",
   REASONS: "section-raisons",
   REFLEXES: "section-reflexes",
   CLIENT_GUIDE: "section-clients",
