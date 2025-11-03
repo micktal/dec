@@ -1371,7 +1371,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
                 className="h-full w-full object-cover"
                 controls
                 preload="metadata"
-                poster="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=800&q=80"
+                poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fcc1ffb661a2148659931e8d42572c5a9?format=webp&width=800"
               >
                 <source
                   src="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fbbf05fbc0f544bc98d68a0ce24f1a732?alt=media&token=915c0a78-893b-481e-b797-fcf40d3d52da&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
