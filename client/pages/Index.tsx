@@ -250,116 +250,153 @@ const LEARNING_STEPS = [
 const POSTURE_SECTION_IMAGE =
   "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F9816efd05f164ba6a56e9aeacaff5bbb?format=webp&width=1200";
 
-const VERBAL_ACTIVITY_OPTIONS = [
+const POSTURE_PILLARS = [
   {
-    statement: "“C’est la règle, on ne les prend plus.”",
-    feedback: "Formulation trop administrative : tu imposes sans accompagner.",
-    status: "error" as const,
+    title: "Les mots qui apaisent",
+    description:
+      "Des phrases simples et positives installent immédiatement un climat de confiance.",
+    guidelines: [
+      "Commencer par reformuler l'émotion ou la situation vécue.",
+      "Relier la transition à un bénéfice concret pour le client.",
+      "Terminer par une proposition d'accompagnement ou une alternative.",
+    ],
   },
   {
-    statement: "“Pas d’inquiétude, on a plusieurs solutions simples à te proposer.”",
-    feedback: "Parfait : rassurant, positif et orienté solution.",
-    status: "success" as const,
+    title: "Le ton qui rassure",
+    description:
+      "Une voix posée et chaleureuse montre que tu maîtrises le changement.",
+    guidelines: [
+      "Parler lentement et articuler pour laisser le temps d'intégrer l'information.",
+      "Sourire en parlant : le sourire s'entend et apaise.",
+      "Utiliser un vocabulaire positif qui ouvre la discussion.",
+    ],
   },
   {
-    statement: "“C’est fini depuis 2026, c’est comme ça maintenant.”",
-    feedback: "Trop abrupt : la bienveillance disparaît.",
-    status: "warning" as const,
+    title: "Le corps qui confirme",
+    description:
+      "Regard, posture et gestes soutiennent ton message et montrent ton écoute.",
+    guidelines: [
+      "Garder le regard à hauteur du client pour montrer ta disponibilité.",
+      "Adopter une posture ouverte, épaules détendues et mains visibles.",
+      "Acquiescer en rythme pour montrer que tu suis son raisonnement.",
+    ],
   },
 ] as const;
 
-const ROLEPLAY_OPTIONS = [
+const POSTURE_SEQUENCE = [
   {
-    title: "Option 1",
-    description: "Tu croises les bras, dis calmement “on ne prend plus les chèques”.",
-    feedback: "Ton calme est là, mais ton corps fermé peut être vécu comme un blocage.",
-    status: "warning" as const,
-  },
-  {
-    title: "Option 2",
+    title: "1. Accueillir avant d'expliquer",
     description:
-      "Tu gardes le sourire, inclines légèrement la tête, et dis : “Je comprends, c’est une habitude. Mais tu vas voir, c’est encore plus simple maintenant.”",
-    feedback: "Bravo ! Tu allies geste ouvert, ton rassurant et solution immédiate.",
-    status: "success" as const,
+      "Laisse le client exprimer sa réaction, respire et reformule sa phrase pour valider son ressenti.",
   },
   {
-    title: "Option 3",
-    description: "Tu regardes la file et réponds rapidement : “Essayez avec votre carte.”",
-    feedback: "Tu perds le contact humain : le client peut se sentir ignoré.",
-    status: "error" as const,
+    title: "2. Poser le cadre simplement",
+    description:
+      "Annonce la fin du chèque avec des mots positifs et relie la décision à la sécurité et à la rapidité.",
+  },
+  {
+    title: "3. Proposer une solution adaptée",
+    description:
+      "Présente immédiatement deux alternatives concrètes pour que le client se projette.",
+  },
+  {
+    title: "4. Conclure en accompagnant",
+    description:
+      "Vérifie que tout est clair, reste disponible et invite le client à revenir vers toi si besoin.",
+  },
+] as const;
+
+const POSTURE_WORDING_GUIDE = [
+  {
+    avoid: "On ne prend plus les chèques.",
+    prefer: "On simplifie les paiements pour vous.",
+    explanation: "On remplace une fermeture par une solution tournée vers le client.",
+  },
+  {
+    avoid: "C’est comme ça maintenant.",
+    prefer: "Depuis 2026, on a harmonisé les moyens de paiement.",
+    explanation: "On apporte un contexte national au lieu d'opposer le client.",
+  },
+  {
+    avoid: "C’est la règle.",
+    prefer: "C’est pour sécuriser et accélérer vos encaissements.",
+    explanation: "On transforme la contrainte en bénéfice tangible.",
+  },
+  {
+    avoid: "Je ne peux rien faire.",
+    prefer: "Je peux vous proposer une carte cadeau ou un paiement en plusieurs fois.",
+    explanation: "On reste acteur en offrant immédiatement des options.",
+  },
+] as const;
+
+const POSTURE_FIELD_CASES = [
+  {
+    title: "Client fidèle et surpris",
+    context: "Il arrive avec son carnet de chèques et craint une erreur de paiement.",
+    approach:
+      "Reformule sa crainte, rappelle que l'objectif est d'éviter les retours chèque et propose la carte ou le paiement fractionné.",
+    keyPoint: "Il repart rassuré car tu as reconnu son habitude et proposé un accompagnement.",
+  },
+  {
+    title: "Client pressé dans la file",
+    context: "Il s'impatiente et pense que la nouvelle règle va retarder son passage.",
+    approach:
+      "Montre que la carte est immédiate, propose l'encaissement sans contact et reste calme pour abaisser la tension.",
+    keyPoint: "Il comprend que la nouvelle procédure est la plus rapide pour lui.",
+  },
+  {
+    title: "Client professionnel",
+    context: "Une mairie ou association doit respecter un circuit administratif précis.",
+    approach:
+      "Présente Decathlon Pro, explique le paiement par virement ou mandat et propose de l'aider à créer son compte.",
+    keyPoint: "Tu valorises la solution dédiée et tu restes son point de contact.",
   },
 ] as const;
 
 const AUDIO_SAMPLE_TEXT =
-  "Je suis là pour t’accompagner, tu vas voir c’est très simple et rapide.";
+  "Je suis là pour vous accompagner, vous allez voir c'est très simple et rapide.";
 
-const AUDIO_TONE_OPTIONS = [
+type ToneQuality = "recommended" | "toAdjust" | "toAvoid";
+
+const POSTURE_TONE_SAMPLES: Array<{
+  label: string;
+  description: string;
+  pitch: number;
+  rate: number;
+  focus: string;
+  quality: ToneQuality;
+}> = [
   {
-    label: "Version 1 · Ton neutre",
-    description: "Voix plate et un peu distante.",
+    label: "Version chaleureuse",
+    description: "Voix souriante, rythme calme, rassurant.",
+    pitch: 1.05,
+    rate: 0.95,
+    focus: "C'est la référence : tu laisses le temps au client et ton sourire s'entend.",
+    quality: "recommended",
+  },
+  {
+    label: "Version neutre",
+    description: "Voix correcte mais un peu distante.",
     pitch: 1,
     rate: 1,
-    feedback: "C’est correct, mais il manque la chaleur Decathlon.",
-    status: "warning" as const,
+    focus: "À ajuster : ajoute plus de chaleur et ralentis légèrement le rythme.",
+    quality: "toAdjust",
   },
   {
-    label: "Version 2 · Ton chaleureux",
-    description: "Voix souriante, rythme calme, rassurant.",
-    pitch: 1.1,
-    rate: 0.95,
-    feedback: "Exact ! Le sourire s’entend et met le client en confiance.",
-    status: "success" as const,
-  },
-  {
-    label: "Version 3 · Ton pressé",
+    label: "Version pressée",
     description: "Voix rapide, un peu stressée.",
     pitch: 0.9,
     rate: 1.15,
-    feedback: "Trop rapide : le client ressent la tension.",
-    status: "error" as const,
+    focus: "À éviter : le client ressent ton urgence et ne se sent pas accompagné.",
+    quality: "toAvoid",
   },
-] as const;
+];
 
-const WORD_CHOICE_PAIRS = [
-  {
-    avoid: "On ne prend plus les chèques.",
-    prefer: "On simplifie les paiements pour toi.",
-  },
-  {
-    avoid: "C’est comme ça maintenant.",
-    prefer: "Bonne nouvelle, il existe plusieurs solutions.",
-  },
-  {
-    avoid: "C’est la règle.",
-    prefer: "C’est pour te faciliter le paiement.",
-  },
-] as const;
-
-const POSTURE_SUMMARY_POINTS = [
-  {
-    title: "Les mots apaisants",
-    description: "Des phrases simples, positives et tournées vers la solution.",
-  },
-  {
-    title: "Le corps ouvert",
-    description: "Regard, sourire, gestes calmes qui invitent à la confiance.",
-  },
-  {
-    title: "Le ton maîtrisé",
-    description: "Un rythme régulier, une voix claire et sereine.",
-  },
-] as const;
-
-const POSTURE_FINAL_QUIZ = {
-  question: "Qu’est-ce qui influence le plus la perception du client ?",
-  options: [
-    "Les mots",
-    "Le ton",
-    "L’attitude corporelle",
-    "Les trois éléments réunis",
-  ],
-  correctIndex: 3,
-} as const;
+const TONE_QUALITY_STYLES: Record<ToneQuality, string> = {
+  recommended: "border-primary bg-primary/10 text-primary",
+  toAdjust: "border-amber-500 bg-amber-500/10 text-amber-700",
+  toAvoid: "border-red-500 bg-red-500/10 text-red-600",
+};
 
 
 type ClientGuideEntry = {
@@ -520,7 +557,7 @@ const REFLEXES_FOUNDATION = [
       "Un message simple et assumé évite les malentendus et rassure sur notre professionnalisme.",
     highlights: [
       "Expliquer que la décision est nationale et pensée pour sécuriser",
-      "Montrer les bénéfices concrets : encaissement plus rapide et sécurisé",
+      "Montrer les bénéfices concrets : encaissement plus rapide et sécuris��",
     ],
   },
   {
