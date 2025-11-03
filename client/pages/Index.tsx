@@ -930,7 +930,7 @@ const FINAL_QUIZ: QuizQuestion[] = [
   },
   {
     id: 2,
-    question: "Face �� un client pressé ou agacé, quelle posture illustre l'empathie active ?",
+    question: "Face à un client pressé ou agacé, quelle posture illustre l'empathie active ?",
     options: [
       "Rester calme, reformuler et valoriser la rapidité de la CB ou du paiement fractionné",
       "Répondre sur le même ton pour s'imposer",
@@ -1895,7 +1895,7 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
                 controls
                 preload="none"
                 className="h-full w-full"
-                poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fdf6efa0b97d74ba09091c331ab06c301?format=webp&width=1200"
+                poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F6ee05ab3af6c43caa575223490c40142?format=webp&width=800"
               >
                 <source
                   src="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fdf222f33b0204daa8a21999f884176f6?alt=media&token=76fb7eb1-7006-43c1-8f39-67e15e63de70&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
