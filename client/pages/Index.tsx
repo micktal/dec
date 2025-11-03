@@ -1228,6 +1228,35 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
             </Reveal>
           ))}
         </div>
+        <Reveal className="overflow-hidden rounded-3xl border border-primary/30 bg-primary/10 shadow-xl shadow-primary/10">
+          <div className="grid gap-6 p-6 md:grid-cols-[3fr_2fr] md:items-center">
+            <div className="space-y-3 text-left text-sm text-primary">
+              <span className="inline-flex w-fit items-center rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-primary">
+                Focus terrain
+              </span>
+              <h3 className="text-2xl font-semibold text-primary">
+                Étude des trois cas clients en vidéo
+              </h3>
+              <p className="text-primary/80">
+                Revois les réactions typiques et la meilleure posture à adopter pour chaque profil : fidèle et âgé, pressé ou professionnel.
+              </p>
+            </div>
+            <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-black/20">
+              <video
+                controls
+                preload="none"
+                className="h-full w-full"
+                poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fdf6efa0b97d74ba09091c331ab06c301?format=webp&width=1200"
+              >
+                <source
+                  src="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fdf222f33b0204daa8a21999f884176f6?alt=media&token=76fb7eb1-7006-43c1-8f39-67e15e63de70&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
+                  type="video/mp4"
+                />
+                Ton navigateur ne supporte pas la lecture vidéo.
+              </video>
+            </div>
+          </div>
+        </Reveal>
         <Reveal className="rounded-3xl border border-primary/30 bg-[#EEF2FF] p-6 text-center shadow-inner">
           <p className="text-base text-primary">
             Chaque échange compte : garde ton calme, ton sourire et ton sens du service pour transformer une réticence en confiance. C'est ça, l'esprit Decathlon.
