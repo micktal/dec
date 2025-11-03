@@ -419,7 +419,7 @@ const REASONS = [
     icon: ShieldCheck,
     title: "Sécurité renforcée",
     description:
-      "Les transactions dématérialisées limitent les fraudes et sécurisent les encaissements.",
+      "Les transactions dématérialis��es limitent les fraudes et sécurisent les encaissements.",
   },
 ] as const;
 
@@ -700,6 +700,10 @@ export default function Index() {
 
   const handleScrollToReasons = () => {
     handleScrollTo(SECTION_IDS.REASONS);
+  };
+
+  const handleScrollToConclusion = () => {
+    handleScrollTo(SECTION_IDS.CONCLUSION);
   };
 
   const triggerUpdateScore = (isCorrect: boolean) => {
