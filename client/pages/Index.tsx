@@ -475,7 +475,7 @@ const SYNTHESIS_PILLARS = [
     description:
       "Tu expliques la décision nationale avec simplicité. Quand le message est clair, le client perçoit notre professionnalisme et notre cohérence.",
     checkpoints: [
-      "Présenter les bén��fices : sécurité, rapidité, modernisation",
+      "Présenter les bénéfices : sécurité, rapidité, modernisation",
       "Rester positif et aligné avec le projet 2026",
     ],
   },
@@ -530,7 +530,7 @@ const REASONS = [
     icon: ShieldCheck,
     title: "Sécurité renforcée",
     description:
-      "Les transactions dématérialis��es limitent les fraudes et sécurisent les encaissements.",
+      "Les transactions dématérialisées limitent les fraudes et sécurisent les encaissements.",
   },
 ] as const;
 
@@ -575,7 +575,7 @@ const REFLEXES = [
     title: "Empathie",
     summary: "Prendre le temps d'écouter et de rassurer chaque client.",
     detail:
-      "Accueille chaque r��action en restant disponible et compréhensif. Reformule si besoin pour montrer que tu as entendu la demande.",
+      "Accueille chaque réaction en restant disponible et compréhensif. Reformule si besoin pour montrer que tu as entendu la demande.",
   },
   {
     title: "Clarté",
@@ -633,11 +633,11 @@ const SCENARIOS: ClientScenario[] = [
     name: "Nicolas",
     archetype: "Client pressé",
     description:
-      "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la r��ponse tarde.",
+      "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la réponse tarde.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F13e6eae7e96f42a6b2443162c334241e?format=webp&width=800",
-    imageAlt: "Client pressé contrari�� réagissant �� un changement",
-    dialogue: "Vous perdez du temps avec vos nouvelles r��gles ! J’ai pas que ça à faire.",
+    imageAlt: "Client pressé contrarié réagissant à un changement",
+    dialogue: "Vous perdez du temps avec vos nouvelles règles ! J’ai pas que ça à faire.",
     responses: [
       {
         label:
@@ -729,7 +729,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
           status: "success",
         },
         {
-          label: "C’est fini depuis 2026, c���est comme ça maintenant.",
+          label: "C’est fini depuis 2026, c’est comme ça maintenant.",
           feedback: "Formulation trop abrupte : la bienveillance disparaît.",
           status: "warning",
         },
@@ -1333,7 +1333,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
                 Pourquoi cette formation ?
               </h3>
               <ul className="space-y-2 text-sm text-white/85">
-                <li>Anticiper les réactions en caisse et y répondre avec sérénit��.</li>
+                <li>Anticiper les réactions en caisse et y répondre avec sérénité.</li>
                 <li>Clarifier le changement et en expliquer les bénéfices concrets.</li>
                 <li>Proposer immédiatement des alternatives de paiement adaptées.</li>
               </ul>
