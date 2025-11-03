@@ -709,7 +709,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     trigger: "“C’est inadmissible ! Vous prenez mon argent, alors vous prenez mon chèque !”",
     objective: "Désamorcer la tension sans entrer dans le conflit et recentrer vers la solution.",
     example:
-      "Je comprends votre agacement, c’est un vrai changement pour tout le monde. L���objectif est de vous faire gagner du temps et d’éviter les erreurs de paiement. Regardons ensemble ce qui vous conviendrait le mieux.",
+      "Je comprends votre agacement, c’est un vrai changement pour tout le monde. L’objectif est de vous faire gagner du temps et d’éviter les erreurs de paiement. Regardons ensemble ce qui vous conviendrait le mieux.",
     takeaways: [
       "Reformuler l’émotion avant d’expliquer.",
       "Éviter la justification défensive.",
@@ -1540,10 +1540,12 @@ type PostureChapterProps = {
 function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
   const [activeTone, setActiveTone] = useState<number | null>(null);
   const [toneMessage, setToneMessage] = useState<string | null>(null);
+  const [voiceSupportMessage, setVoiceSupportMessage] = useState<string | null>(null);
 
   const handlePlayTone = (index: number) => {
     setActiveTone(index);
     const option = POSTURE_TONE_SAMPLES[index];
+    setToneMessage(option.focus);
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(AUDIO_SAMPLE_TEXT);
@@ -1551,9 +1553,9 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
       utterance.rate = option.rate;
       utterance.lang = "fr-FR";
       window.speechSynthesis.speak(utterance);
-      setToneMessage(option.focus);
+      setVoiceSupportMessage(null);
     } else {
-      setToneMessage(
+      setVoiceSupportMessage(
         "Ton navigateur ne supporte pas la lecture audio automatique. Lis la description pour identifier le ton recommandé.",
       );
     }
@@ -1730,10 +1732,11 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
                       <PlayCircle className="h-4 w-4" aria-hidden="true" />
                       Écouter l'exemple
                     </button>
-                    {isActive && (
-                      <p className="text-xs leading-relaxed">
-                        {toneMessage ?? sample.focus}
-                      </p>
+                    {isActive && toneMessage && (
+                      <p className="text-xs leading-relaxed">{toneMessage}</p>
+                    )}
+                    {isActive && voiceSupportMessage && (
+                      <p className="text-xs text-white/75">{voiceSupportMessage}</p>
                     )}
                   </div>
                 );
@@ -2035,7 +2038,7 @@ function SynthesisSection({ id }: { id?: string }) {
           />
           <h2 className="text-3xl font-bold md:text-4xl">Synthèse : à toi de jouer</h2>
           <p className="text-lg text-white/80">
-            Tu as toutes les clés : empathie, clart�� et solutions. Voici comment transformer chaque échange en victoire client.
+            Tu as toutes les clés : empathie, clarté et solutions. Voici comment transformer chaque échange en victoire client.
           </p>
         </Reveal>
         <div className="grid gap-6 md:grid-cols-3">
