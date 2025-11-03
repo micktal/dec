@@ -885,6 +885,10 @@ export default function Index() {
       <main className="flex flex-col">
         <IntroductionSection onStart={handleScrollToReasons} />
         <OverviewSection onNavigate={handleScrollTo} />
+        <PostureChapter
+          id={SECTION_IDS.POSTURE}
+          onGoToConclusion={handleScrollToConclusion}
+        />
         <ReasonsSection
           id={SECTION_IDS.REASONS}
           reasonAnswer={reasonAnswer}
