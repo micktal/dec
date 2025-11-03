@@ -398,7 +398,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
   {
     title: "Le client fidèle et âgé",
     situation:
-      "Il découvre le changement à la caisse et se sent perdu ou inquiet face à la disparition du chèque.",
+      "Il découvre le changement à la caisse et se sent perdu ou inquiet face à la disparition du ch��que.",
     concerns: [
       "Peur de la carte bancaire et des risques de piratage",
       "Méfiance envers les outils numériques",
@@ -461,7 +461,7 @@ const SYNTHESIS_PILLARS = [
   {
     title: "Clarté assumée",
     description:
-      "Tu expliques la décision nationale avec simplicité. Quand le message est clair, le client perçoit notre professionnalisme et notre cohérence.",
+      "Tu expliques la d��cision nationale avec simplicité. Quand le message est clair, le client perçoit notre professionnalisme et notre cohérence.",
     checkpoints: [
       "Présenter les bénéfices : sécurité, rapidité, modernisation",
       "Rester positif et aligné avec le projet 2026",
@@ -1436,10 +1436,6 @@ function OverviewSection({ onNavigate }: OverviewSectionProps) {
               <p className="mt-2 text-sm text-foreground/70 group-hover:text-white/80">
                 {step.description}
               </p>
-              <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-primary group-hover:text-white">
-                Accéder à la section
-                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </span>
             </button>
           ))}
         </Reveal>
