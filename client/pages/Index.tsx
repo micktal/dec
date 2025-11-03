@@ -1533,26 +1533,15 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
   return (
     <section id={id} className="bg-[#0E1A5F] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
-        <Reveal className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-center">
-          <div className="space-y-4 text-left">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
-              <Brain className="h-4 w-4" aria-hidden="true" />
-              Étape 1
-            </span>
-            <h2 className="text-3xl font-bold md:text-4xl">Posture verbale et non verbale</h2>
-            <p className="text-sm text-white/80">
-              Cette première étape te donne la méthode pour annoncer la fin du chèque sans créer de tension. Tu vas ancrer des réflexes de communication qui rassurent, expliquent et ouvrent la discussion.
-            </p>
-          </div>
-          <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-lg shadow-black/30">
-            <img
-              src={POSTURE_SECTION_IMAGE}
-              alt="Collaborateur en visioconférence prenant des notes"
-              className="h-full w-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+        <Reveal className="space-y-4 text-left">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
+            <Brain className="h-4 w-4" aria-hidden="true" />
+            Étape 1
+          </span>
+          <h2 className="text-3xl font-bold md:text-4xl">Posture verbale et non verbale</h2>
+          <p className="text-sm text-white/80">
+            Cette première étape te donne la méthode pour annoncer la fin du chèque sans créer de tension. Tu vas ancrer des réflexes de communication qui rassurent, expliquent et ouvrent la discussion.
+          </p>
         </Reveal>
 
         <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
@@ -1884,7 +1873,7 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
                 Étude des trois cas clients en vidéo
               </h3>
               <p className="text-primary/80">
-                Revois les réactions typiques et la meilleure posture à adopter pour chaque profil : fidèle et âgé, pressé ou professionnel.
+                Revois les r��actions typiques et la meilleure posture à adopter pour chaque profil : fidèle et âgé, pressé ou professionnel.
               </p>
             </div>
             <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-black/20">
