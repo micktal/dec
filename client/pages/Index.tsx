@@ -9,6 +9,7 @@ import {
   AlertCircle,
   ArrowRight,
   BookOpen,
+  Brain,
   CheckCircle2,
   ChevronDown,
   Cog,
@@ -16,10 +17,14 @@ import {
   Flag,
   HelpCircle,
   Lightbulb,
+  PlayCircle,
   RotateCcw,
   ShieldCheck,
+  Smile,
+  Sparkles,
   Target,
   Users,
+  Volume2,
   type LucideIcon,
 } from "lucide-react";
 
