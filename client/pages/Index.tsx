@@ -2650,9 +2650,8 @@ function FinalQuizSection({
           {FINAL_QUIZ.map((question, questionIndex) => (
             <Reveal key={question.id}>
               <fieldset className="rounded-3xl border border-primary/30 bg-white p-6 shadow-lg shadow-primary/10">
-                <legend className="text-lg font-semibold text-primary">
-                  {question.question}
-                </legend>
+                <legend className="sr-only">{question.question}</legend>
+                <p className="text-lg font-semibold text-primary">{question.question}</p>
                 <div className="mt-4 grid gap-3">
                   {question.options.map((option, optionIndex) => {
                     const isSelected = answers[questionIndex] === optionIndex;
