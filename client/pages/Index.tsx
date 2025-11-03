@@ -23,7 +23,6 @@ import {
   RotateCcw,
   ShieldCheck,
   Smile,
-  Sparkles,
   Target,
   Users,
   Volume2,
@@ -476,7 +475,7 @@ const SYNTHESIS_PILLARS = [
     description:
       "Tu expliques la décision nationale avec simplicité. Quand le message est clair, le client perçoit notre professionnalisme et notre cohérence.",
     checkpoints: [
-      "Présenter les bénéfices : sécurité, rapidité, modernisation",
+      "Présenter les bén��fices : sécurité, rapidité, modernisation",
       "Rester positif et aligné avec le projet 2026",
     ],
   },
