@@ -587,8 +587,8 @@ const SCENARIOS: ClientScenario[] = [
     description:
       "Cliente historique attachée à ses habitudes, elle cherche avant tout à être rassurée sur la sécurité des nouveaux moyens de paiement.",
     image:
-      "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Faafef2d3308e41fa92116556784ef00a?format=webp&width=800",
-    imageAlt: "Cliente senior souriante portant un manteau bleu",
+      "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F9ff59852f0244eefa50bd8a2d16636c9?format=webp&width=800",
+    imageAlt: "Jeune femme souriante aux cheveux roux en extérieur",
     dialogue:
       "Je paye par chèque depuis 20 ans, je n’ai pas confiance dans la carte bleue !",
     responses: [
@@ -1586,7 +1586,7 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
           <div className="space-y-6 text-left">
             <h3 className="text-2xl font-semibold text-white">Déroulé conseillé en caisse</h3>
             <p className="text-sm text-white/80">
-              Suis ces étapes dans l'ordre pour guider le client de l'émotion vers la solution.
+              Suis ces ��tapes dans l'ordre pour guider le client de l'émotion vers la solution.
             </p>
             <div className="grid gap-4 md:grid-cols-2">
               {POSTURE_SEQUENCE.map((step) => (
