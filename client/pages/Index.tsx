@@ -172,6 +172,121 @@ const LEARNING_STEPS = [
   },
 ] as const;
 
+const POSTURE_SECTION_IMAGE =
+  "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F9816efd05f164ba6a56e9aeacaff5bbb?format=webp&width=1200";
+
+const VERBAL_ACTIVITY_OPTIONS = [
+  {
+    statement: "“C’est la règle, on ne les prend plus.”",
+    feedback: "Formulation trop administrative : tu imposes sans accompagner.",
+    status: "error" as const,
+  },
+  {
+    statement: "“Pas d’inquiétude, on a plusieurs solutions simples à te proposer.”",
+    feedback: "Parfait : rassurant, positif et orienté solution.",
+    status: "success" as const,
+  },
+  {
+    statement: "“C’est fini depuis 2026, c’est comme ça maintenant.”",
+    feedback: "Trop abrupt : la bienveillance disparaît.",
+    status: "warning" as const,
+  },
+] as const;
+
+const ROLEPLAY_OPTIONS = [
+  {
+    title: "Option 1",
+    description: "Tu croises les bras, dis calmement “on ne prend plus les chèques”.",
+    feedback: "Ton calme est là, mais ton corps fermé peut être vécu comme un blocage.",
+    status: "warning" as const,
+  },
+  {
+    title: "Option 2",
+    description:
+      "Tu gardes le sourire, inclines légèrement la tête, et dis : “Je comprends, c’est une habitude. Mais tu vas voir, c’est encore plus simple maintenant.”",
+    feedback: "Bravo ! Tu allies geste ouvert, ton rassurant et solution immédiate.",
+    status: "success" as const,
+  },
+  {
+    title: "Option 3",
+    description: "Tu regardes la file et réponds rapidement : “Essayez avec votre carte.”",
+    feedback: "Tu perds le contact humain : le client peut se sentir ignoré.",
+    status: "error" as const,
+  },
+] as const;
+
+const AUDIO_SAMPLE_TEXT =
+  "Je suis là pour t’accompagner, tu vas voir c’est très simple et rapide.";
+
+const AUDIO_TONE_OPTIONS = [
+  {
+    label: "Version 1 · Ton neutre",
+    description: "Voix plate et un peu distante.",
+    pitch: 1,
+    rate: 1,
+    feedback: "C’est correct, mais il manque la chaleur Decathlon.",
+    status: "warning" as const,
+  },
+  {
+    label: "Version 2 · Ton chaleureux",
+    description: "Voix souriante, rythme calme, rassurant.",
+    pitch: 1.1,
+    rate: 0.95,
+    feedback: "Exact ! Le sourire s’entend et met le client en confiance.",
+    status: "success" as const,
+  },
+  {
+    label: "Version 3 · Ton pressé",
+    description: "Voix rapide, un peu stressée.",
+    pitch: 0.9,
+    rate: 1.15,
+    feedback: "Trop rapide : le client ressent la tension.",
+    status: "error" as const,
+  },
+] as const;
+
+const WORD_CHOICE_PAIRS = [
+  {
+    avoid: "On ne prend plus les chèques.",
+    prefer: "On simplifie les paiements pour toi.",
+  },
+  {
+    avoid: "C’est comme ça maintenant.",
+    prefer: "Bonne nouvelle, il existe plusieurs solutions.",
+  },
+  {
+    avoid: "C’est la règle.",
+    prefer: "C’est pour te faciliter le paiement.",
+  },
+] as const;
+
+const POSTURE_SUMMARY_POINTS = [
+  {
+    title: "Les mots apaisants",
+    description: "Des phrases simples, positives et tournées vers la solution.",
+  },
+  {
+    title: "Le corps ouvert",
+    description: "Regard, sourire, gestes calmes qui invitent à la confiance.",
+  },
+  {
+    title: "Le ton maîtrisé",
+    description: "Un rythme régulier, une voix claire et sereine.",
+  },
+] as const;
+
+const POSTURE_FINAL_QUIZ = {
+  question: "Qu’est-ce qui influence le plus la perception du client ?",
+  options: [
+    "Les mots",
+    "Le ton",
+    "L’attitude corporelle",
+    "Les trois éléments réunis",
+  ],
+  correctIndex: 3,
+} as const;
+
+
 type ClientGuideEntry = {
   title: string;
   situation: string;
