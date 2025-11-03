@@ -19,7 +19,6 @@ import {
   Flag,
   HelpCircle,
   Lightbulb,
-  PlayCircle,
   RotateCcw,
   ShieldCheck,
   Smile,
@@ -2440,7 +2439,7 @@ function ScenariosSection({
             {safeScenarioIndex < SCENARIOS.length - 1 && (
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <span className="text-sm text-foreground/60">
-                  Une fois ta r��ponse choisie, passe au client suivant.
+                  Une fois ta réponse choisie, passe au client suivant.
                 </span>
                 <button
                   type="button"
@@ -2463,7 +2462,7 @@ function ScenariosSection({
         <Reveal className="space-y-4 text-center">
           <h3 className="text-2xl font-semibold text-primary">Scénarios difficiles à maîtriser</h3>
           <p className="text-lg text-foreground/70">
-            Entraîne-toi sur des situations exceptionnelles pour garder la maîtrise m��me lorsque l’échange se tend.
+            Entraîne-toi sur des situations exceptionnelles pour garder la maîtrise même lorsque l’échange se tend.
           </p>
         </Reveal>
         <div className="grid gap-6 lg:grid-cols-2">
