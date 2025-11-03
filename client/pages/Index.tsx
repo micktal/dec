@@ -398,7 +398,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
   {
     title: "Le client fidèle et âgé",
     situation:
-      "Il découvre le changement à la caisse et se sent perdu ou inquiet face à la disparition du ch����que.",
+      "Il découvre le changement à la caisse et se sent perdu ou inquiet face à la disparition du chèque.",
     concerns: [
       "Peur de la carte bancaire et des risques de piratage",
       "Méfiance envers les outils numériques",
