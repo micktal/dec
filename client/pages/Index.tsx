@@ -352,40 +352,29 @@ const POSTURE_FIELD_CASES = [
   },
 ] as const;
 
-const AUDIO_SAMPLE_TEXT =
-  "Je suis là pour vous accompagner, vous allez voir c'est très simple et rapide.";
-
 type ToneQuality = "recommended" | "toAdjust" | "toAvoid";
 
 const POSTURE_TONE_SAMPLES: Array<{
   label: string;
   description: string;
-  pitch: number;
-  rate: number;
   focus: string;
   quality: ToneQuality;
 }> = [
   {
     label: "Version chaleureuse",
     description: "Voix souriante, rythme calme, rassurant.",
-    pitch: 1.05,
-    rate: 0.95,
     focus: "C'est la référence : tu laisses le temps au client et ton sourire s'entend.",
     quality: "recommended",
   },
   {
     label: "Version neutre",
     description: "Voix correcte mais un peu distante.",
-    pitch: 1,
-    rate: 1,
     focus: "À ajuster : ajoute plus de chaleur et ralentis légèrement le rythme.",
     quality: "toAdjust",
   },
   {
     label: "Version pressée",
     description: "Voix rapide, un peu stressée.",
-    pitch: 0.9,
-    rate: 1.15,
     focus: "À éviter : le client ressent ton urgence et ne se sent pas accompagné.",
     quality: "toAvoid",
   },
