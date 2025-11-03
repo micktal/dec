@@ -68,6 +68,79 @@ type ScenarioFeedback = {
 
 type ScenarioStatus = "pending" | "success" | "partial" | "error";
 
+type ExceptionalScenarioStatus = "success" | "info" | "warning" | "error";
+
+type ExceptionalInteractionChoiceOption = {
+  label: string;
+  feedback: string;
+  status: ExceptionalScenarioStatus;
+  followUp?: {
+    label: string;
+    href: string;
+    description?: string;
+  };
+};
+
+type ExceptionalInteractionChoice = {
+  kind: "choice";
+  prompt: string;
+  options: ExceptionalInteractionChoiceOption[];
+};
+
+type ExceptionalInteractionFlip = {
+  kind: "flip";
+  prompt: string;
+  front: {
+    title: string;
+    description: string;
+  };
+  back: {
+    title: string;
+    description: string;
+    highlights?: string[];
+  };
+};
+
+type ExceptionalInteraction = ExceptionalInteractionChoice | ExceptionalInteractionFlip;
+
+type ExceptionalScenario = {
+  id: string;
+  title: string;
+  trigger: string;
+  objective: string;
+  example: string;
+  takeaways: string[];
+  interaction: ExceptionalInteraction;
+};
+
+const EXCEPTIONAL_STATUS_STYLES: Record<ExceptionalScenarioStatus, string> = {
+  success: "border-primary bg-primary/10 text-primary",
+  info: "border-blue-500 bg-blue-500/10 text-blue-700",
+  warning: "border-amber-500 bg-amber-500/10 text-amber-700",
+  error: "border-red-500 bg-red-500/10 text-red-600",
+};
+
+const EXCEPTIONAL_STATUS_ACCENTS: Record<ExceptionalScenarioStatus, string> = {
+  success: "text-primary",
+  info: "text-blue-700",
+  warning: "text-amber-700",
+  error: "text-red-600",
+};
+
+const EXCEPTIONAL_STATUS_LABELS: Record<ExceptionalScenarioStatus, string> = {
+  success: "Bonne approche",
+  info: "Approche à compléter",
+  warning: "À améliorer",
+  error: "À éviter",
+};
+
+const EXCEPTIONAL_STATUS_ICONS: Record<ExceptionalScenarioStatus, LucideIcon> = {
+  success: CheckCircle2,
+  info: HelpCircle,
+  warning: AlertTriangle,
+  error: AlertCircle,
+};
+
 type QuizQuestion = {
   id: number;
   question: string;
@@ -1408,7 +1481,7 @@ function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
               🔊 Écoute et choisis le ton juste
             </h3>
             <p className="text-sm text-white/80">
-              Clique pour écouter trois versions d’une même phrase et choisis celle qui incarne le mieux l���esprit Decathlon.
+              Clique pour écouter trois versions d’une même phrase et choisis celle qui incarne le mieux l’esprit Decathlon.
             </p>
             <div className="grid gap-4 md:grid-cols-3">
               {AUDIO_TONE_OPTIONS.map((option, index) => {
