@@ -290,7 +290,7 @@ const POSTURE_SEQUENCE = [
   {
     title: "2. Poser le cadre simplement",
     description:
-      "Annonce la fin du chèque avec des mots positifs et relie la décision à la sécurité et �� la rapidité.",
+      "Annonce la fin du chèque avec des mots positifs et relie la décision à la sécurité et à la rapidité du service.",
   },
   {
     title: "3. Proposer une solution adaptée",
@@ -398,7 +398,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
   {
     title: "Le client fidèle et âgé",
     situation:
-      "Il découvre le changement à la caisse et se sent perdu ou inquiet face à la disparition du ch��que.",
+      "Il découvre le changement à la caisse et se sent perdu ou inquiet face à la disparition du ch����que.",
     concerns: [
       "Peur de la carte bancaire et des risques de piratage",
       "Méfiance envers les outils numériques",
