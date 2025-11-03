@@ -1459,7 +1459,7 @@ function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsS
           <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
           <h2 className="text-3xl font-bold text-primary md:text-4xl">Pourquoi le chèque disparaît ?</h2>
           <p className="text-lg text-foreground/70">
-            Comprendre les raisons du changement, c'est mieux accompagner les clients et faciliter ton quotidien en caisse.
+            Comprendre les raisons du changement te permet d’expliquer sereinement la décision nationale, de rassurer chaque client et de gagner du temps dès la caisse.
           </p>
         </Reveal>
         <div className="grid gap-6 md:grid-cols-3">
@@ -1469,6 +1469,7 @@ function ReasonsSection({ id, reasonAnswer, reasonFeedback, onSelect }: ReasonsS
                 <reason.icon className="h-10 w-10 text-primary" aria-hidden="true" />
                 <h3 className="text-xl font-semibold text-primary">{reason.title}</h3>
                 <p className="text-base text-foreground/70">{reason.description}</p>
+                <p className="text-sm text-foreground/60">{reason.detail}</p>
               </div>
             </Reveal>
           ))}
