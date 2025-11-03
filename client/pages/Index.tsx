@@ -1237,6 +1237,65 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
   );
 }
 
+function PodcastSection({ id }: { id?: string }) {
+  return (
+    <section id={id} className="bg-[#0A1F7A] py-24 text-white">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 md:px-10">
+        <Reveal className="space-y-4 text-center">
+          <DecathlonLogo
+            className="mx-auto h-10 w-auto drop-shadow filter brightness-0 invert"
+            aria-label="Decathlon"
+          />
+          <h2 className="text-3xl font-bold md:text-4xl">
+            Podcast terrain : Muriel, capitaine Decathlon
+          </h2>
+          <p className="text-lg text-white/80">
+            Découvre comment elle accompagne son équipe et rassure les clients sur la fin du paiement par chèque.
+          </p>
+        </Reveal>
+        <Reveal className="overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-xl shadow-black/30 backdrop-blur">
+          <div className="grid gap-6 p-8 md:grid-cols-[2fr_3fr] md:items-center">
+            <div className="space-y-4 text-sm text-white/80">
+              <span className="inline-flex w-fit items-center rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
+                Audio exclusif
+              </span>
+              <h3 className="text-2xl font-semibold text-white">{PODCAST_RESOURCE.title}</h3>
+              <p>{PODCAST_RESOURCE.description}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">
+                {PODCAST_RESOURCE.duration}
+              </p>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={PODCAST_RESOURCE.url}
+                  download
+                  className="inline-flex items-center gap-2 rounded-[12px] bg-white px-4 py-2 text-sm font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  Télécharger le podcast
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+                <span className="text-xs text-white/60">Format MP3</span>
+              </div>
+            </div>
+            <div className="flex flex-col gap-4 rounded-3xl bg-black/30 p-6">
+              <audio
+                controls
+                preload="none"
+                className="h-12 w-full rounded-[14px] bg-white/90 text-primary shadow-inner"
+              >
+                <source src={PODCAST_RESOURCE.url} type="audio/mpeg" />
+                Ton navigateur ne supporte pas la lecture audio.
+              </audio>
+              <p className="text-sm text-white/70">
+                Tip : partage ce témoignage lors de vos briefs d'équipe pour inspirer le passage à l'action.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function SynthesisSection({ id }: { id?: string }) {
   return (
     <section id={id} className="bg-[#0F2AA5] py-24 text-white">
