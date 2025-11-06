@@ -2172,7 +2172,7 @@ export function PodcastSection({ id }: { id?: string }) {
   );
 }
 
-function SynthesisSection({ id }: { id?: string }) {
+export function SynthesisSection({ id }: { id?: string }) {
   return (
     <section id={id} className="bg-[#0F2AA5] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
@@ -2978,7 +2978,7 @@ function FinalQuizSection({
                 {success && (
                   <div className="mt-4 space-y-3 rounded-2xl border border-primary/30 bg-primary/5 p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-                      À tél��charger
+                      À télécharger
                     </p>
                     <a
                       href="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F7bc4c7a836c94ebca78cc285c6eb2f45?alt=media&token=recap-aides&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
