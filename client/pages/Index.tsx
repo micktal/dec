@@ -619,7 +619,7 @@ const SCENARIOS: ClientScenario[] = [
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F9ff59852f0244eefa50bd8a2d16636c9?format=webp&width=800",
     imageAlt: "Jeune femme souriante aux cheveux roux en extérieur",
     dialogue:
-      "Je paye par chèque depuis 20 ans, je n��ai pas confiance dans la carte bleue !",
+      "Je paye par chèque depuis 20 ans, je n’ai pas confiance dans la carte bleue !",
     responses: [
       {
         label:
@@ -1634,7 +1634,10 @@ type PostureChapterProps = {
   onGoToConclusion: () => void;
 };
 
-function PostureChapter({ id, onGoToConclusion }: PostureChapterProps) {
+export function PostureChapter({
+  id,
+  onGoToConclusion,
+}: PostureChapterProps) {
   return (
     <section id={id} className="bg-[#0E1A5F] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
