@@ -608,7 +608,7 @@ const REFLEXES = [
   },
 ] as const;
 
-const SCENARIOS: ClientScenario[] = [
+export const SCENARIOS: ClientScenario[] = [
   {
     id: 1,
     name: "Madeleine",
@@ -687,7 +687,7 @@ const SCENARIOS: ClientScenario[] = [
     name: "Marc",
     archetype: "Client professionnel",
     description:
-      "Il représente une mairie ou une association, habitué au chèque administratif et cherche une alternative fiable.",
+      "Il repr��sente une mairie ou une association, habitué au chèque administratif et cherche une alternative fiable.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F6fb5b2c534fb434d94e6dd6c25b2d333?format=webp&width=800",
     imageAlt: "Homme en entrepôt tenant une tablette",
@@ -1392,7 +1392,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
                   concrets.
                 </li>
                 <li>
-                  Proposer immédiatement des alternatives de paiement adaptées.
+                  Proposer immédiatement des alternatives de paiement adapt��es.
                 </li>
               </ul>
             </div>
