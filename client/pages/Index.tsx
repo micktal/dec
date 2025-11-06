@@ -2049,8 +2049,8 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
             </Reveal>
           ))}
         </div>
-        <Reveal className="overflow-hidden rounded-3xl border border-primary/30 bg-primary/10 shadow-xl shadow-primary/10">
-          <div className="grid gap-6 p-6 md:grid-cols-[3fr_2fr] md:items-center">
+        <Reveal className="overflow-hidden rounded-3xl border border-primary/30 bg-primary/10 shadow-2xl shadow-primary/10">
+          <div className="grid gap-8 p-8 md:grid-cols-[2fr_3fr] md:items-center">
             <div className="space-y-3 text-left text-sm text-primary">
               <span className="inline-flex w-fit items-center rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-primary">
                 Focus terrain
@@ -2064,7 +2064,7 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
                 professionnel.
               </p>
             </div>
-            <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-black/20">
+            <div className="relative aspect-video w-full overflow-hidden rounded-3xl border-2 border-primary/25 bg-black/40 shadow-xl shadow-primary/20">
               <video
                 controls
                 preload="none"
@@ -2072,8 +2072,8 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
                 poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F6ee05ab3af6c43caa575223490c40142?format=webp&width=800"
               >
                 <source
-                  src="https://wdtncbpobvvbbncmlbln.supabase.co/storage/v1/object/sign/video/final%20decathlon-720p-251103.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mYWViMGM4Yy0zZDE4LTQ2YjgtOGUxYS05YWFlZjQ4MmFjOTMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ2aWRlby9maW5hbCBkZWNhdGhsb24tNzIwcC0yNTExMDMubXA0IiwiaWF0IjoxNzYyMjA4NzIyLCJleHAiOjE3OTM3NDQ3MjJ9.ADD2xYyzYXtUncoP6f6-3l27lItCgaOfCwLTuS9Pp9E"
-                  type="video/mp4"
+                  src="https://xnwexjnaiffdcifcnton.supabase.co/storage/v1/object/sign/video%201/decathlon%203%20cas%20final%20(1).mov?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMWE2Y2M1ZS1kN2E2LTRjY2EtOTg1Ny1iOTc0Njg3NGQzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ2aWRlbyAxL2RlY2F0aGxvbiAzIGNhcyBmaW5hbCAoMSkubW92IiwiaWF0IjoxNzYyNDMzODg3LCJleHAiOjE3OTM5Njk4ODd9.zhlPq-5eI57OIBQlAaaG60HHVgG3ghZ8_sooYHtKGHc"
+                  type="video/quicktime"
                 />
                 Ton navigateur ne supporte pas la lecture vidéo.
               </video>
