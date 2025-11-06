@@ -193,12 +193,9 @@ function ReasonsModule({ onNavigateNext }: ModuleRendererProps) {
     setReasonFeedback({
       message: option.isCorrect
         ? "Exact : trois jours sont généralement nécessaires pour qu'un chèque soit encaissé."
-        : "Ce n'est pas la bonne durée. Pense à l'impact logistique des chèques sur nos équipes.",
+        : "Ce n'est pas la bonne durée. Pense à l'impact logistique des chèques sur nos ��quipes.",
       correct: option.isCorrect,
     });
-    if (option.isCorrect) {
-      onNavigateNext();
-    }
   };
 
   return (
