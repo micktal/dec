@@ -54,7 +54,7 @@ type ClientScenario = {
   responses: ClientScenarioResponse[];
 };
 
-type ScenarioFeedback = {
+export type ScenarioFeedback = {
   message: string;
   tone: ScenarioTone;
 };
@@ -1224,7 +1224,7 @@ export default function Index() {
           success ? "passed" : "failed",
         );
         win.API.LMSCommit?.("");
-        console.log(`Module marqué comme termin��. Score : ${scoreRef.current}`);
+        console.log(`Module marqué comme terminé. Score : ${scoreRef.current}`);
       }
       completedFlag = true;
     };
