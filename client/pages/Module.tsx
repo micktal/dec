@@ -74,7 +74,7 @@ const moduleRenderers: Record<ModuleId, ModuleRenderer> = {
   "etape-07": ({ onNavigateNext: _ }) => (
     <SynthesisSection id={SECTION_IDS.SYNTHESIS} />
   ),
-  "examen-final": () => <ExamModule />,
+  "examen-final": ({ onNavigateNext: _ }) => <ExamModule />,
 };
 
 export default function ModulePage() {
