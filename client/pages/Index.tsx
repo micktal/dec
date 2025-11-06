@@ -519,7 +519,7 @@ const SYNTHESIS_ACTIONS = [
 const PODCAST_RESOURCE = {
   title: "Interview de Muriel, capitaine Decathlon",
   description:
-    "Muriel partage ses astuces pour accompagner les clients avec empathie, rassurer sur la fin du ch��que et mobiliser l'équipe.",
+    "Muriel partage ses astuces pour accompagner les clients avec empathie, rassurer sur la fin du chèque et mobiliser l'équipe.",
   duration: "Durée : 6 minutes",
   url: "https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F886519d4f49444b29c0bc13eb3871646?alt=media&token=00798ddb-4c68-4ce8-a9bf-c2f4725eed1f&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec",
 } as const;
@@ -1980,7 +1980,7 @@ export function ReflexesSection({ id }: ReflexesSectionProps) {
   );
 }
 
-function ClientUnderstandingSection({ id }: { id?: string }) {
+export function ClientUnderstandingSection({ id }: { id?: string }) {
   return (
     <section id={id} className="bg-white py-24">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
@@ -2704,7 +2704,7 @@ function ScenariosSection({
           </h3>
           <p className="text-lg text-foreground/70">
             Entraîne-toi sur des situations exceptionnelles pour garder la
-            maîtrise même lorsque l’échange se tend.
+            maîtrise même lorsque l’��change se tend.
           </p>
         </Reveal>
         <div className="grid gap-6 lg:grid-cols-2">
