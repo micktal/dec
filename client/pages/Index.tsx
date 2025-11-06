@@ -978,7 +978,7 @@ export const FINAL_QUIZ: QuizQuestion[] = [
   {
     id: 2,
     question:
-      "Face à un client pressé ou agacé, quelle posture illustre l'empathie active ?",
+      "Face à un client press�� ou agacé, quelle posture illustre l'empathie active ?",
     options: [
       "Rester calme, reformuler et valoriser la rapidité de la CB ou du paiement fractionné",
       "Répondre sur le même ton pour s'imposer",
@@ -1882,7 +1882,7 @@ export function ReflexesSection({ id }: ReflexesSectionProps) {
             Les 3 réflexes clés à adopter
           </h2>
           <p className="text-lg text-foreground/70">
-            Empathie, clarté et alternatives : trois réflexes pour rester
+            Empathie, clarté et alternatives : trois r��flexes pour rester
             performants et proches de nos clients.
           </p>
         </Reveal>
@@ -3018,7 +3018,7 @@ type ConclusionSectionProps = {
   onComplete: () => void;
 };
 
-function ConclusionSection({
+export function ConclusionSection({
   id,
   totalScore,
   moduleCompleted,
