@@ -2834,7 +2834,7 @@ type FinalQuizSectionProps = {
   score: number;
 };
 
-function FinalQuizSection({
+export function FinalQuizSection({
   id,
   answers,
   submitted,
