@@ -192,9 +192,10 @@ const MODULE_HIGHLIGHTS = [
   { value: "4", label: "Questions finales pour valider tes acquis" },
 ] as const;
 
-const LEARNING_STEPS = [
+export const LEARNING_STEPS = [
   {
     order: "01",
+    moduleId: "etape-01",
     title: "Adopter la posture verbale & non verbale",
     description:
       "Pose les bases : mots, ton et attitude pour désamorcer les tensions.",
@@ -202,24 +203,28 @@ const LEARNING_STEPS = [
   },
   {
     order: "02",
+    moduleId: "etape-02",
     title: "Comprendre le changement",
     description: "Découvre les raisons de la transition et gagne en clarté.",
     sectionId: SECTION_IDS.REASONS,
   },
   {
     order: "03",
+    moduleId: "etape-03",
     title: "Adopter les réflexes",
     description: "Mémorise les attitudes à avoir face aux clients.",
     sectionId: SECTION_IDS.REFLEXES,
   },
   {
     order: "04",
+    moduleId: "etape-04",
     title: "Comprendre les réactions",
     description: "Explore les profils clients et prépare tes réponses clés.",
     sectionId: SECTION_IDS.CLIENT_GUIDE,
   },
   {
     order: "05",
+    moduleId: "etape-05",
     title: "S'exercer en situation",
     description:
       "Choisis la bonne réponse dans les scénarios inspirés du terrain.",
@@ -227,6 +232,7 @@ const LEARNING_STEPS = [
   },
   {
     order: "06",
+    moduleId: "etape-06",
     title: "Écouter le terrain",
     description:
       "Découvre l'expérience de Muriel, capitaine de magasin Decathlon.",
@@ -234,6 +240,7 @@ const LEARNING_STEPS = [
   },
   {
     order: "07",
+    moduleId: "etape-07",
     title: "Activer tes forces",
     description:
       "Synthétise les apprentissages et prépare ton passage à l'action.",
@@ -241,6 +248,7 @@ const LEARNING_STEPS = [
   },
   {
     order: "08",
+    moduleId: "examen-final",
     title: "Valider tes acquis",
     description: "Réponds au quiz final et finalise la formation.",
     sectionId: SECTION_IDS.FINAL_QUIZ,
@@ -521,7 +529,7 @@ const REASONS = [
     icon: Lightbulb,
     title: "Moins utilisé",
     description:
-      "Seuls trois pour cent des paiements en France sont encore effectués par ch��que.",
+      "Seuls trois pour cent des paiements en France sont encore effectués par chèque.",
     detail:
       "Avec le recul de son usage, le chèque ne répond plus aux habitudes actuelles des clients qui privilégient des moyens rapides et familiers.",
   },
@@ -1983,7 +1991,7 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
           </h2>
           <p className="text-lg text-foreground/70">
             Chaque client vit la fin du paiement par chèque à sa manière. En
-            identifiant leurs besoins, tu peux rester dans l'écoute, la clarté
+            identifiant leurs besoins, tu peux rester dans l'��coute, la clarté
             et la solution.
           </p>
         </Reveal>
