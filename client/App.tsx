@@ -1,7 +1,7 @@
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
-import { createRoot } from "react-dom/client";
+import { createRoot, type Root } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -10,11 +10,11 @@ import Formation from "./pages/Formation";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
-type RootInstance = ReturnType<typeof createRoot>;
-
-type ContainerWithRoot = HTMLElement & {
-  _reactRootContainer?: RootInstance;
-};
+declare global {
+  interface Window {
+    __APP_ROOT__?: Root;
+  }
+}
 
 const queryClient = new QueryClient();
 
@@ -42,15 +42,8 @@ if (!container) {
   throw new Error("Root element not found");
 }
 
-const containerWithRoot = container as ContainerWithRoot;
-const existingRoot = containerWithRoot._reactRootContainer;
-
-type RenderableRoot = RootInstance & {
-  render(children: React.ReactNode): void;
-};
-
-if (existingRoot) {
-  (existingRoot as RenderableRoot).render(<App />);
-} else {
-  createRoot(containerWithRoot).render(<App />);
+if (!window.__APP_ROOT__) {
+  window.__APP_ROOT__ = createRoot(container);
 }
+
+window.__APP_ROOT__.render(<App />);
