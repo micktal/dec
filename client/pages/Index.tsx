@@ -2067,12 +2067,17 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
             <div className="relative aspect-video w-full overflow-hidden rounded-3xl border-2 border-primary/25 bg-black/40 shadow-xl shadow-primary/20">
               <video
                 controls
-                preload="none"
+                preload="metadata"
+                playsInline
                 className="h-full w-full"
                 poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F6ee05ab3af6c43caa575223490c40142?format=webp&width=800"
               >
                 <source
-                  src="https://xnwexjnaiffdcifcnton.supabase.co/storage/v1/object/sign/video%201/decathlon%203%20cas%20final%20(1).mov?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMWE2Y2M1ZS1kN2E2LTRjY2EtOTg1Ny1iOTc0Njg3NGQzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ2aWRlbyAxL2RlY2F0aGxvbiAzIGNhcyBmaW5hbCAoMSkubW92IiwiaWF0IjoxNzYyNDMzODg3LCJleHAiOjE3OTM5Njk4ODd9.zhlPq-5eI57OIBQlAaaG60HHVgG3ghZ8_sooYHtKGHc"
+                  src="https://xnwexjnaiffdcifcnton.supabase.co/storage/v1/object/sign/video%201/decathlon%203%20cas%20final%20%281%29.mov?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMWE2Y2M1ZS1kN2E2LTRjY2EtOTg1Ny1iOTc0Njg3NGQzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ2aWRlbyAxL2RlY2F0aGxvbiAzIGNhcyBmaW5hbCAoMSkubW92IiwiaWF0IjoxNzYyNDMzODg3LCJleHAiOjE3OTM5Njk4ODd9.zhlPq-5eI57OIBQlAaaG60HHVgG3ghZ8_sooYHtKGHc"
+                  type="video/quicktime"
+                />
+                <source
+                  src="https://xnwexjnaiffdcifcnton.supabase.co/storage/v1/object/sign/video%201/decathlon%203%20cas%20final%20%281%29.mov?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMWE2Y2M1ZS1kN2E2LTRjY2EtOTg1Ny1iOTc0Njg3NGQzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ2aWRlbyAxL2RlY2F0aGxvbiAzIGNhcyBmaW5hbCAoMSkubW92IiwiaWF0IjoxNzYyNDMzODg3LCJleHAiOjE3OTM5Njk4ODd9.zhlPq-5eI57OIBQlAaaG60HHVgG3ghZ8_sooYHtKGHc"
                   type="video/mp4"
                 />
                 Ton navigateur ne supporte pas la lecture vidéo.
