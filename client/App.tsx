@@ -41,9 +41,11 @@ type RootContainerElement = HTMLElement & {
 };
 
 const rootContainer = container as RootContainerElement;
-const existingRoot = rootContainer._reactRootContainer;
 
-const root = (existingRoot as Root | undefined) ?? createRoot(rootContainer);
-rootContainer._reactRootContainer = root;
-
-root.render(<App />);
+if (rootContainer._reactRootContainer) {
+  (rootContainer._reactRootContainer as Root).render(<App />);
+} else {
+  const root = createRoot(rootContainer);
+  rootContainer._reactRootContainer = root;
+  root.render(<App />);
+}
