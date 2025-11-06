@@ -147,7 +147,7 @@ type QuizQuestion = {
 const INTRO_HERO_IMAGE =
   "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1600&q=80";
 
-const SECTION_IDS = {
+export const SECTION_IDS = {
   POSTURE: "section-posture",
   REASONS: "section-raisons",
   REFLEXES: "section-reflexes",
@@ -521,7 +521,7 @@ const REASONS = [
     icon: Lightbulb,
     title: "Moins utilisé",
     description:
-      "Seuls trois pour cent des paiements en France sont encore effectués par chèque.",
+      "Seuls trois pour cent des paiements en France sont encore effectués par ch��que.",
     detail:
       "Avec le recul de son usage, le chèque ne répond plus aux habitudes actuelles des clients qui privilégient des moyens rapides et familiers.",
   },
