@@ -2263,7 +2263,7 @@ type ScenariosSectionProps = {
   onMarkCompleted: () => void;
 };
 
-function ScenariosSection({
+export function ScenariosSection({
   id,
   scenarioResponses,
   scenarioFeedback,
