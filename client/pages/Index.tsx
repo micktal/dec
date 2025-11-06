@@ -1449,11 +1449,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
   );
 }
 
-type OverviewSectionProps = {
-  onNavigate: (sectionId: string) => void;
-};
-
-function OverviewSection({ onNavigate }: OverviewSectionProps) {
+function OverviewSection() {
   return (
     <section className="bg-[#EEF2FF] py-20">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
