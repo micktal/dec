@@ -893,7 +893,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
           label:
             "(Sourire) Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
           feedback:
-            "Parfait : tu restes léger, tu confirmes la règle et tu proposes des options concrètes.",
+            "Parfait : tu restes léger, tu confirmes la r��gle et tu proposes des options concrètes.",
           status: "success",
         },
         {
@@ -1428,7 +1428,7 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
                 poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fcc1ffb661a2148659931e8d42572c5a9?format=webp&width=800"
               >
                 <source
-                  src="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fbbf05fbc0f544bc98d68a0ce24f1a732?alt=media&token=915c0a78-893b-481e-b797-fcf40d3d52da&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
+                  src="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F0d8db92093804cbabdfb9b951b363788?alt=media&token=838e0f80-f4b9-42b8-baae-967cdb4c7e14&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
                   type="video/mp4"
                 />
                 Votre navigateur ne prend pas en charge la lecture vidéo.
