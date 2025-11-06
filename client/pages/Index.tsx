@@ -1544,7 +1544,7 @@ type ReasonsSectionProps = {
   onSelect: (option: ReasonOption) => void;
 };
 
-function ReasonsSection({
+export function ReasonsSection({
   id,
   reasonAnswer,
   reasonFeedback,
