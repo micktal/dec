@@ -10,6 +10,8 @@ import Formation from "./pages/Formation";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
+type RootInstance = ReturnType<typeof createRoot>;
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -30,4 +32,22 @@ const App = () => (
   </QueryClientProvider>
 );
 
-createRoot(document.getElementById("root")!).render(<App />);
+const container = document.getElementById("root");
+
+if (!container) {
+  throw new Error("Root element not found");
+}
+
+const elementWithRoot = container as HTMLElement & {
+  __reactRoot?: RootInstance;
+};
+
+const existingRoot = elementWithRoot.__reactRoot;
+
+if (existingRoot) {
+  existingRoot.render(<App />);
+} else {
+  const root = createRoot(container);
+  elementWithRoot.__reactRoot = root;
+  root.render(<App />);
+}
