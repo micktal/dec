@@ -62,7 +62,7 @@ const moduleRenderers: Record<ModuleId, ModuleRenderer> = {
   "etape-03": ({ onNavigateNext: _ }) => (
     <ReflexesSection id={SECTION_IDS.REFLEXES} />
   ),
-  "etape-04": () => (
+  "etape-04": ({ onNavigateNext: _ }) => (
     <ClientUnderstandingSection id={SECTION_IDS.CLIENT_GUIDE} />
   ),
   "etape-05": ({ onNavigateNext }) => (
