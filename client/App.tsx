@@ -12,6 +12,10 @@ import NotFound from "./pages/NotFound";
 
 type RootInstance = ReturnType<typeof createRoot>;
 
+type ContainerWithRoot = HTMLElement & {
+  _reactRootContainer?: RootInstance;
+};
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -38,16 +42,15 @@ if (!container) {
   throw new Error("Root element not found");
 }
 
-const elementWithRoot = container as HTMLElement & {
-  __reactRoot?: RootInstance;
+const containerWithRoot = container as ContainerWithRoot;
+const existingRoot = containerWithRoot._reactRootContainer;
+
+type RenderableRoot = RootInstance & {
+  render(children: React.ReactNode): void;
 };
 
-const existingRoot = elementWithRoot.__reactRoot;
-
 if (existingRoot) {
-  existingRoot.render(<App />);
+  (existingRoot as RenderableRoot).render(<App />);
 } else {
-  const root = createRoot(container);
-  elementWithRoot.__reactRoot = root;
-  root.render(<App />);
+  createRoot(containerWithRoot).render(<App />);
 }
