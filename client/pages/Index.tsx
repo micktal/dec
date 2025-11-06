@@ -543,7 +543,7 @@ const REASONS = [
   },
   {
     icon: ShieldCheck,
-    title: "Sécurité renforcée",
+    title: "Sécurit�� renforcée",
     description:
       "Les transactions dématérialisées limitent les fraudes et sécurisent les encaissements.",
     detail:
@@ -2232,13 +2232,13 @@ export function SynthesisSection({ id }: { id?: string }) {
             Continue de partager tes bonnes pratiques en magasin, observe les
             réactions positives et capitalise sur ce que tu viens d'apprendre.
           </p>
-          <a
-            href={`#${SECTION_IDS.FINAL_QUIZ}`}
+          <Link
+            to="/modules/examen-final"
             className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-sm font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             Je passe au quiz final
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </a>
+          </Link>
         </Reveal>
       </div>
     </section>
