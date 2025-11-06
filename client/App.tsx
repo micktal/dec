@@ -10,12 +10,6 @@ import Formation from "./pages/Formation";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
-declare global {
-  interface Window {
-    __APP_ROOT__?: Root;
-  }
-}
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -42,8 +36,14 @@ if (!container) {
   throw new Error("Root element not found");
 }
 
-if (!window.__APP_ROOT__) {
-  window.__APP_ROOT__ = createRoot(container);
-}
+type RootContainerElement = HTMLElement & {
+  _reactRootContainer?: Root;
+};
 
-window.__APP_ROOT__.render(<App />);
+const rootContainer = container as RootContainerElement;
+const existingRoot = rootContainer._reactRootContainer;
+
+const root = (existingRoot as Root | undefined) ?? createRoot(rootContainer);
+rootContainer._reactRootContainer = root;
+
+root.render(<App />);
