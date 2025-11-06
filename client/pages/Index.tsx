@@ -942,7 +942,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
           label:
             "Oui, c’était encore en phase de transition. Aujourd’hui, la politique est la même dans tous nos magasins.",
           feedback:
-            "Bonne réponse : tu ajoutes du contexte et tu montres la cohérence nationale.",
+            "Bonne r��ponse : tu ajoutes du contexte et tu montres la cohérence nationale.",
           status: "success",
         },
         {
@@ -962,7 +962,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
   },
 ];
 
-const FINAL_QUIZ: QuizQuestion[] = [
+export const FINAL_QUIZ: QuizQuestion[] = [
   {
     id: 1,
     question:
@@ -1991,7 +1991,7 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
           </h2>
           <p className="text-lg text-foreground/70">
             Chaque client vit la fin du paiement par chèque à sa manière. En
-            identifiant leurs besoins, tu peux rester dans l'��coute, la clarté
+            identifiant leurs besoins, tu peux rester dans l'écoute, la clarté
             et la solution.
           </p>
         </Reveal>
