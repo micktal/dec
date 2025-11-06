@@ -68,7 +68,9 @@ const moduleRenderers: Record<ModuleId, ModuleRenderer> = {
   "etape-05": ({ onNavigateNext }) => (
     <ScenariosModule onNavigateNext={onNavigateNext} />
   ),
-  "etape-06": () => <PodcastSection id={SECTION_IDS.PODCAST} />,
+  "etape-06": ({ onNavigateNext: _ }) => (
+    <PodcastSection id={SECTION_IDS.PODCAST} />
+  ),
   "etape-07": () => <SynthesisSection id={SECTION_IDS.SYNTHESIS} />,
   "examen-final": () => <ExamModule />,
 };
