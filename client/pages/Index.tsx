@@ -619,7 +619,7 @@ const SCENARIOS: ClientScenario[] = [
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F9ff59852f0244eefa50bd8a2d16636c9?format=webp&width=800",
     imageAlt: "Jeune femme souriante aux cheveux roux en extérieur",
     dialogue:
-      "Je paye par chèque depuis 20 ans, je n’ai pas confiance dans la carte bleue !",
+      "Je paye par chèque depuis 20 ans, je n��ai pas confiance dans la carte bleue !",
     responses: [
       {
         label:
@@ -942,7 +942,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
           label:
             "Oui, c’était encore en phase de transition. Aujourd’hui, la politique est la même dans tous nos magasins.",
           feedback:
-            "Bonne r��ponse : tu ajoutes du contexte et tu montres la cohérence nationale.",
+            "Bonne réponse : tu ajoutes du contexte et tu montres la cohérence nationale.",
           status: "success",
         },
         {
@@ -1012,7 +1012,7 @@ export const FINAL_QUIZ: QuizQuestion[] = [
   },
 ];
 
-const TOTAL_QUESTIONS = 8;
+export const TOTAL_QUESTIONS = 8;
 
 type WindowWithScorm = Window & {
   API?: {
