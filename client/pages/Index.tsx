@@ -2073,7 +2073,7 @@ function ClientUnderstandingSection({ id }: { id?: string }) {
               >
                 <source
                   src="https://xnwexjnaiffdcifcnton.supabase.co/storage/v1/object/sign/video%201/decathlon%203%20cas%20final%20(1).mov?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMWE2Y2M1ZS1kN2E2LTRjY2EtOTg1Ny1iOTc0Njg3NGQzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ2aWRlbyAxL2RlY2F0aGxvbiAzIGNhcyBmaW5hbCAoMSkubW92IiwiaWF0IjoxNzYyNDMzODg3LCJleHAiOjE3OTM5Njk4ODd9.zhlPq-5eI57OIBQlAaaG60HHVgG3ghZ8_sooYHtKGHc"
-                  type="video/quicktime"
+                  type="video/mp4"
                 />
                 Ton navigateur ne supporte pas la lecture vidéo.
               </video>
