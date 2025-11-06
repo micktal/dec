@@ -1263,7 +1263,7 @@ export default function Index() {
       <SiteHeader />
       <main className="flex flex-col">
         <IntroductionSection onStart={handleScrollToReasons} />
-        <OverviewSection onNavigate={handleScrollTo} />
+        <OverviewSection />
         <PostureChapter
           id={SECTION_IDS.POSTURE}
           onGoToConclusion={handleScrollToReasons}
