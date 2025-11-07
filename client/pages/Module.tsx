@@ -8,18 +8,23 @@ import {
   ClientUnderstandingSection,
   FINAL_QUIZ,
   FinalQuizSection,
-  LEARNING_STEPS,
+  IntroductionSection,
   PostureChapter,
   PodcastSection,
   ReflexesSection,
   ReasonsSection,
   SCENARIOS,
-  SECTION_IDS,
   ScenariosSection,
   SynthesisSection,
   type ReasonOption,
   type ScenarioFeedback,
 } from "./Index";
+import {
+  SECTION_IDS,
+  TRAINING_MODULES,
+  type ModuleId,
+  type TrainingModule,
+} from "@shared/training-modules";
 
 const MODULE_MAP = LEARNING_STEPS.reduce<Record<string, number>>(
   (acc, step, index) => {
