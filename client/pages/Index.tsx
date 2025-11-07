@@ -1239,14 +1239,18 @@ export default function Index() {
   );
 }
 
-type IntroductionSectionProps = {
-  onStart: () => void;
+export type IntroductionSectionProps = {
+  onStart?: () => void;
+  showStartButton?: boolean;
 };
 
-function IntroductionSection({ onStart }: IntroductionSectionProps) {
+export function IntroductionSection({
+  onStart,
+  showStartButton = true,
+}: IntroductionSectionProps) {
   return (
     <section
-      id="section-intro"
+      id={SECTION_IDS.INTRO}
       className="relative isolate overflow-hidden bg-[#1C4ED8] text-white"
     >
       <div className="absolute inset-0 opacity-20">
@@ -1281,14 +1285,16 @@ function IntroductionSection({ onStart }: IntroductionSectionProps) {
           </p>
         </Reveal>
         <Reveal className="flex flex-col items-center gap-4 md:flex-row md:items-center">
-          <button
-            onClick={onStart}
-            type="button"
-            className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-7 py-3 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          >
-            Je commence la formation
-            <ArrowRight className="h-4 w-4" />
-          </button>
+          {showStartButton && onStart ? (
+            <button
+              onClick={onStart}
+              type="button"
+              className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-7 py-3 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              Je commence la formation
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          ) : null}
           <p className="text-sm font-medium text-white/70">
             Durée estimée : douze à quinze minutes – accessible à tous les
             collaborateurs.
@@ -2068,7 +2074,7 @@ export function PodcastSection({ id }: { id?: string }) {
                   download
                   className="inline-flex items-center gap-2 rounded-[12px] bg-white px-4 py-2 text-sm font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
-                  Télécharger le podcast
+                  Tél��charger le podcast
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
                 <span className="text-xs text-white/60">Format MP3</span>
