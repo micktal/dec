@@ -13,11 +13,6 @@ export const SECTION_IDS = {
 
 export type SectionId = (typeof SECTION_IDS)[keyof typeof SECTION_IDS];
 
-export type TrainingModule = (typeof TRAINING_MODULES)[number];
-export type ModuleId = TrainingModule["moduleId"];
-export type ModuleType = TrainingModule["type"];
-export type LearningStep = Extract<TrainingModule, { type: "step" | "exam" }>;
-
 function createModuleList() {
   return [
     {
@@ -102,6 +97,11 @@ function createModuleList() {
 }
 
 export const TRAINING_MODULES = createModuleList();
+
+export type TrainingModule = (typeof TRAINING_MODULES)[number];
+export type ModuleId = TrainingModule["moduleId"];
+export type ModuleType = TrainingModule["type"];
+export type LearningStep = Extract<TrainingModule, { type: "step" | "exam" }>;
 
 function isLearningStep(module: TrainingModule): module is LearningStep {
   return module.type !== "intro";
