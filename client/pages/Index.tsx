@@ -28,6 +28,7 @@ import Reveal from "@/components/Reveal";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { cn as combineClasses } from "@/lib/utils";
+import { SECTION_IDS, STEP_MODULES } from "@shared/training-modules";
 
 export type ReasonOption = {
   label: string;
@@ -147,18 +148,6 @@ type QuizQuestion = {
 const INTRO_HERO_IMAGE =
   "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1600&q=80";
 
-export const SECTION_IDS = {
-  POSTURE: "section-posture",
-  REASONS: "section-raisons",
-  REFLEXES: "section-reflexes",
-  CLIENT_GUIDE: "section-clients",
-  SCENARIOS: "section-scenarios",
-  PODCAST: "section-podcast",
-  SYNTHESIS: "section-synthese",
-  FINAL_QUIZ: "section-final-quiz",
-  CONCLUSION: "section-conclusion",
-} as const;
-
 const MODULE_OBJECTIVES = [
   {
     icon: Target,
@@ -192,68 +181,7 @@ const MODULE_HIGHLIGHTS = [
   { value: "4", label: "Questions finales pour valider tes acquis" },
 ] as const;
 
-export const LEARNING_STEPS = [
-  {
-    order: "01",
-    moduleId: "etape-01",
-    title: "Adopter la posture verbale & non verbale",
-    description:
-      "Pose les bases : mots, ton et attitude pour désamorcer les tensions.",
-    sectionId: SECTION_IDS.POSTURE,
-  },
-  {
-    order: "02",
-    moduleId: "etape-02",
-    title: "Comprendre le changement",
-    description: "Découvre les raisons de la transition et gagne en clarté.",
-    sectionId: SECTION_IDS.REASONS,
-  },
-  {
-    order: "03",
-    moduleId: "etape-03",
-    title: "Adopter les réflexes",
-    description: "Mémorise les attitudes à avoir face aux clients.",
-    sectionId: SECTION_IDS.REFLEXES,
-  },
-  {
-    order: "04",
-    moduleId: "etape-04",
-    title: "Comprendre les réactions",
-    description: "Explore les profils clients et prépare tes réponses clés.",
-    sectionId: SECTION_IDS.CLIENT_GUIDE,
-  },
-  {
-    order: "05",
-    moduleId: "etape-05",
-    title: "S'exercer en situation",
-    description:
-      "Choisis la bonne réponse dans les scénarios inspirés du terrain.",
-    sectionId: SECTION_IDS.SCENARIOS,
-  },
-  {
-    order: "06",
-    moduleId: "etape-06",
-    title: "Écouter le terrain",
-    description:
-      "Découvre l'expérience de Muriel, capitaine de magasin Decathlon.",
-    sectionId: SECTION_IDS.PODCAST,
-  },
-  {
-    order: "07",
-    moduleId: "etape-07",
-    title: "Activer tes forces",
-    description:
-      "Synthétise les apprentissages et prépare ton passage à l'action.",
-    sectionId: SECTION_IDS.SYNTHESIS,
-  },
-  {
-    order: "08",
-    moduleId: "examen-final",
-    title: "Valider tes acquis",
-    description: "Réponds au quiz final et finalise la formation.",
-    sectionId: SECTION_IDS.FINAL_QUIZ,
-  },
-] as const;
+export const LEARNING_STEPS = STEP_MODULES;
 
 const POSTURE_SECTION_IMAGE =
   "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fdaa219c5357a45b0882f4acfb8c73563?format=webp&width=800";
