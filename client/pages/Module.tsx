@@ -26,15 +26,13 @@ import {
   type TrainingModule,
 } from "@shared/training-modules";
 
-const MODULE_MAP = LEARNING_STEPS.reduce<Record<string, number>>(
+const MODULE_MAP = TRAINING_MODULES.reduce<Record<string, number>>(
   (acc, step, index) => {
     acc[step.moduleId] = index;
     return acc;
   },
   {},
 );
-
-type ModuleId = (typeof LEARNING_STEPS)[number]["moduleId"];
 
 type ModuleHeroProps = {
   order: string;
