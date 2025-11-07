@@ -42,15 +42,16 @@ type ModuleHeroProps = {
 };
 
 type NavigationContext = {
-  previous?: (typeof LEARNING_STEPS)[number];
-  next?: (typeof LEARNING_STEPS)[number];
+  previous?: TrainingModule;
+  next?: TrainingModule;
 };
 
 type ModuleRendererProps = {
   onNavigateNext: () => void;
+  canNavigateForward: boolean;
 };
 
-type ModuleRenderer = ({ onNavigateNext }: ModuleRendererProps) => JSX.Element;
+type ModuleRenderer = (props: ModuleRendererProps) => JSX.Element;
 
 const moduleRenderers: Record<ModuleId, ModuleRenderer> = {
   "etape-01": ({ onNavigateNext }) => (
