@@ -72,9 +72,10 @@ function createModuleList() {
     {
       order: "05",
       moduleId: "etape-05",
-      title: "S'exercer en situation",
-      description: "Choisis la bonne réponse dans les scénarios inspirés du terrain.",
-      sectionId: SECTION_IDS.SCENARIOS,
+      title: "Écouter le terrain",
+      description:
+        "Découvre l'expérience de Muriel, capitaine de magasin Decathlon.",
+      sectionId: SECTION_IDS.PODCAST,
       type: "step" as const,
     },
     {
