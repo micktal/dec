@@ -191,13 +191,8 @@ function ModuleNavigation({ previous, next }: NavigationContext) {
   );
 }
 
-function IntroductionModule({ onNavigateNext, canNavigateForward }: ModuleRendererProps) {
-  return (
-    <IntroductionSection
-      onStart={canNavigateForward ? onNavigateNext : undefined}
-      showStartButton={canNavigateForward}
-    />
-  );
+function IntroductionModule(_: ModuleRendererProps) {
+  return <IntroductionSection />;
 }
 
 function ReasonsModule({ onNavigateNext: _ }: ModuleRendererProps) {
