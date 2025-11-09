@@ -47,9 +47,10 @@ function createModuleList() {
     {
       order: "02",
       moduleId: "etape-02",
-      title: "Comprendre le changement",
-      description: "Découvre les raisons de la transition et gagne en clarté.",
-      sectionId: SECTION_IDS.REASONS,
+      title: "Les 3 réflexes clés à adopter",
+      description:
+        "Empathie, clarté et alternatives pour accompagner chaque client avec assurance.",
+      sectionId: SECTION_IDS.REFLEXES,
       type: "step" as const,
     },
     {
