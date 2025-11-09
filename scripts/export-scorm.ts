@@ -50,9 +50,15 @@ function parseCliOptions(args: string[]): ExportCliOptions {
 }
 
 async function ensureDirectoryExists(directory: string) {
-  const stats = await fs.stat(directory);
-  if (!stats.isDirectory()) {
-    throw new Error(`${directory} n'est pas un dossier.`);
+  try {
+    const stats = await fs.stat(directory);
+    if (!stats.isDirectory()) {
+      throw new Error(`${directory} n'est pas un dossier.`);
+    }
+  } catch (error) {
+    throw new Error(
+      `Le dossier de build (${directory}) est introuvable. Lance d'abord "pnpm build". Détail: ${(error as Error).message}`,
+    );
   }
 }
 
