@@ -379,7 +379,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
     concerns: [
       "Peur de ne plus pouvoir commander pour son organisation",
       "Méconnaissance des solutions Decathlon Pro",
-      "Sentiment de ne pas être pris en compte dans la décision",
+      "Sentiment de ne pas être pris en compte dans la d��cision",
     ],
     posture: [
       "Montrer que tu comprends son besoin professionnel",
@@ -1129,7 +1129,6 @@ export default function Index() {
         <OverviewSection />
         <PostureChapter id={SECTION_IDS.POSTURE} />
         <ReflexesSection id={SECTION_IDS.REFLEXES} />
-        <ClientUnderstandingSection id={SECTION_IDS.CLIENT_GUIDE} />
         <ScenariosSection
           id={SECTION_IDS.SCENARIOS}
           scenarioResponses={scenarioResponses}
@@ -1142,6 +1141,7 @@ export default function Index() {
           onResetSimulation={handleScenarioReset}
           onMarkCompleted={handleModuleComplete}
         />
+        <ClientUnderstandingSection id={SECTION_IDS.CLIENT_GUIDE} />
         <PodcastSection id={SECTION_IDS.PODCAST} />
         <SynthesisSection id={SECTION_IDS.SYNTHESIS} />
         <FinalQuizSection
