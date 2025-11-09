@@ -79,14 +79,14 @@ export default function ModulePage() {
   }
 
   const moduleIndex = MODULE_MAP[moduleId];
-  const moduleMeta = LEARNING_STEPS[moduleIndex];
-  const previous = moduleIndex > 0 ? LEARNING_STEPS[moduleIndex - 1] : undefined;
+  const moduleMeta = TRAINING_MODULES[moduleIndex];
+  const previous = moduleIndex > 0 ? TRAINING_MODULES[moduleIndex - 1] : undefined;
   const next =
-    moduleIndex < LEARNING_STEPS.length - 1
-      ? LEARNING_STEPS[moduleIndex + 1]
+    moduleIndex < TRAINING_MODULES.length - 1
+      ? TRAINING_MODULES[moduleIndex + 1]
       : undefined;
 
-  const handleNavigate = (target?: (typeof LEARNING_STEPS)[number]) => {
+  const handleNavigate = (target?: TrainingModule) => {
     if (!target) {
       return;
     }
