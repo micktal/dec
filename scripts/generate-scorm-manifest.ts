@@ -215,9 +215,11 @@ async function main() {
   await generateScormManifest(options);
 }
 
-const thisFileUrl = pathToFileURL(process.argv[1] ?? "").href;
+const invokedFileUrl = pathToFileURL(
+  path.resolve(process.argv[1] ?? ""),
+).href;
 
-if (import.meta.url === thisFileUrl) {
+if (import.meta.url === invokedFileUrl) {
   main().catch((error) => {
     console.error(error);
     process.exit(1);
