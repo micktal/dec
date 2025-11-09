@@ -103,6 +103,10 @@ export type ModuleId = TrainingModule["moduleId"];
 export type ModuleType = TrainingModule["type"];
 export type LearningStep = Extract<TrainingModule, { type: "step" | "exam" }>;
 
+export function getModuleBadgeLabel(module: TrainingModule) {
+  return module.badgeLabel ?? `Étape ${module.order}`;
+}
+
 function isLearningStep(module: TrainingModule): module is LearningStep {
   return module.type !== "intro";
 }
