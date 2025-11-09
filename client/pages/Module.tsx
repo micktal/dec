@@ -189,32 +189,6 @@ function IntroductionModule(_: ModuleRendererProps) {
   return <IntroductionSection />;
 }
 
-function ReasonsModule({ onNavigateNext: _ }: ModuleRendererProps) {
-  const [reasonAnswer, setReasonAnswer] = useState<string | null>(null);
-  const [reasonFeedback, setReasonFeedback] = useState<
-    { message: string; correct: boolean } | null
-  >(null);
-
-  const handleSelect = (option: ReasonOption) => {
-    setReasonAnswer(option.label);
-    setReasonFeedback({
-      message: option.isCorrect
-        ? "Exact : trois jours sont généralement nécessaires pour qu'un chèque soit encaissé."
-        : "Ce n'est pas la bonne durée. Pense à l'impact logistique des chèques sur nos équipes.",
-      correct: option.isCorrect,
-    });
-  };
-
-  return (
-    <ReasonsSection
-      id={SECTION_IDS.REASONS}
-      reasonAnswer={reasonAnswer}
-      reasonFeedback={reasonFeedback}
-      onSelect={handleSelect}
-    />
-  );
-}
-
 function ScenariosModule({ onNavigateNext }: ModuleRendererProps) {
   const [scenarioResponses, setScenarioResponses] = useState<(number | null)[]>(
     () => Array(SCENARIOS.length).fill(null),
