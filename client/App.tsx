@@ -73,7 +73,16 @@ const App = () => {
               element={<ModulePage scormModule={scormModuleTarget} />}
             />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
+            <Route
+              path="*"
+              element={
+                scormModuleTarget ? (
+                  <Navigate to={`/modules/${scormModuleTarget}`} replace />
+                ) : (
+                  <NotFound />
+                )
+              }
+            />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
