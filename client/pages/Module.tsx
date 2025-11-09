@@ -126,7 +126,7 @@ export default function ModulePage() {
   );
 }
 
-function ModuleHero({ order, title, description, isExam }: ModuleHeroProps) {
+function ModuleHero({ title, description, badgeLabel }: ModuleHeroProps) {
   return (
     <section className="bg-[#0A1F7A] py-16 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 md:px-10">
@@ -139,7 +139,7 @@ function ModuleHero({ order, title, description, isExam }: ModuleHeroProps) {
         </Link>
         <div className="space-y-3">
           <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
-            {isExam ? "Examen final" : `Module étape ${order}`}
+            {badgeLabel}
           </span>
           <h1 className="text-3xl font-bold md:text-4xl">{title}</h1>
           <p className="max-w-3xl text-base text-white/80 md:text-lg">
