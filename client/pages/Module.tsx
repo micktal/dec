@@ -52,6 +52,16 @@ type ModuleRendererProps = {
 
 type ModuleRenderer = (props: ModuleRendererProps) => JSX.Element;
 
+function getModuleStageLabel(module: TrainingModule) {
+  if (module.type === "intro") {
+    return "Introduction";
+  }
+  if (module.type === "exam") {
+    return "Examen final";
+  }
+  return `Étape ${module.order}`;
+}
+
 const moduleRenderers: Record<ModuleId, ModuleRenderer> = {
   introduction: (props) => <IntroductionModule {...props} />,
   "etape-01": ({ onNavigateNext, canNavigateForward }) => (
