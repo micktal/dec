@@ -407,7 +407,7 @@ const SYNTHESIS_PILLARS = [
       "Tu expliques la décision nationale avec simplicité. Quand le message est clair, le client perçoit notre professionnalisme et notre cohérence.",
     checkpoints: [
       "Présenter les bénéfices : sécurité, rapidité, modernisation",
-      "Rester positif et align�� avec le projet 2026",
+      "Rester positif et aligné avec le projet 2026",
     ],
   },
   {
@@ -902,7 +902,7 @@ export const FINAL_QUIZ: QuizQuestion[] = [
   },
 ];
 
-export const TOTAL_QUESTIONS = 8;
+export const TOTAL_QUESTIONS = 7;
 
 type WindowWithScorm = Window & {
   API?: {
