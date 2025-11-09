@@ -9,6 +9,7 @@ import {
   FINAL_QUIZ,
   FinalQuizSection,
   IntroductionSection,
+  OverviewSection,
   PostureChapter,
   PodcastSection,
   ReflexesSection,
