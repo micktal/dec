@@ -65,9 +65,10 @@ function createModuleList() {
     {
       order: "04",
       moduleId: "etape-04",
-      title: "S'exercer en situation",
-      description: "Choisis la bonne réponse dans les scénarios inspirés du terrain.",
-      sectionId: SECTION_IDS.SCENARIOS,
+      title: "Comprendre les réactions de nos clients",
+      description:
+        "Identifie leurs besoins, anticipe leurs réticences et adopte la posture adaptée.",
+      sectionId: SECTION_IDS.CLIENT_GUIDE,
       type: "step" as const,
     },
     {
