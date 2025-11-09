@@ -2,11 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { pathToFileURL } from "url";
 
-import {
-  TRAINING_MODULES,
-  getModuleById,
-  type TrainingModule,
-} from "../shared/training-modules";
+import { getModuleById, type TrainingModule } from "../shared/training-modules";
 
 const DEFAULT_DIST_ROOT = path.resolve(process.cwd(), "dist", "spa");
 const BASE_TITLE = "Fin du paiement par chèque – Formation Capitaine";
