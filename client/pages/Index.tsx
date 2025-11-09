@@ -598,7 +598,7 @@ export const SCENARIOS: ClientScenario[] = [
         isCorrect: true,
       },
       {
-        label: "C���est pas moi qui décide.",
+        label: "C’est pas moi qui décide.",
         tone: "negative",
         feedback:
           "Tu alimentes la colère du client au lieu de la désamorcer. Reste acteur et propose une solution rapide.",
@@ -1001,10 +1001,6 @@ export default function Index() {
     document
       .getElementById(sectionId)
       ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  const handleScrollToConclusion = () => {
-    handleScrollTo(SECTION_IDS.CONCLUSION);
   };
 
   const triggerUpdateScore = (isCorrect: boolean) => {
