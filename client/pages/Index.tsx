@@ -1195,7 +1195,7 @@ export default function Index() {
     <div className="bg-background text-foreground">
       <SiteHeader />
       <main className="flex flex-col">
-        <IntroductionSection onStart={handleScrollToReasons} />
+        <IntroductionSection />
         <OverviewSection />
         <PostureChapter
           id={SECTION_IDS.POSTURE}
@@ -1244,15 +1244,7 @@ export default function Index() {
   );
 }
 
-export type IntroductionSectionProps = {
-  onStart?: () => void;
-  showStartButton?: boolean;
-};
-
-export function IntroductionSection({
-  onStart,
-  showStartButton = true,
-}: IntroductionSectionProps) {
+export function IntroductionSection() {
   return (
     <section
       id={SECTION_IDS.INTRO}
@@ -1287,22 +1279,6 @@ export function IntroductionSection({
             franchissons une nouvelle étape avec l’arrêt progressif du paiement
             par chèque dans nos magasins, pour offrir des parcours plus sûrs et
             plus fluides.
-          </p>
-        </Reveal>
-        <Reveal className="flex flex-col items-center gap-4 md:flex-row md:items-center">
-          {showStartButton && onStart ? (
-            <button
-              onClick={onStart}
-              type="button"
-              className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-7 py-3 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              Je commence la formation
-              <ArrowRight className="h-4 w-4" />
-            </button>
-          ) : null}
-          <p className="text-sm font-medium text-white/70">
-            Durée estimée : douze à quinze minutes – accessible à tous les
-            collaborateurs.
           </p>
         </Reveal>
         <Reveal className="grid gap-8 rounded-3xl bg-white/10 p-8 text-left text-white backdrop-blur md:grid-cols-[0.9fr_1.1fr]">
@@ -2721,7 +2697,7 @@ export function ScenariosSection({
                   Reformulation pour montrer l’écoute
                 </li>
                 <li className="rounded-2xl border border-primary/20 bg-white px-4 py-3">
-                  Proposition de solution adaptée
+                  Proposition de solution adapt��e
                 </li>
                 <li className="rounded-2xl border border-primary/20 bg-white px-4 py-3">
                   Clôture positive pour rassurer
