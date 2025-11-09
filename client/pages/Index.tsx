@@ -33,11 +33,6 @@ import {
   getModuleBadgeLabel,
 } from "@shared/training-modules";
 
-export type ReasonOption = {
-  label: string;
-  isCorrect: boolean;
-};
-
 type ScenarioTone = "positive" | "neutral" | "negative";
 
 type ClientScenarioResponse = {
@@ -253,7 +248,7 @@ const POSTURE_WORDING_GUIDE = [
       "On remplace une fermeture par une solution tournée vers le client.",
   },
   {
-    avoid: "C’est comme ça maintenant.",
+    avoid: "C���est comme ça maintenant.",
     prefer: "Depuis 2026, on a harmonisé les moyens de paiement.",
     explanation: "On apporte un contexte national au lieu d'opposer le client.",
   },
@@ -454,39 +449,6 @@ const PODCAST_RESOURCE = {
   duration: "Durée : 6 minutes",
   url: "https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F886519d4f49444b29c0bc13eb3871646?alt=media&token=00798ddb-4c68-4ce8-a9bf-c2f4725eed1f&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec",
 } as const;
-
-const REASONS = [
-  {
-    icon: Lightbulb,
-    title: "Moins utilisé",
-    description:
-      "Seuls trois pour cent des paiements en France sont encore effectués par chèque.",
-    detail:
-      "Avec le recul de son usage, le chèque ne répond plus aux habitudes actuelles des clients qui privilégient des moyens rapides et familiers.",
-  },
-  {
-    icon: Cog,
-    title: "Traitement plus simple",
-    description:
-      "Les paiements électroniques réduisent le temps de gestion pour les équipes en magasin.",
-    detail:
-      "Moins de manipulation papier, moins de retours en caisse : tu gagnes de précieuses minutes sur chaque encaissement.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Sécurit�� renforcée",
-    description:
-      "Les transactions dématérialisées limitent les fraudes et sécurisent les encaissements.",
-    detail:
-      "Les solutions digitales valident immédiatement l’opération et protègent à la fois le client et le magasin contre les litiges.",
-  },
-] as const;
-
-const REASON_QUESTION: ReasonOption[] = [
-  { label: "Un jour", isCorrect: false },
-  { label: "Trois jours", isCorrect: true },
-  { label: "Dix jours", isCorrect: false },
-];
 
 const REFLEXES_FOUNDATION = [
   {
@@ -857,7 +819,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     trigger:
       "“Mais à Decathlon Lyon, ils prenaient encore les chèques la semaine dernière !”",
     objective:
-      "Aligner le discours entre magasins et renforcer la crédibilité.",
+      "Aligner le discours entre magasins et renforcer la cr��dibilité.",
     example:
       "Oui, c’était encore en phase de transition. Aujourd’hui, la nouvelle politique est la même dans tous nos magasins.",
     takeaways: [
