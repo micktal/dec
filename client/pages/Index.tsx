@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import {
   AlertCircle,
   AlertTriangle,
@@ -577,7 +576,7 @@ export const SCENARIOS: ClientScenario[] = [
     name: "Marc",
     archetype: "Client professionnel",
     description:
-      "Il représente une mairie ou une association, habitué au chèque administratif et cherche une alternative fiable.",
+      "Il représente une mairie ou une association, habitué au ch��que administratif et cherche une alternative fiable.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F6fb5b2c534fb434d94e6dd6c25b2d333?format=webp&width=800",
     imageAlt: "Homme en entrepôt tenant une tablette",
@@ -1341,9 +1340,8 @@ export function OverviewSection({ id = SECTION_IDS.OVERVIEW }: OverviewSectionPr
         </div>
         <Reveal className="grid gap-4 md:grid-cols-4">
           {TRAINING_MODULES.map((module) => (
-            <Link
+            <div
               key={module.moduleId}
-              to={`/modules/${module.moduleId}`}
               className="group relative overflow-hidden rounded-3xl border border-primary/30 bg-white px-6 py-6 text-left shadow-lg shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:bg-primary hover:text-white"
             >
               <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary group-hover:text-white">
@@ -1353,7 +1351,7 @@ export function OverviewSection({ id = SECTION_IDS.OVERVIEW }: OverviewSectionPr
               <p className="mt-2 text-sm text-foreground/70 group-hover:text-white/80">
                 {module.description}
               </p>
-            </Link>
+            </div>
           ))}
         </Reveal>
       </div>
