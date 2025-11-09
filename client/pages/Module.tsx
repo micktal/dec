@@ -129,7 +129,7 @@ export default function ModulePage({ scormModule }: ModulePageProps) {
         <div className="bg-white">
           <Renderer
             onNavigateNext={() => handleNavigate(next)}
-            canNavigateForward={Boolean(next)}
+            canNavigateForward={canNavigateForward}
           />
         </div>
         <ModuleNavigation previous={previous} next={next} />
