@@ -1365,98 +1365,6 @@ export function OverviewSection({ id = SECTION_IDS.OVERVIEW }: OverviewSectionPr
   );
 }
 
-type ReasonsSectionProps = {
-  id: string;
-  reasonAnswer: string | null;
-  reasonFeedback: { message: string; correct: boolean } | null;
-  onSelect: (option: ReasonOption) => void;
-};
-
-export function ReasonsSection({
-  id,
-  reasonAnswer,
-  reasonFeedback,
-  onSelect,
-}: ReasonsSectionProps) {
-  return (
-    <section id={id} className="bg-white py-24">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
-        <Reveal className="space-y-4 text-center">
-          <DecathlonLogo
-            className="mx-auto h-9 w-auto drop-shadow-sm"
-            aria-label="Decathlon"
-          />
-          <h2 className="text-3xl font-bold text-primary md:text-4xl">
-            Pourquoi le chèque disparaît ?
-          </h2>
-          <p className="text-lg text-foreground/70">
-            Comprendre les raisons du changement te permet d’expliquer
-            sereinement la décision nationale, de rassurer chaque client et de
-            gagner du temps dès la caisse.
-          </p>
-        </Reveal>
-        <div className="grid gap-6 md:grid-cols-3">
-          {REASONS.map((reason) => (
-            <Reveal key={reason.title}>
-              <div className="flex h-full flex-col gap-4 rounded-3xl border border-border bg-white p-6 shadow-lg shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl">
-                <reason.icon
-                  className="h-10 w-10 text-primary"
-                  aria-hidden="true"
-                />
-                <h3 className="text-xl font-semibold text-primary">
-                  {reason.title}
-                </h3>
-                <p className="text-base text-foreground/70">
-                  {reason.description}
-                </p>
-                <p className="text-sm text-foreground/60">{reason.detail}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal className="rounded-3xl border border-primary/30 bg-primary/5 p-8 text-center shadow-inner">
-          <h3 className="text-xl font-semibold text-primary">Mini quiz</h3>
-          <p className="mt-2 text-foreground/70">
-            Combien de jours en moyenne faut-il pour encaisser un chèque ?
-          </p>
-          <div className="mt-6 flex flex-col gap-3 md:flex-row md:justify-center">
-            {REASON_QUESTION.map((option) => {
-              const isSelected = reasonAnswer === option.label;
-              return (
-                <button
-                  key={option.label}
-                  type="button"
-                  onClick={() => onSelect(option)}
-                  className={combineClasses(
-                    "rounded-[12px] border px-5 py-3 text-sm font-semibold transition-all duration-300",
-                    isSelected
-                      ? option.isCorrect
-                        ? "border-primary bg-primary/10 text-primary"
-                        : "border-red-500 bg-red-500/10 text-red-600"
-                      : "border-primary/30 bg-white text-primary hover:-translate-y-0.5 hover:border-primary",
-                  )}
-                >
-                  {option.label}
-                </button>
-              );
-            })}
-          </div>
-          {reasonFeedback && (
-            <p
-              className={combineClasses(
-                "mt-4 text-sm",
-                reasonFeedback.correct ? "text-primary" : "text-red-600",
-              )}
-            >
-              {reasonFeedback.message}
-            </p>
-          )}
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 type PostureChapterProps = {
   id?: string;
 };
@@ -1926,7 +1834,7 @@ export function PodcastSection({ id }: { id?: string }) {
           </h2>
           <p className="text-lg text-white/80">
             Découvre comment elle accompagne son équipe et rassure les clients
-            sur la fin du paiement par chèque.
+            sur la fin du paiement par ch��que.
           </p>
         </Reveal>
         <Reveal className="overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-xl shadow-black/30 backdrop-blur">
