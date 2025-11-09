@@ -76,12 +76,20 @@ const moduleRenderers: Record<ModuleId, ModuleRenderer> = {
   "examen-final": () => <ExamModule />,
 };
 
-export default function ModulePage() {
+type ModulePageProps = {
+  scormModule?: string;
+};
+
+export default function ModulePage({ scormModule }: ModulePageProps) {
   const { moduleId } = useParams<{ moduleId: string }>();
   const navigate = useNavigate();
 
   if (!moduleId || !(moduleId in MODULE_MAP)) {
     return <Navigate to="/" replace />;
+  }
+
+  if (scormModule && moduleId !== scormModule) {
+    return <Navigate to={`/modules/${scormModule}`} replace />;
   }
 
   const moduleIndex = MODULE_MAP[moduleId];
