@@ -573,7 +573,7 @@ export const SCENARIOS: ClientScenario[] = [
         label: "Vous verrez, tout le monde s’y fera.",
         tone: "neutral",
         feedback:
-          "Tu restes poli, mais tu ne réponds pas à l’inquiétude. Propose une solution qui rassure immédiatement.",
+          "Tu restes poli, mais tu ne réponds pas à l’inqui��tude. Propose une solution qui rassure immédiatement.",
         isCorrect: false,
       },
     ],
@@ -1328,6 +1328,35 @@ export function IntroductionSection() {
               Tu trouveras des explications simples, des réponses types et des
               mises en situation interactives pour t’entraîner avant la
               rencontre client.
+            </div>
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="space-y-8 rounded-3xl bg-white p-8 text-primary shadow-2xl shadow-black/15">
+            <div className="space-y-3 text-center">
+              <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
+              <h2 className="text-2xl font-semibold md:text-3xl">
+                Pourquoi le chèque disparaît ?
+              </h2>
+              <p className="text-base text-primary/70">
+                Comprendre les raisons du changement te permet d’expliquer sereinement la décision nationale,
+                de rassurer chaque client et de gagner du temps dès la caisse.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {REASONS.map((reason) => (
+                <div
+                  key={reason.title}
+                  className="flex h-full flex-col gap-4 rounded-2xl border border-primary/10 bg-white p-6 text-left shadow-sm shadow-primary/10"
+                >
+                  <reason.icon className="h-8 w-8 text-primary" aria-hidden="true" />
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-primary">{reason.title}</h3>
+                    <p className="text-sm text-primary/70">{reason.description}</p>
+                    <p className="text-sm text-primary/60">{reason.detail}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </Reveal>
