@@ -15,7 +15,6 @@ import {
   Lightbulb,
   RotateCcw,
   ShieldCheck,
-  Smile,
   Target,
   Users,
   Volume2,
@@ -1661,7 +1660,7 @@ export function PostureChapter({ id }: PostureChapterProps) {
         <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
           <div className="space-y-6 text-left">
             <h3 className="text-2xl font-semibold text-white">
-              Phrases à privil��gier
+              Phrases à privilégier
             </h3>
             <p className="text-sm text-white/80">
               Remplace les formulations qui ferment la discussion par des
