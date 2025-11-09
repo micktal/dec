@@ -583,7 +583,7 @@ export const SCENARIOS: ClientScenario[] = [
     name: "Nicolas",
     archetype: "Client pressé",
     description:
-      "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la réponse tarde.",
+      "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la r��ponse tarde.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fbc78fb0da55d47f3af3c89bd0a9e1409?format=webp&width=800",
     imageAlt:
@@ -1260,16 +1260,6 @@ export function IntroductionSection() {
       </div>
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-24 text-center md:px-10 md:text-left">
         <Reveal className="flex flex-col gap-6 md:max-w-2xl">
-          <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 backdrop-blur">
-            <DecathlonLogo
-              variant="white"
-              className="h-8 w-auto drop-shadow"
-              aria-label="Decathlon"
-            />
-            <span className="text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
-              Formation
-            </span>
-          </div>
           <h1 className="text-4xl font-bold leading-tight md:text-5xl">
             Ensemble vers 2026
           </h1>
@@ -2697,7 +2687,7 @@ export function ScenariosSection({
                   Reformulation pour montrer l’écoute
                 </li>
                 <li className="rounded-2xl border border-primary/20 bg-white px-4 py-3">
-                  Proposition de solution adapt��e
+                  Proposition de solution adaptée
                 </li>
                 <li className="rounded-2xl border border-primary/20 bg-white px-4 py-3">
                   Clôture positive pour rassurer
@@ -2983,7 +2973,7 @@ export function ConclusionSection({
           </button>
         </Reveal>
         <Reveal className="text-xs text-white/70">
-          Document interne – usage exclusif Decathlon France – ne pas diffuser.
+          Document interne – usage exclusif Decathlon France �� ne pas diffuser.
         </Reveal>
       </div>
     </section>
