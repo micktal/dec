@@ -124,7 +124,7 @@ const EXCEPTIONAL_STATUS_ACCENTS: Record<ExceptionalScenarioStatus, string> = {
 const EXCEPTIONAL_STATUS_LABELS: Record<ExceptionalScenarioStatus, string> = {
   success: "Bonne approche",
   info: "Approche à compléter",
-  warning: "À am��liorer",
+  warning: "À améliorer",
   error: "À éviter",
 };
 
@@ -378,7 +378,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
   {
     title: "Le client professionnel ou administratif",
     situation:
-      "Il représente une structure (mairie, association) habituée au chèque administratif et craint d'être bloqué.",
+      "Il représente une structure (mairie, association) habituée au chèque administratif et craint d'être bloqu��.",
     concerns: [
       "Peur de ne plus pouvoir commander pour son organisation",
       "Méconnaissance des solutions Decathlon Pro",
@@ -656,7 +656,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     id: "age-numerique",
     title: "Client âgé en difficulté numérique",
     trigger:
-      "“Je n���ai pas de carte bancaire, je ne sais pas faire vos trucs modernes.”",
+      "“Je n’ai pas de carte bancaire, je ne sais pas faire vos trucs modernes.”",
     objective:
       "Rassurer sans infantiliser et proposer une solution concrète accompagnée.",
     example:
@@ -949,8 +949,7 @@ export default function Index() {
     [finalScored],
   );
 
-  const reasonScore = reasonScored ? 1 : 0;
-  const totalScore = reasonScore + scenarioScore + finalScore;
+  const totalScore = scenarioScore + finalScore;
   const moduleCompleted = totalScore >= 4;
 
   const handleScrollTo = (sectionId: string) => {
@@ -1062,8 +1061,8 @@ export default function Index() {
   };
 
   const computedScore = useMemo(
-    () => reasonScore + scenarioScore + finalScore,
-    [reasonScore, scenarioScore, finalScore],
+    () => scenarioScore + finalScore,
+    [scenarioScore, finalScore],
   );
 
   useEffect(() => {
