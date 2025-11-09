@@ -233,7 +233,7 @@ const POSTURE_SEQUENCE = [
   {
     title: "4. Conclure en accompagnant",
     description:
-      "Vérifie que tout est clair, reste disponible et invite le client �� revenir vers toi si besoin.",
+      "Vérifie que tout est clair, reste disponible et invite le client à revenir vers toi si besoin.",
   },
 ] as const;
 
@@ -379,7 +379,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
     concerns: [
       "Peur de ne plus pouvoir commander pour son organisation",
       "Méconnaissance des solutions Decathlon Pro",
-      "Sentiment de ne pas être pris en compte dans la d��cision",
+      "Sentiment de ne pas être pris en compte dans la décision",
     ],
     posture: [
       "Montrer que tu comprends son besoin professionnel",
@@ -523,7 +523,7 @@ export const SCENARIOS: ClientScenario[] = [
         label: "C’est la nouvelle règle, je ne peux rien faire.",
         tone: "negative",
         feedback:
-          "Ta réponse manque d’écoute et peut créer de la frustration. Accueille le ressenti et accompagne le changement.",
+          "Ta réponse manque d��écoute et peut créer de la frustration. Accueille le ressenti et accompagne le changement.",
         isCorrect: false,
       },
       {
@@ -791,7 +791,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
           label:
             "(Sourire) Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
           feedback:
-            "Parfait : tu restes léger, tu confirmes la r��gle et tu proposes des options concrètes.",
+            "Parfait : tu restes léger, tu confirmes la règle et tu proposes des options concrètes.",
           status: "success",
         },
         {
@@ -868,7 +868,7 @@ export const FINAL_QUIZ: QuizQuestion[] = [
   {
     id: 2,
     question:
-      "Face à un client press�� ou agacé, quelle posture illustre l'empathie active ?",
+      "Face à un client pressé ou agacé, quelle posture illustre l'empathie active ?",
     options: [
       "Rester calme, reformuler et valoriser la rapidité de la CB ou du paiement fractionné",
       "Répondre sur le même ton pour s'imposer",
@@ -1196,7 +1196,7 @@ export function IntroductionSection() {
             <p>
               Ce changement est une évolution naturelle : les chèques sont
               désormais rares et longs à traiter, alors que nos solutions
-              digitales sont plus sûres, rapides et déj�� largement adoptées.
+              digitales sont plus sûres, rapides et déjà largement adoptées.
             </p>
             <p>
               Cette formation t’accompagne pour vivre la transition dans un
