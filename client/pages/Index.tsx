@@ -28,7 +28,12 @@ import Reveal from "@/components/Reveal";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { cn as combineClasses } from "@/lib/utils";
-import { SECTION_IDS, STEP_MODULES } from "@shared/training-modules";
+import {
+  SECTION_IDS,
+  STEP_MODULES,
+  TRAINING_MODULES,
+  getModuleBadgeLabel,
+} from "@shared/training-modules";
 
 export type ReasonOption = {
   label: string;
