@@ -378,7 +378,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
   {
     title: "Le client professionnel ou administratif",
     situation:
-      "Il représente une structure (mairie, association) habituée au chèque administratif et craint d'être bloqu��.",
+      "Il représente une structure (mairie, association) habituée au chèque administratif et craint d'être bloqué.",
     concerns: [
       "Peur de ne plus pouvoir commander pour son organisation",
       "Méconnaissance des solutions Decathlon Pro",
@@ -963,18 +963,6 @@ export default function Index() {
     if (typeof win.updateScore === "function") {
       win.updateScore(isCorrect);
     }
-  };
-
-  const handleReasonAnswer = (option: ReasonOption) => {
-    setReasonAnswer(option.label);
-    setReasonFeedback({
-      message: option.isCorrect
-        ? "Exact : trois jours sont généralement nécessaires pour qu'un chèque soit encaissé."
-        : "Ce n'est pas la bonne durée. Pense à l'impact logistique des chèques sur nos équipes.",
-      correct: option.isCorrect,
-    });
-    setReasonScored(option.isCorrect);
-    triggerUpdateScore(option.isCorrect);
   };
 
   const handleScenarioSelect = (scenarioIndex: number, optionIndex: number) => {
