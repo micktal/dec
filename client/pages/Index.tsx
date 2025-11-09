@@ -530,7 +530,7 @@ export const SCENARIOS: ClientScenario[] = [
         label: "Vous verrez, tout le monde s’y fera.",
         tone: "neutral",
         feedback:
-          "Tu restes poli, mais tu ne réponds pas à l’inqui��tude. Propose une solution qui rassure immédiatement.",
+          "Tu restes poli, mais tu ne réponds pas à l’inquiétude. Propose une solution qui rassure immédiatement.",
         isCorrect: false,
       },
     ],
