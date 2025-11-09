@@ -118,7 +118,7 @@ export default function ModulePage({ scormModule }: ModulePageProps) {
         <ModuleHero
           title={moduleMeta.title}
           description={moduleMeta.description}
-          badgeLabel={getModuleStageLabel(moduleMeta)}
+          badgeLabel={getModuleBadgeLabel(moduleMeta)}
         />
         <div className="bg-white">
           <Renderer
