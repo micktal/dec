@@ -1131,12 +1131,6 @@ export default function Index() {
         <IntroductionSection />
         <OverviewSection />
         <PostureChapter id={SECTION_IDS.POSTURE} />
-        <ReasonsSection
-          id={SECTION_IDS.REASONS}
-          reasonAnswer={reasonAnswer}
-          reasonFeedback={reasonFeedback}
-          onSelect={handleReasonAnswer}
-        />
         <ReflexesSection id={SECTION_IDS.REFLEXES} />
         <ClientUnderstandingSection id={SECTION_IDS.CLIENT_GUIDE} />
         <ScenariosSection
@@ -1206,7 +1200,7 @@ export function IntroductionSection() {
             <p>
               Ce changement est une évolution naturelle : les chèques sont
               désormais rares et longs à traiter, alors que nos solutions
-              digitales sont plus sûres, rapides et déjà largement adoptées.
+              digitales sont plus sûres, rapides et déj�� largement adoptées.
             </p>
             <p>
               Cette formation t’accompagne pour vivre la transition dans un
