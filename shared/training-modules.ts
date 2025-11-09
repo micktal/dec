@@ -56,9 +56,9 @@ function createModuleList() {
     {
       order: "03",
       moduleId: "etape-03",
-      title: "Adopter les réflexes",
-      description: "Mémorise les attitudes à avoir face aux clients.",
-      sectionId: SECTION_IDS.REFLEXES,
+      title: "Comprendre les réactions",
+      description: "Explore les profils clients et prépare tes réponses clés.",
+      sectionId: SECTION_IDS.CLIENT_GUIDE,
       type: "step" as const,
     },
     {
