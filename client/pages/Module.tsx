@@ -99,10 +99,9 @@ export default function ModulePage() {
       <SiteHeader />
       <main className="flex-1">
         <ModuleHero
-          order={moduleMeta.order}
           title={moduleMeta.title}
           description={moduleMeta.description}
-          isExam={moduleMeta.moduleId === "examen-final"}
+          badgeLabel={getModuleStageLabel(moduleMeta)}
         />
         <div className="bg-white">
           <Renderer
