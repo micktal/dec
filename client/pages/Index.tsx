@@ -523,7 +523,7 @@ export const SCENARIOS: ClientScenario[] = [
         label: "C’est la nouvelle règle, je ne peux rien faire.",
         tone: "negative",
         feedback:
-          "Ta réponse manque d��écoute et peut créer de la frustration. Accueille le ressenti et accompagne le changement.",
+          "Ta réponse manque d’écoute et peut créer de la frustration. Accueille le ressenti et accompagne le changement.",
         isCorrect: false,
       },
       {
@@ -1437,7 +1437,7 @@ export function PostureChapter({ id }: PostureChapterProps) {
               Déroulé conseillé en caisse
             </h3>
             <p className="text-sm text-white/80">
-              Suis ces ��tapes dans l'ordre pour guider le client de l'émotion
+              Suis ces étapes dans l'ordre pour guider le client de l'émotion
               vers la solution.
             </p>
             <div className="grid gap-4 md:grid-cols-2">
@@ -1589,7 +1589,7 @@ export function ReflexesSection({ id }: ReflexesSectionProps) {
             Les 3 réflexes clés à adopter
           </h2>
           <p className="text-lg text-foreground/70">
-            Empathie, clarté et alternatives : trois r��flexes pour rester
+            Empathie, clarté et alternatives : trois réflexes pour rester
             performants et proches de nos clients.
           </p>
         </Reveal>
@@ -1855,7 +1855,7 @@ export function PodcastSection({ id }: { id?: string }) {
                   download
                   className="inline-flex items-center gap-2 rounded-[12px] bg-white px-4 py-2 text-sm font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
-                  Tél��charger le podcast
+                  Télécharger le podcast
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
                 <span className="text-xs text-white/60">Format MP3</span>
@@ -2407,7 +2407,7 @@ export function ScenariosSection({
           </h3>
           <p className="text-lg text-foreground/70">
             Entraîne-toi sur des situations exceptionnelles pour garder la
-            maîtrise même lorsque l’��change se tend.
+            maîtrise même lorsque l’échange se tend.
           </p>
         </Reveal>
         <div className="grid gap-6 lg:grid-cols-2">
