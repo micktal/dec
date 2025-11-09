@@ -124,7 +124,7 @@ const EXCEPTIONAL_STATUS_ACCENTS: Record<ExceptionalScenarioStatus, string> = {
 const EXCEPTIONAL_STATUS_LABELS: Record<ExceptionalScenarioStatus, string> = {
   success: "Bonne approche",
   info: "Approche à compléter",
-  warning: "À améliorer",
+  warning: "À am��liorer",
   error: "À éviter",
 };
 
@@ -248,7 +248,7 @@ const POSTURE_WORDING_GUIDE = [
       "On remplace une fermeture par une solution tournée vers le client.",
   },
   {
-    avoid: "C���est comme ça maintenant.",
+    avoid: "C’est comme ça maintenant.",
     prefer: "Depuis 2026, on a harmonisé les moyens de paiement.",
     explanation: "On apporte un contexte national au lieu d'opposer le client.",
   },
@@ -656,7 +656,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     id: "age-numerique",
     title: "Client âgé en difficulté numérique",
     trigger:
-      "“Je n’ai pas de carte bancaire, je ne sais pas faire vos trucs modernes.”",
+      "“Je n���ai pas de carte bancaire, je ne sais pas faire vos trucs modernes.”",
     objective:
       "Rassurer sans infantiliser et proposer une solution concrète accompagnée.",
     example:
@@ -819,7 +819,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     trigger:
       "“Mais à Decathlon Lyon, ils prenaient encore les chèques la semaine dernière !”",
     objective:
-      "Aligner le discours entre magasins et renforcer la cr��dibilité.",
+      "Aligner le discours entre magasins et renforcer la crédibilité.",
     example:
       "Oui, c’était encore en phase de transition. Aujourd’hui, la nouvelle politique est la même dans tous nos magasins.",
     takeaways: [
@@ -919,12 +919,6 @@ type WindowWithScorm = Window & {
 };
 
 export default function Index() {
-  const [reasonAnswer, setReasonAnswer] = useState<string | null>(null);
-  const [reasonFeedback, setReasonFeedback] = useState<{
-    message: string;
-    correct: boolean;
-  } | null>(null);
-  const [reasonScored, setReasonScored] = useState(false);
   const [scenarioResponses, setScenarioResponses] = useState<(number | null)[]>(
     Array(SCENARIOS.length).fill(null),
   );
