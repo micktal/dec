@@ -21,7 +21,8 @@ const NotFound = () => {
           </span>
           <h1 className="mt-6 text-4xl font-bold text-primary">404</h1>
           <p className="mt-4 text-lg text-foreground/75">
-            On dirait que cette page n'est pas encore prête pour l'ensemble des collaborateurs. Reviens vers l'accueil pour poursuivre ta formation.
+            On dirait que cette page n'est pas encore prête pour l'ensemble des
+            collaborateurs. Reviens vers l'accueil pour poursuivre ta formation.
           </p>
           <Link
             to="/"
