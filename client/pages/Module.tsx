@@ -13,11 +13,9 @@ import {
   PostureChapter,
   PodcastSection,
   ReflexesSection,
-  ReasonsSection,
   SCENARIOS,
   ScenariosSection,
   SynthesisSection,
-  type ReasonOption,
   type ScenarioFeedback,
 } from "./Index";
 import {
