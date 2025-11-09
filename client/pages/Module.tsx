@@ -94,20 +94,28 @@ export default function ModulePage({ scormModule }: ModulePageProps) {
 
   const moduleIndex = MODULE_MAP[moduleId];
   const moduleMeta = TRAINING_MODULES[moduleIndex];
-  const previous = moduleIndex > 0 ? TRAINING_MODULES[moduleIndex - 1] : undefined;
-  const next =
+  let previous = moduleIndex > 0 ? TRAINING_MODULES[moduleIndex - 1] : undefined;
+  let next =
     moduleIndex < TRAINING_MODULES.length - 1
       ? TRAINING_MODULES[moduleIndex + 1]
       : undefined;
 
+  const isStandalone = Boolean(scormModule);
+
+  if (isStandalone) {
+    previous = undefined;
+    next = undefined;
+  }
+
   const handleNavigate = (target?: TrainingModule) => {
-    if (!target) {
+    if (!target || isStandalone) {
       return;
     }
     navigate(`/modules/${target.moduleId}`);
   };
 
   const Renderer = moduleRenderers[moduleMeta.moduleId as ModuleId];
+  const canNavigateForward = Boolean(next);
 
   return (
     <div className="flex min-h-screen flex-col bg-[#F4F6FF]">
