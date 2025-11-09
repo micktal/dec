@@ -6,6 +6,7 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import {
   ClientUnderstandingSection,
+  ConclusionSection,
   FINAL_QUIZ,
   FinalQuizSection,
   IntroductionSection,
@@ -61,7 +62,8 @@ const moduleRenderers: Record<ModuleId, ModuleRenderer> = {
   "etape-04": () => <ClientUnderstandingSection id={SECTION_IDS.CLIENT_GUIDE} />,
   "etape-05": () => <PodcastSection id={SECTION_IDS.PODCAST} />,
   "etape-06": () => <SynthesisSection id={SECTION_IDS.SYNTHESIS} />,
-  "examen-final": () => <ExamModule />,
+  "test-de-fin": () => <ExamModule />,
+  "conclusion-ressources": () => <ConclusionModule />,
 };
 
 type ModulePageProps = {
@@ -309,6 +311,17 @@ function ExamModule() {
       onSubmit={handleSubmit}
       onReset={handleReset}
       score={score}
+    />
+  );
+}
+
+function ConclusionModule() {
+  return (
+    <ConclusionSection
+      id={SECTION_IDS.CONCLUSION}
+      totalScore={0}
+      moduleCompleted={false}
+      showProgress={false}
     />
   );
 }
