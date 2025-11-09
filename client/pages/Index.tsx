@@ -5,7 +5,6 @@ import {
   AlertTriangle,
   ArrowRight,
   BookOpen,
-  Brain,
   CheckCircle2,
   ChevronDown,
   Cog,
@@ -1197,10 +1196,7 @@ export default function Index() {
       <main className="flex flex-col">
         <IntroductionSection />
         <OverviewSection />
-        <PostureChapter
-          id={SECTION_IDS.POSTURE}
-          onGoToConclusion={handleScrollToReasons}
-        />
+        <PostureChapter id={SECTION_IDS.POSTURE} />
         <ReasonsSection
           id={SECTION_IDS.REASONS}
           reasonAnswer={reasonAnswer}
@@ -1535,13 +1531,9 @@ export function ReasonsSection({
 
 type PostureChapterProps = {
   id?: string;
-  onGoToConclusion: () => void;
 };
 
-export function PostureChapter({
-  id,
-  onGoToConclusion,
-}: PostureChapterProps) {
+export function PostureChapter({ id }: PostureChapterProps) {
   return (
     <section id={id} className="bg-[#0E1A5F] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
@@ -1669,7 +1661,7 @@ export function PostureChapter({
         <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
           <div className="space-y-6 text-left">
             <h3 className="text-2xl font-semibold text-white">
-              Phrases à privilégier
+              Phrases à privil��gier
             </h3>
             <p className="text-sm text-white/80">
               Remplace les formulations qui ferment la discussion par des
