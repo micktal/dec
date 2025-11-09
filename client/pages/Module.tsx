@@ -56,6 +56,7 @@ type ModuleRenderer = (props: ModuleRendererProps) => JSX.Element;
 
 const moduleRenderers: Record<ModuleId, ModuleRenderer> = {
   introduction: (props) => <IntroductionModule {...props} />,
+  "ta-feuille-de-route": () => <OverviewSection />,
   "etape-01": ({ onNavigateNext, canNavigateForward }) => (
     <PostureChapter
       id={SECTION_IDS.POSTURE}
