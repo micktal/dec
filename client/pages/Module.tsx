@@ -108,6 +108,7 @@ export default function ModulePage() {
         <div className="bg-white">
           <Renderer
             onNavigateNext={() => handleNavigate(next)}
+            canNavigateForward={Boolean(next)}
           />
         </div>
         <ModuleNavigation previous={previous} next={next} />
