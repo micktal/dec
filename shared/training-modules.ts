@@ -1,5 +1,6 @@
 export const SECTION_IDS = {
   INTRO: "section-intro",
+  OVERVIEW: "section-overview",
   POSTURE: "section-posture",
   REASONS: "section-raisons",
   REFLEXES: "section-reflexes",
@@ -24,6 +25,16 @@ function createModuleList() {
       sectionId: SECTION_IDS.INTRO,
       type: "intro" as const,
       badgeLabel: "Introduction",
+    },
+    {
+      order: "00B",
+      moduleId: "ta-feuille-de-route",
+      title: "Ta feuille de route",
+      description:
+        "Visualise les objectifs, repères clés et l'ensemble des modules pour préparer ton parcours.",
+      sectionId: SECTION_IDS.OVERVIEW,
+      type: "intro" as const,
+      badgeLabel: "Ta feuille de route",
     },
     {
       order: "01",
