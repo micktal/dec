@@ -81,15 +81,6 @@ function createModuleList() {
     {
       order: "06",
       moduleId: "etape-06",
-      title: "Écouter le terrain",
-      description:
-        "Découvre l'expérience de Muriel, capitaine de magasin Decathlon.",
-      sectionId: SECTION_IDS.PODCAST,
-      type: "step" as const,
-    },
-    {
-      order: "07",
-      moduleId: "etape-07",
       title: "Activer tes forces",
       description:
         "Synthétise les apprentissages et prépare ton passage à l'action.",
