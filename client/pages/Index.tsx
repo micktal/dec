@@ -1157,7 +1157,6 @@ export default function Index() {
           id={SECTION_IDS.CONCLUSION}
           totalScore={totalScore}
           moduleCompleted={moduleCompleted}
-          onComplete={handleModuleComplete}
         />
       </main>
       <SiteFooter />
@@ -2717,17 +2716,21 @@ export function FinalQuizSection({
 
 type ConclusionSectionProps = {
   id?: string;
-  totalScore: number;
-  moduleCompleted: boolean;
-  onComplete: () => void;
+  totalScore?: number;
+  moduleCompleted?: boolean;
+  showProgress?: boolean;
 };
 
 export function ConclusionSection({
   id,
   totalScore,
   moduleCompleted,
-  onComplete,
+  showProgress,
 }: ConclusionSectionProps) {
+  const progressPoints = totalScore ?? 0;
+  const isCompleted = moduleCompleted ?? false;
+  const shouldShowProgress = showProgress ?? true;
+
   return (
     <section id={id} className="bg-[#1C4ED8] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 text-center md:px-10">
@@ -2745,21 +2748,25 @@ export function ConclusionSection({
             en douceur et dans un esprit de service.
           </p>
         </Reveal>
-        <Reveal className="text-sm font-semibold text-white">
-          <p id="scoreDisplay">Score actuel : 0/{TOTAL_QUESTIONS}</p>
-        </Reveal>
-        <Reveal className="flex flex-col items-center gap-4 text-sm text-white/80">
-          <div className="flex items-center gap-3 text-base font-semibold">
-            <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
-            <span>Progression cumulée : {totalScore} points</span>
-          </div>
-          {moduleCompleted && (
-            <p className="text-white">
-              Module terminé - bravo pour ta montée en compétences.
-            </p>
-          )}
-        </Reveal>
-        <Reveal className="flex flex-col gap-3 md:flex-row md:justify-center">
+        {shouldShowProgress && (
+          <Reveal className="text-sm font-semibold text-white">
+            <p id="scoreDisplay">Score actuel : 0/{TOTAL_QUESTIONS}</p>
+          </Reveal>
+        )}
+        {shouldShowProgress && (
+          <Reveal className="flex flex-col items-center gap-4 text-sm text-white/80">
+            <div className="flex items-center gap-3 text-base font-semibold">
+              <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
+              <span>Progression cumulée : {progressPoints} points</span>
+            </div>
+            {isCompleted && (
+              <p className="text-white">
+                Module terminé - bravo pour ta montée en compétences.
+              </p>
+            )}
+          </Reveal>
+        )}
+        <Reveal className="flex flex-col items-center gap-3 md:flex-row md:justify-center">
           <a
             href="#"
             className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white"
@@ -2767,14 +2774,6 @@ export function ConclusionSection({
             <FileText className="h-5 w-5" aria-hidden="true" />
             Télécharger la fiche mémo PDF
           </a>
-          <button
-            onClick={onComplete}
-            type="button"
-            className="inline-flex items-center justify-center gap-2 rounded-[12px] border border-white/40 bg-white/10 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20"
-          >
-            <HelpCircle className="h-5 w-5" aria-hidden="true" />
-            Je termine ma formation
-          </button>
         </Reveal>
         <Reveal className="text-xs text-white/70">
           Document interne – usage exclusif Decathlon France – ne pas diffuser.
