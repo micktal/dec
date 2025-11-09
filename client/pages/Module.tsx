@@ -59,7 +59,9 @@ const moduleRenderers: Record<ModuleId, ModuleRenderer> = {
   "etape-01": () => <PostureChapter id={SECTION_IDS.POSTURE} />,
   "etape-02": () => <ReflexesSection id={SECTION_IDS.REFLEXES} />,
   "etape-03": (props) => <ScenariosModule {...props} />,
-  "etape-04": () => <ClientUnderstandingSection id={SECTION_IDS.CLIENT_GUIDE} />,
+  "etape-04": () => (
+    <ClientUnderstandingSection id={SECTION_IDS.CLIENT_GUIDE} />
+  ),
   "etape-05": () => <PodcastSection id={SECTION_IDS.PODCAST} />,
   "etape-06": () => <SynthesisSection id={SECTION_IDS.SYNTHESIS} />,
   "test-de-fin": () => <ExamModule />,
@@ -84,7 +86,8 @@ export default function ModulePage({ scormModule }: ModulePageProps) {
 
   const moduleIndex = MODULE_MAP[moduleId];
   const moduleMeta = TRAINING_MODULES[moduleIndex];
-  let previous = moduleIndex > 0 ? TRAINING_MODULES[moduleIndex - 1] : undefined;
+  let previous =
+    moduleIndex > 0 ? TRAINING_MODULES[moduleIndex - 1] : undefined;
   let next =
     moduleIndex < TRAINING_MODULES.length - 1
       ? TRAINING_MODULES[moduleIndex + 1]
@@ -198,8 +201,8 @@ function ScenariosModule({ onNavigateNext }: ModuleRendererProps) {
   const [scenarioFeedback, setScenarioFeedback] = useState<
     (ScenarioFeedback | null)[]
   >(() => Array.from({ length: SCENARIOS.length }, () => null));
-  const [scenarioScoreFlags, setScenarioScoreFlags] = useState<boolean[]>(
-    () => Array(SCENARIOS.length).fill(false),
+  const [scenarioScoreFlags, setScenarioScoreFlags] = useState<boolean[]>(() =>
+    Array(SCENARIOS.length).fill(false),
   );
   const [activeScenarioIndex, setActiveScenarioIndex] = useState(0);
 
@@ -271,8 +274,8 @@ function ScenariosModule({ onNavigateNext }: ModuleRendererProps) {
 }
 
 function ExamModule() {
-  const [answers, setAnswers] = useState<(number | null)[]>(
-    () => Array(FINAL_QUIZ.length).fill(null),
+  const [answers, setAnswers] = useState<(number | null)[]>(() =>
+    Array(FINAL_QUIZ.length).fill(null),
   );
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);

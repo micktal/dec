@@ -1277,7 +1277,9 @@ export type OverviewSectionProps = {
   id?: string;
 };
 
-export function OverviewSection({ id = SECTION_IDS.OVERVIEW }: OverviewSectionProps) {
+export function OverviewSection({
+  id = SECTION_IDS.OVERVIEW,
+}: OverviewSectionProps) {
   return (
     <section id={id} className="bg-[#EEF2FF] py-20">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
@@ -1558,7 +1560,6 @@ export function PostureChapter({ id }: PostureChapterProps) {
             </div>
           </div>
         </Reveal>
-
       </div>
     </section>
   );
