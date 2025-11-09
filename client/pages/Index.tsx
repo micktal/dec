@@ -243,7 +243,7 @@ const POSTURE_SEQUENCE = [
   {
     title: "4. Conclure en accompagnant",
     description:
-      "Vérifie que tout est clair, reste disponible et invite le client à revenir vers toi si besoin.",
+      "Vérifie que tout est clair, reste disponible et invite le client �� revenir vers toi si besoin.",
   },
 ] as const;
 
@@ -583,7 +583,7 @@ export const SCENARIOS: ClientScenario[] = [
     name: "Nicolas",
     archetype: "Client pressé",
     description:
-      "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la r��ponse tarde.",
+      "Dans la file d’attente, il veut gagner du temps et s’agace rapidement si la réponse tarde.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fbc78fb0da55d47f3af3c89bd0a9e1409?format=webp&width=800",
     imageAlt:
@@ -1354,9 +1354,13 @@ export function IntroductionSection() {
   );
 }
 
-function OverviewSection() {
+export type OverviewSectionProps = {
+  id?: string;
+};
+
+export function OverviewSection({ id = SECTION_IDS.OVERVIEW }: OverviewSectionProps) {
   return (
-    <section className="bg-[#EEF2FF] py-20">
+    <section id={id} className="bg-[#EEF2FF] py-20">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
           <DecathlonLogo
@@ -2973,7 +2977,7 @@ export function ConclusionSection({
           </button>
         </Reveal>
         <Reveal className="text-xs text-white/70">
-          Document interne – usage exclusif Decathlon France �� ne pas diffuser.
+          Document interne – usage exclusif Decathlon France – ne pas diffuser.
         </Reveal>
       </div>
     </section>
