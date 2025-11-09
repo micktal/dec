@@ -1821,6 +1821,9 @@ export function PodcastSection({ id }: { id?: string }) {
     <section id={id} className="bg-[#0A1F7A] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 md:px-10">
         <Reveal className="space-y-4 text-center">
+          <span className="inline-flex items-center justify-center rounded-full bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
+            Decathlon
+          </span>
           <DecathlonLogo
             variant="white"
             className="mx-auto h-10 w-auto drop-shadow"
@@ -1831,7 +1834,7 @@ export function PodcastSection({ id }: { id?: string }) {
           </h2>
           <p className="text-lg text-white/80">
             Découvre comment elle accompagne son équipe et rassure les clients
-            sur la fin du paiement par ch��que.
+            sur la fin du paiement par chèque.
           </p>
         </Reveal>
         <Reveal className="overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-xl shadow-black/30 backdrop-blur">
