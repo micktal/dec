@@ -56,9 +56,10 @@ function createModuleList() {
     {
       order: "03",
       moduleId: "etape-03",
-      title: "Comprendre les réactions",
-      description: "Explore les profils clients et prépare tes réponses clés.",
-      sectionId: SECTION_IDS.CLIENT_GUIDE,
+      title: "Simulation client : réagir avec calme et empathie",
+      description:
+        "Mets-toi en situation à la caisse et choisis la réponse la plus adaptée à chaque profil.",
+      sectionId: SECTION_IDS.SCENARIOS,
       type: "step" as const,
     },
     {
