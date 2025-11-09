@@ -2,7 +2,6 @@ export const SECTION_IDS = {
   INTRO: "section-intro",
   OVERVIEW: "section-overview",
   POSTURE: "section-posture",
-  REASONS: "section-raisons",
   REFLEXES: "section-reflexes",
   CLIENT_GUIDE: "section-clients",
   SCENARIOS: "section-scenarios",
