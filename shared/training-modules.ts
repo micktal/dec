@@ -64,9 +64,9 @@ function createModuleList() {
     {
       order: "04",
       moduleId: "etape-04",
-      title: "Comprendre les réactions",
-      description: "Explore les profils clients et prépare tes réponses clés.",
-      sectionId: SECTION_IDS.CLIENT_GUIDE,
+      title: "S'exercer en situation",
+      description: "Choisis la bonne réponse dans les scénarios inspirés du terrain.",
+      sectionId: SECTION_IDS.SCENARIOS,
       type: "step" as const,
     },
     {
