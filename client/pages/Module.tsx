@@ -53,11 +53,8 @@ type ModuleRendererProps = {
 type ModuleRenderer = (props: ModuleRendererProps) => JSX.Element;
 
 function getModuleStageLabel(module: TrainingModule) {
-  if (module.type === "intro") {
-    return "Introduction";
-  }
-  if (module.type === "exam") {
-    return "Examen final";
+  if (module.badgeLabel) {
+    return module.badgeLabel;
   }
   return `Étape ${module.order}`;
 }
