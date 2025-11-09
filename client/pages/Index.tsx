@@ -1332,35 +1332,6 @@ export function IntroductionSection() {
           </div>
         </Reveal>
         <Reveal>
-          <div className="space-y-8 rounded-3xl bg-white p-8 text-primary shadow-2xl shadow-black/15">
-            <div className="space-y-3 text-center">
-              <DecathlonLogo className="mx-auto h-9 w-auto drop-shadow-sm" aria-label="Decathlon" />
-              <h2 className="text-2xl font-semibold md:text-3xl">
-                Pourquoi le chèque disparaît ?
-              </h2>
-              <p className="text-base text-primary/70">
-                Comprendre les raisons du changement te permet d’expliquer sereinement la décision nationale,
-                de rassurer chaque client et de gagner du temps dès la caisse.
-              </p>
-            </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {REASONS.map((reason) => (
-                <div
-                  key={reason.title}
-                  className="flex h-full flex-col gap-4 rounded-2xl border border-primary/10 bg-white p-6 text-left shadow-sm shadow-primary/10"
-                >
-                  <reason.icon className="h-8 w-8 text-primary" aria-hidden="true" />
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-semibold text-primary">{reason.title}</h3>
-                    <p className="text-sm text-primary/70">{reason.description}</p>
-                    <p className="text-sm text-primary/60">{reason.detail}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-        <Reveal>
           <div className="rounded-3xl border border-white/15 bg-white/5 p-2 shadow-lg shadow-black/20">
             <div className="relative aspect-video w-full overflow-hidden rounded-[20px]">
               <video
@@ -1575,10 +1546,6 @@ export function PostureChapter({
     <section id={id} className="bg-[#0E1A5F] py-24 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-10">
         <Reveal className="space-y-4 text-left">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
-            <Brain className="h-4 w-4" aria-hidden="true" />
-            Étape 1
-          </span>
           <h2 className="text-3xl font-bold md:text-4xl">
             Posture verbale et non verbale
           </h2>
@@ -1770,23 +1737,6 @@ export function PostureChapter({
           </div>
         </Reveal>
 
-        <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-lg shadow-black/30">
-          <div className="space-y-4 text-center">
-            <p className="text-sm text-white/80">
-              En appliquant ces repères, tu annonces la fin du chèque de manière
-              sereine et tu prépares la suite de la formation.
-            </p>
-            <button
-              type="button"
-              onClick={onGoToConclusion}
-              className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-sm font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              <Smile className="h-4 w-4" aria-hidden="true" />
-              Je poursuis la formation
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </button>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
