@@ -22,6 +22,7 @@ import {
 import {
   SECTION_IDS,
   TRAINING_MODULES,
+  getModuleBadgeLabel,
   type ModuleId,
   type TrainingModule,
 } from "@shared/training-modules";
