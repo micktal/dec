@@ -165,7 +165,7 @@ function ModuleNavigation({ previous, next }: NavigationContext) {
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-[#163FAF]"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            Étape {previous.order}
+            {getModuleStageLabel(previous)}
           </Link>
         ) : (
           <span />
@@ -173,9 +173,9 @@ function ModuleNavigation({ previous, next }: NavigationContext) {
         {next && (
           <Link
             to={`/modules/${next.moduleId}`}
-            className="inline-flex items-center gap-2 rounded-[12px] bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#163FAF]"
+            className="inline-flex items-center gap-2 rounded-[12px] bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all durée-300 hover:-translate-y-0.5 hover:bg-[#163FAF]"
           >
-            Étape {next.order}
+            {getModuleStageLabel(next)}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         )}
