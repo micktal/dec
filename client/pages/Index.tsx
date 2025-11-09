@@ -469,7 +469,7 @@ const REFLEXES_FOUNDATION = [
   {
     title: "Proposer des alternatives",
     description:
-      "En pr��sentant immédiatement des options, tu transformes une frustration en opportunité de service.",
+      "En présentant immédiatement des options, tu transformes une frustration en opportunité de service.",
     highlights: [
       "Cartes bancaires, cartes cadeaux, paiement en plusieurs fois",
       "Orientation vers Decathlon Pro pour les professionnels",
@@ -760,13 +760,13 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
         description: "“Je ne peux rien faire, c’est la direction qui décide.”",
       },
       back: {
-        title: "Formulation gagnante",
+        title: "Pourquoi ce n’est pas la bonne posture",
         description:
-          "On évolue pour que ce soit plus simple, mais notre accueil reste identique. On est là pour vous accompagner comme toujours.",
+          "Cette formulation rompt la relation et renvoie le client à la direction sans l’écouter. Reformule avec empathie et réaffirme que l’équipe reste engagée.",
         highlights: [
-          "Le “nous” collectif renforce la confiance.",
-          "Tu rassures sur la continuité de la relation.",
-          "Tu reconnais l’émotion sans t’y opposer.",
+          "Commence par accueillir l’émotion.",
+          "Parle au nom de l’équipe pour rassurer.",
+          "Rappelle les solutions disponibles.",
         ],
       },
     },
