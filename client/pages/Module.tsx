@@ -35,10 +35,9 @@ const MODULE_MAP = TRAINING_MODULES.reduce<Record<string, number>>(
 );
 
 type ModuleHeroProps = {
-  order: string;
   title: string;
   description: string;
-  isExam: boolean;
+  badgeLabel: string;
 };
 
 type NavigationContext = {
