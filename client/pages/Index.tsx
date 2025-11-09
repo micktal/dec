@@ -469,7 +469,7 @@ const REFLEXES_FOUNDATION = [
   {
     title: "Proposer des alternatives",
     description:
-      "En présentant immédiatement des options, tu transformes une frustration en opportunité de service.",
+      "En pr��sentant immédiatement des options, tu transformes une frustration en opportunité de service.",
     highlights: [
       "Cartes bancaires, cartes cadeaux, paiement en plusieurs fois",
       "Orientation vers Decathlon Pro pour les professionnels",
@@ -713,7 +713,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
           label:
             "Bonne nouvelle : Decathlon Pro permet justement de payer par virement ou mandat tout en gardant votre circuit interne. Je vous accompagne pour la prise en main.",
           feedback:
-            "C’est la bonne approche : tu valorises la solution dédiée et tu restes dans l’accompagnement.",
+            "Excellent : tu clarifies la solution, tu sécurises le cadre pro et tu restes dans l’accompagnement.",
           status: "success",
           followUp: {
             label: "Découvrir Decathlon Pro",
