@@ -7,14 +7,11 @@ import {
   BookOpen,
   CheckCircle2,
   ChevronDown,
-  Cog,
   ExternalLink,
   FileText,
   Flag,
   HelpCircle,
-  Lightbulb,
   RotateCcw,
-  ShieldCheck,
   Target,
   Users,
   Volume2,
@@ -410,7 +407,7 @@ const SYNTHESIS_PILLARS = [
       "Tu expliques la décision nationale avec simplicité. Quand le message est clair, le client perçoit notre professionnalisme et notre cohérence.",
     checkpoints: [
       "Présenter les bénéfices : sécurité, rapidité, modernisation",
-      "Rester positif et aligné avec le projet 2026",
+      "Rester positif et align�� avec le projet 2026",
     ],
   },
   {
