@@ -5,7 +5,13 @@ import { createRoot, type Root } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  MemoryRouter,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Formation from "./pages/Formation";
 import Index from "./pages/Index";
 import ModulePage from "./pages/Module";
@@ -40,51 +46,59 @@ const queryClient = new QueryClient();
 const App = () => {
   const scormModuleTarget = getScormModuleTarget();
 
+  const routes = (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          scormModuleTarget ? (
+            <Navigate to={`/modules/${scormModuleTarget}`} replace />
+          ) : (
+            <Index />
+          )
+        }
+      />
+      <Route
+        path="/index.html"
+        element={
+          scormModuleTarget ? (
+            <Navigate to={`/modules/${scormModuleTarget}`} replace />
+          ) : (
+            <Index />
+          )
+        }
+      />
+      <Route path="/formation" element={<Formation />} />
+      <Route
+        path="/modules/:moduleId"
+        element={<ModulePage scormModule={scormModuleTarget} />}
+      />
+      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+      <Route
+        path="*"
+        element={
+          scormModuleTarget ? (
+            <Navigate to={`/modules/${scormModuleTarget}`} replace />
+          ) : (
+            <NotFound />
+          )
+        }
+      />
+    </Routes>
+  );
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                scormModuleTarget ? (
-                  <Navigate to={`/modules/${scormModuleTarget}`} replace />
-                ) : (
-                  <Index />
-                )
-              }
-            />
-            <Route
-              path="/index.html"
-              element={
-                scormModuleTarget ? (
-                  <Navigate to={`/modules/${scormModuleTarget}`} replace />
-                ) : (
-                  <Index />
-                )
-              }
-            />
-            <Route path="/formation" element={<Formation />} />
-            <Route
-              path="/modules/:moduleId"
-              element={<ModulePage scormModule={scormModuleTarget} />}
-            />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route
-              path="*"
-              element={
-                scormModuleTarget ? (
-                  <Navigate to={`/modules/${scormModuleTarget}`} replace />
-                ) : (
-                  <NotFound />
-                )
-              }
-            />
-          </Routes>
-        </BrowserRouter>
+        {scormModuleTarget ? (
+          <MemoryRouter initialEntries={[`/modules/${scormModuleTarget}`]}>
+            {routes}
+          </MemoryRouter>
+        ) : (
+          <BrowserRouter>{routes}</BrowserRouter>
+        )}
       </TooltipProvider>
     </QueryClientProvider>
   );
