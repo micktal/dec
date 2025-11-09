@@ -1450,18 +1450,18 @@ function OverviewSection() {
           </Reveal>
         </div>
         <Reveal className="grid gap-4 md:grid-cols-4">
-          {LEARNING_STEPS.map((step) => (
+          {TRAINING_MODULES.map((module) => (
             <Link
-              key={step.order}
-              to={`/modules/${step.moduleId}`}
+              key={module.moduleId}
+              to={`/modules/${module.moduleId}`}
               className="group relative overflow-hidden rounded-3xl border border-primary/30 bg-white px-6 py-6 text-left shadow-lg shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:bg-primary hover:text-white"
             >
               <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary group-hover:text-white">
-                Étape {step.order}
+                {getModuleBadgeLabel(module)}
               </span>
-              <h4 className="mt-3 text-lg font-semibold">{step.title}</h4>
+              <h4 className="mt-3 text-lg font-semibold">{module.title}</h4>
               <p className="mt-2 text-sm text-foreground/70 group-hover:text-white/80">
-                {step.description}
+                {module.description}
               </p>
             </Link>
           ))}
