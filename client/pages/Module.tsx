@@ -176,6 +176,15 @@ function ModuleNavigation({ previous, next }: NavigationContext) {
   );
 }
 
+function IntroductionModule({ onNavigateNext, canNavigateForward }: ModuleRendererProps) {
+  return (
+    <IntroductionSection
+      onStart={canNavigateForward ? onNavigateNext : undefined}
+      showStartButton={canNavigateForward}
+    />
+  );
+}
+
 function ReasonsModule({ onNavigateNext: _ }: ModuleRendererProps) {
   const [reasonAnswer, setReasonAnswer] = useState<string | null>(null);
   const [reasonFeedback, setReasonFeedback] = useState<
