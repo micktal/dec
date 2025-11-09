@@ -90,13 +90,24 @@ function createModuleList() {
       type: "step" as const,
     },
     {
-      order: "08",
-      moduleId: "examen-final",
-      title: "Valider tes acquis",
-      description: "Réponds au quiz final et finalise la formation.",
+      order: "07",
+      moduleId: "test-de-fin",
+      title: "Test de fin",
+      description:
+        "Valide tes acquis grâce au quiz final et confirme ta maîtrise du sujet.",
       sectionId: SECTION_IDS.FINAL_QUIZ,
       type: "exam" as const,
-      badgeLabel: "Examen final",
+      badgeLabel: "Test de fin",
+    },
+    {
+      order: "08",
+      moduleId: "conclusion-ressources",
+      title: "Conclusion et ressources",
+      description:
+        "Récapitule les points clés et récupère les outils pour accompagner ton équipe.",
+      sectionId: SECTION_IDS.CONCLUSION,
+      type: "step" as const,
+      badgeLabel: "Conclusion",
     },
   ] as const;
 }
