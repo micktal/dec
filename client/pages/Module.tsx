@@ -56,12 +56,11 @@ const moduleRenderers: Record<ModuleId, ModuleRenderer> = {
   introduction: (props) => <IntroductionModule {...props} />,
   "ta-feuille-de-route": () => <OverviewSection />,
   "etape-01": () => <PostureChapter id={SECTION_IDS.POSTURE} />,
-  "etape-02": (props) => <ReasonsModule {...props} />,
-  "etape-03": () => <ReflexesSection id={SECTION_IDS.REFLEXES} />,
-  "etape-04": () => <ClientUnderstandingSection id={SECTION_IDS.CLIENT_GUIDE} />,
-  "etape-05": (props) => <ScenariosModule {...props} />,
-  "etape-06": () => <PodcastSection id={SECTION_IDS.PODCAST} />,
-  "etape-07": () => <SynthesisSection id={SECTION_IDS.SYNTHESIS} />,
+  "etape-02": () => <ReflexesSection id={SECTION_IDS.REFLEXES} />,
+  "etape-03": () => <ClientUnderstandingSection id={SECTION_IDS.CLIENT_GUIDE} />,
+  "etape-04": (props) => <ScenariosModule {...props} />,
+  "etape-05": () => <PodcastSection id={SECTION_IDS.PODCAST} />,
+  "etape-06": () => <SynthesisSection id={SECTION_IDS.SYNTHESIS} />,
   "examen-final": () => <ExamModule />,
 };
 
