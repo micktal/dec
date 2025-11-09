@@ -76,15 +76,17 @@ export default function ModulePage({ scormModule }: ModulePageProps) {
   const { moduleId } = useParams<{ moduleId: string }>();
   const navigate = useNavigate();
 
-  if (!moduleId || !(moduleId in MODULE_MAP)) {
+  const effectiveModuleId = moduleId ?? scormModule;
+
+  if (!effectiveModuleId || !(effectiveModuleId in MODULE_MAP)) {
     return <Navigate to="/" replace />;
   }
 
-  if (scormModule && moduleId !== scormModule) {
+  if (scormModule && moduleId && moduleId !== scormModule) {
     return <Navigate to={`/modules/${scormModule}`} replace />;
   }
 
-  const moduleIndex = MODULE_MAP[moduleId];
+  const moduleIndex = MODULE_MAP[effectiveModuleId];
   const moduleMeta = TRAINING_MODULES[moduleIndex];
   let previous =
     moduleIndex > 0 ? TRAINING_MODULES[moduleIndex - 1] : undefined;
@@ -102,6 +104,9 @@ export default function ModulePage({ scormModule }: ModulePageProps) {
 
   const handleNavigate = (target?: TrainingModule) => {
     if (!target || isStandalone) {
+      return;
+    }
+    if (!moduleId) {
       return;
     }
     navigate(`/modules/${target.moduleId}`);
