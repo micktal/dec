@@ -54,7 +54,7 @@ type ModuleRendererProps = {
 type ModuleRenderer = (props: ModuleRendererProps) => JSX.Element;
 
 const moduleRenderers: Record<ModuleId, ModuleRenderer> = {
-  introduction: IntroductionModule,
+  introduction: (props) => <IntroductionModule {...props} />,
   "etape-01": ({ onNavigateNext, canNavigateForward }) => (
     <PostureChapter
       id={SECTION_IDS.POSTURE}
