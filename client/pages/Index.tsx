@@ -352,7 +352,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
       "Proposer immédiatement des alternatives : CB, carte cadeau ou paiement fractionné",
     ],
     objective:
-      "Qu'il reparte rassuré, accompagn�� et confiant dans les nouvelles solutions.",
+      "Qu'il reparte rassuré, accompagné et confiant dans les nouvelles solutions.",
   },
   {
     title: "Le client pressé ou agacé",
@@ -825,7 +825,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     ],
     interaction: {
       kind: "choice",
-      prompt: "Quelle réponse corrige l’information sans créer de doute ?",
+      prompt: "Quelle réponse corrige l��information sans créer de doute ?",
       options: [
         {
           label:
@@ -2737,13 +2737,12 @@ export function ConclusionSection({
   const shouldShowProgress = showProgress ?? true;
 
   const defaultHref = (() => {
+    const relativePath = "memo-bonnes-pratiques-ensemble-vers-2026.pdf";
     if (typeof window === "undefined") {
-      return "/decathlon-memo-bonnes-pratiques.pdf";
+      return `/${relativePath}`;
     }
     const win = window as WindowWithScormFlag;
-    return win.__SCORM_MODULE__
-      ? "decathlon-memo-bonnes-pratiques.pdf"
-      : "/decathlon-memo-bonnes-pratiques.pdf";
+    return win.__SCORM_MODULE__ ? relativePath : `/${relativePath}`;
   })();
 
   const downloadHref = memoHref ?? defaultHref;
@@ -2786,7 +2785,7 @@ export function ConclusionSection({
         <Reveal className="flex flex-col items-center gap-3 md:flex-row md:justify-center">
           <a
             href={downloadHref}
-            download
+            download="Mémo & Bonnes Pratiques ensemble vers 2026.pdf"
             className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white"
           >
             <FileText className="h-5 w-5" aria-hidden="true" />
