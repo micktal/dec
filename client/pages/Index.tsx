@@ -377,7 +377,7 @@ const REFLEXES_FOUNDATION = [
     description:
       "Ils permettent d'absorber les réactions à chaud et d'orienter rapidement le client vers une solution qui lui donne confiance.",
     highlights: [
-      "Créer un climat de dialogue dès les premières secondes",
+      "Créer un climat de dialogue dès les premi��res secondes",
       "Reformuler pour montrer que tu as bien entendu le besoin",
     ],
   },
@@ -412,7 +412,7 @@ const REFLEXES = [
     title: "Clarté",
     summary: "Expliquer la règle simplement et avec assurance.",
     detail:
-      "Annonce la fin du paiement par chèque avec un vocabulaire précis et positif, en rappelant que c'est une évolution nationale.",
+      "Annonce la fin du paiement par chèque avec un vocabulaire précis et positif, en rappelant que c'est une ��volution nationale.",
   },
   {
     title: "Alternative",
@@ -942,7 +942,7 @@ export function IntroductionSection() {
                 discours.
               </li>
               <li className="rounded-2xl border border-white/20 bg-white/5 p-4">
-                R��pondre avec empathie, reformuler et maintenir une relation
+                Répondre avec empathie, reformuler et maintenir une relation
                 positive.
               </li>
               <li className="rounded-2xl border border-white/20 bg-white/5 p-4">
@@ -1696,161 +1696,6 @@ export function ScenariosSection({
       ),
     [],
   );
-
-  const handleExceptionalSelect = (
-    scenarioIndex: number,
-    optionIndex: number,
-  ) => {
-    setExceptionalSelections((prev) => {
-      const next = [...prev];
-      next[scenarioIndex] = optionIndex;
-      return next;
-    });
-  };
-
-  const toggleExceptionalFlip = (scenarioIndex: number) => {
-    setExceptionalFlips((prev) => {
-      const next = [...prev];
-      next[scenarioIndex] = !next[scenarioIndex];
-      return next;
-    });
-  };
-
-  const renderExceptionalInteraction = (
-    scenario: ExceptionalScenario,
-    scenarioIndex: number,
-  ) => {
-    if (scenario.interaction.kind === "choice") {
-      const { prompt, options } = scenario.interaction;
-      const displayOptions =
-        shuffledExceptionalOptions[scenarioIndex] ??
-        options.map((option, originalIndex) => ({
-          ...option,
-          originalIndex,
-        }));
-      const selectedIndex = exceptionalSelections[scenarioIndex];
-      const selectedOption =
-        selectedIndex !== null ? options[selectedIndex] : null;
-      const SelectedIcon = selectedOption
-        ? EXCEPTIONAL_STATUS_ICONS[selectedOption.status]
-        : null;
-
-      return (
-        <div className="space-y-3">
-          <p className="text-sm text-foreground/70">{prompt}</p>
-          <div className="flex flex-col gap-3">
-            {displayOptions.map(({ originalIndex, ...option }) => {
-              const isSelected = selectedIndex === originalIndex;
-              return (
-                <button
-                  key={`${scenario.id}-${originalIndex}`}
-                  type="button"
-                  onClick={() =>
-                    handleExceptionalSelect(scenarioIndex, originalIndex)
-                  }
-                  className={combineClasses(
-                    "w-full rounded-[12px] border px-4 py-3 text-left text-sm font-semibold transition-all duration-300",
-                    isSelected
-                      ? EXCEPTIONAL_STATUS_STYLES[option.status]
-                      : "border-primary/20 bg-white text-primary hover:-translate-y-0.5 hover:border-primary",
-                  )}
-                  aria-pressed={isSelected}
-                >
-                  {option.label}
-                </button>
-              );
-            })}
-          </div>
-          {selectedOption && SelectedIcon && (
-            <div
-              className={combineClasses(
-                "rounded-2xl border px-4 py-4 text-sm leading-relaxed transition-colors",
-                EXCEPTIONAL_STATUS_STYLES[selectedOption.status],
-              )}
-            >
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
-                <SelectedIcon
-                  className={combineClasses(
-                    "h-5 w-5 shrink-0",
-                    EXCEPTIONAL_STATUS_ACCENTS[selectedOption.status],
-                  )}
-                  aria-hidden="true"
-                />
-                <div className="space-y-2">
-                  <p
-                    className={combineClasses(
-                      "text-xs font-semibold uppercase tracking-[0.3em]",
-                      EXCEPTIONAL_STATUS_ACCENTS[selectedOption.status],
-                    )}
-                  >
-                    {EXCEPTIONAL_STATUS_LABELS[selectedOption.status]}
-                  </p>
-                  <p>{selectedOption.feedback}</p>
-                  {selectedOption.followUp && (
-                    <div className="space-y-2">
-                      <a
-                        href={selectedOption.followUp.href}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-[#163FAF]"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {selectedOption.followUp.label}
-                        <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                      </a>
-                      {selectedOption.followUp.description && (
-                        <p className="text-xs text-primary/70">
-                          {selectedOption.followUp.description}
-                        </p>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      );
-    }
-
-    const { prompt, front, back } = scenario.interaction;
-    const isFlipped = exceptionalFlips[scenarioIndex];
-
-    return (
-      <div className="space-y-3">
-        <p className="text-sm text-foreground/70">{prompt}</p>
-        <button
-          type="button"
-          onClick={() => toggleExceptionalFlip(scenarioIndex)}
-          className={combineClasses(
-            "w-full rounded-2xl border px-5 py-5 text-left transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
-            isFlipped
-              ? "border-primary bg-primary/10 text-primary"
-              : "border-primary/20 bg-primary/5 text-primary hover:-translate-y-0.5",
-          )}
-          aria-pressed={isFlipped}
-        >
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
-            {isFlipped ? back.title : front.title}
-          </span>
-          <p className="mt-3 text-base leading-relaxed">
-            {isFlipped ? back.description : front.description}
-          </p>
-        </button>
-        {isFlipped && back.highlights && back.highlights.length > 0 && (
-          <ul className="space-y-2 text-sm text-primary">
-            {back.highlights.map((item) => (
-              <li
-                key={item}
-                className="rounded-2xl border border-primary/20 bg-primary/5 px-3 py-2"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
-  };
 
   const toneToStatus: Record<ScenarioTone, ScenarioStatus> = {
     positive: "success",
