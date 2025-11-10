@@ -403,7 +403,7 @@ const SYNTHESIS_PILLARS = [
   {
     title: "Clarté assumée",
     description:
-      "Tu expliques la décision nationale avec simplicité. Quand le message est clair, le client perçoit notre professionnalisme et notre cohérence.",
+      "Tu expliques la décision nationale avec simplicité. Quand le message est clair, le client per��oit notre professionnalisme et notre cohérence.",
     checkpoints: [
       "Présenter les bénéfices : sécurité, rapidité, modernisation",
       "Rester positif et aligné avec le projet 2026",
@@ -957,6 +957,19 @@ export default function Index() {
   const totalScore = scenarioScore + finalScore;
   const moduleCompleted = totalScore >= 4;
 
+  const scenarioAttempted = scenarioResponses.some((value) => value !== null);
+  const finalAttempted = finalAnswers.some((value) => value !== null);
+  const shouldShowProgress =
+    moduleCompleted || finalSubmitted || scenarioAttempted || finalAttempted;
+
+  const progressSummary = useMemo(
+    () => ({
+      totalScore,
+      totalQuestions: SCENARIOS.length + FINAL_QUIZ.length,
+    }),
+    [totalScore],
+  );
+
   const handleScrollTo = (sectionId: string) => {
     document
       .getElementById(sectionId)
@@ -1161,7 +1174,12 @@ export default function Index() {
           onReset={handleFinalReset}
           score={finalScore}
         />
-        <ConclusionSection id={SECTION_IDS.CONCLUSION} />
+        <ConclusionSection
+          id={SECTION_IDS.CONCLUSION}
+          shouldShowProgress={shouldShowProgress}
+          moduleCompleted={moduleCompleted}
+          progress={progressSummary}
+        />
       </main>
       <SiteFooter />
     </div>
@@ -2776,9 +2794,17 @@ export function FinalQuizSection({
   );
 }
 
+type ConclusionProgress = {
+  totalScore: number;
+  totalQuestions: number;
+};
+
 type ConclusionSectionProps = {
   id?: string;
   memoHref?: string;
+  shouldShowProgress?: boolean;
+  moduleCompleted?: boolean;
+  progress?: ConclusionProgress;
 };
 
 type WindowWithScormFlag = Window & {
@@ -2788,6 +2814,9 @@ type WindowWithScormFlag = Window & {
 export function ConclusionSection({
   id,
   memoHref,
+  shouldShowProgress = false,
+  moduleCompleted = false,
+  progress,
 }: ConclusionSectionProps) {
   const defaultHref = (() => {
     const relativePath = "memo-bonnes-pratiques-ensemble-vers-2026.pdf";
@@ -2799,6 +2828,12 @@ export function ConclusionSection({
   })();
 
   const downloadHref = memoHref ?? defaultHref;
+  const showProgressCard = shouldShowProgress && Boolean(progress);
+  const totalScore = progress?.totalScore ?? 0;
+  const totalQuestions = progress?.totalQuestions ?? 0;
+  const completionPercent = totalQuestions
+    ? Math.min(100, Math.round((totalScore / totalQuestions) * 100))
+    : 0;
 
   return (
     <section id={id} className="bg-[#1C4ED8] py-24 text-white">
@@ -2817,6 +2852,37 @@ export function ConclusionSection({
             en douceur et dans un esprit de service.
           </p>
         </Reveal>
+        {showProgressCard && (
+          <Reveal className="overflow-hidden rounded-3xl border border-white/15 bg-white/10 p-6 text-left backdrop-blur">
+            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div className="space-y-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+                  Ta progression
+                </p>
+                <p className="text-lg font-semibold text-white">
+                  {totalScore} / {totalQuestions} activités validées
+                </p>
+                <p className="text-sm text-white/75">
+                  {moduleCompleted
+                    ? "Bravo ! Tu as validé ce module. Télécharge la fiche mémo pour diffuser les bonnes pratiques."
+                    : "Tu progresses ! Continue les scénarios et le quiz final pour valider le module."}
+                </p>
+              </div>
+              <div className="w-full rounded-2xl border border-white/15 bg-white/5 p-4 md:w-64">
+                <div className="flex items-center justify-between text-xs_chk font-semibold text-white/70">
+                  <span>Progression</span>
+                  <span>{completionPercent}%</span>
+                </div>
+                <div className="mt-2 h-2 rounded-full bg-white/10">
+                  <div
+                    className="h-full rounded-full bg-white transition-all duration-500"
+                    style={{ width: `${completionPercent}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        )}
         <Reveal className="flex flex-col items-center gap-3 md:flex-row md:justify-center">
           <a
             href={downloadHref}
