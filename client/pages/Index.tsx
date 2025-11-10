@@ -2328,14 +2328,16 @@ export function ScenariosSection({
                 <p className="text-sm text-foreground/70">
                   {scenario.description}
                 </p>
-                <span
-                  className={combineClasses(
-                    "mt-auto inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide",
-                    statusClasses[status],
-                  )}
-                >
-                  {statusLabels[status]}
-                </span>
+                {status !== "pending" && (
+                  <span
+                    className={combineClasses(
+                      "mt-auto inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide",
+                      statusClasses[status],
+                    )}
+                  >
+                    {statusLabels[status]}
+                  </span>
+                )}
               </button>
             );
           })}
