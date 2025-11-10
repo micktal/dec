@@ -352,7 +352,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
       "Proposer immédiatement des alternatives : CB, carte cadeau ou paiement fractionné",
     ],
     objective:
-      "Qu'il reparte rassuré, accompagné et confiant dans les nouvelles solutions.",
+      "Qu'il reparte rassuré, accompagn�� et confiant dans les nouvelles solutions.",
   },
   {
     title: "Le client pressé ou agacé",
@@ -576,7 +576,7 @@ export const SCENARIOS: ClientScenario[] = [
     name: "Marc",
     archetype: "Client professionnel",
     description:
-      "Il représente une mairie ou une association, habitué au ch��que administratif et cherche une alternative fiable.",
+      "Il représente une mairie ou une association, habitué au chèque administratif et cherche une alternative fiable.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F6fb5b2c534fb434d94e6dd6c25b2d333?format=webp&width=800",
     imageAlt: "Homme en entrepôt tenant une tablette",
