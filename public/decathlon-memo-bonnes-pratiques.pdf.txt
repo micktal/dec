@@ -1,0 +1,63 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1268 >>
+stream
+BT
+/F1 18 Tf
+72 740 Td
+(Memo & Bonnes Pratiques - Transition sans cheque) Tj
+/F1 12 Tf
+0 -24 Td
+(Quand : Depuis debut 2026, les cheques ne sont plus acceptes.) Tj
+0 -18 Td
+(Pourquoi : Simplifier, securiser et fluidifier les paiements.) Tj
+0 -18 Td
+(Message cle : On simplifie nos paiements pour que ce soit plus rapide et plus sur.) Tj
+0 -18 Td
+(Posture Decathlon : Positive, orientee solution, bienveillante et claire.) Tj
+0 -18 Td
+(Solutions particuliers : Carte bancaire, especes, cartes cadeaux, paiement 3x/4x sans frais.) Tj
+0 -18 Td
+(Solutions professionnels : Compte Decathlon Pro - virement, facturation simplifiee, suivi en ligne.) Tj
+0 -18 Td
+(Postures verbale/non verbale/vocale : langage positif, sourire, ton calme et confiant.) Tj
+0 -18 Td
+(Mots a eviter : C'est la regle ; On ne peut plus ; C'est comme ca.) Tj
+0 -18 Td
+(A dire : C'est pour simplifier vos paiements ; Voici les solutions disponibles ; Bonne nouvelle, c'est plus rapide.) Tj
+0 -18 Td
+(Cas client fidele : Patience et pedagogie.) Tj
+0 -18 Td
+(Cas client presse : Clarite et rapidite.) Tj
+0 -18 Td
+(Cas client professionnel : Orientation solution avec Decathlon Pro.) Tj
+0 -18 Td
+(Reflexes terrain : Ecouter, expliquer le pourquoi, utiliser des mots positifs, eviter la lassitude.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001560 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1630
+%%EOF
