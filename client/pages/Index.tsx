@@ -438,7 +438,7 @@ export const SCENARIOS: ClientScenario[] = [
           "Je comprends, c’est un changement important, mais nous avons des solutions simples et sûres : carte ou paiement en plusieurs fois sans frais.",
         tone: "positive",
         feedback:
-          "Excellent réflexe ! Tu écoutes, rassures et proposes une alternative concrète et rassurante.",
+          "Excellent réflexe ! Tu ��coutes, rassures et proposes une alternative concrète et rassurante.",
         isCorrect: true,
       },
       {
@@ -1645,6 +1645,9 @@ export function PodcastSection({ id }: { id?: string }) {
             </div>
           </div>
         </Reveal>
+        <Reveal className="flex justify-center md:justify-start">
+          <CompletionButton variant="dark" />
+        </Reveal>
       </div>
     </section>
   );
@@ -2284,7 +2287,7 @@ export function FinalQuizSection({
                     </a>
                     <p className="text-xs text-primary/70">
                       Retrouve les ��tapes clés, les profils clients et les
-                      alternatives à proposer.
+                      alternatives �� proposer.
                     </p>
                   </div>
                 )}
