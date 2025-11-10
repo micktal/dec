@@ -54,7 +54,6 @@ export type ScenarioFeedback = {
 
 type ScenarioStatus = "pending" | "success" | "partial" | "error";
 
-
 type QuizQuestion = {
   id: number;
   question: string;
@@ -627,8 +626,7 @@ const COMPLETION_BUTTON_BASE_CLASSES =
 const COMPLETION_BUTTON_VARIANTS: Record<"light" | "dark", string> = {
   light:
     "border border-primary/20 bg-primary/5 text-primary hover:-translate-y-0.5 hover:border-primary hover:bg-primary/10 focus-visible:outline-primary",
-  dark:
-    "border border-white/30 bg-white/10 text-white hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/20 focus-visible:outline-white",
+  dark: "border border-white/30 bg-white/10 text-white hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/20 focus-visible:outline-white",
 };
 
 type CompletionButtonProps = {
