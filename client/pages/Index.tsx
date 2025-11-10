@@ -957,21 +957,30 @@ export function IntroductionSection() {
           </div>
         </Reveal>
         <Reveal>
-          <div className="rounded-3xl border border-white/15 bg-white/5 p-2 shadow-lg shadow-black/20">
-            <div className="relative aspect-video w-full overflow-hidden rounded-[20px]">
-              <video
-                className="h-full w-full object-cover"
-                controls
-                preload="metadata"
-                poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fcc1ffb661a2148659931e8d42572c5a9?format=webp&width=800"
-              >
-                <source
-                  src="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F0d8db92093804cbabdfb9b951b363788?alt=media&token=838e0f80-f4b9-42b8-baae-967cdb4c7e14&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
-                  type="video/mp4"
-                />
-                Votre navigateur ne prend pas en charge la lecture vidéo.
-              </video>
+          <div className="space-y-6">
+            <div className="rounded-3xl border border-white/15 bg-white/5 p-2 shadow-lg shadow-black/20">
+              <div className="relative aspect-video w-full overflow-hidden rounded-[20px]">
+                <video
+                  className="h-full w-full object-cover"
+                  controls
+                  preload="metadata"
+                  poster="https://cdn.builder.io/api/v1/image/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fcc1ffb661a2148659931e8d42572c5a9?format=webp&width=800"
+                >
+                  <source
+                    src="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F0d8db92093804cbabdfb9b951b363788?alt=media&token=838e0f80-f4b9-42b8-baae-967cdb4c7e14&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
+                    type="video/mp4"
+                  />
+                  Votre navigateur ne prend pas en charge la lecture vidéo.
+                </video>
+              </div>
             </div>
+            <button
+              type="button"
+              onClick={handleMarkIntroCompleted}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-[12px] border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:w-auto"
+            >
+              Marquer le module comme terminé
+            </button>
           </div>
         </Reveal>
       </div>
