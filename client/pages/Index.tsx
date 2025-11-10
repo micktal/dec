@@ -532,6 +532,7 @@ export const SCENARIOS: ClientScenario[] = [
   },
 ];
 
+const EXCEPTIONAL_SCENARIOS: never[] = [];
 
 function shuffleArray<T>(items: readonly T[]): T[] {
   const array = [...items];
