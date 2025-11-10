@@ -2606,6 +2606,18 @@ export function FinalQuizSection({
   const success = submitted && score >= 3;
   const answeredCount = answers.filter((answer) => answer !== null).length;
   const progressPercent = Math.round((answeredCount / FINAL_QUIZ.length) * 100);
+  const shuffledQuizOptions = useMemo(
+    () =>
+      FINAL_QUIZ.map((question) =>
+        shuffleArray(
+          question.options.map((option, originalIndex) => ({
+            option,
+            originalIndex,
+          })),
+        ),
+      ),
+    [],
+  );
   const progressMessage = submitted
     ? success
       ? "Excellent, tu valides la formation."
