@@ -1729,7 +1729,7 @@ export function ClientUnderstandingSection({ id }: { id?: string }) {
         </Reveal>
         <Reveal className="rounded-3xl border border-primary/30 bg-primary/5 p-8 text-left text-sm leading-relaxed text-primary shadow-inner">
           <p>
-            Ton rôle : écouter sans jugement, comprendre la situation de chacun
+            Ton rôle : ��couter sans jugement, comprendre la situation de chacun
             puis accompagner avec patience. Les profils ci-dessous t'aident à
             anticiper leurs réactions et à adopter la bonne posture.
           </p>
@@ -2869,7 +2869,7 @@ export function ConclusionSection({
                 </p>
               </div>
               <div className="w-full rounded-2xl border border-white/15 bg-white/5 p-4 md:w-64">
-                <div className="flex items-center justify-between text-xs_chk font-semibold text-white/70">
+                <div className="flex items-center justify-between text-xs font-semibold text-white/70">
                   <span>Progression</span>
                   <span>{completionPercent}%</span>
                 </div>
