@@ -57,35 +57,6 @@ export type ScenarioFeedback = {
 type ScenarioStatus = "pending" | "success" | "partial" | "error";
 
 
-const EXCEPTIONAL_STATUS_STYLES: Record<ExceptionalScenarioStatus, string> = {
-  success: "border-primary bg-primary/10 text-primary",
-  info: "border-blue-500 bg-blue-500/10 text-blue-700",
-  warning: "border-amber-500 bg-amber-500/10 text-amber-700",
-  error: "border-red-500 bg-red-500/10 text-red-600",
-};
-
-const EXCEPTIONAL_STATUS_ACCENTS: Record<ExceptionalScenarioStatus, string> = {
-  success: "text-primary",
-  info: "text-blue-700",
-  warning: "text-amber-700",
-  error: "text-red-600",
-};
-
-const EXCEPTIONAL_STATUS_LABELS: Record<ExceptionalScenarioStatus, string> = {
-  success: "Bonne approche",
-  info: "Approche à compléter",
-  warning: "À améliorer",
-  error: "À éviter",
-};
-
-const EXCEPTIONAL_STATUS_ICONS: Record<ExceptionalScenarioStatus, LucideIcon> =
-  {
-    success: CheckCircle2,
-    info: HelpCircle,
-    warning: AlertTriangle,
-    error: AlertCircle,
-  };
-
 type QuizQuestion = {
   id: number;
   question: string;
@@ -610,7 +581,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     objective:
       "Rassurer sans infantiliser et proposer une solution concrète accompagnée.",
     example:
-      "Pas de souci, beaucoup de nos clients sont dans la même situation. Vous pouvez utiliser une carte cadeau, ou venir avec quelqu���un de votre entourage — on s’adapte.",
+      "Pas de souci, beaucoup de nos clients sont dans la même situation. Vous pouvez utiliser une carte cadeau, ou venir avec quelqu��un de votre entourage — on s’adapte.",
     takeaways: [
       "Valoriser la personne, pas le manque.",
       "Donner le sentiment d’être compris, pas dépassé.",
