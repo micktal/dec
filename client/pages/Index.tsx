@@ -379,7 +379,7 @@ const REFLEXES_FOUNDATION = [
     ],
   },
   {
-    title: "L'importance de la clarté",
+    title: "L'importance de la clart��",
     description:
       "Un message simple et assumé évite les malentendus et rassure sur notre professionnalisme.",
     highlights: [
@@ -594,12 +594,199 @@ export const FINAL_QUIZ: QuizQuestion[] = [
 
 export const TOTAL_QUESTIONS = 7;
 
-type WindowWithScorm = Window & {
-  API?: {
-    LMSInitialize?: (arg: string) => void;
-    LMSSetValue?: (key: string, value: string) => void;
-    LMSCommit?: (arg: string) => void;
+type Scorm12API = {
+  LMSInitialize?: (arg: string) => string;
+  LMSFinish?: (arg: string) => string;
+  LMSSetValue?: (key: string, value: string) => string;
+  LMSCommit?: (arg: string) => string;
+};
+
+type Scorm2004API = {
+  Initialize?: (arg: string) => string;
+  Terminate?: (arg: string) => string;
+  SetValue?: (key: string, value: string) => string;
+  Commit?: (arg: string) => string;
+};
+
+type ScormApis = {
+  api12?: Scorm12API;
+  api2004?: Scorm2004API;
+};
+
+const MAX_SCORM_SEARCH_DEPTH = 10;
+
+function findScormInterface(
+  win: Window,
+  key: "API" | "API_1484_11",
+  depth = 0,
+  visited = new Set<Window>(),
+): unknown {
+  if (depth > MAX_SCORM_SEARCH_DEPTH || visited.has(win)) {
+    return null;
+  }
+  visited.add(win);
+
+  try {
+    const candidate = (win as Record<string, unknown>)[key];
+    if (candidate) {
+      return candidate;
+    }
+  } catch {
+    // Ignore cross-origin access issues
+  }
+
+  try {
+    if (win.parent && win.parent !== win) {
+      const parentInterface = findScormInterface(
+        win.parent,
+        key,
+        depth + 1,
+        visited,
+      );
+      if (parentInterface) {
+        return parentInterface;
+      }
+    }
+  } catch {
+    // Ignore cross-origin access issues
+  }
+
+  try {
+    const opener = win.opener as Window | null | undefined;
+    if (opener) {
+      const openerInterface = findScormInterface(
+        opener,
+        key,
+        depth + 1,
+        visited,
+      );
+      if (openerInterface) {
+        return openerInterface;
+      }
+    }
+  } catch {
+    // Ignore cross-origin access issues
+  }
+
+  try {
+    const { frames } = win;
+    for (let index = 0; index < frames.length; index += 1) {
+      const frame = frames[index];
+      const frameInterface = findScormInterface(
+        frame,
+        key,
+        depth + 1,
+        visited,
+      );
+      if (frameInterface) {
+        return frameInterface;
+      }
+    }
+  } catch {
+    // Ignore cross-origin access issues
+  }
+
+  return null;
+}
+
+function getScormApis(win: Window): ScormApis {
+  return {
+    api2004: findScormInterface(win, "API_1484_11") as
+      | Scorm2004API
+      | undefined,
+    api12: findScormInterface(win, "API") as Scorm12API | undefined,
   };
+}
+
+function resolveScormApis(win: WindowWithScorm): ScormApis {
+  const apis = getScormApis(win);
+  if (apis.api12 && !win.API) {
+    win.API = apis.api12;
+  }
+  if (apis.api2004 && !win.API_1484_11) {
+    win.API_1484_11 = apis.api2004;
+  }
+  return apis;
+}
+
+function commitScormChanges({ api12, api2004 }: ScormApis) {
+  try {
+    api2004?.Commit?.("");
+  } catch {
+    // Ignore commit failures
+  }
+  try {
+    api12?.LMSCommit?.("");
+  } catch {
+    // Ignore commit failures
+  }
+}
+
+function finishScormSession({ api12, api2004 }: ScormApis) {
+  try {
+    api2004?.Terminate?.("");
+  } catch {
+    // Ignore terminate failures
+  }
+  try {
+    api12?.LMSFinish?.("");
+  } catch {
+    // Ignore finish failures
+  }
+}
+
+function recordScormScore(apis: ScormApis, percentage: number) {
+  const normalized = Number.isFinite(percentage)
+    ? Math.max(0, Math.min(100, percentage))
+    : 0;
+
+  try {
+    apis.api2004?.SetValue?.("cmi.score.raw", String(normalized));
+    apis.api2004?.SetValue?.("cmi.score.max", "100");
+    apis.api2004?.SetValue?.("cmi.score.scaled", String(normalized / 100));
+  } catch {
+    // Ignore score errors
+  }
+
+  try {
+    apis.api12?.LMSSetValue?.("cmi.core.score.raw", String(normalized));
+    apis.api12?.LMSSetValue?.("cmi.core.score.max", "100");
+  } catch {
+    // Ignore score errors
+  }
+
+  commitScormChanges(apis);
+}
+
+function completeScormAttempt(apis: ScormApis, success: boolean) {
+  const hasApi = Boolean(apis.api12 || apis.api2004);
+
+  try {
+    apis.api2004?.SetValue?.("cmi.completion_status", "completed");
+    apis.api2004?.SetValue?.("cmi.success_status", success ? "passed" : "failed");
+    apis.api2004?.SetValue?.("cmi.exit", "normal");
+  } catch {
+    // Ignore completion errors
+  }
+
+  try {
+    apis.api12?.LMSSetValue?.(
+      "cmi.core.lesson_status",
+      success ? "passed" : "completed",
+    );
+  } catch {
+    // Ignore completion errors
+  }
+
+  commitScormChanges(apis);
+  finishScormSession(apis);
+
+  return hasApi;
+}
+
+type WindowWithScorm = Window & {
+  API?: Scorm12API;
+  API_1484_11?: Scorm2004API;
   scormInit?: () => void;
   updateScore?: (isCorrect: boolean) => void;
   markCompleted?: () => void;
@@ -614,10 +801,11 @@ function markScormCompletion() {
     win.markCompleted();
     return;
   }
-  if (win.API?.LMSSetValue && win.API?.LMSCommit) {
-    win.API.LMSSetValue("lesson_status", "completed");
-    win.API.LMSCommit("");
+  const apis = resolveScormApis(win);
+  if (!apis.api12 && !apis.api2004) {
+    return;
   }
+  completeScormAttempt(apis, true);
 }
 
 const COMPLETION_BUTTON_BASE_CLASSES =
@@ -1835,7 +2023,7 @@ export function ScenariosSection({
 
   const encouragementMessage =
     scenarioScore === SCENARIOS.length
-      ? "Tu es prêt à accompagner chaque client avec calme et empathie."
+      ? "Tu es prêt �� accompagner chaque client avec calme et empathie."
       : "Garde cette posture : écouter, rassurer, proposer puis conclure positivement.";
 
   const scorePercent = Math.round((scenarioScore / SCENARIOS.length) * 100);
