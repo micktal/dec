@@ -776,7 +776,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     trigger: "“Et si je le pose là, mon chèque, vous le prenez quand même ?”",
     objective: "Rester léger tout en affirmant le cadre et les solutions.",
     example:
-      "Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
+      "Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, esp��ces ou carte cadeau.",
     takeaways: [
       "Garder une touche d’humour pour désamorcer.",
       "Montrer assurance sans rigidité.",
@@ -811,7 +811,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
   },
   {
     id: "mal-informe",
-    title: "Client mal informé ou venant d’un autre magasin",
+    title: "Client mal informé ou venant d��un autre magasin",
     trigger:
       "“Mais à Decathlon Lyon, ils prenaient encore les chèques la semaine dernière !”",
     objective:
@@ -1991,6 +1991,35 @@ export function ScenariosSection({
   >(() => EXCEPTIONAL_SCENARIOS.map(() => null));
   const [exceptionalFlips, setExceptionalFlips] = useState<boolean[]>(() =>
     EXCEPTIONAL_SCENARIOS.map(() => false),
+  );
+
+  const shuffledScenarioOptions = useMemo(
+    () =>
+      SCENARIOS.map((scenario) =>
+        shuffleArray(
+          scenario.responses.map((response, originalIndex) => ({
+            ...response,
+            originalIndex,
+          })),
+        ),
+      ),
+    [],
+  );
+
+  const shuffledExceptionalOptions = useMemo(
+    () =>
+      EXCEPTIONAL_SCENARIOS.map((scenario) => {
+        if (scenario.interaction.kind !== "choice") {
+          return null;
+        }
+        return shuffleArray(
+          scenario.interaction.options.map((option, originalIndex) => ({
+            ...option,
+            originalIndex,
+          })),
+        );
+      }),
+    [],
   );
 
   const handleExceptionalSelect = (
