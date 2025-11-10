@@ -626,7 +626,8 @@ const COMPLETION_BUTTON_BASE_CLASSES =
 const COMPLETION_BUTTON_VARIANTS: Record<"light" | "dark", string> = {
   light:
     "border border-primary/20 bg-primary/5 text-primary hover:-translate-y-0.5 hover:border-primary hover:bg-primary/10 focus-visible:outline-primary",
-  dark: "border border-white/30 bg-white/10 text-white hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/20 focus-visible:outline-white",
+  dark:
+    "border border-primary bg-primary text-white hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline-primary",
 };
 
 type CompletionButtonProps = {
@@ -950,7 +951,7 @@ export function IntroductionSection() {
             <p>
               Ce changement est une évolution naturelle : les chèques sont
               désormais rares et longs à traiter, alors que nos solutions
-              digitales sont plus sûres, rapides et déjà largement adoptées.
+              digitales sont plus sûres, rapides et déj�� largement adoptées.
             </p>
             <p>
               Cette formation t’accompagne pour vivre la transition dans un
