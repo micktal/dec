@@ -2767,7 +2767,8 @@ export function ConclusionSection({
         )}
         <Reveal className="flex flex-col items-center gap-3 md:flex-row md:justify-center">
           <a
-            href="#"
+            href="/decathlon-memo-bonnes-pratiques.pdf"
+            download
             className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white"
           >
             <FileText className="h-5 w-5" aria-hidden="true" />
