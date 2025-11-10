@@ -81,7 +81,7 @@ const MODULE_OBJECTIVES = [
     icon: BookOpen,
     title: "S'approprier les bons réflexes",
     description:
-      "Retenir les trois réflexes clés et les appliquer sur le terrain pour garantir une exp��rience fluide.",
+      "Retenir les trois réflexes clés et les appliquer sur le terrain pour garantir une expérience fluide.",
   },
   {
     icon: Flag,
@@ -783,14 +783,6 @@ function completeScormAttempt(apis: ScormApis, success: boolean) {
 
   return hasApi;
 }
-
-type WindowWithScorm = Window & {
-  API?: Scorm12API;
-  API_1484_11?: Scorm2004API;
-  scormInit?: () => void;
-  updateScore?: (isCorrect: boolean) => void;
-  markCompleted?: () => void;
-};
 
 function markScormCompletion() {
   if (typeof window === "undefined") {
