@@ -2,10 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const PDFDocument = require("pdfkit");
 
-const outputPath = path.resolve(
-  __dirname,
-  "../public/decathlon-memo-bonnes-pratiques.pdf",
-);
+const outputFilename = "memo-bonnes-pratiques-ensemble-vers-2026.pdf";
+const outputPath = path.resolve(__dirname, "../public", outputFilename);
 
 const sections = [
   {
