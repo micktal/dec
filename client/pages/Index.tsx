@@ -382,7 +382,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
     ],
     posture: [
       "Montrer que tu comprends son besoin professionnel",
-      "Expliquer que Decathlon Pro propose des procédures adapt��es à son contexte",
+      "Expliquer que Decathlon Pro propose des procédures adaptées à son contexte",
       "Orienter vers le bon contact ou le site Decathlon Pro pour finaliser l'achat",
     ],
     objective:
@@ -656,7 +656,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     objective:
       "Rassurer sans infantiliser et proposer une solution concrète accompagnée.",
     example:
-      "Pas de souci, beaucoup de nos clients sont dans la même situation. Vous pouvez utiliser une carte cadeau, ou venir avec quelqu’un de votre entourage — on s’adapte.",
+      "Pas de souci, beaucoup de nos clients sont dans la même situation. Vous pouvez utiliser une carte cadeau, ou venir avec quelqu��un de votre entourage — on s’adapte.",
     takeaways: [
       "Valoriser la personne, pas le manque.",
       "Donner le sentiment d’être compris, pas dépassé.",
@@ -825,7 +825,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     ],
     interaction: {
       kind: "choice",
-      prompt: "Quelle réponse corrige l��information sans créer de doute ?",
+      prompt: "Quelle réponse corrige l’information sans créer de doute ?",
       options: [
         {
           label:
