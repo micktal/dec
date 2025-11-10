@@ -324,12 +324,5 @@ function ExamModule() {
 }
 
 function ConclusionModule() {
-  return (
-    <ConclusionSection
-      id={SECTION_IDS.CONCLUSION}
-      totalScore={0}
-      moduleCompleted={false}
-      showProgress={false}
-    />
-  );
+  return <ConclusionSection id={SECTION_IDS.CONCLUSION} />;
 }
