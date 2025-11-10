@@ -614,7 +614,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     id: "insistant-agressif",
     title: "Client insistant ou agressif",
     trigger:
-      "“C���est inadmissible ! Vous prenez mon argent, alors vous prenez mon chèque !”",
+      "“C’est inadmissible ! Vous prenez mon argent, alors vous prenez mon chèque !”",
     objective:
       "Désamorcer la tension sans entrer dans le conflit et recentrer vers la solution.",
     example:
@@ -801,7 +801,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
         },
         {
           label:
-            "On ne plaisante pas avec les règles, merci de rester sérieux.",
+            "On ne plaisante pas avec les r��gles, merci de rester sérieux.",
           feedback:
             "Trop rigide : l’humour du client se transforme en confrontation. Reste ferme sans braquer.",
           status: "warning",
@@ -829,7 +829,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
       options: [
         {
           label:
-            "Oui, c’était encore en phase de transition. Aujourd’hui, la politique est la m��me dans tous nos magasins.",
+            "Oui, c’était encore en phase de transition. Aujourd’hui, la politique est la même dans tous nos magasins.",
           feedback:
             "Bonne réponse : tu ajoutes du contexte et tu montres la cohérence nationale.",
           status: "success",
@@ -2379,18 +2379,18 @@ export function ScenariosSection({
               </p>
             </div>
             <div className="flex flex-col gap-3">
-              {currentScenario.responses.map((response, optionIndex) => {
-                const isSelected = currentResponseIndex === optionIndex;
+              {currentResponseOptions.map(({ originalIndex, ...response }) => {
+                const isSelected = currentResponseIndex === originalIndex;
                 const selectionClasses = isSelected
                   ? toneAccentClasses[response.tone]
                   : "border-primary/20 bg-white hover:-translate-y-0.5 hover:border-primary";
                 return (
                   <button
-                    key={response.label}
+                    key={`${currentScenario.id}-${originalIndex}`}
                     type="button"
-                    onClick={() => onSelect(safeScenarioIndex, optionIndex)}
+                    onClick={() => onSelect(safeScenarioIndex, originalIndex)}
                     className={combineClasses(
-                      "w-full rounded-[12px] border px-5 py-3 text-left text-sm font-medium transition-all duration-300",
+                      "w-full rounded-[12px] border px-5 py-3 text-left text-sm font-medium transition-all durée-300",
                       selectionClasses,
                     )}
                   >
