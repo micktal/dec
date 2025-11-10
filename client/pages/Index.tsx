@@ -1,12 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   AlertCircle,
-  AlertTriangle,
   ArrowRight,
   BookOpen,
   CheckCircle2,
   ChevronDown,
-  ExternalLink,
   FileText,
   Flag,
   HelpCircle,
@@ -2221,7 +2219,7 @@ export function FinalQuizSection({
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </a>
                     <p className="text-xs text-primary/70">
-                      Retrouve les étapes clés, les profils clients et les
+                      Retrouve les ��tapes clés, les profils clients et les
                       alternatives à proposer.
                     </p>
                   </div>
