@@ -187,7 +187,7 @@ const POSTURE_PILLARS = [
       "Des phrases simples et positives installent immédiatement un climat de confiance.",
     guidelines: [
       "Commencer par reformuler l'émotion ou la situation vécue.",
-      "Relier la transition à un b��néfice concret pour le client.",
+      "Relier la transition à un bénéfice concret pour le client.",
       "Terminer par une proposition d'accompagnement ou une alternative.",
     ],
   },
@@ -2782,9 +2782,6 @@ export function FinalQuizSection({
 
 type ConclusionSectionProps = {
   id?: string;
-  totalScore?: number;
-  moduleCompleted?: boolean;
-  showProgress?: boolean;
   memoHref?: string;
 };
 
@@ -2794,15 +2791,8 @@ type WindowWithScormFlag = Window & {
 
 export function ConclusionSection({
   id,
-  totalScore,
-  moduleCompleted,
-  showProgress,
   memoHref,
 }: ConclusionSectionProps) {
-  const progressPoints = totalScore ?? 0;
-  const isCompleted = moduleCompleted ?? false;
-  const shouldShowProgress = showProgress ?? true;
-
   const defaultHref = (() => {
     const relativePath = "memo-bonnes-pratiques-ensemble-vers-2026.pdf";
     if (typeof window === "undefined") {
