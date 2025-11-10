@@ -2,7 +2,10 @@ const fs = require("fs");
 const path = require("path");
 const PDFDocument = require("pdfkit");
 
-const outputPath = path.resolve(__dirname, "../public/decathlon-memo-bonnes-pratiques.pdf");
+const outputPath = path.resolve(
+  __dirname,
+  "../public/decathlon-memo-bonnes-pratiques.pdf",
+);
 
 const sections = [
   {
@@ -60,26 +63,37 @@ function generate() {
   const stream = fs.createWriteStream(outputPath);
   doc.pipe(stream);
 
-  doc.font("Helvetica-Bold").fontSize(26).fillColor("#0b3d91").text("Mémo & Bonnes Pratiques", {
-    align: "left",
-  });
+  doc
+    .font("Helvetica-Bold")
+    .fontSize(26)
+    .fillColor("#0b3d91")
+    .text("Mémo & Bonnes Pratiques", {
+      align: "left",
+    });
 
   doc.moveDown(0.5);
-  doc.font("Helvetica").fontSize(14).fillColor("#1f2933").text(
-    "Transition vers le paiement sans chèque",
-  );
+  doc
+    .font("Helvetica")
+    .fontSize(14)
+    .fillColor("#1f2933")
+    .text("Transition vers le paiement sans chèque");
 
   doc.moveDown(1.2);
 
   sections.forEach((section, index) => {
-    doc.font("Helvetica-Bold").fontSize(16).fillColor("#0b3d91").text(section.title);
+    doc
+      .font("Helvetica-Bold")
+      .fontSize(16)
+      .fillColor("#0b3d91")
+      .text(section.title);
     doc.moveDown(0.4);
 
     doc.font("Helvetica").fontSize(12).fillColor("#1f2933");
 
     section.items.forEach((item) => {
       doc.circle(doc.x - 6, doc.y + 6, 2).fill("#0b3d91");
-      doc.fillColor("#1f2933")
+      doc
+        .fillColor("#1f2933")
         .text(item, doc.x + 6, doc.y - 2, {
           width: 460,
           lineGap: 4,
@@ -96,10 +110,14 @@ function generate() {
   });
 
   doc.moveDown(1.5);
-  doc.font("Helvetica-Oblique").fontSize(11).fillColor("#4b5563").text(
-    "Document interne – usage exclusif Decathlon France – ne pas diffuser.",
-    { align: "center" },
-  );
+  doc
+    .font("Helvetica-Oblique")
+    .fontSize(11)
+    .fillColor("#4b5563")
+    .text(
+      "Document interne – usage exclusif Decathlon France – ne pas diffuser.",
+      { align: "center" },
+    );
 
   doc.end();
 
