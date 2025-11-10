@@ -2345,12 +2345,9 @@ export function ConclusionSection({
   progress,
 }: ConclusionSectionProps) {
   const defaultHref = (() => {
-    const relativePath = "memo-bonnes-pratiques-ensemble-vers-2026.pdf";
-    if (typeof window === "undefined") {
-      return `/${relativePath}`;
-    }
-    const win = window as WindowWithScormFlag;
-    return win.__SCORM_MODULE__ ? relativePath : `/${relativePath}`;
+    const remoteUrl =
+      "https://xnwexjnaiffdcifcnton.supabase.co/storage/v1/object/sign/pdf%20memo/memo.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMWE2Y2M1ZS1kN2E2LTRjY2EtOTg1Ny1iOTc0Njg3NGQzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwZGYgbWVtby9tZW1vLnBkZiIsImlhdCI6MTc2Mjc4NDEyMCwiZXhwIjoxNzk0MzIwMTIwfQ.uZXeW2FoaIswlWgmIaCilLH4wHnwHHWqK2Prn5lsSCk";
+    return remoteUrl;
   })();
 
   const downloadHref = memoHref ?? defaultHref;
