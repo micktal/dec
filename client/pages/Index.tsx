@@ -614,7 +614,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     id: "insistant-agressif",
     title: "Client insistant ou agressif",
     trigger:
-      "“C’est inadmissible ! Vous prenez mon argent, alors vous prenez mon chèque !”",
+      "“C���est inadmissible ! Vous prenez mon argent, alors vous prenez mon chèque !”",
     objective:
       "Désamorcer la tension sans entrer dans le conflit et recentrer vers la solution.",
     example:
@@ -829,7 +829,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
       options: [
         {
           label:
-            "Oui, c’était encore en phase de transition. Aujourd’hui, la politique est la même dans tous nos magasins.",
+            "Oui, c’était encore en phase de transition. Aujourd’hui, la politique est la m��me dans tous nos magasins.",
           feedback:
             "Bonne réponse : tu ajoutes du contexte et tu montres la cohérence nationale.",
           status: "success",
@@ -2223,6 +2223,12 @@ export function ScenariosSection({
     SCENARIOS.length - 1,
   );
   const currentScenario = SCENARIOS[safeScenarioIndex];
+  const currentResponseOptions =
+    shuffledScenarioOptions[safeScenarioIndex] ??
+    currentScenario.responses.map((response, originalIndex) => ({
+      ...response,
+      originalIndex,
+    }));
   const currentResponseIndex = scenarioResponses[safeScenarioIndex];
   const currentFeedback = scenarioFeedback[safeScenarioIndex];
   const currentTone =
