@@ -56,52 +56,6 @@ export type ScenarioFeedback = {
 
 type ScenarioStatus = "pending" | "success" | "partial" | "error";
 
-type ExceptionalScenarioStatus = "success" | "info" | "warning" | "error";
-
-type ExceptionalInteractionChoiceOption = {
-  label: string;
-  feedback: string;
-  status: ExceptionalScenarioStatus;
-  followUp?: {
-    label: string;
-    href: string;
-    description?: string;
-  };
-};
-
-type ExceptionalInteractionChoice = {
-  kind: "choice";
-  prompt: string;
-  options: ExceptionalInteractionChoiceOption[];
-};
-
-type ExceptionalInteractionFlip = {
-  kind: "flip";
-  prompt: string;
-  front: {
-    title: string;
-    description: string;
-  };
-  back: {
-    title: string;
-    description: string;
-    highlights?: string[];
-  };
-};
-
-type ExceptionalInteraction =
-  | ExceptionalInteractionChoice
-  | ExceptionalInteractionFlip;
-
-type ExceptionalScenario = {
-  id: string;
-  title: string;
-  trigger: string;
-  objective: string;
-  example: string;
-  takeaways: string[];
-  interaction: ExceptionalInteraction;
-};
 
 const EXCEPTIONAL_STATUS_STYLES: Record<ExceptionalScenarioStatus, string> = {
   success: "border-primary bg-primary/10 text-primary",
@@ -656,7 +610,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     objective:
       "Rassurer sans infantiliser et proposer une solution concrète accompagnée.",
     example:
-      "Pas de souci, beaucoup de nos clients sont dans la même situation. Vous pouvez utiliser une carte cadeau, ou venir avec quelqu��un de votre entourage — on s’adapte.",
+      "Pas de souci, beaucoup de nos clients sont dans la même situation. Vous pouvez utiliser une carte cadeau, ou venir avec quelqu���un de votre entourage — on s’adapte.",
     takeaways: [
       "Valoriser la personne, pas le manque.",
       "Donner le sentiment d’être compris, pas dépassé.",
