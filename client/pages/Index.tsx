@@ -1320,6 +1320,9 @@ export function PostureChapter({ id }: PostureChapterProps) {
             </div>
           </div>
         </Reveal>
+        <Reveal className="flex justify-center md:justify-start">
+          <CompletionButton variant="dark" />
+        </Reveal>
       </div>
     </section>
   );
@@ -2137,7 +2140,7 @@ export function FinalQuizSection({
       : "Relis les scénarios ou les réflexes puis réessaie."
     : answeredCount === FINAL_QUIZ.length
       ? "Tu peux valider tes réponses."
-      : "Réponds �� toutes les questions pour débloquer la validation.";
+      : "Réponds à toutes les questions pour débloquer la validation.";
   const resultAccent = success ? "text-primary" : "text-amber-600";
   const ResultIcon = success ? CheckCircle2 : HelpCircle;
 
