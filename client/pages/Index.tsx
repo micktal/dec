@@ -1575,6 +1575,9 @@ export function ClientUnderstandingSection({ id }: { id?: string }) {
             l'esprit Decathlon.
           </p>
         </Reveal>
+        <Reveal className="flex justify-center md:justify-start">
+          <CompletionButton variant="light" />
+        </Reveal>
       </div>
     </section>
   );
