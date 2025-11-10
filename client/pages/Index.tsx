@@ -1684,13 +1684,6 @@ export function ScenariosSection({
   onResetSimulation,
   onMarkCompleted,
 }: ScenariosSectionProps) {
-  const [exceptionalSelections, setExceptionalSelections] = useState<
-    (number | null)[]
-  >(() => EXCEPTIONAL_SCENARIOS.map(() => null));
-  const [exceptionalFlips, setExceptionalFlips] = useState<boolean[]>(() =>
-    EXCEPTIONAL_SCENARIOS.map(() => false),
-  );
-
   const shuffledScenarioOptions = useMemo(
     () =>
       SCENARIOS.map((scenario) =>
@@ -1944,7 +1937,7 @@ export function ScenariosSection({
   const encouragementMessage =
     scenarioScore === SCENARIOS.length
       ? "Tu es prêt à accompagner chaque client avec calme et empathie."
-      : "Garde cette posture : ��couter, rassurer, proposer puis conclure positivement.";
+      : "Garde cette posture : écouter, rassurer, proposer puis conclure positivement.";
 
   const scorePercent = Math.round((scenarioScore / SCENARIOS.length) * 100);
 
