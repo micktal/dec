@@ -282,7 +282,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
     situation:
       "Dans la file d'attente, il veut aller vite et voit la fin du chèque comme une contrainte inutile.",
     concerns: [
-      "Frustration li��e au temps d'attente",
+      "Frustration liée au temps d'attente",
       "Impression que le changement complique son passage",
       "Volonté d'en finir rapidement pour poursuivre sa journée",
     ],
@@ -1112,6 +1112,9 @@ export function OverviewSection({
               </p>
             </div>
           ))}
+        </Reveal>
+        <Reveal className="flex justify-center md:justify-start">
+          <CompletionButton variant="light" />
         </Reveal>
       </div>
     </section>
@@ -2134,7 +2137,7 @@ export function FinalQuizSection({
       : "Relis les scénarios ou les réflexes puis réessaie."
     : answeredCount === FINAL_QUIZ.length
       ? "Tu peux valider tes réponses."
-      : "Réponds à toutes les questions pour débloquer la validation.";
+      : "Réponds �� toutes les questions pour débloquer la validation.";
   const resultAccent = success ? "text-primary" : "text-amber-600";
   const ResultIcon = success ? CheckCircle2 : HelpCircle;
 
