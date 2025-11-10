@@ -2693,7 +2693,8 @@ export function FinalQuizSection({
                   </p>
                   <div className="mt-4 grid gap-3">
                     {displayOptions.map(({ option, originalIndex }) => {
-                      const isSelected = answers[questionIndex] === originalIndex;
+                      const isSelected =
+                        answers[questionIndex] === originalIndex;
                       const isCorrect =
                         submitted && question.correctIndex === originalIndex;
                       const isIncorrect =
@@ -2717,7 +2718,9 @@ export function FinalQuizSection({
                             name={`question-${question.id}`}
                             value={originalIndex}
                             checked={isSelected}
-                            onChange={() => onAnswer(questionIndex, originalIndex)}
+                            onChange={() =>
+                              onAnswer(questionIndex, originalIndex)
+                            }
                             className="h-4 w-4 border border-primary text-primary focus:ring-primary"
                           />
                           <span>{option}</span>
