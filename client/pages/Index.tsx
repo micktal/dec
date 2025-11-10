@@ -536,48 +536,6 @@ export const SCENARIOS: ClientScenario[] = [
 
 const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
   {
-    id: "age-numerique",
-    title: "Client âgé en difficulté numérique",
-    trigger:
-      "“Je n’ai pas de carte bancaire, je ne sais pas faire vos trucs modernes.”",
-    objective:
-      "Rassurer sans infantiliser et proposer une solution concrète accompagnée.",
-    example:
-      "Pas de souci, beaucoup de nos clients sont dans la même situation. Vous pouvez utiliser une carte cadeau, ou venir avec quelqu��un de votre entourage — on s’adapte.",
-    takeaways: [
-      "Valoriser la personne, pas le manque.",
-      "Donner le sentiment d’être compris, pas dépassé.",
-      "Proposer une solution accompagnée et rassurante.",
-    ],
-    interaction: {
-      kind: "choice",
-      prompt: "Quel message reformule sans juger et ouvre des solutions ?",
-      options: [
-        {
-          label:
-            "On ne peut rien faire sans carte, il faudra revenir avec quelqu’un.",
-          feedback:
-            "Message culpabilisant : tu accentues le sentiment d’être dépassé.",
-          status: "error",
-        },
-        {
-          label:
-            "Pas de souci, beaucoup de clients préfèrent qu’on les accompagne pour la carte cadeau ou le paiement en caisse.",
-          feedback:
-            "Bonne reformulation : tu normalises la situation et tu proposes un accompagnement concret.",
-          status: "success",
-        },
-        {
-          label:
-            "Demandez à vos proches de vous montrer, ils sont souvent plus à l’aise.",
-          feedback:
-            "Suggestion maladroite : tu déplaces le problème sans proposer d’appui en magasin.",
-          status: "warning",
-        },
-      ],
-    },
-  },
-  {
     id: "institutionnel",
     title: "Client institutionnel bloqué administrativement",
     trigger: "“Je travaille pour la mairie, on ne peut payer que par chèque !”",
