@@ -382,7 +382,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
     ],
     posture: [
       "Montrer que tu comprends son besoin professionnel",
-      "Expliquer que Decathlon Pro propose des procédures adaptées à son contexte",
+      "Expliquer que Decathlon Pro propose des procédures adapt��es à son contexte",
       "Orienter vers le bon contact ou le site Decathlon Pro pour finaliser l'achat",
     ],
     objective:
@@ -1161,11 +1161,7 @@ export default function Index() {
           onReset={handleFinalReset}
           score={finalScore}
         />
-        <ConclusionSection
-          id={SECTION_IDS.CONCLUSION}
-          totalScore={totalScore}
-          moduleCompleted={moduleCompleted}
-        />
+        <ConclusionSection id={SECTION_IDS.CONCLUSION} />
       </main>
       <SiteFooter />
     </div>
