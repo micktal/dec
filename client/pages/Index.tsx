@@ -942,7 +942,7 @@ export function IntroductionSection() {
                 discours.
               </li>
               <li className="rounded-2xl border border-white/20 bg-white/5 p-4">
-                Répondre avec empathie, reformuler et maintenir une relation
+                R��pondre avec empathie, reformuler et maintenir une relation
                 positive.
               </li>
               <li className="rounded-2xl border border-white/20 bg-white/5 p-4">
@@ -1694,22 +1694,6 @@ export function ScenariosSection({
           })),
         ),
       ),
-    [],
-  );
-
-  const shuffledExceptionalOptions = useMemo(
-    () =>
-      EXCEPTIONAL_SCENARIOS.map((scenario) => {
-        if (scenario.interaction.kind !== "choice") {
-          return null;
-        }
-        return shuffleArray(
-          scenario.interaction.options.map((option, originalIndex) => ({
-            ...option,
-            originalIndex,
-          })),
-        );
-      }),
     [],
   );
 
