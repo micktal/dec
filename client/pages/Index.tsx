@@ -1444,6 +1444,9 @@ export function ReflexesSection({ id }: ReflexesSectionProps) {
             paiement en trois ou quatre fois sans frais.
           </p>
         </Reveal>
+        <Reveal className="flex justify-center md:justify-start">
+          <CompletionButton variant="light" />
+        </Reveal>
       </div>
     </section>
   );
