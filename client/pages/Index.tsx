@@ -272,7 +272,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
     posture: [
       "Accueillir la réaction avec bienveillance et respect",
       "Expliquer que l'évolution simplifie et sécurise les encaissements",
-      "Proposer imm��diatement des alternatives : CB, carte cadeau ou paiement fractionné",
+      "Proposer immédiatement des alternatives : CB, carte cadeau ou paiement fractionné",
     ],
     objective:
       "Qu'il reparte rassuré, accompagné et confiant dans les nouvelles solutions.",
@@ -794,10 +794,7 @@ export default function Index() {
   };
 
   const handleModuleComplete = () => {
-    const win = window as WindowWithScorm;
-    if (typeof win.markCompleted === "function") {
-      win.markCompleted();
-    }
+    markScormCompletion();
   };
 
   const computedScore = useMemo(
