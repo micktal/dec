@@ -1777,7 +1777,7 @@ export function ScenariosSection({
             aria-label="Decathlon"
           />
           <span className="text-xs font-semibold uppercase tracking-[0.35em] text-primary/60">
-            Simulation client
+            Decathlon · Simulation client
           </span>
           <h2 className="text-3xl font-bold text-primary md:text-4xl">
             Simulation client : réagir avec calme et empathie
