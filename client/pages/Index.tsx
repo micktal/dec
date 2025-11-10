@@ -2821,24 +2821,6 @@ export function ConclusionSection({
             en douceur et dans un esprit de service.
           </p>
         </Reveal>
-        {shouldShowProgress && (
-          <Reveal className="text-sm font-semibold text-white">
-            <p id="scoreDisplay">Score actuel : 0/{TOTAL_QUESTIONS}</p>
-          </Reveal>
-        )}
-        {shouldShowProgress && (
-          <Reveal className="flex flex-col items-center gap-4 text-sm text-white/80">
-            <div className="flex items-center gap-3 text-base font-semibold">
-              <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
-              <span>Progression cumulée : {progressPoints} points</span>
-            </div>
-            {isCompleted && (
-              <p className="text-white">
-                Module terminé - bravo pour ta montée en compétences.
-              </p>
-            )}
-          </Reveal>
-        )}
         <Reveal className="flex flex-col items-center gap-3 md:flex-row md:justify-center">
           <a
             href={downloadHref}
