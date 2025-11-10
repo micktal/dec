@@ -282,7 +282,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
     situation:
       "Dans la file d'attente, il veut aller vite et voit la fin du chèque comme une contrainte inutile.",
     concerns: [
-      "Frustration liée au temps d'attente",
+      "Frustration li��e au temps d'attente",
       "Impression que le changement complique son passage",
       "Volonté d'en finir rapidement pour poursuivre sa journée",
     ],
@@ -1022,13 +1022,7 @@ export function IntroductionSection() {
                 </video>
               </div>
             </div>
-            <button
-              type="button"
-              onClick={handleMarkIntroCompleted}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-[12px] border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:w-auto"
-            >
-              Marquer le module comme terminé
-            </button>
+            <CompletionButton variant="dark" />
           </div>
         </Reveal>
       </div>
