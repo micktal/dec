@@ -2101,6 +2101,9 @@ export function ScenariosSection({
             </div>
           </Reveal>
         )}
+        <Reveal className="flex justify-center md:justify-start">
+          <CompletionButton variant="light" />
+        </Reveal>
       </div>
     </section>
   );
