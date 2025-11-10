@@ -536,54 +536,6 @@ export const SCENARIOS: ClientScenario[] = [
 
 const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
   {
-    id: "institutionnel",
-    title: "Client institutionnel bloqué administrativement",
-    trigger: "“Je travaille pour la mairie, on ne peut payer que par chèque !”",
-    objective:
-      "Expliquer calmement Decathlon Pro et montrer que la solution existe déjà.",
-    example:
-      "Bonne nouvelle : pour les mairies et associations, il y a Decathlon Pro. Vous gardez votre mode de validation interne, mais sans chèque — par virement ou mandat.",
-    takeaways: [
-      "Parler de simplification, pas de restriction.",
-      "Valoriser Decathlon Pro comme solution clé.",
-      "Rester dans l’accompagnement personnalisé.",
-    ],
-    interaction: {
-      kind: "choice",
-      prompt:
-        "Comment orientes-tu ce client sans bloquer sa procédure interne ?",
-      options: [
-        {
-          label:
-            "Bonne nouvelle : Decathlon Pro permet justement de payer par virement ou mandat tout en gardant votre circuit interne. Je vous accompagne pour la prise en main.",
-          feedback:
-            "Excellent : tu clarifies la solution, tu sécurises le cadre pro et tu restes dans l’accompagnement.",
-          status: "success",
-          followUp: {
-            label: "Découvrir Decathlon Pro",
-            href: "https://www.decathlonpro.fr/",
-            description:
-              "Vidéo et tutoriels pour créer un compte, valider les commandes et régler par mandat ou virement.",
-          },
-        },
-        {
-          label:
-            "On ne prend plus les chèques, il faudra revenir avec un autre moyen de paiement.",
-          feedback:
-            "Réponse incomplète : tu annonces la règle sans proposer de solution professionnelle.",
-          status: "warning",
-        },
-        {
-          label:
-            "Voyez directement avec votre trésorerie, ce n’est pas géré ici.",
-          feedback:
-            "Tu renvoies la responsabilité au client et tu perds la relation de confiance.",
-          status: "error",
-        },
-      ],
-    },
-  },
-  {
     id: "stresse-conflit",
     title: "Client stressé ou à la limite du conflit",
     trigger: "“C’est pas normal, tout change ici ! Je ne reviendrai plus.”",
