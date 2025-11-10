@@ -326,7 +326,7 @@ const SYNTHESIS_PILLARS = [
   {
     title: "Clarté assumée",
     description:
-      "Tu expliques la décision nationale avec simplicité. Quand le message est clair, le client per��oit notre professionnalisme et notre cohérence.",
+      "Tu expliques la décision nationale avec simplicité. Quand le message est clair, le client perçoit notre professionnalisme et notre cohérence.",
     checkpoints: [
       "Présenter les bénéfices : sécurité, rapidité, modernisation",
       "Rester positif et aligné avec le projet 2026",
@@ -375,7 +375,7 @@ const REFLEXES_FOUNDATION = [
     description:
       "Ils permettent d'absorber les réactions à chaud et d'orienter rapidement le client vers une solution qui lui donne confiance.",
     highlights: [
-      "Créer un climat de dialogue dès les premi��res secondes",
+      "Créer un climat de dialogue dès les premières secondes",
       "Reformuler pour montrer que tu as bien entendu le besoin",
     ],
   },
@@ -511,7 +511,7 @@ export const SCENARIOS: ClientScenario[] = [
           "Bonne nouvelle : Decathlon Pro existe justement pour les paiements professionnels. Je peux vous orienter vers ce service.",
         tone: "positive",
         feedback:
-          "Bonne réponse ! Tu proposes une solution adaptée et tu valorises l’accompagnement Decathlon Pro.",
+          "Bonne réponse ! Tu proposes une solution adaptée et tu valorises l��accompagnement Decathlon Pro.",
         isCorrect: true,
       },
       {
@@ -813,7 +813,7 @@ export default function Index() {
     const scormInit = () => {
       if (win.API && typeof win.API.LMSInitialize === "function") {
         win.API.LMSInitialize("");
-        console.log("SCORM initialis��");
+        console.log("SCORM initialisé");
       }
     };
 
@@ -1475,9 +1475,9 @@ export function ClientUnderstandingSection({ id }: { id?: string }) {
         </Reveal>
         <Reveal className="rounded-3xl border border-primary/30 bg-primary/5 p-8 text-left text-sm leading-relaxed text-primary shadow-inner">
           <p>
-            Ton rôle : ��couter sans jugement, comprendre la situation de chacun
+            Ton rôle : écouter sans jugement, comprendre la situation de chacun
             puis accompagner avec patience. Les profils ci-dessous t'aident à
-            anticiper leurs réactions et �� adopter la bonne posture.
+            anticiper leurs réactions et à adopter la bonne posture.
           </p>
         </Reveal>
         <div className="grid gap-6 lg:grid-cols-3">
@@ -2295,7 +2295,7 @@ export function FinalQuizSection({
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </a>
                     <p className="text-xs text-primary/70">
-                      Retrouve les ��tapes clés, les profils clients et les
+                      Retrouve les étapes clés, les profils clients et les
                       alternatives à proposer.
                     </p>
                   </div>
