@@ -2419,6 +2419,9 @@ export function ConclusionSection({
         <Reveal className="text-xs text-white/70">
           Document interne – usage exclusif Decathlon France – ne pas diffuser.
         </Reveal>
+        <Reveal className="flex justify-center md:justify-center">
+          <CompletionButton variant="dark" />
+        </Reveal>
       </div>
     </section>
   );
