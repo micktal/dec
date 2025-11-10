@@ -762,7 +762,7 @@ export default function Index() {
     const scormInit = () => {
       if (win.API && typeof win.API.LMSInitialize === "function") {
         win.API.LMSInitialize("");
-        console.log("SCORM initialisé");
+        console.log("SCORM initialis��");
       }
     };
 
@@ -870,6 +870,21 @@ export default function Index() {
 }
 
 export function IntroductionSection() {
+  const handleMarkIntroCompleted = () => {
+    if (typeof window === "undefined") {
+      return;
+    }
+    const win = window as WindowWithScorm;
+    if (typeof win.markCompleted === "function") {
+      win.markCompleted();
+      return;
+    }
+    if (win.API?.LMSSetValue && win.API?.LMSCommit) {
+      win.API.LMSSetValue("lesson_status", "completed");
+      win.API.LMSCommit("");
+    }
+  };
+
   return (
     <section
       id={SECTION_IDS.INTRO}
