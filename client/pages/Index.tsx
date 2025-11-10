@@ -272,7 +272,7 @@ const CLIENT_REACTIONS_GUIDE: ClientGuideEntry[] = [
     posture: [
       "Accueillir la réaction avec bienveillance et respect",
       "Expliquer que l'évolution simplifie et sécurise les encaissements",
-      "Proposer immédiatement des alternatives : CB, carte cadeau ou paiement fractionné",
+      "Proposer imm��diatement des alternatives : CB, carte cadeau ou paiement fractionné",
     ],
     objective:
       "Qu'il reparte rassuré, accompagné et confiant dans les nouvelles solutions.",
@@ -605,6 +605,57 @@ type WindowWithScorm = Window & {
   updateScore?: (isCorrect: boolean) => void;
   markCompleted?: () => void;
 };
+
+function markScormCompletion() {
+  if (typeof window === "undefined") {
+    return;
+  }
+  const win = window as WindowWithScorm;
+  if (typeof win.markCompleted === "function") {
+    win.markCompleted();
+    return;
+  }
+  if (win.API?.LMSSetValue && win.API?.LMSCommit) {
+    win.API.LMSSetValue("lesson_status", "completed");
+    win.API.LMSCommit("");
+  }
+}
+
+const COMPLETION_BUTTON_BASE_CLASSES =
+  "inline-flex items-center justify-center gap-2 rounded-[12px] px-5 py-3 text-sm font-semibold transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 w-full md:w-auto";
+
+const COMPLETION_BUTTON_VARIANTS: Record<"light" | "dark", string> = {
+  light:
+    "border border-primary/20 bg-primary/5 text-primary hover:-translate-y-0.5 hover:border-primary hover:bg-primary/10 focus-visible:outline-primary",
+  dark:
+    "border border-white/30 bg-white/10 text-white hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/20 focus-visible:outline-white",
+};
+
+type CompletionButtonProps = {
+  variant?: "light" | "dark";
+  label?: string;
+  className?: string;
+};
+
+function CompletionButton({
+  variant = "light",
+  label,
+  className,
+}: CompletionButtonProps) {
+  return (
+    <button
+      type="button"
+      onClick={markScormCompletion}
+      className={combineClasses(
+        COMPLETION_BUTTON_BASE_CLASSES,
+        COMPLETION_BUTTON_VARIANTS[variant],
+        className,
+      )}
+    >
+      {label ?? "Marquer le module comme terminé"}
+    </button>
+  );
+}
 
 export default function Index() {
   const [scenarioResponses, setScenarioResponses] = useState<(number | null)[]>(
