@@ -187,7 +187,7 @@ const POSTURE_PILLARS = [
       "Des phrases simples et positives installent immédiatement un climat de confiance.",
     guidelines: [
       "Commencer par reformuler l'émotion ou la situation vécue.",
-      "Relier la transition à un bénéfice concret pour le client.",
+      "Relier la transition à un b��néfice concret pour le client.",
       "Terminer par une proposition d'accompagnement ou une alternative.",
     ],
   },
@@ -2668,50 +2668,53 @@ export function FinalQuizSection({
           </div>
         </Reveal>
         <form onSubmit={handleSubmit} className="space-y-6">
-          {FINAL_QUIZ.map((question, questionIndex) => (
-            <Reveal key={question.id}>
-              <fieldset className="rounded-3xl border border-primary/30 bg-white p-6 shadow-lg shadow-primary/10">
-                <legend className="sr-only">{question.question}</legend>
-                <p className="text-lg font-semibold text-primary">
-                  {question.question}
-                </p>
-                <div className="mt-4 grid gap-3">
-                  {question.options.map((option, optionIndex) => {
-                    const isSelected = answers[questionIndex] === optionIndex;
-                    const isCorrect =
-                      submitted && question.correctIndex === optionIndex;
-                    const isIncorrect =
-                      submitted &&
-                      isSelected &&
-                      question.correctIndex !== optionIndex;
-                    return (
-                      <label
-                        key={option}
-                        className={combineClasses(
-                          "flex cursor-pointer items-center gap-3 rounded-[12px] border px-4 py-3 text-sm transition-all duration-300",
-                          isCorrect
-                            ? "border-primary bg-primary/10 text-primary"
-                            : isIncorrect
-                              ? "border-red-500 bg-red-500/10 text-red-600"
-                              : "border-primary/20 bg-primary/5 text-foreground/80 hover:-translate-y-0.5 hover:border-primary",
-                        )}
-                      >
-                        <input
-                          type="radio"
-                          name={`question-${question.id}`}
-                          value={option}
-                          checked={isSelected}
-                          onChange={() => onAnswer(questionIndex, optionIndex)}
-                          className="h-4 w-4 border border-primary text-primary focus:ring-primary"
-                        />
-                        <span>{option}</span>
-                      </label>
-                    );
-                  })}
-                </div>
-              </fieldset>
-            </Reveal>
-          ))}
+          {FINAL_QUIZ.map((question, questionIndex) => {
+            const displayOptions = shuffledQuizOptions[questionIndex];
+            return (
+              <Reveal key={question.id}>
+                <fieldset className="rounded-3xl border border-primary/30 bg-white p-6 shadow-lg shadow-primary/10">
+                  <legend className="sr-only">{question.question}</legend>
+                  <p className="text-lg font-semibold text-primary">
+                    {question.question}
+                  </p>
+                  <div className="mt-4 grid gap-3">
+                    {displayOptions.map(({ option, originalIndex }) => {
+                      const isSelected = answers[questionIndex] === originalIndex;
+                      const isCorrect =
+                        submitted && question.correctIndex === originalIndex;
+                      const isIncorrect =
+                        submitted &&
+                        isSelected &&
+                        question.correctIndex !== originalIndex;
+                      return (
+                        <label
+                          key={`${question.id}-${originalIndex}`}
+                          className={combineClasses(
+                            "flex cursor-pointer items-center gap-3 rounded-[12px] border px-4 py-3 text-sm transition-all duration-300",
+                            isCorrect
+                              ? "border-primary bg-primary/10 text-primary"
+                              : isIncorrect
+                                ? "border-red-500 bg-red-500/10 text-red-600"
+                                : "border-primary/20 bg-primary/5 text-foreground/80 hover:-translate-y-0.5 hover:border-primary",
+                          )}
+                        >
+                          <input
+                            type="radio"
+                            name={`question-${question.id}`}
+                            value={originalIndex}
+                            checked={isSelected}
+                            onChange={() => onAnswer(questionIndex, originalIndex)}
+                            className="h-4 w-4 border border-primary text-primary focus:ring-primary"
+                          />
+                          <span>{option}</span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </fieldset>
+              </Reveal>
+            );
+          })}
           <Reveal className="flex flex-col items-center gap-3 text-center">
             <button
               type="submit"
