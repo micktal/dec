@@ -536,44 +536,6 @@ export const SCENARIOS: ClientScenario[] = [
 
 const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
   {
-    id: "insistant-agressif",
-    title: "Client insistant ou agressif",
-    trigger:
-      "“C’est inadmissible ! Vous prenez mon argent, alors vous prenez mon chèque !”",
-    objective:
-      "Désamorcer la tension sans entrer dans le conflit et recentrer vers la solution.",
-    example:
-      "Je comprends votre agacement, c’est un vrai changement pour tout le monde. L’objectif est de vous faire gagner du temps et d’éviter les erreurs de paiement. Regardons ensemble ce qui vous conviendrait le mieux.",
-    takeaways: [
-      "Reformuler l’émotion avant d’expliquer.",
-      "Éviter la justification défensive.",
-      "Ramener la discussion vers la recherche de solution commune.",
-    ],
-    interaction: {
-      kind: "choice",
-      prompt: "Choisis la formulation qui apaise tout en gardant la maîtrise.",
-      options: [
-        {
-          label: "C’est la règle, on ne les prend plus.",
-          feedback:
-            "Formulation trop administrative : tu imposes sans accompagner.",
-          status: "error",
-        },
-        {
-          label:
-            "Pas d’inquiétude, on a plusieurs solutions simples à te proposer.",
-          feedback: "Parfait : rassurant, positif et orienté solution.",
-          status: "success",
-        },
-        {
-          label: "C’est fini depuis 2026, c’est comme ça maintenant.",
-          feedback: "Formulation trop abrupte : la bienveillance disparaît.",
-          status: "warning",
-        },
-      ],
-    },
-  },
-  {
     id: "age-numerique",
     title: "Client âgé en difficulté numérique",
     trigger:
