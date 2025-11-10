@@ -379,7 +379,7 @@ const REFLEXES_FOUNDATION = [
     ],
   },
   {
-    title: "L'importance de la clart��",
+    title: "L'importance de la clarté",
     description:
       "Un message simple et assumé évite les malentendus et rassure sur notre professionnalisme.",
     highlights: [
@@ -998,8 +998,28 @@ export default function Index() {
     let completedFlag = false;
 
     const scormInit = () => {
-      if (win.API && typeof win.API.LMSInitialize === "function") {
-        win.API.LMSInitialize("");
+      const apis = resolveScormApis(win);
+      let initialized = false;
+
+      try {
+        if (apis.api2004?.Initialize) {
+          apis.api2004.Initialize("");
+          initialized = true;
+        }
+      } catch {
+        // Ignore initialization errors
+      }
+
+      try {
+        if (apis.api12?.LMSInitialize) {
+          apis.api12.LMSInitialize("");
+          initialized = true;
+        }
+      } catch {
+        // Ignore initialization errors
+      }
+
+      if (initialized) {
         console.log("SCORM initialisé");
       }
     };
@@ -1008,30 +1028,30 @@ export default function Index() {
       if (!isCorrect) {
         return;
       }
-      if (win.API && typeof win.API.LMSSetValue === "function") {
-        const percentage = Math.round(
-          (scoreRef.current / totalQuestions) * 100,
-        );
-        win.API.LMSSetValue("cmi.score.raw", String(percentage));
-        win.API.LMSCommit?.("");
-      }
+      const apis = resolveScormApis(win);
+      const percentage = Math.round((scoreRef.current / totalQuestions) * 100);
+      recordScormScore(apis, percentage);
     };
 
     const markCompleted = () => {
       if (completedFlag) {
         return;
       }
-      if (win.API && typeof win.API.LMSSetValue === "function") {
-        const success = scoreRef.current / totalQuestions >= 0.7;
-        win.API.LMSSetValue("cmi.completion_status", "completed");
-        win.API.LMSSetValue(
-          "cmi.success_status",
-          success ? "passed" : "failed",
-        );
-        win.API.LMSCommit?.("");
+      const apis = resolveScormApis(win);
+      const percentage = Math.round((scoreRef.current / totalQuestions) * 100);
+      const success = scoreRef.current / totalQuestions >= 0.7;
+
+      recordScormScore(apis, percentage);
+      const updated = completeScormAttempt(apis, success);
+
+      if (updated) {
         console.log(`Module marqué comme terminé. Score : ${scoreRef.current}`);
+        completedFlag = true;
+      } else {
+        console.warn(
+          "Aucune API SCORM disponible pour marquer ce module comme terminé.",
+        );
       }
-      completedFlag = true;
     };
 
     win.scormInit = scormInit;
@@ -2023,7 +2043,7 @@ export function ScenariosSection({
 
   const encouragementMessage =
     scenarioScore === SCENARIOS.length
-      ? "Tu es prêt �� accompagner chaque client avec calme et empathie."
+      ? "Tu es prêt à accompagner chaque client avec calme et empathie."
       : "Garde cette posture : écouter, rassurer, proposer puis conclure positivement.";
 
   const scorePercent = Math.round((scenarioScore / SCENARIOS.length) * 100);
