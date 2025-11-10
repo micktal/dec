@@ -680,12 +680,7 @@ function findScormInterface(
     const { frames } = win;
     for (let index = 0; index < frames.length; index += 1) {
       const frame = frames[index];
-      const frameInterface = findScormInterface(
-        frame,
-        key,
-        depth + 1,
-        visited,
-      );
+      const frameInterface = findScormInterface(frame, key, depth + 1, visited);
       if (frameInterface) {
         return frameInterface;
       }
@@ -699,9 +694,7 @@ function findScormInterface(
 
 function getScormApis(win: Window): ScormApis {
   return {
-    api2004: findScormInterface(win, "API_1484_11") as
-      | Scorm2004API
-      | undefined,
+    api2004: findScormInterface(win, "API_1484_11") as Scorm2004API | undefined,
     api12: findScormInterface(win, "API") as Scorm12API | undefined,
   };
 }
@@ -771,7 +764,10 @@ function completeScormAttempt(apis: ScormApis, success: boolean) {
 
   try {
     apis.api2004?.SetValue?.("cmi.completion_status", "completed");
-    apis.api2004?.SetValue?.("cmi.success_status", success ? "passed" : "failed");
+    apis.api2004?.SetValue?.(
+      "cmi.success_status",
+      success ? "passed" : "failed",
+    );
     apis.api2004?.SetValue?.("cmi.exit", "normal");
   } catch {
     // Ignore completion errors
@@ -814,8 +810,7 @@ const COMPLETION_BUTTON_BASE_CLASSES =
 const COMPLETION_BUTTON_VARIANTS: Record<"light" | "dark", string> = {
   light:
     "border border-primary/20 bg-primary/5 text-primary hover:-translate-y-0.5 hover:border-primary hover:bg-primary/10 focus-visible:outline-primary",
-  dark:
-    "border border-primary bg-primary text-white hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline-primary",
+  dark: "border border-primary bg-primary text-white hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline-primary",
 };
 
 type CompletionButtonProps = {
