@@ -534,119 +534,6 @@ export const SCENARIOS: ClientScenario[] = [
   },
 ];
 
-const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
-  {
-    id: "stresse-conflit",
-    title: "Client stressé ou à la limite du conflit",
-    trigger: "“C’est pas normal, tout change ici ! Je ne reviendrai plus.”",
-    objective:
-      "Gérer le rejet émotionnel en dissociant la frustration de la relation.",
-    example:
-      "Je comprends que ce soit déroutant. On évolue pour que ce soit plus simple, mais notre accueil, lui, ne change pas. On reste là pour vous, comme toujours.",
-    takeaways: [
-      "Dissocier la frustration du client de sa personne.",
-      "Utiliser le “nous” collectif pour ramener la confiance.",
-      "Ancrer la stabilité de l’accueil malgré la nouveauté.",
-    ],
-    interaction: {
-      kind: "flip",
-      prompt: "Clique pour révéler la formulation qui maintient la fidélité.",
-      front: {
-        title: "Proposition à analyser",
-        description: "“Je ne peux rien faire, c’est la direction qui décide.”",
-      },
-      back: {
-        title: "Pourquoi ce n’est pas la bonne posture",
-        description:
-          "Cette formulation rompt la relation et renvoie le client à la direction sans l’écouter. Reformule avec empathie et réaffirme que l’équipe reste engagée.",
-        highlights: [
-          "Commence par accueillir l’émotion.",
-          "Parle au nom de l’équipe pour rassurer.",
-          "Rappelle les solutions disponibles.",
-        ],
-      },
-    },
-  },
-  {
-    id: "test-limites",
-    title: "Client qui teste les limites",
-    trigger: "“Et si je le pose là, mon chèque, vous le prenez quand même ?”",
-    objective: "Rester léger tout en affirmant le cadre et les solutions.",
-    example:
-      "Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
-    takeaways: [
-      "Garder une touche d’humour pour désamorcer.",
-      "Montrer assurance sans rigidité.",
-      "Revenir immédiatement aux options disponibles.",
-    ],
-    interaction: {
-      kind: "choice",
-      prompt: "Quelle réponse garde le sourire tout en rappelant la règle ?",
-      options: [
-        {
-          label:
-            "(Sourire) Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
-          feedback:
-            "Parfait : tu restes léger, tu confirmes la règle et tu proposes des options concrètes.",
-          status: "success",
-        },
-        {
-          label: "Posez-le et on verra, mais ce sera exceptionnellement.",
-          feedback:
-            "Danger : tu ouvres la porte au passe-droit et tu perds l’autorité du cadre.",
-          status: "error",
-        },
-        {
-          label:
-            "On ne plaisante pas avec les règles, merci de rester sérieux.",
-          feedback:
-            "Trop rigide : l’humour du client se transforme en confrontation. Reste ferme sans braquer.",
-          status: "warning",
-        },
-      ],
-    },
-  },
-  {
-    id: "mal-informe",
-    title: "Client mal informé ou venant d’un autre magasin",
-    trigger:
-      "“Mais à Decathlon Lyon, ils prenaient encore les chèques la semaine dernière !”",
-    objective:
-      "Aligner le discours entre magasins et renforcer la crédibilité.",
-    example:
-      "Oui, c’était encore en phase de transition. Aujourd’hui, la nouvelle politique est la même dans tous nos magasins.",
-    takeaways: [
-      "Parler au présent pour ancrer la règle.",
-      "Montrer la cohérence du groupe Decathlon.",
-      "Rappeler que l’information évolue et s’unifie.",
-    ],
-    interaction: {
-      kind: "choice",
-      prompt: "Quelle réponse corrige l’information sans créer de doute ?",
-      options: [
-        {
-          label:
-            "Oui, c’était encore en phase de transition. Aujourd’hui, la politique est la même dans tous nos magasins.",
-          feedback:
-            "Bonne réponse : tu ajoutes du contexte et tu montres la cohérence nationale.",
-          status: "success",
-        },
-        {
-          label: "Chaque magasin fait comme il veut, ici on a arrêté plus tôt.",
-          feedback:
-            "Mauvais message : tu brouilles le cadrage national et fragilises la confiance.",
-          status: "error",
-        },
-        {
-          label: "Je ne sais pas, on nous dit souvent autre chose.",
-          feedback:
-            "Réponse hésitante : tu laisses planer le doute et tu perds en crédibilité.",
-          status: "warning",
-        },
-      ],
-    },
-  },
-];
 
 function shuffleArray<T>(items: readonly T[]): T[] {
   const array = [...items];
@@ -2057,7 +1944,7 @@ export function ScenariosSection({
   const encouragementMessage =
     scenarioScore === SCENARIOS.length
       ? "Tu es prêt à accompagner chaque client avec calme et empathie."
-      : "Garde cette posture : écouter, rassurer, proposer puis conclure positivement.";
+      : "Garde cette posture : ��couter, rassurer, proposer puis conclure positivement.";
 
   const scorePercent = Math.round((scenarioScore / SCENARIOS.length) * 100);
 
