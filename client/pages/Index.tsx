@@ -801,7 +801,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
         },
         {
           label:
-            "On ne plaisante pas avec les r��gles, merci de rester sérieux.",
+            "On ne plaisante pas avec les règles, merci de rester sérieux.",
           feedback:
             "Trop rigide : l’humour du client se transforme en confrontation. Reste ferme sans braquer.",
           status: "warning",
@@ -2390,7 +2390,7 @@ export function ScenariosSection({
                     type="button"
                     onClick={() => onSelect(safeScenarioIndex, originalIndex)}
                     className={combineClasses(
-                      "w-full rounded-[12px] border px-5 py-3 text-left text-sm font-medium transition-all durée-300",
+                      "w-full rounded-[12px] border px-5 py-3 text-left text-sm font-medium transition-all duration-300",
                       selectionClasses,
                     )}
                   >
