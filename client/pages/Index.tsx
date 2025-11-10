@@ -2718,6 +2718,11 @@ type ConclusionSectionProps = {
   totalScore?: number;
   moduleCompleted?: boolean;
   showProgress?: boolean;
+  memoHref?: string;
+};
+
+type WindowWithScormFlag = Window & {
+  __SCORM_MODULE__?: string | null;
 };
 
 export function ConclusionSection({
@@ -2725,10 +2730,23 @@ export function ConclusionSection({
   totalScore,
   moduleCompleted,
   showProgress,
+  memoHref,
 }: ConclusionSectionProps) {
   const progressPoints = totalScore ?? 0;
   const isCompleted = moduleCompleted ?? false;
   const shouldShowProgress = showProgress ?? true;
+
+  const defaultHref = (() => {
+    if (typeof window === "undefined") {
+      return "/decathlon-memo-bonnes-pratiques.pdf";
+    }
+    const win = window as WindowWithScormFlag;
+    return win.__SCORM_MODULE__
+      ? "decathlon-memo-bonnes-pratiques.pdf"
+      : "/decathlon-memo-bonnes-pratiques.pdf";
+  })();
+
+  const downloadHref = memoHref ?? defaultHref;
 
   return (
     <section id={id} className="bg-[#1C4ED8] py-24 text-white">
@@ -2767,7 +2785,7 @@ export function ConclusionSection({
         )}
         <Reveal className="flex flex-col items-center gap-3 md:flex-row md:justify-center">
           <a
-            href="/decathlon-memo-bonnes-pratiques.pdf"
+            href={downloadHref}
             download
             className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-white px-6 py-3 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white"
           >
