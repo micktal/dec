@@ -635,17 +635,20 @@ type CompletionButtonProps = {
   variant?: "light" | "dark";
   label?: string;
   className?: string;
+  onClick?: () => void;
 };
 
 function CompletionButton({
   variant = "light",
   label,
   className,
+  onClick,
 }: CompletionButtonProps) {
+  const handleClick = onClick ?? markScormCompletion;
   return (
     <button
       type="button"
-      onClick={markScormCompletion}
+      onClick={handleClick}
       className={combineClasses(
         COMPLETION_BUTTON_BASE_CLASSES,
         COMPLETION_BUTTON_VARIANTS[variant],
@@ -1022,7 +1025,7 @@ export function IntroductionSection() {
                 </video>
               </div>
             </div>
-            <CompletionButton variant="dark" />
+            <CompletionButton variant="dark" onClick={markScormCompletion} />
           </div>
         </Reveal>
       </div>
@@ -1474,7 +1477,7 @@ export function ClientUnderstandingSection({ id }: { id?: string }) {
           <p>
             Ton rôle : ��couter sans jugement, comprendre la situation de chacun
             puis accompagner avec patience. Les profils ci-dessous t'aident à
-            anticiper leurs réactions et à adopter la bonne posture.
+            anticiper leurs réactions et �� adopter la bonne posture.
           </p>
         </Reveal>
         <div className="grid gap-6 lg:grid-cols-3">
