@@ -613,6 +613,14 @@ type ScormApis = {
   api2004?: Scorm2004API;
 };
 
+type WindowWithScorm = Window & {
+  API?: Scorm12API;
+  API_1484_11?: Scorm2004API;
+  scormInit?: () => void;
+  updateScore?: (isCorrect: boolean) => void;
+  markCompleted?: () => void;
+};
+
 const MAX_SCORM_SEARCH_DEPTH = 10;
 
 function findScormInterface(
