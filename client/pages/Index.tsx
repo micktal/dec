@@ -776,7 +776,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
     trigger: "“Et si je le pose là, mon chèque, vous le prenez quand même ?”",
     objective: "Rester léger tout en affirmant le cadre et les solutions.",
     example:
-      "Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, esp��ces ou carte cadeau.",
+      "Si seulement je pouvais ! Mais aujourd’hui, on reste sur les solutions simples : carte, espèces ou carte cadeau.",
     takeaways: [
       "Garder une touche d’humour pour désamorcer.",
       "Montrer assurance sans rigidité.",
@@ -811,7 +811,7 @@ const EXCEPTIONAL_SCENARIOS: ExceptionalScenario[] = [
   },
   {
     id: "mal-informe",
-    title: "Client mal informé ou venant d��un autre magasin",
+    title: "Client mal informé ou venant d’un autre magasin",
     trigger:
       "“Mais à Decathlon Lyon, ils prenaient encore les chèques la semaine dernière !”",
     objective:
@@ -2047,6 +2047,12 @@ export function ScenariosSection({
   ) => {
     if (scenario.interaction.kind === "choice") {
       const { prompt, options } = scenario.interaction;
+      const displayOptions =
+        shuffledExceptionalOptions[scenarioIndex] ??
+        options.map((option, originalIndex) => ({
+          ...option,
+          originalIndex,
+        }));
       const selectedIndex = exceptionalSelections[scenarioIndex];
       const selectedOption =
         selectedIndex !== null ? options[selectedIndex] : null;
@@ -2058,14 +2064,14 @@ export function ScenariosSection({
         <div className="space-y-3">
           <p className="text-sm text-foreground/70">{prompt}</p>
           <div className="flex flex-col gap-3">
-            {options.map((option, optionIndex) => {
-              const isSelected = selectedIndex === optionIndex;
+            {displayOptions.map(({ originalIndex, ...option }) => {
+              const isSelected = selectedIndex === originalIndex;
               return (
                 <button
-                  key={option.label}
+                  key={`${scenario.id}-${originalIndex}`}
                   type="button"
                   onClick={() =>
-                    handleExceptionalSelect(scenarioIndex, optionIndex)
+                    handleExceptionalSelect(scenarioIndex, originalIndex)
                   }
                   className={combineClasses(
                     "w-full rounded-[12px] border px-4 py-3 text-left text-sm font-semibold transition-all duration-300",
